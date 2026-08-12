@@ -1,0 +1,45 @@
+---
+layout: default
+title: Human in the Loop
+description: Notes on tools, taste, clarity, and human judgment.
+extra_css: /blog.css
+permalink: /blog/
+---
+<section class="blogIndex">
+  <header class="blogIndexHeader">
+    <div class="blogShape blogShapeLavender" aria-hidden="true"></div>
+    <div class="blogShape blogShapeAcid" aria-hidden="true"></div>
+    <p class="eyebrow">Journal · Human in the Loop</p>
+    <h1>Thinking with<br><em>humans in mind.</em></h1>
+    <div class="blogIndexNote">
+      <span>Ideas in progress</span>
+      <p>Notes on tools, taste, clarity, and staying thoughtful while everything gets faster.</p>
+    </div>
+  </header>
+
+  <div class="blogIndexList">
+    {% for post in site.posts %}
+      <article class="blogIndexCard">
+        <div class="articleMeta">
+          <span>{{ forloop.index | prepend: '0' }}</span>
+          <span>{{ post.category }}</span>
+          <span>{{ post.read_time }} min read</span>
+        </div>
+        <div class="articleTitle">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        </div>
+        <div class="articleSummary">
+          <p>{{ post.excerpt_text }}</p>
+          <a class="articleLink" href="{{ post.url | relative_url }}">
+            Read the note <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <div class="journalEndNote">
+    <span aria-hidden="true">✦</span>
+    <p>Written slowly. Shared when ready.</p>
+  </div>
+</section>

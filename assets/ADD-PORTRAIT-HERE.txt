@@ -1,0 +1,5 @@
+Add a vertical 4:5 JPG portrait to this folder and name it exactly:
+
+portrait.jpg
+
+The portrait frame remains as designed until the image is present.
