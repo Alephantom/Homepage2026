@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">A neutral illustrated portrait to replace with the client's photograph.</desc>
+  <rect width="240" height="240" fill="#c8bdf8"/>
+  <circle cx="120" cy="92" r="46" fill="#f4f0e7" stroke="#1d1b2f" stroke-width="4"/>
+  <path d="M38 240c5-64 33-100 82-100s77 36 82 100" fill="#d8ff52" stroke="#1d1b2f" stroke-width="4"/>
+  <path d="M75 88c4-34 20-53 48-53 24 0 41 16 45 42-13-7-26-17-38-31-10 20-29 34-55 42Z" fill="#1d1b2f"/>
+  <circle cx="102" cy="94" r="3" fill="#1d1b2f"/>
+  <circle cx="139" cy="94" r="3" fill="#1d1b2f"/>
+  <path d="M105 116c10 7 20 7 30 0" fill="none" stroke="#f05a47" stroke-linecap="round" stroke-width="4"/>
+</svg>

@@ -1,0 +1,23 @@
+title: Anna-Lena
+description: Strategy, stories, creative direction, and the Human in the Loop journal.
+url: "https://annalenabirkner.com"
+baseurl: ""
+timezone: Europe/Berlin
+markdown: kramdown
+permalink: /journal/:title/
+
+calendly_url: "https://calendly.com/annalenabirkner-info/30min"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - MEMORY.md
+  - README.md
+  - vendor

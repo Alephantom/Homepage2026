@@ -1,0 +1,15 @@
+<section class="colorfulSection{% if include.variant %} colorfulSection--{{ include.variant | escape }}{% endif %}"{% if include.id %} id="{{ include.id | escape }}"{% endif %}>
+  <div class="colorfulShape colorfulShapeOne" aria-hidden="true"></div>
+  <div class="colorfulShape colorfulShapeTwo" aria-hidden="true"></div>
+  <div class="colorfulSectionContent">
+    <p class="eyebrow">{{ include.eyebrow | default: "Placeholder eyebrow" }}</p>
+    <h2>{{ include.heading | default: "A colourful place for your next idea." }}</h2>
+    <p>{{ include.body | default: "Replace this text with a new service, project, announcement, or invitation." }}</p>
+    {% if include.link_text %}
+      {% assign section_link_url = include.link_url | default: '#' %}
+      <a href="{% if section_link_url contains '://' %}{{ section_link_url }}{% else %}{{ section_link_url | relative_url }}{% endif %}">
+        {{ include.link_text }} <span aria-hidden="true">↗</span>
+      </a>
+    {% endif %}
+  </div>
+</section>

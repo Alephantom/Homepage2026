@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<article class="postPage">
+  <header class="postHero">
+    <div class="postHeroShape" aria-hidden="true"></div>
+    <div class="postHeroAccent" aria-hidden="true"></div>
+
+    <div class="postHeroInner">
+      <div class="postHeroTopline">
+        <a class="postBackLink" href="{{ '/journal/' | relative_url }}">
+          <span aria-hidden="true">←</span> Journal
+        </a>
+
+        <div class="postMeta" aria-label="Article information">
+          {% if page.category %}<span>{{ page.category }}</span>{% endif %}
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %B %Y" }}</time>
+          {% if page.read_time %}<span>{{ page.read_time }} min read</span>{% endif %}
+        </div>
+      </div>
+
+      <div class="postHeroContent">
+        <p class="postSeries">Human in the Loop</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.excerpt_text %}
+          <p class="postDeck">{{ page.excerpt_text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="postBody">
+    <aside class="postSideNote" aria-label="Journal note">
+      <span class="postSideMark">AL</span>
+      <p>Notes on technology, judgment, and keeping a human in the loop.</p>
+    </aside>
+
+    <div class="postContent">
+      {{ content }}
+    </div>
+  </div>
+
+  <nav class="postAfter" aria-label="After this article">
+    <a href="{{ '/journal/' | relative_url }}">
+      <span>Keep reading</span>
+      <strong>Back to the Journal</strong>
+      <i aria-hidden="true">←</i>
+    </a>
+    <a href="{{ '/contact.html' | relative_url }}">
+      <span>Have a thought?</span>
+      <strong>Continue the conversation</strong>
+      <i aria-hidden="true">↗</i>
+    </a>
+  </nav>
+</article>
