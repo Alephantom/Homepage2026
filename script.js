@@ -25,6 +25,12 @@ if (portfolioCarousel) {
   const carouselStatus = portfolioCarousel.querySelector("[data-portfolio-carousel-status]");
   let activeCaseIndex = 0;
 
+  if (portfolioSlides.length <= 1) {
+    previousCaseButton.hidden = true;
+    nextCaseButton.hidden = true;
+    carouselStatus.hidden = true;
+  }
+
   const showPortfolioCase = (nextIndex) => {
     activeCaseIndex = (nextIndex + portfolioSlides.length) % portfolioSlides.length;
 
