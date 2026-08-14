@@ -1,13 +1,84 @@
-<nav class="nav" aria-label="Main navigation">
-  <a class="monogram" href="{{ '/' | relative_url }}" aria-label="Anna-Lena, home">
-    <img src="{{ '/assets/al-logo.png' | relative_url }}" alt="" width="48" height="48">
+{% assign is_journal = false %}
+{% if page.url contains '/blog/' or page.layout == 'post' %}
+  {% assign is_journal = true %}
+{% endif %}
+{% assign is_contact = false %}
+{% if page.url == '/contact.html' %}
+  {% assign is_contact = true %}
+{% endif %}
+{% assign is_services = false %}
+{% if page.url == '/strategic-support/' or page.url == '/team-workshops/' or page.url == '/workshops.html' %}
+  {% assign is_services = true %}
+{% endif %}
+
+<nav class="nav" aria-label="Main navigation" data-site-nav>
+  <a class="navIdentity" href="{{ '/' | relative_url }}" aria-label="Anna-Lena Birkner, home">
+    <span class="monogram" aria-hidden="true">
+      <img src="{{ '/assets/al-logo.png' | relative_url }}" alt="" width="48" height="48">
+    </span>
+    <span class="navName">Anna-Lena Birkner</span>
   </a>
+
   <div class="navLinks">
-    <a href="{{ '/#about' | relative_url }}">About</a>
-    <a href="{{ '/#work' | relative_url }}">Work</a>
-    <a class="navBlog" href="{{ '/blog/' | relative_url }}">Blog</a>
-    <a class="navCta" href="{{ '/contact.html' | relative_url }}">
+    <a href="{{ '/#about' | relative_url }}" data-nav-section="about">About</a>
+    <div class="navServices">
+      <a class="navServicesTrigger" href="{{ '/#work' | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
+        Services <span aria-hidden="true">↘</span>
+      </a>
+      <div class="servicesDropdown" aria-label="Choose a service path">
+        <span class="servicesDropdownLabel">Choose the support you need</span>
+        <a class="servicesDropdownOption" href="{{ '/strategic-support/' | relative_url }}"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
+          <span class="servicesDropdownNumber">01</span>
+          <span class="servicesDropdownCopy">
+            <strong>Hands-on strategic support</strong>
+            <small>For founders &amp; decision-makers</small>
+          </span>
+          <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="servicesDropdownOption" href="{{ '/team-workshops/' | relative_url }}"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+          <span class="servicesDropdownNumber">02</span>
+          <span class="servicesDropdownCopy">
+            <strong>Team learning &amp; workshops</strong>
+            <small>For teams &amp; organisations</small>
+          </span>
+          <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+    <a href="{{ '/#projects' | relative_url }}" data-nav-section="projects">Selected work</a>
+    <a href="{{ '/blog/' | relative_url }}"{% if is_journal %} aria-current="page"{% endif %}>Journal</a>
+    <a class="navCta" href="{{ '/contact.html' | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
       Book a call <span aria-hidden="true">↗</span>
     </a>
+  </div>
+
+  <div class="navMobileActions">
+    <button class="navMenuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-nav-menu-toggle>
+      <span>Menu</span><span class="navMenuMark" aria-hidden="true">+</span>
+    </button>
+    <a class="navCta navMobileCta" href="{{ '/contact.html' | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
+      Book a call <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <div class="navMobileMenu" id="mobile-navigation" data-nav-mobile-menu hidden>
+    <span class="navMobileLabel">Explore</span>
+    <a href="{{ '/#about' | relative_url }}" data-nav-section="about">About <span aria-hidden="true">01</span></a>
+    <div class="navMobileServices">
+      <a class="navMobileServicesOverview" href="{{ '/#work' | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>Services <span aria-hidden="true">02</span></a>
+      <div class="navMobileServicePaths">
+        <a href="{{ '/strategic-support/' | relative_url }}"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
+          <strong>Hands-on strategic support</strong>
+          <span>Founders &amp; decision-makers</span>
+        </a>
+        <a href="{{ '/team-workshops/' | relative_url }}"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+          <strong>Team learning &amp; workshops</strong>
+          <span>Teams &amp; organisations</span>
+        </a>
+      </div>
+    </div>
+    <a href="{{ '/#projects' | relative_url }}" data-nav-section="projects">Selected work <span aria-hidden="true">03</span></a>
+    <a href="{{ '/#faq' | relative_url }}" data-nav-section="faq">FAQ <span aria-hidden="true">04</span></a>
+    <a href="{{ '/blog/' | relative_url }}"{% if is_journal %} aria-current="page"{% endif %}>Journal <span aria-hidden="true">05</span></a>
   </div>
 </nav>

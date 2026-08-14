@@ -1,6 +1,6 @@
 # Anna-Lena website — Jekyll and Markdown edition
 
-This version is ready for a growing Markdown blog and GitHub Pages. The homepage, blog, contact page, shared layouts, styling, AL logo, social card, and three starter posts are included.
+This version is ready for a growing Markdown blog. The homepage, FAQ, blog, contact page, legal pages, privacy controls, shared layouts, styling, AL logo, social card, and three starter posts are included.
 
 ## Folder structure
 
@@ -82,7 +82,68 @@ Jekyll automatically adds the new article to the journal page. The three newest 
 calendly_url: "https://calendly.com/YOUR_NAME/YOUR_EVENT"
 ```
 
-The contact page will load that event as an inline scheduler automatically.
+The contact page first shows a privacy notice. Calendly&apos;s script and embedded calendar are loaded only after the visitor selects **Load Calendly**. Keep this consent gate in place and do not add Calendly&apos;s `hide_gdpr_banner=1` parameter.
+
+## Complete the legal pages before publishing
+
+The Imprint and Privacy Policy intentionally display a draft warning until the legally required address is complete.
+
+1. Open `_config.yml`.
+2. Complete `legal.street`, `legal.postal_code`, and `legal.city`.
+3. Add a telephone number, VAT ID, or register information if it applies to the business.
+4. Confirm that `hosting_provider` matches the production host: `cloudflare` or `github`.
+5. Set `legal_details_complete: true` only after every detail has been checked.
+
+The relevant pages are:
+
+- `/imprint/`
+- `/privacy/`
+- `/cookies/`
+
+The pages are a practical technical draft, not a substitute for legal advice. Recheck them whenever hosting, scheduling, analytics, or other third-party services change.
+
+## Enable Google Analytics later
+
+Analytics is disabled while `google_analytics_id` is empty. In that state, no Google tag is requested, no analytics banner is displayed, and no Google Analytics cookie is set.
+
+When the GA4 property is ready:
+
+1. Copy its measurement ID, for example `G-ABC1234567`.
+2. Add it to `_config.yml`:
+
+```yml
+google_analytics_id: "G-ABC1234567"
+google_analytics_retention_months: 2
+```
+
+3. In Google Analytics, set event-data retention to the same number of months.
+4. Keep Google Signals and advertising personalisation disabled unless the privacy setup is reviewed again.
+5. Accept the applicable Google data-processing terms for the account.
+6. Rebuild the site and test in a private browser window: before accepting, there must be no request to `googletagmanager.com` and no `_ga` cookie. After accepting, analytics may load. “Essential only” must keep it blocked.
+
+The implementation uses Basic Consent Mode: the Google script is dynamically added only after consent. The footer&apos;s **Cookie settings** button allows visitors to revisit the choice. The preference expires after `consent_storage_days` (currently 180 days).
+
+## Improve the Google Search result
+
+The site includes a descriptive search title, unique page descriptions, canonical URLs, AL favicon metadata, social-sharing metadata, `WebSite` and `Person` structured data, article structured data, `robots.txt`, and an automatically generated `/sitemap.xml`.
+
+After publishing these changes:
+
+1. Add `https://annalenabirkner.com` as a domain property in Google Search Console.
+2. If Google gives you an HTML meta-tag verification token, paste only its `content` value into `_config.yml`:
+
+```yml
+google_site_verification: "YOUR_VERIFICATION_TOKEN"
+```
+
+3. Submit `https://annalenabirkner.com/sitemap.xml` in Search Console.
+4. Use **URL inspection** for the homepage and select **Request indexing**.
+5. Confirm that these URLs are publicly reachable:
+   - `https://annalenabirkner.com/assets/al-logo.png`
+   - `https://annalenabirkner.com/robots.txt`
+   - `https://annalenabirkner.com/sitemap.xml`
+
+Google chooses search snippets automatically and may use on-page text instead of the supplied description for some searches. Recrawling and visible changes can take several days or weeks.
 
 ## Email contact
 

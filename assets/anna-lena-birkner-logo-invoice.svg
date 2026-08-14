@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="360" viewBox="0 0 1600 360" role="img" aria-labelledby="title description">
+  <title id="title">Anna-Lena Birkner</title>
+  <desc id="description">AL monogram and the words Independent Strategy and Operations Consultant.</desc>
+
+  <g fill="none" stroke="#1d1b2f" stroke-linecap="round">
+    <path d="M269 77C235 48 186 38 142 53C82 74 47 132 55 192C63 255 116 305 180 307C219 308 255 295 282 270" stroke-width="9"/>
+    <path d="M274 78C243 52 201 41 160 48" stroke-width="3" opacity=".65"/>
+  </g>
+
+  <text x="89" y="238" fill="#1d1b2f" font-family="Georgia, 'Times New Roman', serif" font-size="178" font-style="italic" letter-spacing="-14">AL</text>
+
+  <g fill="none" stroke="#f05a47" stroke-linecap="round">
+    <path d="M231 288C253 278 272 262 286 242" stroke-width="12"/>
+    <path d="M238 294C256 285 272 273 284 257" stroke-width="3" opacity=".75"/>
+  </g>
+
+  <g transform="translate(365 0)">
+    <text x="0" y="168" fill="#1d1b2f" font-family="Georgia, 'Times New Roman', serif" font-size="84" letter-spacing="-1.5">Anna-Lena Birkner</text>
+    <path d="M2 204H180" fill="none" stroke="#f05a47" stroke-linecap="round" stroke-width="7"/>
+    <text x="0" y="258" fill="#1d1b2f" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" letter-spacing="5.5">INDEPENDENT STRATEGY &amp; OPERATIONS CONSULTANT</text>
+  </g>
+</svg>

@@ -29,10 +29,23 @@ permalink: /contact.html
           <p>Add the public event link to <code>calendly_url</code> in <code>_config.yml</code> to activate the inline scheduler.</p>
         </div>
       {% else %}
+        <div class="calendarConsentGate" data-calendly-gate>
+          <span class="calendarGateMark" aria-hidden="true">↗</span>
+          <strong>Load the scheduling calendar</strong>
+          <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
+          <button class="calendarButton" type="button" data-calendly-load>Load Calendly</button>
+          <p class="calendarGateLinks">
+            <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab ↗</a>
+            <a href="{{ '/privacy/' | relative_url }}">Privacy details</a>
+          </p>
+          <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
+        </div>
         <div
-          class="calendly-inline-widget"
-          data-url="{{ site.calendly_url }}?hide_gdpr_banner=1&amp;background_color=fbf8f0&amp;text_color=1d1b2f&amp;primary_color=f05a47"
+          class="calendarLoaded"
+          data-calendly-container
+          data-calendly-url="{{ site.calendly_url }}"
           aria-label="Book a free 20-minute orientation call with Anna-Lena"
+          hidden
         ></div>
         <noscript>
           <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly <span aria-hidden="true">↗</span></a>
@@ -41,8 +54,6 @@ permalink: /contact.html
     </div>
   </div>
 </section>
-
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <section class="contactFormSection">
   <div class="contactFormIntro">

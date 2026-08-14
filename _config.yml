@@ -1,5 +1,5 @@
-title: Anna-Lena
-description: Strategy, stories, creative direction, and the Human in the Loop journal.
+title: Anna-Lena Birkner
+description: Independent strategist helping founders and teams clarify complex problems, strengthen people operations, and build practical systems.
 url: "https://annalenabirkner.com"
 baseurl: ""
 timezone: Europe/Berlin
@@ -7,6 +7,36 @@ markdown: kramdown
 permalink: /journal/:title/
 
 calendly_url: "https://calendly.com/annalenabirkner-info/30min"
+
+# Legal and privacy settings. Complete the address before publishing the legal pages.
+legal_details_complete: false
+legal:
+  owner_name: "Anna-Lena Birkner"
+  business_name: ""
+  street: "[Street and house number]"
+  postal_code: "[Postal code]"
+  city: "[City]"
+  country: "Germany"
+  email: "info@annalenabirkner.com"
+  phone: ""
+  vat_id: ""
+  register_name: ""
+  register_number: ""
+  responsible_editor: "Anna-Lena Birkner"
+
+# Set to "github" instead if the production site is deployed with GitHub Pages.
+hosting_provider: "cloudflare"
+
+# Google Analytics stays fully disabled until a real GA4 measurement ID is added.
+google_analytics_id: ""
+google_analytics_retention_months: 2
+consent_storage_days: 180
+
+# Paste only the verification token from Google Search Console when available.
+google_site_verification: ""
+
+plugins:
+  - jekyll-sitemap
 
 defaults:
   - scope:

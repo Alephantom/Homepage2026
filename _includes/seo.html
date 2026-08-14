@@ -1,0 +1,106 @@
+{% assign seo_description = page.meta_description | default: page.description | default: page.excerpt_text | default: site.description %}
+{% if page.seo_title %}
+  {% assign document_title = page.seo_title %}
+{% elsif page.title %}
+  {% capture document_title %}{{ page.title }} — {{ site.title }}{% endcapture %}
+{% else %}
+  {% assign document_title = site.title %}
+{% endif %}
+{% if page.og_image %}
+  {% assign seo_image = page.og_image | absolute_url %}
+{% else %}
+  {% assign seo_image = '/assets/social-card.png' | absolute_url %}
+{% endif %}
+{% assign canonical_url = page.url | absolute_url %}
+
+<title>{{ document_title | strip | escape }}</title>
+<meta name="description" content="{{ seo_description | strip | escape }}">
+<meta name="author" content="Anna-Lena Birkner">
+<meta name="robots" content="{{ page.robots | default: 'index,follow,max-image-preview:large' }}">
+{% if site.google_site_verification and site.google_site_verification != "" %}
+  <meta name="google-site-verification" content="{{ site.google_site_verification | escape }}">
+{% endif %}
+
+<link rel="canonical" href="{{ canonical_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/al-logo.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/al-logo.png' | relative_url }}">
+<meta name="theme-color" content="#f4f0e7">
+
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ document_title | strip | escape }}">
+<meta property="og:description" content="{{ seo_description | strip | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:image" content="{{ seo_image }}">
+<meta property="og:image:alt" content="{{ page.og_image_alt | default: 'Anna-Lena Birkner — independent strategist and maker' | escape }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ document_title | strip | escape }}">
+<meta name="twitter:description" content="{{ seo_description | strip | escape }}">
+<meta name="twitter:image" content="{{ seo_image }}">
+
+{% if page.url == '/' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": {{ '/#website' | absolute_url | jsonify }},
+        "url": {{ '/' | absolute_url | jsonify }},
+        "name": {{ site.title | jsonify }},
+        "alternateName": ["Anna-Lena", "annalenabirkner.com"],
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Person",
+        "@id": {{ '/#person' | absolute_url | jsonify }},
+        "name": "Anna-Lena Birkner",
+        "url": {{ '/' | absolute_url | jsonify }},
+        "image": {{ '/assets/portrait-friendly.png' | absolute_url | jsonify }},
+        "jobTitle": "Independent Strategist & Maker",
+        "description": {{ seo_description | strip | jsonify }},
+        "knowsAbout": [
+          "Strategy",
+          "People operations",
+          "Organisational development",
+          "Responsible AI",
+          "Digital products"
+        ]
+      }
+    ]
+  }
+  </script>
+{% elsif page.layout == 'post' %}
+  {% assign published_date = page.publish_date | default: page.date %}
+  {% assign modified_date = page.last_modified_at | default: published_date %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ seo_description | strip | jsonify }},
+    "image": {{ seo_image | jsonify }},
+    "datePublished": {{ published_date | date_to_xmlschema | jsonify }},
+    "dateModified": {{ modified_date | date_to_xmlschema | jsonify }},
+    "mainEntityOfPage": {{ canonical_url | jsonify }},
+    "author": {
+      "@type": "Person",
+      "@id": {{ '/#person' | absolute_url | jsonify }},
+      "name": "Anna-Lena Birkner",
+      "url": {{ '/' | absolute_url | jsonify }}
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": {{ '/#person' | absolute_url | jsonify }},
+      "name": "Anna-Lena Birkner"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "Human in the Loop",
+      "url": {{ '/blog/' | absolute_url | jsonify }}
+    }
+  }
+  </script>
+{% endif %}

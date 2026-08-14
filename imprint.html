@@ -1,0 +1,77 @@
+---
+layout: default
+title: Imprint / Impressum
+description: Legal provider information for Anna-Lena Birkner.
+extra_css: /legal.css
+permalink: /imprint/
+---
+<header class="legalHero">
+  <p class="eyebrow">Legal</p>
+  <h1>Imprint <em>/ Impressum</em></h1>
+  <p>Provider information and editorial responsibility for annalenabirkner.com.</p>
+</header>
+
+<article class="legalDocument">
+  {% unless site.legal_details_complete %}
+    <aside class="legalDraftNotice" role="note">
+      <strong>Draft — not ready to publish</strong>
+      <p>The business address is still missing. Complete the <code>legal</code> fields in <code>_config.yml</code> and set <code>legal_details_complete: true</code> before publishing.</p>
+    </aside>
+  {% endunless %}
+
+  <div class="legalMeta">
+    <span>Last updated</span>
+    <time datetime="2026-08-14">14 August 2026</time>
+  </div>
+
+  <section>
+    <h2>Information pursuant to § 5 DDG</h2>
+    <address>
+      <strong>{{ site.legal.owner_name }}</strong><br>
+      {% if site.legal.business_name and site.legal.business_name != "" %}{{ site.legal.business_name }}<br>{% endif %}
+      {{ site.legal.street }}<br>
+      {{ site.legal.postal_code }} {{ site.legal.city }}<br>
+      {{ site.legal.country }}
+    </address>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:{{ site.legal.email }}">{{ site.legal.email }}</a>{% if site.legal.phone and site.legal.phone != "" %}<br>Telephone: {{ site.legal.phone }}{% endif %}</p>
+  </section>
+
+  {% if site.legal.vat_id and site.legal.vat_id != "" %}
+    <section>
+      <h2>VAT identification number</h2>
+      <p>VAT identification number pursuant to § 27a of the German VAT Act: {{ site.legal.vat_id }}</p>
+    </section>
+  {% endif %}
+
+  {% if site.legal.register_number and site.legal.register_number != "" %}
+    <section>
+      <h2>Register entry</h2>
+      <p>{{ site.legal.register_name }}: {{ site.legal.register_number }}</p>
+    </section>
+  {% endif %}
+
+  <section>
+    <h2>Editorial responsibility</h2>
+    <p>Responsible for journalistic-editorial content pursuant to § 18(2) MStV:</p>
+    <address>
+      {{ site.legal.responsible_editor }}<br>
+      {{ site.legal.street }}<br>
+      {{ site.legal.postal_code }} {{ site.legal.city }}<br>
+      {{ site.legal.country }}
+    </address>
+  </section>
+
+  <section>
+    <h2>Consumer dispute resolution</h2>
+    <p>I am neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+  </section>
+
+  <nav class="legalNext" aria-label="Legal pages">
+    <a href="{{ '/privacy/' | relative_url }}">Privacy policy <span aria-hidden="true">→</span></a>
+    <a href="{{ '/cookies/' | relative_url }}">Cookie information <span aria-hidden="true">→</span></a>
+  </nav>
+</article>

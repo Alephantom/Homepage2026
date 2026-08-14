@@ -1,14 +1,51 @@
 <footer>
-  <div class="footerTop">
-    <p class="eyebrow">Have something in mind?</p>
-    <h2>Let&apos;s make it<br><em>make sense.</em></h2>
-    <a href="{{ '/contact.html' | relative_url }}">
-      Book a conversation <span aria-hidden="true">↗</span>
-    </a>
+  <div class="footerPanel">
+    <div class="footerIdentity">
+      <p class="eyebrow">Anna-Lena Birkner</p>
+      <h2>Independent strategist<br><em>&amp; maker.</em></h2>
+    </div>
+
+    <div class="footerDirectory">
+      <nav aria-label="Services">
+        <span class="footerDirectoryLabel">Services</span>
+        <div>
+          <a href="{{ '/strategic-support/' | relative_url }}">Strategic support</a>
+          <a href="{{ '/team-workshops/' | relative_url }}">Team workshops</a>
+        </div>
+      </nav>
+      <nav aria-label="Explore">
+        <span class="footerDirectoryLabel">Explore</span>
+        <div>
+          <a href="{{ '/#about' | relative_url }}">About</a>
+          <a href="{{ '/#projects' | relative_url }}">Selected work</a>
+          <a href="{{ '/blog/' | relative_url }}">Journal</a>
+          <a href="{{ '/#faq' | relative_url }}">FAQ</a>
+        </div>
+      </nav>
+      <nav aria-label="Legal information">
+        <span class="footerDirectoryLabel">Legal</span>
+        <div>
+          <a href="{{ '/imprint/' | relative_url }}">Imprint</a>
+          <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+          <a href="{{ '/cookies/' | relative_url }}">Cookies</a>
+          {% if site.google_analytics_id and site.google_analytics_id != "" %}
+            <button type="button" data-cookie-settings-open>Cookie settings</button>
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+
+    <div class="footerInvite">
+      <p>For founders and teams who need clearer decisions, practical systems, or a useful conversation to move the work forward.</p>
+      <a href="{{ '/contact.html' | relative_url }}">
+        Book a conversation <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
+
   <div class="footerBottom">
-    <span>© {{ 'now' | date: '%Y' }} <a href="https://devopweb.com" target="_blank" rel="noopener noreferrer">DevOpWeb</a></span>
-    <span>Made with thought &amp; curiosity</span>
+    <span>© 2026 DevOpWeb</span>
+    <a href="{{ '/contact.html' | relative_url }}">Contact</a>
     <a href="#top">Back to top ↑</a>
   </div>
 </footer>

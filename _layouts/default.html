@@ -1,26 +1,30 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% assign asset_version = site.time | date: '%s' %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ page.description | default: site.description | escape }}">
-    <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
-    <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
-    <meta property="og:image" content="{% if page.og_image %}{{ page.og_image | absolute_url }}{% else %}{{ '/assets/social-card.png' | absolute_url }}{% endif %}">
-    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-    <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
-    <link rel="icon" href="{{ '/assets/al-logo.png' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+    {% include seo.html %}
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v={{ asset_version }}">
     {% if page.layout == 'post' %}
-      <link rel="stylesheet" href="{{ '/post.css' | relative_url }}">
+      <link rel="stylesheet" href="{{ '/post.css' | relative_url }}?v={{ asset_version }}">
     {% elsif page.extra_css %}
-      <link rel="stylesheet" href="{{ page.extra_css | relative_url }}">
+      <link rel="stylesheet" href="{{ page.extra_css | relative_url }}?v={{ asset_version }}">
     {% endif %}
   </head>
-  <body id="top" data-baseurl="{{ site.baseurl }}">
+  <body
+    id="top"
+    data-baseurl="{{ site.baseurl }}"
+    data-google-analytics-id="{{ site.google_analytics_id | escape }}"
+    data-consent-storage-days="{{ site.consent_storage_days | default: 180 }}"
+  >
     {% include nav.html %}
     <main>{{ content }}</main>
     {% include footer.html %}
-    <script src="{{ '/script.js' | relative_url }}"></script>
+    {% if site.google_analytics_id and site.google_analytics_id != "" %}
+      {% include cookie-consent.html %}
+    {% endif %}
+    <script src="{{ '/script.js' | relative_url }}?v={{ asset_version }}"></script>
+    <script src="{{ '/consent.js' | relative_url }}?v={{ asset_version }}"></script>
   </body>
 </html>

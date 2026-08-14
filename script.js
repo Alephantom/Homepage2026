@@ -1,20 +1,111 @@
+const siteNav = document.querySelector("[data-site-nav]");
+
+if (siteNav) {
+  const navMenuToggle = siteNav.querySelector("[data-nav-menu-toggle]");
+  const navMobileMenu = siteNav.querySelector("[data-nav-mobile-menu]");
+  const navSectionLinks = Array.from(siteNav.querySelectorAll("[data-nav-section]"));
+  const navSections = Array.from(new Set(navSectionLinks.map((link) => link.dataset.navSection)))
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  const setMenuOpen = (open, returnFocus = false) => {
+    if (!navMenuToggle || !navMobileMenu) return;
+
+    navMenuToggle.setAttribute("aria-expanded", String(open));
+    navMenuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    navMobileMenu.hidden = !open;
+
+    if (!open && returnFocus) navMenuToggle.focus();
+  };
+
+  navMenuToggle?.addEventListener("click", () => {
+    setMenuOpen(navMenuToggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  navMobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!siteNav.contains(event.target)) setMenuOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navMenuToggle?.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(false, true);
+    }
+  });
+
+  window.matchMedia("(min-width: 981px)").addEventListener("change", (event) => {
+    if (event.matches) setMenuOpen(false);
+  });
+
+  const updateStickyState = () => {
+    siteNav.classList.toggle("isScrolled", window.scrollY > 8);
+  };
+
+  let navSectionFrame = null;
+  const updateActiveSection = () => {
+    navSectionFrame = null;
+    if (!navSections.length) return;
+
+    const activationLine = siteNav.offsetHeight + window.innerHeight * 0.2;
+    const activeSection = navSections.find((section) => {
+      const bounds = section.getBoundingClientRect();
+      return bounds.top <= activationLine && bounds.bottom > activationLine;
+    });
+
+    navSectionLinks.forEach((link) => {
+      if (activeSection && link.dataset.navSection === activeSection.id) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const scheduleNavUpdate = () => {
+    updateStickyState();
+    if (!navSectionFrame) navSectionFrame = window.requestAnimationFrame(updateActiveSection);
+  };
+
+  window.addEventListener("scroll", scheduleNavUpdate, { passive: true });
+  window.addEventListener("resize", scheduleNavUpdate);
+  updateStickyState();
+  updateActiveSection();
+}
+
 const portraitFrame = document.querySelector("#portrait-frame");
 
 if (portraitFrame) {
   const baseUrl = document.body.dataset.baseurl || "";
-  const portrait = new Image();
-  portrait.alt = "Portrait of Anna-Lena";
-  portrait.className = "portraitPhoto";
-  portrait.addEventListener("load", () => {
-    portraitFrame.replaceChildren(portrait);
-    portraitFrame.classList.add("hasPhoto");
-  }, { once: true });
-  portrait.src = `${baseUrl}/assets/portrait-friendly.png`;
+  const loadPortrait = () => {
+    const portrait = new Image();
+    portrait.alt = "Portrait of Anna-Lena";
+    portrait.className = "portraitPhoto";
+    portrait.decoding = "async";
+    portrait.addEventListener("load", () => {
+      portraitFrame.replaceChildren(portrait);
+      portraitFrame.classList.add("hasPhoto");
+    }, { once: true });
+    portrait.src = `${baseUrl}/assets/portrait-friendly.jpg`;
+  };
+
+  if ("IntersectionObserver" in window) {
+    const portraitObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      portraitObserver.disconnect();
+      loadPortrait();
+    }, { rootMargin: "300px" });
+
+    portraitObserver.observe(portraitFrame);
+  } else {
+    loadPortrait();
+  }
 }
 
 const typingHeadline = document.querySelector("[data-typing-headline]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const portfolioCard = document.querySelector("[data-portfolio-card]");
 const portfolioCarousel = document.querySelector("[data-portfolio-carousel]");
 const locationTypewriter = document.querySelector("[data-location-typewriter]");
 
@@ -48,78 +139,6 @@ if (portfolioCarousel) {
   nextCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex + 1));
 
   showPortfolioCase(activeCaseIndex);
-}
-
-if (portfolioCard) {
-  const portfolioFaces = Array.from(portfolioCard.querySelectorAll(".portfolioCaseFace"));
-  const portfolioStatus = document.querySelector("[data-portfolio-status]");
-  let activePortfolioFace = 0;
-  let portfolioIsTurning = false;
-
-  const measurePortfolioCard = () => {
-    portfolioCard.classList.add("isMeasuring");
-    const activeFaceHeight = portfolioFaces[activePortfolioFace].scrollHeight;
-    portfolioCard.classList.remove("isMeasuring");
-    portfolioCard.style.height = `${activeFaceHeight + 8}px`;
-  };
-
-  const showPortfolioFace = (faceIndex) => {
-    portfolioCard.dataset.activeFace = String(faceIndex);
-
-    portfolioFaces.forEach((face, index) => {
-      const isActive = index === faceIndex;
-      face.classList.toggle("isActive", isActive);
-      face.setAttribute("aria-hidden", String(!isActive));
-    });
-
-    const currentLabel = portfolioFaces[faceIndex].dataset.cardLabel;
-    const nextLabel = portfolioFaces[(faceIndex + 1) % portfolioFaces.length].dataset.cardLabel;
-    portfolioStatus.textContent = `${currentLabel} · ${faceIndex + 1} of ${portfolioFaces.length}`;
-    portfolioCard.setAttribute(
-      "aria-label",
-      `Mindfulife portfolio card. Showing ${currentLabel.toLowerCase()}. Activate to show ${nextLabel.toLowerCase()}.`,
-    );
-  };
-
-  const rotatePortfolioCard = () => {
-    if (portfolioIsTurning) return;
-
-    const nextFace = (activePortfolioFace + 1) % portfolioFaces.length;
-
-    if (prefersReducedMotion.matches) {
-      activePortfolioFace = nextFace;
-      showPortfolioFace(activePortfolioFace);
-      measurePortfolioCard();
-      return;
-    }
-
-    portfolioIsTurning = true;
-    portfolioCard.classList.add("isTurning");
-
-    window.setTimeout(() => {
-      activePortfolioFace = nextFace;
-      showPortfolioFace(activePortfolioFace);
-      measurePortfolioCard();
-    }, 360);
-
-    window.setTimeout(() => {
-      portfolioCard.classList.remove("isTurning");
-      portfolioIsTurning = false;
-      measurePortfolioCard();
-    }, 740);
-  };
-
-  portfolioCard.addEventListener("click", rotatePortfolioCard);
-  portfolioCard.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    event.preventDefault();
-    rotatePortfolioCard();
-  });
-  window.addEventListener("resize", measurePortfolioCard);
-
-  showPortfolioFace(activePortfolioFace);
-  measurePortfolioCard();
-  document.fonts?.ready.then(measurePortfolioCard);
 }
 
 if (typingHeadline && !prefersReducedMotion.matches) {
@@ -232,4 +251,59 @@ if (locationTypewriter) {
 
     window.setTimeout(typeLocation, 680);
   }
+}
+
+const calendlyContainer = document.querySelector("[data-calendly-container]");
+
+if (calendlyContainer) {
+  const calendlyGate = document.querySelector("[data-calendly-gate]");
+  const calendlyButton = calendlyGate?.querySelector("[data-calendly-load]");
+  const calendlyStatus = calendlyGate?.querySelector("[data-calendly-status]");
+  const calendlyUrl = calendlyContainer.dataset.calendlyUrl;
+
+  const showCalendlyError = () => {
+    calendlyButton.disabled = false;
+    calendlyButton.textContent = "Try again";
+    calendlyStatus.textContent = "The calendar could not be loaded. You can still open Calendly in a new tab.";
+  };
+
+  const initialiseCalendly = () => {
+    if (!window.Calendly?.initInlineWidget) {
+      showCalendlyError();
+      return;
+    }
+
+    const styledUrl = new URL(calendlyUrl);
+    styledUrl.searchParams.set("background_color", "fbf8f0");
+    styledUrl.searchParams.set("text_color", "1d1b2f");
+    styledUrl.searchParams.set("primary_color", "f05a47");
+
+    calendlyGate.hidden = true;
+    calendlyContainer.hidden = false;
+    window.Calendly.initInlineWidget({
+      parentElement: calendlyContainer,
+      url: styledUrl.toString(),
+    });
+  };
+
+  calendlyButton?.addEventListener("click", () => {
+    calendlyButton.disabled = true;
+    calendlyButton.textContent = "Loading…";
+    calendlyStatus.textContent = "Connecting to Calendly…";
+
+    const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
+
+    if (existingScript) {
+      if (window.Calendly) initialiseCalendly();
+      else existingScript.addEventListener("load", initialiseCalendly, { once: true });
+      return;
+    }
+
+    const calendlyScript = document.createElement("script");
+    calendlyScript.src = "https://assets.calendly.com/assets/external/widget.js";
+    calendlyScript.async = true;
+    calendlyScript.addEventListener("load", initialiseCalendly, { once: true });
+    calendlyScript.addEventListener("error", showCalendlyError, { once: true });
+    document.head.append(calendlyScript);
+  });
 }

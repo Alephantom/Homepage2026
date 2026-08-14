@@ -20,8 +20,6 @@ meta_description: "Reverse Fordism describes how AI is recombining specialised t
 slug: reverse-fordism-ai-future-of-work
 ---
 
-# Reverse Fordism: How AI Is Reintegrating Work
-
 In 1913, Henry Ford’s moving assembly line did more than transform car production. It helped establish a new logic for organising work: break a complex process into narrow, repeatable tasks, assign each task to a specialist and optimise the system for speed and scale.
 
 That model delivered extraordinary gains in productivity and made consumer goods more affordable. It also reshaped communities, education and professional identity. Workers increasingly became defined by a specific function within a much larger process.
@@ -211,4 +209,3 @@ This analysis reflects a particular historical perspective. The path from Fordis
 As these tools and working methods spread, they may impose a single model on a diverse world. Their effects on labour markets in the Global South, on collectivist cultures and on economies with different institutions or social protections will not simply mirror the developments described here.
 
 Those contexts will produce distinct risks, opportunities and forms of resistance. They sit beyond the scope of this article, but they demand urgent attention in the wider debate about AI, labour and power.
-

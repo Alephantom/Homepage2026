@@ -1,0 +1,86 @@
+---
+layout: default
+title: Cookie Information
+description: Cookie and browser-storage information for annalenabirkner.com.
+extra_css: /legal.css
+permalink: /cookies/
+---
+<header class="legalHero">
+  <p class="eyebrow">Your choices</p>
+  <h1>Cookie <em>information</em></h1>
+  <p>A straightforward overview of the browser storage and optional services used on this website.</p>
+</header>
+
+<article class="legalDocument">
+  <div class="legalMeta">
+    <span>Last updated</span>
+    <time datetime="2026-08-14">14 August 2026</time>
+  </div>
+
+  <section>
+    <h2>What are cookies?</h2>
+    <p>Cookies are small text files stored by your browser. Similar technologies, such as local storage, can remember information without using a cookie. Some storage is needed for a service you request; analytics storage is optional and requires your consent.</p>
+  </section>
+
+  <section>
+    <h2>Storage used by this website</h2>
+    <div class="legalTableWrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Provider</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Type / lifetime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>al_privacy_consent_v1</code></td>
+            <td>This website</td>
+            <td>Remembers whether you chose essential-only or accepted analytics.</td>
+            <td>Local storage / {{ site.consent_storage_days | default: 180 }} days</td>
+          </tr>
+          <tr>
+            <td><code>_ga</code></td>
+            <td>Google Analytics</td>
+            <td>Distinguishes pseudonymous visitors for website statistics. Set only after analytics consent.</td>
+            <td>First-party cookie / up to 2 years</td>
+          </tr>
+          <tr>
+            <td><code>_ga_&lt;container-id&gt;</code></td>
+            <td>Google Analytics</td>
+            <td>Persists session state for this analytics property. Set only after analytics consent.</td>
+            <td>First-party cookie / up to 2 years</td>
+          </tr>
+          <tr>
+            <td>Calendly storage</td>
+            <td>Calendly</td>
+            <td>Operates the optional booking calendar. Calendly&apos;s own cookies or similar storage can begin only after you load the calendar.</td>
+            <td>Third-party / according to Calendly&apos;s settings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Current analytics status</h2>
+    {% if site.google_analytics_id and site.google_analytics_id != "" %}
+      <p>Google Analytics is available but disabled by default. Choosing “Essential only” means its script is not downloaded and no analytics request is sent. You can change your choice below at any time.</p>
+      <button class="legalConsentButton" type="button" data-cookie-settings-open>Review cookie settings</button>
+    {% else %}
+      <p><strong>Google Analytics is not currently active.</strong> The analytics entries above describe the prepared configuration for when a GA4 measurement ID is added. Until then, this website does not load Google Analytics or set its cookies.</p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>Managing browser data</h2>
+    <p>You can also delete cookies and local storage in your browser settings. Blocking all browser storage may prevent the website from remembering your privacy choice. Loading the Calendly calendar is a separate action and does not change your analytics preference.</p>
+  </section>
+
+  <nav class="legalNext" aria-label="Legal pages">
+    <a href="{{ '/privacy/' | relative_url }}">Privacy policy <span aria-hidden="true">→</span></a>
+    <a href="{{ '/imprint/' | relative_url }}">Imprint <span aria-hidden="true">→</span></a>
+  </nav>
+</article>

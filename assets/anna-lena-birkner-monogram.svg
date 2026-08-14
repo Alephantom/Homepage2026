@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Anna-Lena Birkner monogram</title>
+  <desc id="description">The initials AL inside an open ink circle with a coral brush accent.</desc>
+
+  <g fill="none" stroke="#1d1b2f" stroke-linecap="round">
+    <path d="M414 110C363 56 279 33 205 53C101 80 38 180 53 283C68 390 160 465 267 458C330 454 386 424 421 378" stroke-width="14"/>
+    <path d="M421 110C373 62 307 39 242 45" stroke-width="5" opacity=".65"/>
+  </g>
+
+  <text x="104" y="345" fill="#1d1b2f" font-family="Georgia, 'Times New Roman', serif" font-size="260" font-style="italic" letter-spacing="-22">AL</text>
+
+  <g fill="none" stroke="#f05a47" stroke-linecap="round">
+    <path d="M337 426C374 409 406 380 427 345" stroke-width="19"/>
+    <path d="M350 437C379 423 404 403 422 378" stroke-width="5" opacity=".75"/>
+  </g>
+</svg>
