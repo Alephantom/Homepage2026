@@ -12,7 +12,10 @@ if (siteNav) {
     if (!navMenuToggle || !navMobileMenu) return;
 
     navMenuToggle.setAttribute("aria-expanded", String(open));
-    navMenuToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    navMenuToggle.setAttribute(
+      "aria-label",
+      open ? navMenuToggle.dataset.i18nCloseLabel : navMenuToggle.dataset.i18nOpenLabel,
+    );
     navMobileMenu.hidden = !open;
 
     if (!open && returnFocus) navMenuToggle.focus();
@@ -36,7 +39,7 @@ if (siteNav) {
     }
   });
 
-  window.matchMedia("(min-width: 981px)").addEventListener("change", (event) => {
+  window.matchMedia("(min-width: 1181px)").addEventListener("change", (event) => {
     if (event.matches) setMenuOpen(false);
   });
 
@@ -81,10 +84,12 @@ if (portraitFrame) {
   const baseUrl = document.body.dataset.baseurl || "";
   const loadPortrait = () => {
     const portrait = new Image();
-    portrait.alt = "Portrait of Anna-Lena";
+    portrait.alt = portraitFrame.dataset.portraitAlt || "Portrait of Anna-Lena";
     portrait.className = "portraitPhoto";
     portrait.decoding = "async";
     portrait.addEventListener("load", () => {
+      portraitFrame.removeAttribute("role");
+      portraitFrame.removeAttribute("aria-label");
       portraitFrame.replaceChildren(portrait);
       portraitFrame.classList.add("hasPhoto");
     }, { once: true });
@@ -109,11 +114,18 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const portfolioCarousel = document.querySelector("[data-portfolio-carousel]");
 const locationTypewriter = document.querySelector("[data-location-typewriter]");
 
+document.querySelectorAll("[data-i18n-email-subject]").forEach((link) => {
+  const emailUrl = new URL(link.href);
+  emailUrl.searchParams.set("subject", link.dataset.i18nEmailSubject);
+  link.href = emailUrl.toString();
+});
+
 if (portfolioCarousel) {
   const portfolioSlides = Array.from(portfolioCarousel.querySelectorAll("[data-portfolio-slide]"));
   const previousCaseButton = portfolioCarousel.querySelector("[data-portfolio-previous]");
   const nextCaseButton = portfolioCarousel.querySelector("[data-portfolio-next]");
   const carouselStatus = portfolioCarousel.querySelector("[data-portfolio-carousel-status]");
+  const statusTemplate = portfolioCarousel.dataset.carouselStatusTemplate || "Case {current} of {total}";
   let activeCaseIndex = 0;
 
   if (portfolioSlides.length <= 1) {
@@ -132,7 +144,9 @@ if (portfolioCarousel) {
       slide.setAttribute("aria-hidden", String(!isCurrent));
     });
 
-    carouselStatus.textContent = `Case ${String(activeCaseIndex + 1).padStart(2, "0")} of ${String(portfolioSlides.length).padStart(2, "0")}`;
+    carouselStatus.textContent = statusTemplate
+      .replace("{current}", String(activeCaseIndex + 1).padStart(2, "0"))
+      .replace("{total}", String(portfolioSlides.length).padStart(2, "0"));
   };
 
   previousCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex - 1));
@@ -263,8 +277,8 @@ if (calendlyContainer) {
 
   const showCalendlyError = () => {
     calendlyButton.disabled = false;
-    calendlyButton.textContent = "Try again";
-    calendlyStatus.textContent = "The calendar could not be loaded. You can still open Calendly in a new tab.";
+    calendlyButton.textContent = calendlyGate.dataset.i18nRetry;
+    calendlyStatus.textContent = calendlyGate.dataset.i18nError;
   };
 
   const initialiseCalendly = () => {
@@ -288,8 +302,8 @@ if (calendlyContainer) {
 
   calendlyButton?.addEventListener("click", () => {
     calendlyButton.disabled = true;
-    calendlyButton.textContent = "Loading…";
-    calendlyStatus.textContent = "Connecting to Calendly…";
+    calendlyButton.textContent = calendlyGate.dataset.i18nLoading;
+    calendlyStatus.textContent = calendlyGate.dataset.i18nConnecting;
 
     const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
 

@@ -1,12 +1,12 @@
 <aside class="consentBanner" data-consent-banner hidden aria-labelledby="consent-title" aria-describedby="consent-description">
   <div class="consentBannerCopy">
-    <p class="eyebrow">Your privacy</p>
-    <h2 id="consent-title">May I use privacy-conscious analytics?</h2>
-    <p id="consent-description">Google Analytics helps me understand which pages are useful. It remains completely blocked unless you accept. Your choice does not affect access to the site.</p>
-    <a href="{{ '/cookies/' | relative_url }}">Cookie details</a>
+    <p class="eyebrow">{% if page.lang == 'de' %}Deine Privatsphäre{% else %}Your privacy{% endif %}</p>
+    <h2 id="consent-title">{% if page.lang == 'de' %}Darf ich datenschutzbewusste Analysen verwenden?{% else %}May I use privacy-conscious analytics?{% endif %}</h2>
+    <p id="consent-description">{% if page.lang == 'de' %}Google Analytics hilft mir zu verstehen, welche Seiten hilfreich sind. Es bleibt vollständig blockiert, bis du zustimmst. Deine Auswahl hat keinen Einfluss auf den Zugang zur Website.{% else %}Google Analytics helps me understand which pages are useful. It remains completely blocked unless you accept. Your choice does not affect access to the site.{% endif %}</p>
+    <a href="{{ '/cookies/' | relative_url }}">{% if page.lang == 'de' %}Cookie-Details{% else %}Cookie details{% endif %}</a>
   </div>
   <div class="consentBannerActions">
-    <button type="button" class="consentChoice consentChoice--essential" data-consent-reject>Essential only</button>
-    <button type="button" class="consentChoice consentChoice--accept" data-consent-accept>Accept analytics</button>
+    <button type="button" class="consentChoice consentChoice--essential" data-consent-reject>{% if page.lang == 'de' %}Nur notwendige{% else %}Essential only{% endif %}</button>
+    <button type="button" class="consentChoice consentChoice--accept" data-consent-accept>{% if page.lang == 'de' %}Analyse akzeptieren{% else %}Accept analytics{% endif %}</button>
   </div>
 </aside>

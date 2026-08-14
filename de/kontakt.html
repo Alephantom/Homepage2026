@@ -1,0 +1,90 @@
+---
+layout: default
+lang: de
+translation_key: contact
+translation_url_en: /contact.html
+translation_url_de: /de/kontakt/
+title: Gespräch buchen
+seo_title: Gespräch mit Anna-Lena Birkner buchen
+description: Buche ein kostenloses Orientierungsgespräch mit Anna-Lena Birkner oder sende eine Anfrage zu strategischer Begleitung, People Operations, Workshops oder praktischen Systemen.
+extra_css: /contact.css
+permalink: /de/kontakt/
+---
+<section class="contactHero">
+  <div class="contactIntro">
+    <p class="eyebrow">Termin buchen</p>
+    <h1>Bring den ersten,<br><em>noch unfertigen Gedanken mit.</em></h1>
+    <p>Buche ein kostenloses 20-minütiges Orientierungsgespräch, erzähle, worum es gerade geht, und lass uns schauen, wo wir sinnvoll zusammenarbeiten könnten. Oder schreib mir, wenn du lieber schriftlich beginnen möchtest.</p>
+  </div>
+  <div class="calendarCard">
+    <div class="calendarCardHeader">
+      <span class="calendarNumber">01</span>
+      <div>
+        <p class="eyebrow">Termin wählen</p>
+        <h2>Lass uns schauen, wo wir ansetzen können.</h2>
+        <p>20 Minuten · Videocall · Kostenlos · Keine Vorbereitung nötig</p>
+      </div>
+    </div>
+
+    <div class="calendarEmbedFrame">
+      {% if site.calendly_url contains "REPLACE_WITH" %}
+        <div class="calendarEmbedPlaceholder">
+          <span aria-hidden="true">↗</span>
+          <strong>Dein Calendly-Kalender erscheint hier.</strong>
+          <p>Ergänze den öffentlichen Terminlink als <code>calendly_url</code> in <code>_config.yml</code>, um den Kalender zu aktivieren.</p>
+        </div>
+      {% else %}
+        <div
+          class="calendarConsentGate"
+          data-calendly-gate
+          data-i18n-retry="Erneut versuchen"
+          data-i18n-error="Der Kalender konnte nicht geladen werden. Du kannst Calendly weiterhin in einem neuen Tab öffnen."
+          data-i18n-loading="Wird geladen…"
+          data-i18n-connecting="Verbindung zu Calendly wird hergestellt…"
+        >
+          <span class="calendarGateMark" aria-hidden="true">↗</span>
+          <strong>Terminkalender laden</strong>
+          <p>Der Kalender wird von Calendly bereitgestellt. Erst wenn du ihn lädst, wird eine Verbindung zu Calendly hergestellt und Calendly kann eigene Cookies setzen.</p>
+          <button class="calendarButton" type="button" data-calendly-load>Calendly laden</button>
+          <p class="calendarGateLinks">
+            <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly in einem neuen Tab öffnen ↗</a>
+            <a href="{{ '/privacy/' | relative_url }}" hreflang="en">Datenschutzdetails</a>
+          </p>
+          <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
+        </div>
+        <div
+          class="calendarLoaded"
+          data-calendly-container
+          data-calendly-url="{{ site.calendly_url }}"
+          aria-label="Kostenloses 20-minütiges Orientierungsgespräch mit Anna-Lena buchen"
+          hidden
+        ></div>
+        <noscript>
+          <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly öffnen <span aria-hidden="true">↗</span></a>
+        </noscript>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="contactFormSection">
+  <div class="contactFormIntro">
+    <p class="eyebrow">Lieber schreiben?</p>
+    <h2>Beginne mit dem, was dir gerade durch den Kopf geht.</h2>
+    <p>Dein E-Mail-Programm öffnet sich mit einem Betreff und ein paar hilfreichen Fragen. Behalte sie, ändere sie oder schreibe einfach in deinen eigenen Worten.</p>
+  </div>
+  <div class="emailCard">
+    <span class="emailCardNumber">02</span>
+    <p class="eyebrow">Eine Nachricht an Anna-Lena</p>
+    <h3>Erzähl mir, was feststeckt – oder was du möglich machen möchtest.</h3>
+    <div class="emailPromptList" aria-label="Fragen in der vorbereiteten E-Mail">
+      <span>Was passiert gerade?</span>
+      <span>Was soll sich bewegen?</span>
+      <span>Was wäre hilfreich?</span>
+    </div>
+    <a class="emailButton" href="mailto:info@annalenabirkner.com?subject=Lass%20uns%20schauen%2C%20wie%20wir%20zusammenarbeiten%20k%C3%B6nnen" data-i18n-email-subject="Lass uns schauen, wie wir zusammenarbeiten können">
+      Schreib mir und lass uns schauen, wie wir zusammenarbeiten können
+    </a>
+    <p class="emailCardNote">Öffnet dein Standard-E-Mail-Programm. Falls nichts passiert, schreib direkt an <a href="mailto:info@annalenabirkner.com">info@annalenabirkner.com</a>.</p>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
   <head>
     {% assign asset_version = site.time | date: '%s' %}
     <meta charset="utf-8">
@@ -18,8 +18,11 @@
     data-google-analytics-id="{{ site.google_analytics_id | escape }}"
     data-consent-storage-days="{{ site.consent_storage_days | default: 180 }}"
   >
+    <a class="skipLink" href="#main-content">
+      {% if page.lang == 'de' %}Zum Inhalt springen{% else %}Skip to content{% endif %}
+    </a>
     {% include nav.html %}
-    <main>{{ content }}</main>
+    <main id="main-content" tabindex="-1">{{ content }}</main>
     {% include footer.html %}
     {% if site.google_analytics_id and site.google_analytics_id != "" %}
       {% include cookie-consent.html %}

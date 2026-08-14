@@ -1,51 +1,56 @@
+{% assign is_de = false %}
+{% if page.lang == 'de' %}{% assign is_de = true %}{% endif %}
+{% assign home_path = '/' %}
+{% assign contact_path = '/contact.html' %}
+{% if is_de %}
+  {% assign home_path = '/de/' %}
+  {% assign contact_path = '/de/kontakt/' %}
+{% endif %}
+
 <footer>
   <div class="footerPanel">
     <div class="footerIdentity">
       <p class="eyebrow">Anna-Lena Birkner</p>
-      <h2>Independent strategist<br><em>&amp; maker.</em></h2>
+      <h2>{% if is_de %}Unabhängige Strategin<br><em>&amp; Operations Consultant.</em>{% else %}Independent strategist<br><em>&amp; maker.</em>{% endif %}</h2>
     </div>
 
     <div class="footerDirectory">
-      <nav aria-label="Services">
-        <span class="footerDirectoryLabel">Services</span>
+      <nav aria-label="{% if is_de %}Leistungen{% else %}Services{% endif %}">
+        <span class="footerDirectoryLabel">{% if is_de %}Leistungen{% else %}Services{% endif %}</span>
         <div>
-          <a href="{{ '/strategic-support/' | relative_url }}">Strategic support</a>
-          <a href="{{ '/team-workshops/' | relative_url }}">Team workshops</a>
+          <a href="{{ '/strategic-support/' | relative_url }}" hreflang="en">{% if is_de %}Strategische Begleitung{% else %}Strategic support{% endif %}</a>
+          <a href="{{ '/team-workshops/' | relative_url }}" hreflang="en">{% if is_de %}Team-Workshops{% else %}Team workshops{% endif %}</a>
         </div>
       </nav>
-      <nav aria-label="Explore">
-        <span class="footerDirectoryLabel">Explore</span>
+      <nav aria-label="{% if is_de %}Entdecken{% else %}Explore{% endif %}">
+        <span class="footerDirectoryLabel">{% if is_de %}Entdecken{% else %}Explore{% endif %}</span>
         <div>
-          <a href="{{ '/#about' | relative_url }}">About</a>
-          <a href="{{ '/#projects' | relative_url }}">Selected work</a>
-          <a href="{{ '/blog/' | relative_url }}">Journal</a>
-          <a href="{{ '/#faq' | relative_url }}">FAQ</a>
-        </div>
-      </nav>
-      <nav aria-label="Legal information">
-        <span class="footerDirectoryLabel">Legal</span>
-        <div>
-          <a href="{{ '/imprint/' | relative_url }}">Imprint</a>
-          <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
-          <a href="{{ '/cookies/' | relative_url }}">Cookies</a>
-          {% if site.google_analytics_id and site.google_analytics_id != "" %}
-            <button type="button" data-cookie-settings-open>Cookie settings</button>
-          {% endif %}
+          <a href="{{ home_path | append: '#about' | relative_url }}">{% if is_de %}Über mich{% else %}About{% endif %}</a>
+          <a href="{{ home_path | append: '#projects' | relative_url }}">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
+          <a href="{{ '/blog/' | relative_url }}" hreflang="en">Journal</a>
+          <a href="{{ home_path | append: '#faq' | relative_url }}">FAQ</a>
         </div>
       </nav>
     </div>
 
     <div class="footerInvite">
-      <p>For founders and teams who need clearer decisions, practical systems, or a useful conversation to move the work forward.</p>
-      <a href="{{ '/contact.html' | relative_url }}">
-        Book a conversation <span aria-hidden="true">↗</span>
+      <p>{% if is_de %}Für Gründer:innen und Teams, die klarere Entscheidungen, praxistaugliche Systeme oder ein hilfreiches Gespräch brauchen, um ihre Arbeit voranzubringen.{% else %}For founders and teams who need clearer decisions, practical systems, or a useful conversation to move the work forward.{% endif %}</p>
+      <a href="{{ contact_path | relative_url }}">
+        {% if is_de %}Gespräch buchen{% else %}Book a conversation{% endif %} <span aria-hidden="true">↗</span>
       </a>
     </div>
   </div>
 
   <div class="footerBottom">
     <span>© 2026 DevOpWeb</span>
-    <a href="{{ '/contact.html' | relative_url }}">Contact</a>
-    <a href="#top">Back to top ↑</a>
+    <nav class="footerBottomLegal" aria-label="{% if is_de %}Rechtliche Informationen{% else %}Legal information{% endif %}">
+      <a href="{{ '/imprint/' | relative_url }}" hreflang="en">{% if is_de %}Impressum{% else %}Imprint{% endif %}</a>
+      <a href="{{ '/privacy/' | relative_url }}" hreflang="en">{% if is_de %}Datenschutz{% else %}Privacy{% endif %}</a>
+      <a href="{{ '/cookies/' | relative_url }}" hreflang="en">Cookies</a>
+      {% if site.google_analytics_id and site.google_analytics_id != "" %}
+        <button type="button" data-cookie-settings-open>{% if is_de %}Cookie-Einstellungen{% else %}Cookie settings{% endif %}</button>
+      {% endif %}
+    </nav>
+    <a href="#top">{% if is_de %}Nach oben{% else %}Back to top{% endif %} ↑</a>
   </div>
 </footer>

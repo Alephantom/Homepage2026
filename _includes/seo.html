@@ -12,6 +12,7 @@
   {% assign seo_image = '/assets/social-card.png' | absolute_url %}
 {% endif %}
 {% assign canonical_url = page.url | absolute_url %}
+{% assign page_language = page.lang | default: 'en' %}
 
 <title>{{ document_title | strip | escape }}</title>
 <meta name="description" content="{{ seo_description | strip | escape }}">
@@ -22,8 +23,14 @@
 {% endif %}
 
 <link rel="canonical" href="{{ canonical_url }}">
-<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/al-logo.png' | relative_url }}">
-<link rel="apple-touch-icon" href="{{ '/assets/al-logo.png' | relative_url }}">
+{% if page.translation_url_en and page.translation_url_de %}
+  <link rel="alternate" hreflang="en" href="{{ page.translation_url_en | absolute_url }}">
+  <link rel="alternate" hreflang="de" href="{{ page.translation_url_de | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.translation_url_en | absolute_url }}">
+{% endif %}
+<link rel="icon" type="image/png" sizes="48x48" href="{{ '/favicon-48.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+<meta name="application-name" content="{{ site.title | escape }}">
 <meta name="theme-color" content="#f4f0e7">
 
 <meta property="og:site_name" content="{{ site.title | escape }}">
@@ -33,33 +40,33 @@
 <meta property="og:image" content="{{ seo_image }}">
 <meta property="og:image:alt" content="{{ page.og_image_alt | default: 'Anna-Lena Birkner — independent strategist and maker' | escape }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-<meta property="og:locale" content="en_GB">
+<meta property="og:locale" content="{% if page_language == 'de' %}de_DE{% else %}en_GB{% endif %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ document_title | strip | escape }}">
 <meta name="twitter:description" content="{{ seo_description | strip | escape }}">
 <meta name="twitter:image" content="{{ seo_image }}">
 
-{% if page.url == '/' %}
+{% if page.translation_key == 'home' or page.url == '/' %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": {{ '/#website' | absolute_url | jsonify }},
-        "url": {{ '/' | absolute_url | jsonify }},
+        "@id": {{ canonical_url | append: '#website' | jsonify }},
+        "url": {{ canonical_url | jsonify }},
         "name": {{ site.title | jsonify }},
         "alternateName": ["Anna-Lena", "annalenabirkner.com"],
-        "inLanguage": "en"
+        "inLanguage": {{ page_language | jsonify }}
       },
       {
         "@type": "Person",
         "@id": {{ '/#person' | absolute_url | jsonify }},
         "name": "Anna-Lena Birkner",
         "url": {{ '/' | absolute_url | jsonify }},
-        "image": {{ '/assets/portrait-friendly.png' | absolute_url | jsonify }},
-        "jobTitle": "Independent Strategist & Maker",
+        "image": {{ '/assets/portrait-friendly.jpg' | absolute_url | jsonify }},
+        "jobTitle": {% if page_language == 'de' %}"Unabhängige Strategin & Operations Consultant"{% else %}"Independent Strategist & Maker"{% endif %},
         "description": {{ seo_description | strip | jsonify }},
         "knowsAbout": [
           "Strategy",

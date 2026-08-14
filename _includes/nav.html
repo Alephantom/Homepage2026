@@ -1,9 +1,26 @@
+{% assign is_de = false %}
+{% if page.lang == 'de' %}{% assign is_de = true %}{% endif %}
+{% assign home_path = '/' %}
+{% assign about_path = '/#about' %}
+{% assign work_path = '/#work' %}
+{% assign projects_path = '/#projects' %}
+{% assign faq_path = '/#faq' %}
+{% assign contact_path = '/contact.html' %}
+{% if is_de %}
+  {% assign home_path = '/de/' %}
+  {% assign about_path = '/de/#about' %}
+  {% assign work_path = '/de/#work' %}
+  {% assign projects_path = '/de/#projects' %}
+  {% assign faq_path = '/de/#faq' %}
+  {% assign contact_path = '/de/kontakt/' %}
+{% endif %}
+
 {% assign is_journal = false %}
 {% if page.url contains '/blog/' or page.layout == 'post' %}
   {% assign is_journal = true %}
 {% endif %}
 {% assign is_contact = false %}
-{% if page.url == '/contact.html' %}
+{% if page.url == '/contact.html' or page.url == '/de/kontakt/' %}
   {% assign is_contact = true %}
 {% endif %}
 {% assign is_services = false %}
@@ -11,8 +28,8 @@
   {% assign is_services = true %}
 {% endif %}
 
-<nav class="nav" aria-label="Main navigation" data-site-nav>
-  <a class="navIdentity" href="{{ '/' | relative_url }}" aria-label="Anna-Lena Birkner, home">
+<nav class="nav" aria-label="{% if is_de %}Hauptnavigation{% else %}Main navigation{% endif %}" data-site-nav>
+  <a class="navIdentity" href="{{ home_path | relative_url }}" aria-label="Anna-Lena Birkner, {% if is_de %}Startseite{% else %}home{% endif %}">
     <span class="monogram" aria-hidden="true">
       <img src="{{ '/assets/al-logo.png' | relative_url }}" alt="" width="48" height="48">
     </span>
@@ -20,65 +37,104 @@
   </a>
 
   <div class="navLinks">
-    <a href="{{ '/#about' | relative_url }}" data-nav-section="about">About</a>
+    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %}</a>
     <div class="navServices">
-      <a class="navServicesTrigger" href="{{ '/#work' | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
-        Services <span aria-hidden="true">↘</span>
+      <a class="navServicesTrigger" href="{{ work_path | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
+        {% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">↘</span>
       </a>
-      <div class="servicesDropdown" aria-label="Choose a service path">
-        <span class="servicesDropdownLabel">Choose the support you need</span>
-        <a class="servicesDropdownOption" href="{{ '/strategic-support/' | relative_url }}"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
+      <div class="servicesDropdown" aria-label="{% if is_de %}Leistungsbereich wählen{% else %}Choose a service path{% endif %}">
+        <span class="servicesDropdownLabel">{% if is_de %}Wähle die passende Unterstützung{% else %}Choose the support you need{% endif %}</span>
+        <a class="servicesDropdownOption" href="{{ '/strategic-support/' | relative_url }}" hreflang="en"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
           <span class="servicesDropdownNumber">01</span>
           <span class="servicesDropdownCopy">
-            <strong>Hands-on strategic support</strong>
-            <small>For founders &amp; decision-makers</small>
+            <strong>{% if is_de %}Praktische strategische Begleitung{% else %}Hands-on strategic support{% endif %}</strong>
+            <small>{% if is_de %}Für Gründer:innen &amp; Entscheider:innen{% else %}For founders &amp; decision-makers{% endif %}</small>
           </span>
           <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
         </a>
-        <a class="servicesDropdownOption" href="{{ '/team-workshops/' | relative_url }}"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+        <a class="servicesDropdownOption" href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
           <span class="servicesDropdownNumber">02</span>
           <span class="servicesDropdownCopy">
-            <strong>Team learning &amp; workshops</strong>
-            <small>For teams &amp; organisations</small>
+            <strong>{% if is_de %}Teamlernen &amp; Workshops{% else %}Team learning &amp; workshops{% endif %}</strong>
+            <small>{% if is_de %}Für Teams &amp; Organisationen{% else %}For teams &amp; organisations{% endif %}</small>
           </span>
           <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
-    <a href="{{ '/#projects' | relative_url }}" data-nav-section="projects">Selected work</a>
-    <a href="{{ '/blog/' | relative_url }}"{% if is_journal %} aria-current="page"{% endif %}>Journal</a>
-    <a class="navCta" href="{{ '/contact.html' | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
-      Book a call <span aria-hidden="true">↗</span>
+    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
+    <a href="{{ '/blog/' | relative_url }}" hreflang="en"{% if is_journal %} aria-current="page"{% endif %}>Journal</a>
+    {% if page.translation_url_en and page.translation_url_de %}
+      <div class="navLanguage" role="group" aria-label="{% if is_de %}Sprache wählen{% else %}Choose language{% endif %}">
+        {% if is_de %}
+          <a href="{{ page.translation_url_en | relative_url }}" lang="en" hreflang="en">EN</a>
+          <span aria-hidden="true">/</span>
+          <span lang="de" aria-current="page">DE</span>
+        {% else %}
+          <span lang="en" aria-current="page">EN</span>
+          <span aria-hidden="true">/</span>
+          <a href="{{ page.translation_url_de | relative_url }}" lang="de" hreflang="de">DE</a>
+        {% endif %}
+      </div>
+    {% endif %}
+    <a class="navCta" href="{{ contact_path | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
+      {% if is_de %}Gespräch buchen{% else %}Book a call{% endif %} <span aria-hidden="true">↗</span>
     </a>
   </div>
 
   <div class="navMobileActions">
-    <button class="navMenuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-navigation" data-nav-menu-toggle>
-      <span>Menu</span><span class="navMenuMark" aria-hidden="true">+</span>
+    {% if page.translation_url_en and page.translation_url_de %}
+      <div class="navLanguage navLanguage--compact" role="group" aria-label="{% if is_de %}Sprache wählen{% else %}Choose language{% endif %}">
+        {% if is_de %}
+          <a href="{{ page.translation_url_en | relative_url }}" lang="en" hreflang="en">EN</a>
+          <span aria-hidden="true">/</span>
+          <span lang="de" aria-current="page">DE</span>
+        {% else %}
+          <span lang="en" aria-current="page">EN</span>
+          <span aria-hidden="true">/</span>
+          <a href="{{ page.translation_url_de | relative_url }}" lang="de" hreflang="de">DE</a>
+        {% endif %}
+      </div>
+    {% endif %}
+    <button class="navMenuToggle" type="button" aria-label="{% if is_de %}Navigationsmenü öffnen{% else %}Open navigation menu{% endif %}" aria-expanded="false" aria-controls="mobile-navigation" data-nav-menu-toggle data-i18n-open-label="{% if is_de %}Navigationsmenü öffnen{% else %}Open navigation menu{% endif %}" data-i18n-close-label="{% if is_de %}Navigationsmenü schließen{% else %}Close navigation menu{% endif %}">
+      <span>{% if is_de %}Menü{% else %}Menu{% endif %}</span><span class="navMenuMark" aria-hidden="true">+</span>
     </button>
-    <a class="navCta navMobileCta" href="{{ '/contact.html' | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
-      Book a call <span aria-hidden="true">↗</span>
+    <a class="navCta navMobileCta" href="{{ contact_path | relative_url }}"{% if is_contact %} aria-current="page"{% endif %}>
+      {% if is_de %}Gespräch buchen{% else %}Book a call{% endif %} <span aria-hidden="true">↗</span>
     </a>
   </div>
 
   <div class="navMobileMenu" id="mobile-navigation" data-nav-mobile-menu hidden>
-    <span class="navMobileLabel">Explore</span>
-    <a href="{{ '/#about' | relative_url }}" data-nav-section="about">About <span aria-hidden="true">01</span></a>
+    <span class="navMobileLabel">{% if is_de %}Entdecke{% else %}Explore{% endif %}</span>
+    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">01</span></a>
     <div class="navMobileServices">
-      <a class="navMobileServicesOverview" href="{{ '/#work' | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>Services <span aria-hidden="true">02</span></a>
+      <a class="navMobileServicesOverview" href="{{ work_path | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>{% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">02</span></a>
       <div class="navMobileServicePaths">
-        <a href="{{ '/strategic-support/' | relative_url }}"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
-          <strong>Hands-on strategic support</strong>
-          <span>Founders &amp; decision-makers</span>
+        <a href="{{ '/strategic-support/' | relative_url }}" hreflang="en"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
+          <strong>{% if is_de %}Praktische strategische Begleitung{% else %}Hands-on strategic support{% endif %}</strong>
+          <span>{% if is_de %}Gründer:innen &amp; Entscheider:innen{% else %}Founders &amp; decision-makers{% endif %}</span>
         </a>
-        <a href="{{ '/team-workshops/' | relative_url }}"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
-          <strong>Team learning &amp; workshops</strong>
-          <span>Teams &amp; organisations</span>
+        <a href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+          <strong>{% if is_de %}Workshops{% else %}Team learning &amp; workshops{% endif %}</strong>
+          <span>{% if is_de %}Teams &amp; Organisationen{% else %}Teams &amp; organisations{% endif %}</span>
         </a>
       </div>
     </div>
-    <a href="{{ '/#projects' | relative_url }}" data-nav-section="projects">Selected work <span aria-hidden="true">03</span></a>
-    <a href="{{ '/#faq' | relative_url }}" data-nav-section="faq">FAQ <span aria-hidden="true">04</span></a>
-    <a href="{{ '/blog/' | relative_url }}"{% if is_journal %} aria-current="page"{% endif %}>Journal <span aria-hidden="true">05</span></a>
+    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %} <span aria-hidden="true">03</span></a>
+    <a href="{{ faq_path | relative_url }}" data-nav-section="faq">FAQ <span aria-hidden="true">04</span></a>
+    <a href="{{ '/blog/' | relative_url }}" hreflang="en"{% if is_journal %} aria-current="page"{% endif %}>Journal <span aria-hidden="true">05</span></a>
+    {% if page.translation_url_en and page.translation_url_de %}
+      <div class="navLanguage navLanguage--mobile" role="group" aria-label="{% if is_de %}Sprache wählen{% else %}Choose language{% endif %}">
+        {% if is_de %}
+          <a href="{{ page.translation_url_en | relative_url }}" lang="en" hreflang="en">EN</a>
+          <span aria-hidden="true">/</span>
+          <span lang="de" aria-current="page">DE</span>
+        {% else %}
+          <span lang="en" aria-current="page">EN</span>
+          <span aria-hidden="true">/</span>
+          <a href="{{ page.translation_url_de | relative_url }}" lang="de" hreflang="de">DE</a>
+        {% endif %}
+      </div>
+    {% endif %}
   </div>
 </nav>

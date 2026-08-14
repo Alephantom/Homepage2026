@@ -1,7 +1,11 @@
 ---
 layout: default
+lang: en
+translation_key: contact
+translation_url_en: /contact.html
+translation_url_de: /de/kontakt/
 title: Book a Conversation
-description: Book time with Anna-Lena or send a project enquiry.
+description: Book a free 20-minute orientation call with Anna-Lena Birkner or send an enquiry about strategic support, people operations, workshops, or digital systems.
 extra_css: /contact.css
 permalink: /contact.html
 ---
@@ -29,7 +33,14 @@ permalink: /contact.html
           <p>Add the public event link to <code>calendly_url</code> in <code>_config.yml</code> to activate the inline scheduler.</p>
         </div>
       {% else %}
-        <div class="calendarConsentGate" data-calendly-gate>
+        <div
+          class="calendarConsentGate"
+          data-calendly-gate
+          data-i18n-retry="Try again"
+          data-i18n-error="The calendar could not be loaded. You can still open Calendly in a new tab."
+          data-i18n-loading="Loading…"
+          data-i18n-connecting="Connecting to Calendly…"
+        >
           <span class="calendarGateMark" aria-hidden="true">↗</span>
           <strong>Load the scheduling calendar</strong>
           <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
@@ -70,7 +81,7 @@ permalink: /contact.html
       <span>What needs to move?</span>
       <span>What would be useful?</span>
     </div>
-    <a class="emailButton" href="mailto:info@annalenabirkner.com?subject=Let%27s%20see%20how%20we%20can%20work%20together">
+    <a class="emailButton" href="mailto:info@annalenabirkner.com?subject=Let%27s%20see%20how%20we%20can%20work%20together" data-i18n-email-subject="Let&apos;s see how we can work together">
       Write me and let&apos;s see how we can work together
     </a>
     <p class="emailCardNote">Opens your default email program. If nothing opens, write directly to <a href="mailto:info@annalenabirkner.com">info@annalenabirkner.com</a>.</p>
