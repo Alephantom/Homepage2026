@@ -160,7 +160,7 @@
   };
 
   const bookingHref = (areas, summary) => {
-    const price = data.clarityCheck ? `${data.clarityCheck.price} ${data.clarityCheck.vatNote}` : '';
+    const price = data.clarityCheck ? data.clarityCheck.price : '';
     const lines = [
       'Hi Anna-Lena,',
       '',

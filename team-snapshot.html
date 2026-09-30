@@ -68,7 +68,7 @@ extra_css: /team-snapshot.css
           <button class="clarityButton" type="submit" data-snapshot-submit disabled>Show my results <span aria-hidden="true">↓</span></button>
           <p class="snapshotError" data-snapshot-error aria-live="polite"></p>
           <p class="clarityHelper">Your results appear on this page straight away. Everything runs in your browser. Nothing is sent or stored. <a class="clarityPrivacy" href="{{ '/privacy/' | relative_url }}">Privacy details</a></p>
-          <noscript><p class="snapshotNoscript">The Team Snapshot needs JavaScript to work out your results, and it all stays in your browser. If you’d rather talk it through, <a href="{{ '/contact.html' | relative_url }}">book a free 20-minute call</a>.</p></noscript>
+          <noscript><p class="snapshotNoscript">The Team Snapshot needs JavaScript to work out your results, and it all stays in your browser. If you’d rather talk it through, <a href="{{ '/contact.html' | relative_url }}">book a free 30-minute call</a>.</p></noscript>
           <p class="snapshotSrOnly" data-snapshot-announce aria-live="polite"></p>
         </div>
       </div>
@@ -107,15 +107,15 @@ extra_css: /team-snapshot.css
       </div>
       <div class="snapshotCtaActions">
         <p class="snapshotPrice">{{ site.data.offer_prices.clarity_check.en | escape }}</p>
-        <p class="snapshotPriceNote">{{ site.data.offer_prices.vat_note.en | escape }} · One defined challenge</p>
+        <p class="snapshotPriceNote">One defined challenge</p>
         <a class="clarityButton snapshotBookButton" href="mailto:{{ site.legal.email | escape }}?subject=Booking%20a%20Clarity%20Check" data-snapshot-book><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
         <p class="snapshotCtaHint">Opens a draft in your email app with your Snapshot scores (and team name, if you added one) filled in. Nothing is sent until you press send.</p>
-        <a class="snapshotCtaSecondary" href="{{ '/contact.html' | relative_url }}">Prefer to talk? Book a free 20-minute call <span aria-hidden="true">↗</span></a>
+        <a class="snapshotCtaSecondary" href="{{ '/contact.html' | relative_url }}">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a>
       </div>
     </aside>
 
-    <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ site.data.offer_prices.clarity_check.en | escape }} {{ site.data.offer_prices.vat_note.en | escape }}) looks at one challenge in real context and ends with a written priority plan. annalenabirkner.com/team-snapshot · {{ site.legal.email | escape }}</p>
+    <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ site.data.offer_prices.clarity_check.en | escape }}) looks at one challenge in real context and ends with a written priority plan. annalenabirkner.com/team-snapshot · {{ site.legal.email | escape }}</p>
   </section>
 </div>
-<script type="application/json" id="snapshot-data">{"questions":{{ site.data.team_snapshot | jsonify }},"results":{{ site.data.team_snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"clarityCheck":{"price":{{ site.data.offer_prices.clarity_check.en | jsonify }},"vatNote":{{ site.data.offer_prices.vat_note.en | jsonify }}},"email":{{ site.legal.email | jsonify }}}</script>
+<script type="application/json" id="snapshot-data">{"questions":{{ site.data.team_snapshot | jsonify }},"results":{{ site.data.team_snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"clarityCheck":{"price":{{ site.data.offer_prices.clarity_check.en | jsonify }}},"email":{{ site.legal.email | jsonify }}}</script>
 <script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
