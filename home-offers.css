@@ -48,14 +48,17 @@
 .offerCardHeading .offerPrice { margin-top: auto; font-size: min(58px, 20cqi); white-space: nowrap; }
 .offerPrice { font-family: var(--font-display); font-size: 58px; letter-spacing: -0.05em; line-height: 1.1; margin: 0 0 10px; }
 .offerPricePrefix { display: inline-block; font-family: var(--font-sans); font-size: 14px; letter-spacing: 0; vertical-align: middle; }
-.offerActions { align-self: start; padding-bottom: 20px; }
+.offerActions { align-self: start; padding: 4px 0 24px; }
 .offerPriceNote { font-size: 13px; margin: 0 0 30px; }
 .offerCard h4 { font-size: 14px; line-height: 1.5; margin: 0 0 10px; }
 .offerCard p:not(.eyebrow):not(.offerPrice):not(.offerPriceNote):not(.offerFreeNote) { font-size: var(--text-small); line-height: 1.65; margin: 0; }
 .offerCard .offerActions .offerFreeNote { font-size: 12px; line-height: 1.5; margin: 14px 0 0; }
 .offerAudience,
-.offerScope { border-top: 1px solid var(--offer-rule); padding: 24px 0; }
-.offerDetails { align-self: start; border-top: 1px solid var(--offer-rule); }
+.offerIncludes { border-top: 1px solid var(--offer-rule); padding: 24px 0; }
+.offerMore { align-self: start; }
+.offerDetails { border-top: 1px solid var(--offer-rule); }
+.offerDetails + .offerDetails { margin-top: 0; }
+.offerCard .offerDetails > p { padding: 0 0 16px; }
 .offerDetails summary {
   align-items: center;
   cursor: pointer;
@@ -64,15 +67,13 @@
   font-weight: 700;
   justify-content: space-between;
   list-style: none;
-  padding: 20px 0 0;
+  padding: 16px 0;
 }
 .offerDetails summary::-webkit-details-marker { display: none; }
 .offerDetails summary::after { content: '+'; content: '+' / ''; font-size: 22px; font-weight: 400; line-height: 1; }
 .offerDetails[open] summary::after { content: '–'; content: '–' / ''; }
 .offerDetails summary:hover { text-decoration: underline; text-underline-offset: 4px; }
 .offerDetails summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 4px; }
-.offerIncludes { padding: 20px 0 0; }
-.offerApproach { border-top: 1px solid var(--offer-rule); margin-top: 24px; padding: 20px 0 0; }
 .offerCard ul { list-style: none; margin: 0; padding: 0; }
 .offerCard li { padding-left: 25px; position: relative; font-size: var(--text-small); line-height: 1.65; }
 .offerCard li + li { margin-top: 15px; }
@@ -112,7 +113,7 @@
   .offerCard { display: flex; flex-direction: column; }
   .offerCard .offerButton { width: 100%; }
   .offerActions,
-  .offerDetails { align-self: stretch; }
+  .offerMore { align-self: stretch; }
 }
 
 @media (max-width: 1050px) {
@@ -137,7 +138,7 @@
   .homeOffersGrid { grid-template-columns: 1fr; gap: 24px; }
   .offerCard { display: flex; flex-direction: column; grid-row: auto; padding: 30px 24px; }
   .offerActions,
-  .offerDetails { align-self: stretch; }
+  .offerMore { align-self: stretch; }
   .offerCard h3 { font-size: 38px; }
   .offerButton { width: 100%; font-size: 11px; min-height: 64px; }
   .offerFirstStep { align-items: start; flex-direction: column; gap: 20px; }
