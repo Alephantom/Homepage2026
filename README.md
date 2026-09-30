@@ -149,6 +149,16 @@ Google chooses search snippets automatically and may use on-page text instead of
 
 The contact page opens the visitor&apos;s default email program with Anna-Lena&apos;s address, a suggested subject, and a few optional prompts already filled in. The `mailto:` link is maintained directly in `contact.html`.
 
+## Offers and Team Snapshot
+
+The homepage offers are maintained in `_includes/home-offers.html` (English) and `_includes/home-offers-de.html` (German). Both are styled by `home-offers.css`. There are three offer cards: the Clarity Check comes first, the Focused Build follows it as the next step, and the Interim HR Business Partner card (`#interim-hr-business-partner`) is priced on request. Below the offers, a workshops section (`#workshops`) lists the topic workshops from `/team-workshops/`: two to four hours, bookable on their own, from the `workshops` price. The free Team Snapshot is the starting point for visitors who are not yet sure what is getting in the way; the free 20-minute call remains a secondary option.
+
+All prices live in `_data/offer_prices.yml` as net prices, with an `en` and a `de` value for `clarity_check`, `focused_build` and `workshops` (the starting price for the topic workshops). The Interim HR Business Partner has no price key; its card says "On request" / "Auf Anfrage". The `vat_note` entry holds the note shown next to each price in each language ("plus VAT" / "zzgl. MwSt."). Pages read these values, for example `site.data.offer_prices.clarity_check.en`, so never hard-code a price in a page. If you use the small-business exemption under § 19 UStG, change `vat_note` rather than the prices. All three prices were set in the September 2026 offer review; confirm them before publishing.
+
+The free Team Snapshot lives at `/team-snapshot/`, with links from the homepage offers, the strategic support page and the shared footer. It is an instant, scored self-analysis and the free first step before the paid Clarity Check. The page and styles are in `team-snapshot.html` and `team-snapshot.css`; `team-snapshot.js` scores the answers in the browser and shows the results straight away: a score for each area, practical tips for the weaker areas, and a one-page summary that visitors can print or save as a PDF. Edit the questions, interpretations and tips in `_data/team_snapshot.yml`, and the levels, labels and scores in `_data/team_snapshot_results.yml`.
+
+There is no email gate and no personal reply. Nothing is sent or stored: the answers stay in the visitor's browser. The only email is optional. After the results, "Book your Clarity Check" opens a `mailto:` booking to `legal.email` in `_config.yml`, with a short plain-text summary of the scores in the body, which the visitor reviews and sends from their own email app. The secondary link, "Prefer to talk? Book a free 20-minute call", goes to `/contact.html`.
+
 ## Add your portrait
 
 Save a vertical 4:5 JPG as:

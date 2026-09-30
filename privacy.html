@@ -21,7 +21,7 @@ permalink: /privacy/
 
   <div class="legalMeta">
     <span>Last updated</span>
-    <time datetime="2026-08-14">14 August 2026</time>
+    <time datetime="2026-09-30">30 September 2026</time>
   </div>
 
   <section>
@@ -57,19 +57,25 @@ permalink: /privacy/
   </section>
 
   <section>
-    <h2>4. Appointment booking with Calendly</h2>
+    <h2>4. Free Team Snapshot</h2>
+    <p>The <a href="{{ '/team-snapshot/' | relative_url }}">Team Snapshot</a> works entirely in your browser. Your answers, your scores and the optional team or company name are not sent to me or anyone else, and they are not saved: no cookies and no local storage. When you close or reload the page, they are gone. If you save your results as a PDF, that file stays on your device.</p>
+    <p>If you choose “Book your Clarity Check”, your own email app opens with a draft that includes a short summary of your scores and, if you entered one, your team or company name. Nothing is sent unless you send that email yourself. If you do, section 3 applies.</p>
+  </section>
+
+  <section>
+    <h2>5. Appointment booking with Calendly</h2>
     <p>The contact page offers an optional scheduling calendar from Calendly, LLC, 115 E Main St., Suite A1B, Buford, GA 30518, USA. The calendar is not loaded automatically. Only after you select “Load the scheduling calendar” does your browser connect to Calendly. Calendly may then process technical connection data and use cookies or similar storage. If you book a meeting, Calendly also processes the details you enter, such as your name, contact details, selected time, time zone, and any answers you provide.</p>
     <p>The calendar is loaded on the basis of your consent under Article 6(1)(a) GDPR and § 25(1) TDDDG. Booking data required to arrange the meeting is also processed under Article 6(1)(b) GDPR. Processing may take place in the United States. More information is available in Calendly&apos;s <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Privacy Notice <span aria-hidden="true">↗</span></a>. You can avoid the embedded calendar and contact me by email instead.</p>
   </section>
 
   <section>
-    <h2>5. Consent preferences</h2>
+    <h2>6. Consent preferences</h2>
     <p>If optional analytics is enabled, this website stores your consent choice in your browser&apos;s local storage under <code>al_privacy_consent_v1</code>. This is necessary to remember your preference and prevent the consent request from appearing on every visit. The entry expires after {{ site.consent_storage_days | default: 180 }} days. The legal basis is Article 6(1)(f) GDPR and § 25(2)(2) TDDDG.</p>
     <p>You can revisit your choice using “Cookie settings” in the footer whenever analytics is active. Clearing your browser&apos;s site data also removes the preference.</p>
   </section>
 
   <section>
-    <h2>6. Google Analytics</h2>
+    <h2>7. Google Analytics</h2>
     {% if site.google_analytics_id and site.google_analytics_id != "" %}
       <p>This website uses Google Analytics 4, a web analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. It is configured in Basic Consent Mode: the Google tag is not requested and no analytics data is sent to Google unless you explicitly accept analytics.</p>
       <p>After consent, Google Analytics may process page views, interactions, approximate location, browser and device information, and pseudonymous identifiers. It sets first-party cookies including <code>_ga</code> and a property-specific <code>_ga_*</code> cookie. Google signals and advertising-personalisation signals are disabled in this site&apos;s implementation. Event-level data retention is configured for {{ site.google_analytics_retention_months | default: 2 }} months; cookie lifetimes are described on the <a href="{{ '/cookies/' | relative_url }}">cookie information page</a>.</p>
@@ -81,18 +87,18 @@ permalink: /privacy/
   </section>
 
   <section>
-    <h2>7. Recipients and international transfers</h2>
+    <h2>8. Recipients and international transfers</h2>
     <p>I use service providers only where needed to operate the website, communicate, schedule appointments, or—after consent—understand website usage. These providers may act as processors under data-processing agreements. Where data is transferred outside the EEA, the relevant provider&apos;s adequacy framework or contractual safeguards apply.</p>
   </section>
 
   <section>
-    <h2>8. Your rights</h2>
+    <h2>9. Your rights</h2>
     <p>Subject to the legal requirements, you have the right to request access, correction, deletion, restriction, and portability of your personal data. You may object to processing based on legitimate interests and withdraw consent at any time for future processing.</p>
     <p>To exercise these rights, email <a href="mailto:{{ site.legal.email }}">{{ site.legal.email }}</a>. You also have the right to lodge a complaint with a data protection supervisory authority, in particular in the EU member state of your habitual residence, place of work, or the place of the alleged infringement.</p>
   </section>
 
   <section>
-    <h2>9. Automated decision-making</h2>
+    <h2>10. Automated decision-making</h2>
     <p>This website does not use automated decision-making or profiling that produces legal or similarly significant effects.</p>
   </section>
 
