@@ -201,6 +201,20 @@
   max-width: 720px;
 }
 
+.serviceLandingIntro > div > p + p {
+  margin-top: 22px;
+}
+
+.serviceLandingInlineLink {
+  border-bottom: 1px solid currentColor;
+  transition: color 160ms ease;
+}
+
+.serviceLandingInlineLink:hover,
+.serviceLandingInlineLink:focus-visible {
+  color: var(--coral-text);
+}
+
 .serviceLandingOffers {
   background: var(--paper);
   padding: 24px var(--page-gutter-generous) 124px;
@@ -241,11 +255,40 @@
   margin: 0 0 24px;
 }
 
-.serviceLandingOfferHeading > p:last-child {
+.serviceLandingOfferHeading > p:last-child,
+.serviceLandingOfferHeading > .serviceLandingOfferLead {
   font-size: var(--text-body);
   line-height: var(--leading-copy);
   margin: 0;
   max-width: 490px;
+}
+
+.serviceLandingOfferHeading > .serviceLandingOfferPrice {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 22px;
+}
+
+.serviceLandingOfferPrice strong {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin-right: 4px;
+}
+
+.serviceLandingOfferActions {
+  margin-top: 34px;
+}
+
+.serviceLandingOfferActions .serviceLandingPrimaryCta {
+  margin-top: 0;
+}
+
+.serviceLandingOfferActions p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 12px 0 0;
 }
 
 .serviceLandingOfferDetails {
@@ -306,7 +349,8 @@
   max-width: 680px;
 }
 
-.serviceLandingNext > a {
+.serviceLandingNext > a,
+.serviceLandingNextLinks > a:first-child {
   align-items: center;
   background: var(--ink);
   border: 1px solid var(--ink);
@@ -323,10 +367,31 @@
 }
 
 .serviceLandingNext > a:hover,
-.serviceLandingNext > a:focus-visible {
+.serviceLandingNext > a:focus-visible,
+.serviceLandingNextLinks > a:first-child:hover,
+.serviceLandingNextLinks > a:first-child:focus-visible {
   background: var(--coral);
   color: var(--ink);
   transform: translateY(-2px);
+}
+
+.serviceLandingNextLinks {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.serviceLandingNextLinks > .serviceLandingNextSecondary {
+  border-bottom: 1px solid currentColor;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-bottom: 3px;
+}
+
+.serviceLandingNextLinks > .serviceLandingNextSecondary:hover,
+.serviceLandingNextLinks > .serviceLandingNextSecondary:focus-visible {
+  color: var(--coral-on-lavender);
 }
 
 .workshopLandingTopics {
@@ -666,7 +731,8 @@
     font-size: var(--text-body);
   }
 
-  .serviceLandingNext > a {
+  .serviceLandingNext > a,
+  .serviceLandingNextLinks > a:first-child {
     gap: 24px;
     justify-content: space-between;
     width: 100%;

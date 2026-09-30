@@ -1,0 +1,119 @@
+# Free Team Snapshot: the six questions, their answers, and what each answer means.
+# Keep the option order the same for every question: clear, partly, stuck, not sure.
+# The page maps them to the statuses in _data/team_snapshot_results.yml
+# (clear / attention / stuck / unsure) by position.
+# `results`: one plain sentence per status, interpreting that answer for this area.
+# `tips`: exactly three small, concrete things a founder can try this week.
+- id: priorities
+  topic: Priorities
+  question: Does your team know what matters most right now?
+  help: When several things feel urgent, can people tell what to focus on—and what can wait?
+  options:
+    - Yes, our priorities are clear.
+    - Mostly, but competing requests pull us off track.
+    - Not really; everything tends to feel urgent.
+    - I’m not sure.
+  results:
+    clear: Your team can tell what matters most, which makes it much easier to say no to everything else.
+    attention: The priorities are there, but new requests keep pulling people away from them.
+    stuck: When everything feels urgent, people end up choosing for themselves, and the loudest request usually wins.
+    unsure: Priorities may be clear in your head without ever having been said out loud to the team.
+  tips:
+    - Write down the three things that matter most this quarter and share them in your next team meeting.
+    - When a new request comes in, ask “What should this replace?” before anyone says yes.
+    - Ask each person to name their top priority for this week, then compare the answers together.
+
+- id: decisions
+  topic: Decision ownership
+  question: Is it clear who can make which decisions?
+  help: Can people move work forward without chasing approval or wondering who has the final say?
+  options:
+    - Usually, people know what they can decide.
+    - Some decisions are clear; others get passed around.
+    - Decisions often stall or get revisited.
+    - I’m not sure.
+  results:
+    clear: People know what they can decide, so work keeps moving without waiting for sign-off.
+    attention: Some decisions have a clear owner, while others drift between people and slow things down.
+    stuck: Decisions stall or get reopened, which costs time and quietly wears down trust.
+    unsure: If it’s hard for you to say who decides what, people in your team are probably guessing too.
+  tips:
+    - List five decisions that come up every month and write one name next to each, the person who has the final say.
+    - When the next open decision comes up, agree before the discussion starts who makes the final call and by when.
+    - When a decision is made in a meeting, write it down in one line, with who made it, somewhere the whole team can see.
+
+- id: processes
+  topic: Everyday processes
+  question: How smoothly does recurring work happen?
+  help: Think about work such as handing over a project, approving leave or sharing a customer update.
+  options:
+    - We have a workable approach that people use.
+    - It works, but needs reminders or extra coordination.
+    - We often start from scratch or miss steps.
+    - I’m not sure.
+  results:
+    clear: Recurring work has a shape people know and use, which frees up their attention for everything else.
+    attention: Recurring work gets done, but only because someone keeps reminding and chasing.
+    stuck: Recurring work gets reinvented each time, so steps go missing and the same questions keep coming back.
+    unsure: Not knowing how recurring work runs often means it depends on individual people rather than a shared way of doing it.
+  tips:
+    - Pick the recurring task that caused the most friction last month, and ask the person who handles it best to talk you through it for fifteen minutes.
+    - "Turn what they say into a simple checklist and keep it where the work happens: your shared drive, project tool or team chat."
+    - The next time the task comes up, ask someone else to follow the checklist and fix wherever they get stuck.
+
+- id: founder
+  topic: Dependence on the founder
+  question: What happens when the founder is unavailable?
+  help: Can everyday work continue without their input, knowledge or approval? If there’s no single founder, think of whoever leads the team, or skip this question.
+  options:
+    - Most work continues without difficulty.
+    - A few things wait for them.
+    - Much of the work slows down or stops.
+    - I’m not sure.
+  results:
+    clear: Most work carries on without the founder, which leaves them room for the work only they can do.
+    attention: A few things still wait for the founder, and it helps to know which ones before they turn into a bottleneck.
+    stuck: A lot of work waits for the founder, which slows the whole team down and makes it hard for them to step away, even for a few days.
+    unsure: "If it’s hard to say, that’s worth finding out: notice what piles up the next time the founder is away, even for a day."
+  tips:
+    - For one week, jot down every question or approval that lands with you, then circle the ones that repeat.
+    - Take one of those repeated questions and write the answer down once, in a place the team can find it.
+    - Choose one area where someone else can decide without you, agree the limits together, and tell the team who owns it now.
+
+- id: support
+  topic: Expectations & support
+  question: Do people know what is expected of them—and where to get support?
+  help: Think about responsibilities, feedback and asking for help when something is difficult.
+  options:
+    - Expectations and support are usually clear.
+    - It varies between people or situations.
+    - People often have to guess or work things out alone.
+    - I’m not sure.
+  results:
+    clear: People know what’s expected of them and where to turn when something gets difficult.
+    attention: Expectations and support vary from person to person, so some people get much more clarity than others.
+    stuck: People are often left to guess, which leads to duplicated work, dropped tasks and quiet frustration.
+    unsure: Expectations often look clearer from where you sit than they do from inside the team, so it’s worth asking.
+  tips:
+    - Ask each person to write three lines on what they think they’re responsible for, then compare that with what you expect.
+    - Put short one-to-ones in the diary, even twenty minutes every two weeks, with “What’s getting in your way?” as a standing question.
+    - Write down who to go to for which kind of question (tools, customers, time off, a tricky situation) and share it with the team.
+
+- id: information
+  topic: Information & onboarding
+  question: Can people find the information they need to do their work?
+  help: Think about someone joining the team, picking up unfamiliar work or keeping up with a change.
+  options:
+    - Key information is easy to find and kept current.
+    - It exists, but people often need help finding it.
+    - Important information is scattered or stays in people’s heads.
+    - I’m not sure.
+  results:
+    clear: Key information is easy to find, so people can get on with their work and new starters settle in faster.
+    attention: The information exists, but finding it often means asking a colleague, which interrupts two people instead of one.
+    stuck: Important knowledge is scattered or lives in people’s heads, so work stalls whenever someone is busy, away or leaves.
+    unsure: If you can’t tell how easy it is to find things, ask the newest person on your team; they’ll know.
+  tips:
+    - Pick one document people rely on (an onboarding checklist, a price list, a how-to) and add an owner’s name and a “last checked” date at the top.
+    - Agree on one home for key information, such as a single folder or wiki page, and pin the link in your team chat.
+    - Ask the person who joined most recently what they had to hunt for in their first weeks, and fix the first thing they mention.

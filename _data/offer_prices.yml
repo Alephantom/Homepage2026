@@ -1,0 +1,15 @@
+# Net display prices for the English and German pages. VAT is added on the invoice.
+# If you use the small-business exemption (§ 19 UStG), change vat_note instead,
+# e.g. "No VAT charged under § 19 UStG" / "Kein Ausweis der USt. gem. § 19 UStG".
+vat_note:
+  en: plus VAT
+  de: zzgl. MwSt.
+clarity_check:
+  en: €590
+  de: 590 €
+focused_build:
+  en: €2,999
+  de: 2.999 €
+workshops:
+  en: €1,200
+  de: 1.200 €

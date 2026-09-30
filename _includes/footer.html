@@ -28,6 +28,7 @@
           <a href="{{ home_path | append: '#about' | relative_url }}">{% if is_de %}Über mich{% else %}About{% endif %}</a>
           <a href="{{ home_path | append: '#projects' | relative_url }}">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
           <a href="{{ '/blog/' | relative_url }}" hreflang="en">Journal</a>
+          <a href="{{ '/team-snapshot/' | relative_url }}" hreflang="en">{% if is_de %}Team-Snapshot (EN){% else %}Team Snapshot{% endif %}</a>
           <a href="{{ home_path | append: '#faq' | relative_url }}">FAQ</a>
         </div>
       </nav>

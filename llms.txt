@@ -1,3 +1,7 @@
+---
+layout: null
+permalink: /llms.txt
+---
 # Anna-Lena Birkner
 
 > Anna-Lena Birkner is an independent strategist and operations consultant. She helps founders, decision-makers, and teams turn complex organisational, people, operational, positioning, and responsible-AI questions into clear decisions and practical systems.
@@ -13,10 +17,11 @@ Contact: info@annalenabirkner.com
 ## Core services
 
 - [Hands-on strategic support](https://annalenabirkner.com/strategic-support/): Practical support for founders and decision-makers who need to understand a problem, create a useful solution, or stay close to organisational change.
-- [Clarity review](https://annalenabirkner.com/strategic-support/#clarity-review): A focused review that identifies the real constraint, clarifies priorities, and defines practical next steps.
-- [Focused build](https://annalenabirkner.com/strategic-support/#focused-build): A defined piece of work that turns a clear direction into a usable page, process, workflow, guide, or small system.
-- [Interim HR Business Partner](https://annalenabirkner.com/strategic-support/#interim-hr-business-partner): Experienced People & Culture support close to founders, leaders, decisions, and day-to-day implementation.
-- [Team learning and workshops](https://annalenabirkner.com/team-workshops/): Practical, participatory workshops for up to 30 participants, delivered remotely or in person by agreement.
+- [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free two-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a printable one-page summary. No sign-up; it runs entirely in the browser and nothing is sent or stored.
+- [Clarity Check](https://annalenabirkner.com/strategic-support/#clarity-review): A fixed-price look at one defined challenge ({{ site.data.offer_prices.clarity_check.en }} {{ site.data.offer_prices.vat_note.en }}): a video conversation, a review of the relevant documents and processes, a written priority plan, and a follow-up conversation.
+- [Focused Build](https://annalenabirkner.com/strategic-support/#focused-build): The next step after a Clarity Check: a two-week engagement ({{ site.data.offer_prices.focused_build.en }} {{ site.data.offer_prices.vat_note.en }}) with deeper people and set-up analysis, two half-day working sessions, written processes and guidelines for up to 3 recurring issues, and a 2–4 hour team handover.
+- [Interim HR Business Partner](https://annalenabirkner.com/strategic-support/#interim-hr-business-partner): Experienced People & Culture support close to founders, leaders, decisions, and day-to-day implementation. Time commitment, duration and fee are agreed on request.
+- [Team workshops](https://annalenabirkner.com/team-workshops/): Practical, participatory topic workshops of two to four hours, each with a workbook on the topic and a written recap, bookable on their own without a Clarity Check. From {{ site.data.offer_prices.workshops.en }} {{ site.data.offer_prices.vat_note.en }} for up to 12 participants, remote or in person by agreement; larger groups, in-person sessions and more extensive preparation are quoted separately.
 
 ## Workshop topics
 

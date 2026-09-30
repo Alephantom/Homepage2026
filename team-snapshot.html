@@ -1,0 +1,121 @@
+---
+layout: default
+lang: en
+title: Team Snapshot
+seo_title: Free Team Snapshot | Anna-Lena Birkner
+description: "Free Team Snapshot: a two-minute self-assessment for founders and growing teams, with an instant score per area, practical tips and a PDF to keep."
+permalink: /team-snapshot/
+extra_css: /team-snapshot.css
+---
+{% assign status_keys = "clear,attention,stuck,unsure" | split: "," %}
+{% assign question_count = site.data.team_snapshot | size %}
+<div class="clarityPage snapshotPage" data-snapshot>
+  <section class="clarityHero" aria-labelledby="clarity-title">
+    <div class="clarityHeroCopy">
+      <p class="eyebrow">Free Team Snapshot · 2 minutes · Instant results</p>
+      <h1 id="clarity-title">Where is work<br><em>getting stuck?</em></h1>
+      <p class="clarityLead">For founders and growing teams who sense that work could run more smoothly, but aren’t quite sure where to start.</p>
+      <p>Answer six short questions about how work runs today. You’ll see straight away which areas are working, which need attention and what you could try this week. You don’t need to have the problem neatly defined.</p>
+      <a class="clarityButton" href="#reflections">Start the Snapshot <span aria-hidden="true">↓</span></a>
+    </div>
+    <aside class="clarityNote" aria-label="How the Team Snapshot works">
+      <p class="eyebrow">How it works</p>
+      <h2>Two minutes.<br><em>A clear first step.</em></h2>
+      <ol>
+        <li><span aria-hidden="true">01</span><div><strong>Answer six questions.</strong><p>About priorities, decisions and everyday work.</p></div></li>
+        <li><span aria-hidden="true">02</span><div><strong>See your score for each area instantly.</strong><p>Right here on the page, the moment you’re done.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><strong>Get practical tips and save your results as a PDF.</strong><p>Small steps you can try this week, on a page you can keep or share with your team.</p></div></li>
+      </ol>
+      <p class="clarityNoteEmail">Everything runs in your browser. Nothing is sent or stored.</p>
+      <p class="clarityNoteWhy">I made this so you can take an honest first look on your own. No call, no sign-up.</p>
+      <p class="claritySignature">Anna-Lena</p>
+    </aside>
+  </section>
+
+  <form id="snapshot-form" data-snapshot-form novalidate>
+    <section class="clarityReflections" id="reflections" aria-labelledby="reflections-title">
+      <div class="claritySectionIntro">
+        <p class="eyebrow">Six questions · About two minutes</p>
+        <div>
+          <h2 id="reflections-title" tabindex="-1">Start with <em>what happens.</em></h2>
+          <p>Think about the past few weeks and choose the answer that feels closest to your experience. There are no right answers.</p>
+          <p>If you’re not sure, say so: that tells you something too. You can also skip a question.</p>
+        </div>
+      </div>
+      {% for question in site.data.team_snapshot %}
+      <div class="clarityQuestionRow">
+        <div class="clarityQuestionMeta" aria-hidden="true"><span>{{ forloop.index | prepend: '0' }}</span><span>{{ question.topic }}</span></div>
+        <fieldset class="clarityQuestion" data-question-id="{{ question.id | escape }}" aria-describedby="{{ question.id }}-help">
+          <legend>{{ question.question }}</legend>
+          <p id="{{ question.id }}-help">{{ question.help }}</p>
+          <div class="clarityOptions">
+            {% for option in question.options %}
+            <label class="clarityOption"><input type="radio" name="{{ question.id | escape }}" value="{{ status_keys[forloop.index0] }}"><span>{{ option }}</span></label>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+      {% endfor %}
+
+      <div class="snapshotSubmit">
+        <div class="clarityQuestionMeta"><span aria-hidden="true">→</span><span>Your results</span></div>
+        <div class="snapshotSubmitBody">
+          <p class="snapshotProgress" data-snapshot-progress aria-live="polite">0 of {{ question_count }} answered</p>
+          <div class="clarityField">
+            <label for="snapshot-team">Team or company name <span>(optional, used on your results, PDF and booking email)</span></label>
+            <input id="snapshot-team" name="team" autocomplete="organization" maxlength="80">
+          </div>
+          <button class="clarityButton" type="submit" data-snapshot-submit disabled>Show my results <span aria-hidden="true">↓</span></button>
+          <p class="snapshotError" data-snapshot-error aria-live="polite"></p>
+          <p class="clarityHelper">Your results appear on this page straight away. Everything runs in your browser. Nothing is sent or stored. <a class="clarityPrivacy" href="{{ '/privacy/' | relative_url }}">Privacy details</a></p>
+          <noscript><p class="snapshotNoscript">The Team Snapshot needs JavaScript to work out your results, and it all stays in your browser. If you’d rather talk it through, <a href="{{ '/contact.html' | relative_url }}">book a free 20-minute call</a>.</p></noscript>
+          <p class="snapshotSrOnly" data-snapshot-announce aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <section class="snapshotResults" id="results" tabindex="-1" aria-labelledby="results-title" hidden>
+    <div class="snapshotResultsHeader">
+      <div>
+        <p class="eyebrow">Your results · Free Team Snapshot</p>
+        <h2 id="results-title" tabindex="-1">Your Team Snapshot</h2>
+        <p class="snapshotMeta"><span data-snapshot-team></span><span data-snapshot-date></span></p>
+      </div>
+      <div class="snapshotActions">
+        <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-print>Save as PDF <span aria-hidden="true">↓</span></button>
+        <button class="snapshotActionButton" type="button" data-snapshot-edit>Change my answers <span aria-hidden="true">↑</span></button>
+      </div>
+    </div>
+
+    <div class="snapshotSummary">
+      <div class="snapshotOverall" data-snapshot-overall></div>
+      <div class="snapshotStart" data-snapshot-start></div>
+    </div>
+
+    <div class="snapshotAreasIntro">
+      <h3 class="eyebrow snapshotAreasTitle">All six areas</h3>
+      <p class="snapshotNote" data-snapshot-unsure-note hidden></p>
+    </div>
+    <ol class="snapshotAreas" data-snapshot-areas></ol>
+
+    <aside class="snapshotCta" aria-labelledby="snapshot-cta-title">
+      <div class="snapshotCtaCopy">
+        <p class="eyebrow">Going further · Clarity Check</p>
+        <h3 id="snapshot-cta-title">Want a second <em>pair of eyes?</em></h3>
+        <p>Your Snapshot shows where to look, not why it’s happening. If one area keeps coming up, the Clarity Check looks at it in real context: we talk it through, I review the documents and processes involved, and you get a written priority plan, plus a follow-up conversation to go through it together.</p>
+      </div>
+      <div class="snapshotCtaActions">
+        <p class="snapshotPrice">{{ site.data.offer_prices.clarity_check.en | escape }}</p>
+        <p class="snapshotPriceNote">{{ site.data.offer_prices.vat_note.en | escape }} · One defined challenge</p>
+        <a class="clarityButton snapshotBookButton" href="mailto:{{ site.legal.email | escape }}?subject=Booking%20a%20Clarity%20Check" data-snapshot-book><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
+        <p class="snapshotCtaHint">Opens a draft in your email app with your Snapshot scores (and team name, if you added one) filled in. Nothing is sent until you press send.</p>
+        <a class="snapshotCtaSecondary" href="{{ '/contact.html' | relative_url }}">Prefer to talk? Book a free 20-minute call <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+
+    <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ site.data.offer_prices.clarity_check.en | escape }} {{ site.data.offer_prices.vat_note.en | escape }}) looks at one challenge in real context and ends with a written priority plan. annalenabirkner.com/team-snapshot · {{ site.legal.email | escape }}</p>
+  </section>
+</div>
+<script type="application/json" id="snapshot-data">{"questions":{{ site.data.team_snapshot | jsonify }},"results":{{ site.data.team_snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"clarityCheck":{"price":{{ site.data.offer_prices.clarity_check.en | jsonify }},"vatNote":{{ site.data.offer_prices.vat_note.en | jsonify }}},"email":{{ site.legal.email | jsonify }}}</script>
+<script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

@@ -1915,8 +1915,13 @@ footer h2 {
   text-wrap: balance;
 }
 
-.portfolioCaseOpening > .eyebrow {
+.portfolioCaseOpening > .eyebrow,
+.portfolioCaseTop {
   margin: 0 0 28px;
+}
+
+.portfolioCaseTop .eyebrow {
+  margin: 0;
 }
 
 .portfolioCaseOpening h2 em {
@@ -1971,6 +1976,61 @@ footer h2 {
 
 .portfolioCase--relief:hover {
   box-shadow: 14px 14px 0 var(--acid);
+}
+
+.portfolioCase--statestreet,
+.portfolioCase--statestreet:hover {
+  box-shadow: 14px 14px 0 var(--lavender);
+}
+
+/* Discreet client logo, right-aligned on the case label line */
+.portfolioCaseTop {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.portfolioCaseTop .eyebrow {
+  min-width: 0;
+}
+
+.portfolioCaseLogo {
+  flex-shrink: 0;
+  height: 32px;
+  opacity: 0.38;
+  pointer-events: none;
+  width: auto;
+}
+
+.portfolioCaseLogo--mindfulife {
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 72px;
+  object-fit: contain;
+  opacity: 0.5;
+  padding: 0;
+  width: 72px;
+}
+
+.portfolioCaseLogo--statestreet {
+  height: 28px;
+}
+
+@media (max-width: 760px) {
+  .portfolioCaseLogo {
+    height: 24px;
+  }
+
+  .portfolioCaseLogo--mindfulife {
+    height: 52px;
+    width: 52px;
+  }
+
+  .portfolioCaseLogo--statestreet {
+    height: 20px;
+  }
 }
 
 .portfolioCase--static .portfolioCaseFace {
@@ -3749,11 +3809,11 @@ footer h2 {
   }
 
   .portfolioArrow--previous {
-    left: calc(50% - 104px);
+    left: calc(50% - 132px);
   }
 
   .portfolioArrow--next {
-    right: calc(50% - 104px);
+    right: calc(50% - 132px);
   }
 
   .portfolioArrow:hover,
@@ -3777,6 +3837,11 @@ footer h2 {
   .portfolioCase--relief,
   .portfolioCase--relief:hover {
     box-shadow: 8px 8px 0 var(--acid);
+  }
+
+  .portfolioCase--statestreet,
+  .portfolioCase--statestreet:hover {
+    box-shadow: 8px 8px 0 var(--lavender);
   }
 
   .portfolioCase--static .portfolioCaseFace {
