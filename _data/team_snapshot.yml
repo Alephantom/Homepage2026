@@ -1,7 +1,8 @@
 # Free Team Snapshot: the six questions, their answers, and what each answer means.
 # Keep the option order the same for every question: clear, partly, stuck, not sure.
 # The page maps them to the statuses in _data/team_snapshot_results.yml
-# (clear / attention / stuck / unsure) by position.
+# (clear / attention / stuck / unsure) by position. "Not sure" answers get no score.
+# The German page uses _data/team_snapshot_de.yml with the same ids and structure.
 # `results`: one plain sentence per status, interpreting that answer for this area.
 # `tips`: exactly three small, concrete things a founder can try this week.
 - id: priorities

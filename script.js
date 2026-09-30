@@ -114,10 +114,12 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const portfolioCarousel = document.querySelector("[data-portfolio-carousel]");
 const locationTypewriter = document.querySelector("[data-location-typewriter]");
 
+// Build mailto links by hand: URL.searchParams would encode spaces as "+",
+// which several mail programs show literally in the subject line.
 document.querySelectorAll("[data-i18n-email-subject]").forEach((link) => {
-  const emailUrl = new URL(link.href);
-  emailUrl.searchParams.set("subject", link.dataset.i18nEmailSubject);
-  link.href = emailUrl.toString();
+  const address = (link.getAttribute("href") || "").replace(/^mailto:/i, "").split("?")[0];
+  if (!address) return;
+  link.href = `mailto:${address}?subject=${encodeURIComponent(link.dataset.i18nEmailSubject)}`;
 });
 
 if (portfolioCarousel) {

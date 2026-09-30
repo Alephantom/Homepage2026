@@ -1,0 +1,269 @@
+---
+layout: default
+lang: de
+translation_key: team-snapshot
+translation_url_en: /team-snapshot/
+translation_url_de: /de/team-snapshot/
+title: Team-Snapshot
+seo_title: Kostenloser Team-Snapshot | Anna-Lena Birkner
+description: "Kostenloser Team-Snapshot: eine Selbsteinschätzung in zwei Minuten für Gründer:innen und wachsende Teams, mit sofortigem Ergebnis für jeden Bereich, praktischen Tipps und einem PDF zum Behalten."
+permalink: /de/team-snapshot/
+extra_css: /team-snapshot.css
+# Words used by team-snapshot.js: results, booking message, newsletter messages and the PDF.
+# {name} placeholders are filled in by the script. Same keys as team-snapshot.html (English page).
+snapshot_ui:
+  dateLocale: "de-DE"
+  listSeparator: ", "
+  # Questions and results on the page
+  progress: "{count} von {total} beantwortet"
+  errorNoAnswer: "Beantworte mindestens eine Frage, um dein Ergebnis zu sehen."
+  announceScore: "Dein Ergebnis ist da. Gesamtergebnis {score} von 100: {level}."
+  announceNoScore: "Dein Ergebnis ist da. Es gibt kein Gesamtergebnis, weil keine deiner Antworten eine Punktzahl hat."
+  overallTitle: "Gesamtergebnis"
+  outOf: "/100"
+  basisAll: "Berechnet aus allen {total} Bereichen."
+  basisSome: "Berechnet aus {scored} von {total} Bereichen ({details})."
+  basisNone: "Kein Bereich hat eine Punktzahl ({details})."
+  detailUnsure: "{count} mit „nicht sicher“ markiert"
+  detailSkipped: "{count} nicht beantwortet"
+  startTitle: "Wo du anfangen kannst"
+  tipsLabel: "Diese Woche ausprobieren"
+  startRef: "Dein Startpunkt: Die Tipps dazu findest du oben unter „Wo du anfangen kannst“."
+  statusScore: "{label} · {score}/100"
+  statusNoScore: "{label} · ohne Punktzahl"
+  unsureNote: "Zu „{label}“: {note}"
+  areasTitle: "Alle sechs Bereiche"
+  # One line per area in the booking message and the newsletter signup
+  lineScored: "{topic}: {label} ({score}/100)"
+  lineUnsure: "{topic}: {label} (nicht sicher)"
+  lineNotAnswered: "{topic}: {label}"
+  brevoLineScored: "{topic}: {label} ({score})"
+  # Booking message, filled into the contact form after „Deinen Clarity Check buchen“
+  bookGreeting: "Hallo Anna-Lena,"
+  bookIntro: "ich habe gerade den kostenlosen Team-Snapshot gemacht und möchte einen Clarity Check buchen."
+  bookTeam: "Team oder Unternehmen: {team}"
+  bookResults: "Meine Ergebnisse aus dem Team-Snapshot:"
+  bookOverall: "Gesamt: {score}/100 ({level})"
+  bookOverallSome: "Gesamt: {score}/100 ({level}), berechnet aus {scored} von {total} Bereichen"
+  bookOverallNone: "Gesamt: keine Punktzahl (bei den beantworteten Bereichen war ich mir nicht sicher)"
+  bookChallenge: "Die Herausforderung, um die es gehen soll:"
+  bookTeamPrompt: "Unser Team (was wir machen, ungefähr wie viele Personen):"
+  # Newsletter signup
+  signupLocale: "de"
+  signupEmailMissing: "Bitte gib deine E-Mail-Adresse ein."
+  signupEmailInvalid: "Bitte prüf deine E-Mail-Adresse. Sie sollte so aussehen: name@firma.de."
+  signupConsentMissing: "Bitte setz das Häkchen, wenn du den Newsletter bekommen möchtest."
+  signupSending: "Wird gesendet…"
+  signupRetry: "Erneut versuchen"
+  signupSuccess: "Fast geschafft – bitte schau in dein Postfach und bestätige deine Anmeldung."
+  signupFailure: "Das hat leider nicht geklappt. Bitte prüf deine Verbindung und versuch es noch einmal."
+  signupPreview: "Nur Vorschau: Die Newsletter-Anmeldung ist noch nicht verbunden (brevo_form_url in _config.yml setzen). Es wurde nichts gesendet."
+  # PDF download
+  pdfCreating: "PDF wird erstellt…"
+  pdfReady: "Dein PDF ist fertig."
+  pdfError: "Das PDF konnte leider nicht erstellt werden. Stattdessen öffnet sich das Druckfenster deines Browsers: Wähle dort „Als PDF speichern“."
+  pdfFileName: "Team-Snapshot"
+  printTitle: "Team-Snapshot"
+  pdfDocTitle: "Dein Team-Snapshot"
+  pdfEyebrow: "Kostenloser Team-Snapshot"
+  pdfTitle: "Dein Team-Snapshot"
+  pdfCtaEyebrow: "Der nächste Schritt · Clarity Check"
+  pdfCtaTitle: "Wünschst du dir einen Blick von außen?"
+  pdfCtaText: "Dein Snapshot zeigt, wo du hinschauen solltest, aber nicht, warum es dort hakt. Der Clarity Check nimmt eine konkrete Herausforderung in eurem echten Arbeitsalltag unter die Lupe: Wir sprechen darüber, ich sehe mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan – plus ein Folgegespräch, in dem wir ihn gemeinsam durchgehen."
+  pdfCtaPrice: "Clarity Check: {price} · eine konkrete Herausforderung"
+  pdfCtaReach: "Du möchtest ihn buchen oder erst einmal in einem kostenlosen 30-minütigen Orientierungsgespräch darüber sprechen? Melde dich gern:"
+  pdfContactEmail: "E-Mail: {email}"
+  pdfContactWeb: "Online: {url}"
+  pdfContactPhone: "Telefon: {phone}"
+  pdfFooter: "{website} · {email}"
+  pdfPage: "Seite {page} von {pages}"
+---
+{% comment %}
+  Page settings. team-snapshot.html (English) has the same block with the English data files, price and contact page.
+{% endcomment %}
+{% assign snapshot_questions = site.data.team_snapshot_de %}
+{% assign snapshot_results = site.data.team_snapshot_results_de %}
+{% assign clarity_price = site.data.offer_prices.clarity_check.de %}
+{% assign contact_path = '/de/kontakt/' %}
+{% assign contact_form_hash = '#schreiben' %}
+{% assign privacy_path = '/privacy/' %}
+{% assign legal_phone = site.legal.phone | default: "" | strip %}
+{% assign contact_endpoint = site.contact_form_endpoint | default: "" | strip %}
+
+{% assign status_keys = "clear,attention,stuck,unsure" | split: "," %}
+{% assign question_count = snapshot_questions | size %}
+{% capture book_href %}{{ contact_path | relative_url }}?topic=clarity-check{{ contact_form_hash }}{% endcapture %}
+{% comment %}
+  The PDF links to the live site. `jekyll serve` swaps site.url for localhost, so the PDF uses the public address there.
+{% endcomment %}
+{% assign public_url = site.url | default: "" %}
+{% if public_url == "" or public_url contains "localhost" or public_url contains "127.0.0.1" %}{% assign public_url = "https://annalenabirkner.com" %}{% endif %}
+{% assign public_host = public_url | remove_first: "https://" | remove_first: "http://" | split: "/" | first %}
+{% comment %}
+  Newsletter signup in the results (Brevo). "live" = brevo_form_url is set; "preview" = not set, local
+  preview only (shows a notice, nothing is sent); "off" = not set on the live site (block not rendered).
+{% endcomment %}
+{% assign signup_url = site.brevo_form_url | default: "" | strip %}
+{% if signup_url != "" %}{% assign signup_mode = "live" %}{% elsif jekyll.environment == "development" %}{% assign signup_mode = "preview" %}{% else %}{% assign signup_mode = "off" %}{% endif %}
+{% capture privacy_line %}Deine Antworten werden nicht gespeichert und verlassen deinen Browser nur, wenn du sie selbst abschickst.{% endcapture %}
+<div class="clarityPage snapshotPage" data-snapshot>
+  <section class="clarityHero" aria-labelledby="clarity-title">
+    <div class="clarityHeroCopy">
+      <p class="eyebrow">Kostenloser Team-Snapshot · 2 Minuten · Sofort-Ergebnis</p>
+      <h1 id="clarity-title">Wo gerät die Arbeit<br><em>ins Stocken?</em></h1>
+      <p class="clarityLead">Für Gründer:innen und wachsende Teams, die spüren, dass die Arbeit reibungsloser laufen könnte, aber nicht genau wissen, wo sie anfangen sollen.</p>
+      <p>Beantworte sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft. Du siehst sofort, welche Bereiche gut funktionieren, welche Aufmerksamkeit brauchen und was du diese Woche ausprobieren kannst. Das Problem musst du dafür nicht schon genau benennen können.</p>
+      <a class="clarityButton" href="#reflections">Snapshot starten <span aria-hidden="true">↓</span></a>
+    </div>
+    <aside class="clarityNote" aria-label="So funktioniert der Team-Snapshot">
+      <p class="eyebrow">So funktioniert’s</p>
+      <h2>Zwei Minuten.<br><em>Ein klarer erster Schritt.</em></h2>
+      <ol>
+        <li><span aria-hidden="true">01</span><div><strong>Beantworte sechs Fragen.</strong><p>Zu Prioritäten, Entscheidungen und dem Arbeitsalltag.</p></div></li>
+        <li><span aria-hidden="true">02</span><div><strong>Sieh dir dein Ergebnis für jeden Bereich an.</strong><p>Direkt hier auf der Seite, sobald du fertig bist.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><strong>Hol dir praktische Tipps und lade dein Ergebnis als PDF herunter.</strong><p>Kleine Schritte, die du diese Woche ausprobieren kannst – zum Behalten oder zum Teilen mit deinem Team.</p></div></li>
+      </ol>
+      <p class="clarityNoteEmail">{{ privacy_line }}</p>
+      <p class="clarityNoteWhy">Ich habe den Snapshot gebaut, damit du ganz in Ruhe einen ehrlichen ersten Blick werfen kannst. Ohne Gespräch, ohne Anmeldung.</p>
+      <p class="claritySignature">Anna-Lena</p>
+    </aside>
+  </section>
+
+  <form id="snapshot-form" data-snapshot-form novalidate>
+    <section class="clarityReflections" id="reflections" aria-labelledby="reflections-title">
+      <div class="claritySectionIntro">
+        <p class="eyebrow">Sechs Fragen · Etwa zwei Minuten</p>
+        <div>
+          <h2 id="reflections-title" tabindex="-1">Schau auf das, <em>was wirklich passiert.</em></h2>
+          <p>Denk an die letzten Wochen und wähl die Antwort, die deiner Erfahrung am nächsten kommt. Es gibt keine richtigen oder falschen Antworten.</p>
+          <p>Wenn du dir nicht sicher bist, sag es ruhig – auch das sagt etwas aus. Einzelne Fragen kannst du überspringen.</p>
+        </div>
+      </div>
+      {% for question in snapshot_questions %}
+      <div class="clarityQuestionRow">
+        <div class="clarityQuestionMeta" aria-hidden="true"><span>{{ forloop.index | prepend: '0' }}</span><span>{{ question.topic }}</span></div>
+        <fieldset class="clarityQuestion" data-question-id="{{ question.id | escape }}" aria-describedby="{{ question.id }}-help">
+          <legend>{{ question.question }}</legend>
+          <p id="{{ question.id }}-help">{{ question.help }}</p>
+          <div class="clarityOptions">
+            {% for option in question.options %}
+            <label class="clarityOption"><input type="radio" name="{{ question.id | escape }}" value="{{ status_keys[forloop.index0] }}"><span>{{ option }}</span></label>
+            {% endfor %}
+          </div>
+        </fieldset>
+      </div>
+      {% endfor %}
+
+      <div class="snapshotSubmit">
+        <div class="clarityQuestionMeta"><span aria-hidden="true">→</span><span>Dein Ergebnis</span></div>
+        <div class="snapshotSubmitBody">
+          <p class="snapshotProgress" data-snapshot-progress aria-live="polite">0 von {{ question_count }} beantwortet</p>
+          <div class="clarityField">
+            <label for="snapshot-team">Team- oder Firmenname <span>(optional)</span></label>
+            <input id="snapshot-team" name="team" autocomplete="organization" maxlength="80" aria-describedby="snapshot-team-hint">
+            <p class="clarityFieldHint" id="snapshot-team-hint">Erscheint in deinem Ergebnis, im PDF und in deiner Buchungsnachricht{% if signup_mode != "off" %} – und steht schon im Newsletter-Formular, falls du dich anmeldest{% endif %}.</p>
+          </div>
+          <button class="clarityButton" type="submit" data-snapshot-submit disabled>Mein Ergebnis anzeigen <span aria-hidden="true">↓</span></button>
+          <p class="snapshotError" data-snapshot-error aria-live="polite"></p>
+          <p class="clarityHelper">Dein Ergebnis erscheint sofort hier auf der Seite. {{ privacy_line }} <a class="clarityPrivacy" href="{{ privacy_path | relative_url }}" hreflang="en">Datenschutzdetails (auf Englisch)</a></p>
+          <noscript><p class="snapshotNoscript">Der Team-Snapshot braucht JavaScript, um dein Ergebnis zu berechnen, und alles bleibt dabei in deinem Browser. Wenn du lieber darüber sprechen möchtest, <a href="{{ contact_path | relative_url }}">buch ein kostenloses 30-minütiges Orientierungsgespräch</a>.</p></noscript>
+          <p class="snapshotSrOnly" data-snapshot-announce aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <section class="snapshotResults" id="results" tabindex="-1" aria-labelledby="results-title" hidden>
+    <div class="snapshotResultsHeader">
+      <div>
+        <p class="eyebrow">Dein Ergebnis · Kostenloser Team-Snapshot</p>
+        <h2 id="results-title" tabindex="-1">Dein Team-Snapshot</h2>
+        <p class="snapshotMeta"><span data-snapshot-team></span><span data-snapshot-date></span></p>
+      </div>
+      <div class="snapshotActionsWrap">
+        <div class="snapshotActions">
+          <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-pdf><span data-snapshot-pdf-label>PDF herunterladen</span> <span aria-hidden="true">↓</span></button>
+          <button class="snapshotActionButton" type="button" data-snapshot-edit>Antworten ändern <span aria-hidden="true">↑</span></button>
+        </div>
+        <p class="snapshotPdfStatus" data-snapshot-pdf-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="snapshotSummary">
+      <div class="snapshotOverall" data-snapshot-overall></div>
+      <div class="snapshotStart" data-snapshot-start></div>
+    </div>
+
+    <div class="snapshotAreasIntro">
+      <h3 class="eyebrow snapshotAreasTitle">Alle sechs Bereiche</h3>
+      <p class="snapshotNote" data-snapshot-unsure-note hidden></p>
+    </div>
+    <ol class="snapshotAreas" data-snapshot-areas></ol>
+
+    <div class="snapshotBottomActions">
+      <p>Behalte dein Ergebnis und die Tipps: Lade sie als PDF herunter, um sie später noch einmal zu lesen oder mit deinem Team zu teilen.</p>
+      <div class="snapshotActionsWrap">
+        <div class="snapshotActions">
+          <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-pdf><span data-snapshot-pdf-label>PDF herunterladen</span> <span aria-hidden="true">↓</span></button>
+          <button class="snapshotActionButton" type="button" data-snapshot-edit>Antworten ändern <span aria-hidden="true">↑</span></button>
+        </div>
+        <p class="snapshotPdfStatus" data-snapshot-pdf-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    {% if signup_mode != "off" %}
+    <section class="snapshotSignup" aria-labelledby="snapshot-signup-title">
+      <h3 id="snapshot-signup-title">Hol dir meinen vierteljährlichen Newsletter: <em>praktische Ideen zu Menschen und Prozessen.</em></h3>
+      <form class="snapshotSignupForm" method="post" novalidate data-signup-form data-signup-mode="{{ signup_mode }}"{% if signup_mode == "live" %} data-signup-url="{{ signup_url | escape }}"{% endif %}>
+        {% if signup_mode == "preview" %}<p class="snapshotSignupPreview" data-signup-preview>Nur Vorschau: Die Newsletter-Anmeldung ist noch nicht verbunden (brevo_form_url in _config.yml setzen)</p>{% endif %}
+        <div data-signup-fields>
+          <div class="snapshotSignupFields">
+            <div class="clarityField">
+              <label for="signup-email">E-Mail-Adresse</label>
+              <input id="signup-email" name="email" type="email" autocomplete="email" spellcheck="false" maxlength="254" required aria-describedby="signup-email-error">
+              <p class="snapshotFieldError" id="signup-email-error"></p>
+            </div>
+            <div class="clarityField">
+              <label for="signup-company">Firmenname <span>(optional)</span></label>
+              <input id="signup-company" name="company" autocomplete="organization" maxlength="80">
+            </div>
+          </div>
+          <div class="snapshotConsent">
+            <input id="signup-consent" name="consent" type="checkbox" value="1" required aria-describedby="signup-consent-error">
+            <p class="snapshotConsentText"><label for="signup-consent">Ja, ich möchte den vierteljährlichen Newsletter und gelegentliche Angebote von Anna-Lena Birkner per E-Mail bekommen. Ich kann mich jederzeit wieder abmelden.</label> <a class="clarityPrivacy" href="{{ privacy_path | relative_url }}#newsletter" hreflang="en">Datenschutzerklärung (auf Englisch)</a></p>
+          </div>
+          <p class="snapshotFieldError" id="signup-consent-error"></p>
+          <div class="snapshotHoneypot" aria-hidden="true">
+            <label for="signup-check">Dieses Feld bitte leer lassen</label>
+            <input id="signup-check" name="email_address_check" type="text" value="" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="snapshotSignupFoot">
+            <p class="snapshotSignupNote">Deine E-Mail-Adresse, dein Firmenname und deine Snapshot-Ergebnisse werden an meinen Newsletter-Dienst Brevo übermittelt. Angemeldet bist du erst, wenn du den Link in der Bestätigungs-E-Mail anklickst.</p>
+            <button class="clarityButton snapshotSignupButton" type="submit" data-signup-submit><span data-signup-label>Anmelden</span><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <p class="snapshotSignupStatus" data-signup-status role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+    </section>
+    {% endif %}
+
+    <aside class="snapshotCta" aria-labelledby="snapshot-cta-title">
+      <div class="snapshotCtaCopy">
+        <p class="eyebrow">Der nächste Schritt · Clarity Check</p>
+        <h3 id="snapshot-cta-title">Wünschst du dir einen <em>Blick von außen?</em></h3>
+        <p>Dein Snapshot zeigt, wo du hinschauen solltest, aber nicht, warum es dort hakt. Wenn ein Bereich immer wieder auftaucht, schaut sich der Clarity Check ihn in eurem echten Arbeitsalltag an: Wir sprechen darüber, ich sehe mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan – plus ein Folgegespräch, in dem wir ihn gemeinsam durchgehen.</p>
+      </div>
+      <div class="snapshotCtaActions">
+        <p class="snapshotPrice">{{ clarity_price | escape }}</p>
+        <p class="snapshotPriceNote">Eine konkrete Herausforderung</p>
+        <a class="clarityButton snapshotBookButton" href="{{ book_href }}" data-snapshot-book data-prefill-topic="clarity-check"><span>Deinen Clarity Check buchen</span><span aria-hidden="true">→</span></a>
+        <p class="snapshotCtaHint">{% if contact_endpoint != "" %}Führt dich zu meinem Kontaktformular. Dein Snapshot-Ergebnis steht dort schon in der Nachricht, und du kannst es ergänzen oder ändern. Gesendet wird erst, wenn du selbst auf Senden klickst.{% else %}Führt dich zu meiner Kontaktseite. Wenn du dort dein E-Mail-Programm öffnest, steht dein Snapshot-Ergebnis schon im Entwurf, und du kannst es ergänzen oder ändern. Gesendet wird erst, wenn du die E-Mail selbst abschickst.{% endif %}</p>
+        <a class="snapshotCtaSecondary" href="{{ contact_path | relative_url }}?topic=general">Lieber persönlich sprechen? Kostenloses 30-minütiges Orientierungsgespräch buchen <span aria-hidden="true">↗</span></a>
+      </div>
+    </aside>
+
+    <p class="snapshotPrintOnly">Wünschst du dir einen Blick von außen? Der Clarity Check ({{ clarity_price | escape }}) nimmt eine Herausforderung in eurem echten Arbeitsalltag unter die Lupe und endet mit einem schriftlichen Prioritätenplan. {{ site.legal.owner_name | escape }} · {{ public_host | escape }} · {{ site.legal.email | escape }}{% if legal_phone != "" %} · {{ legal_phone | escape }}{% endif %}</p>
+  </section>
+</div>
+<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"clarityCheck":{"price":{{ clarity_price | jsonify }}},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=clarity-check" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
+<script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

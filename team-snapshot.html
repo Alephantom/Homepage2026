@@ -1,14 +1,111 @@
 ---
 layout: default
 lang: en
+translation_key: team-snapshot
+translation_url_en: /team-snapshot/
+translation_url_de: /de/team-snapshot/
 title: Team Snapshot
 seo_title: Free Team Snapshot | Anna-Lena Birkner
 description: "Free Team Snapshot: a two-minute self-assessment for founders and growing teams, with an instant score per area, practical tips and a PDF to keep."
 permalink: /team-snapshot/
 extra_css: /team-snapshot.css
+# Words used by team-snapshot.js: results, booking message, newsletter messages and the PDF.
+# {name} placeholders are filled in by the script. de/team-snapshot.html has the same keys in German.
+snapshot_ui:
+  dateLocale: "en-GB"
+  listSeparator: ", "
+  # Questions and results on the page
+  progress: "{count} of {total} answered"
+  errorNoAnswer: "Choose an answer for at least one question to see your results."
+  announceScore: "Your results are ready. Overall score {score} out of 100: {level}."
+  announceNoScore: "Your results are ready. There’s no overall score, because none of your answers has a score."
+  overallTitle: "Overall score"
+  outOf: "/100"
+  basisAll: "Based on all {total} areas."
+  basisSome: "Based on {scored} of {total} areas ({details})."
+  basisNone: "No area has a score ({details})."
+  detailUnsure: "{count} marked ‘not sure’"
+  detailSkipped: "{count} not answered"
+  startTitle: "Where to start"
+  tipsLabel: "Try this week"
+  startRef: "Your starting point: see the tips under “Where to start” above."
+  statusScore: "{label} · {score}/100"
+  statusNoScore: "{label} · no score"
+  unsureNote: "About “{label}”: {note}"
+  areasTitle: "All six areas"
+  # One line per area in the booking message and the newsletter signup
+  lineScored: "{topic}: {label} ({score}/100)"
+  lineUnsure: "{topic}: {label} (not sure)"
+  lineNotAnswered: "{topic}: {label}"
+  brevoLineScored: "{topic}: {label} ({score})"
+  # Booking message, filled into the contact form after “Book your Clarity Check”
+  bookGreeting: "Hi Anna-Lena,"
+  bookIntro: "I’ve just done the free Team Snapshot and I’d like to book a Clarity Check."
+  bookTeam: "Team or company: {team}"
+  bookResults: "My Team Snapshot results:"
+  bookOverall: "Overall: {score}/100 ({level})"
+  bookOverallSome: "Overall: {score}/100 ({level}), based on {scored} of {total} areas"
+  bookOverallNone: "Overall: no score (I wasn’t sure about the areas I answered)"
+  bookChallenge: "The challenge I’d like to look at:"
+  bookTeamPrompt: "Our team (what we do, roughly how many people):"
+  # Newsletter signup
+  signupLocale: "en"
+  signupEmailMissing: "Please enter your email address."
+  signupEmailInvalid: "Please check your email address. It should look like name@company.com."
+  signupConsentMissing: "Please tick the box if you’d like the newsletter."
+  signupSending: "Sending…"
+  signupRetry: "Try again"
+  signupSuccess: "Almost done — please check your inbox and confirm your subscription."
+  signupFailure: "Sorry, that didn’t go through. Please check your connection and try again."
+  signupPreview: "Preview only: newsletter signup is not connected yet (set brevo_form_url in _config.yml). Nothing was sent."
+  # PDF download
+  pdfCreating: "Creating PDF…"
+  pdfReady: "Your PDF is ready."
+  pdfError: "Sorry, the PDF couldn’t be created. Your browser’s print window opens instead: choose “Save as PDF” there."
+  pdfFileName: "Team-Snapshot"
+  printTitle: "Team Snapshot"
+  pdfDocTitle: "Your Team Snapshot"
+  pdfEyebrow: "Free Team Snapshot"
+  pdfTitle: "Your Team Snapshot"
+  pdfCtaEyebrow: "Going further · Clarity Check"
+  pdfCtaTitle: "Want a second pair of eyes?"
+  pdfCtaText: "Your Snapshot shows where to look, not why it’s happening. The Clarity Check looks at one defined challenge in real context: we talk it through, I review the documents and processes involved, and you get a written priority plan, plus a follow-up conversation to go through it together."
+  pdfCtaPrice: "Clarity Check: {price} · one defined challenge"
+  pdfCtaReach: "To book it, or to talk it through first in a free 30-minute call, get in touch:"
+  pdfContactEmail: "Email: {email}"
+  pdfContactWeb: "Online: {url}"
+  pdfContactPhone: "Phone: {phone}"
+  pdfFooter: "{website} · {email}"
+  pdfPage: "Page {page} of {pages}"
 ---
+{% comment %}
+  Page settings. de/team-snapshot.html has the same block with the German data files, price and contact page.
+{% endcomment %}
+{% assign snapshot_questions = site.data.team_snapshot %}
+{% assign snapshot_results = site.data.team_snapshot_results %}
+{% assign clarity_price = site.data.offer_prices.clarity_check.en %}
+{% assign contact_path = '/contact.html' %}
+{% assign contact_form_hash = '#write' %}
+{% assign privacy_path = '/privacy/' %}
+{% assign legal_phone = site.legal.phone | default: "" | strip %}
+{% assign contact_endpoint = site.contact_form_endpoint | default: "" | strip %}
+
 {% assign status_keys = "clear,attention,stuck,unsure" | split: "," %}
-{% assign question_count = site.data.team_snapshot | size %}
+{% assign question_count = snapshot_questions | size %}
+{% capture book_href %}{{ contact_path | relative_url }}?topic=clarity-check{{ contact_form_hash }}{% endcapture %}
+{% comment %}
+  The PDF links to the live site. `jekyll serve` swaps site.url for localhost, so the PDF uses the public address there.
+{% endcomment %}
+{% assign public_url = site.url | default: "" %}
+{% if public_url == "" or public_url contains "localhost" or public_url contains "127.0.0.1" %}{% assign public_url = "https://annalenabirkner.com" %}{% endif %}
+{% assign public_host = public_url | remove_first: "https://" | remove_first: "http://" | split: "/" | first %}
+{% comment %}
+  Newsletter signup in the results (Brevo). "live" = brevo_form_url is set; "preview" = not set, local
+  preview only (shows a notice, nothing is sent); "off" = not set on the live site (block not rendered).
+{% endcomment %}
+{% assign signup_url = site.brevo_form_url | default: "" | strip %}
+{% if signup_url != "" %}{% assign signup_mode = "live" %}{% elsif jekyll.environment == "development" %}{% assign signup_mode = "preview" %}{% else %}{% assign signup_mode = "off" %}{% endif %}
+{% capture privacy_line %}Your answers aren’t saved, and nothing leaves your browser unless you choose to send it.{% endcapture %}
 <div class="clarityPage snapshotPage" data-snapshot>
   <section class="clarityHero" aria-labelledby="clarity-title">
     <div class="clarityHeroCopy">
@@ -24,10 +121,10 @@ extra_css: /team-snapshot.css
       <ol>
         <li><span aria-hidden="true">01</span><div><strong>Answer six questions.</strong><p>About priorities, decisions and everyday work.</p></div></li>
         <li><span aria-hidden="true">02</span><div><strong>See your score for each area instantly.</strong><p>Right here on the page, the moment you’re done.</p></div></li>
-        <li><span aria-hidden="true">03</span><div><strong>Get practical tips and save your results as a PDF.</strong><p>Small steps you can try this week, on a page you can keep or share with your team.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><strong>Get practical tips and download your results as a PDF.</strong><p>Small steps you can try this week, on a page you can keep or share with your team.</p></div></li>
       </ol>
-      <p class="clarityNoteEmail">Everything runs in your browser. Nothing is sent or stored.</p>
-      <p class="clarityNoteWhy">I made this so you can take an honest first look on your own. No call, no sign-up.</p>
+      <p class="clarityNoteEmail">{{ privacy_line }}</p>
+      <p class="clarityNoteWhy">I made this so you can take an honest first look on your own. No call, no sign-up needed.</p>
       <p class="claritySignature">Anna-Lena</p>
     </aside>
   </section>
@@ -42,7 +139,7 @@ extra_css: /team-snapshot.css
           <p>If you’re not sure, say so: that tells you something too. You can also skip a question.</p>
         </div>
       </div>
-      {% for question in site.data.team_snapshot %}
+      {% for question in snapshot_questions %}
       <div class="clarityQuestionRow">
         <div class="clarityQuestionMeta" aria-hidden="true"><span>{{ forloop.index | prepend: '0' }}</span><span>{{ question.topic }}</span></div>
         <fieldset class="clarityQuestion" data-question-id="{{ question.id | escape }}" aria-describedby="{{ question.id }}-help">
@@ -62,13 +159,14 @@ extra_css: /team-snapshot.css
         <div class="snapshotSubmitBody">
           <p class="snapshotProgress" data-snapshot-progress aria-live="polite">0 of {{ question_count }} answered</p>
           <div class="clarityField">
-            <label for="snapshot-team">Team or company name <span>(optional, used on your results, PDF and booking email)</span></label>
-            <input id="snapshot-team" name="team" autocomplete="organization" maxlength="80">
+            <label for="snapshot-team">Team or company name <span>(optional)</span></label>
+            <input id="snapshot-team" name="team" autocomplete="organization" maxlength="80" aria-describedby="snapshot-team-hint">
+            <p class="clarityFieldHint" id="snapshot-team-hint">Shown on your results, your PDF and your booking message{% if signup_mode != "off" %}, and filled in for you if you sign up for the newsletter{% endif %}.</p>
           </div>
           <button class="clarityButton" type="submit" data-snapshot-submit disabled>Show my results <span aria-hidden="true">↓</span></button>
           <p class="snapshotError" data-snapshot-error aria-live="polite"></p>
-          <p class="clarityHelper">Your results appear on this page straight away. Everything runs in your browser. Nothing is sent or stored. <a class="clarityPrivacy" href="{{ '/privacy/' | relative_url }}">Privacy details</a></p>
-          <noscript><p class="snapshotNoscript">The Team Snapshot needs JavaScript to work out your results, and it all stays in your browser. If you’d rather talk it through, <a href="{{ '/contact.html' | relative_url }}">book a free 30-minute call</a>.</p></noscript>
+          <p class="clarityHelper">Your results appear on this page straight away. {{ privacy_line }} <a class="clarityPrivacy" href="{{ privacy_path | relative_url }}">Privacy details</a></p>
+          <noscript><p class="snapshotNoscript">The Team Snapshot needs JavaScript to work out your results, and it all stays in your browser. If you’d rather talk it through, <a href="{{ contact_path | relative_url }}">book a free 30-minute call</a>.</p></noscript>
           <p class="snapshotSrOnly" data-snapshot-announce aria-live="polite"></p>
         </div>
       </div>
@@ -82,9 +180,12 @@ extra_css: /team-snapshot.css
         <h2 id="results-title" tabindex="-1">Your Team Snapshot</h2>
         <p class="snapshotMeta"><span data-snapshot-team></span><span data-snapshot-date></span></p>
       </div>
-      <div class="snapshotActions">
-        <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-print>Save as PDF <span aria-hidden="true">↓</span></button>
-        <button class="snapshotActionButton" type="button" data-snapshot-edit>Change my answers <span aria-hidden="true">↑</span></button>
+      <div class="snapshotActionsWrap">
+        <div class="snapshotActions">
+          <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-pdf><span data-snapshot-pdf-label>Download PDF</span> <span aria-hidden="true">↓</span></button>
+          <button class="snapshotActionButton" type="button" data-snapshot-edit>Change my answers <span aria-hidden="true">↑</span></button>
+        </div>
+        <p class="snapshotPdfStatus" data-snapshot-pdf-status role="status" aria-live="polite"></p>
       </div>
     </div>
 
@@ -99,6 +200,53 @@ extra_css: /team-snapshot.css
     </div>
     <ol class="snapshotAreas" data-snapshot-areas></ol>
 
+    <div class="snapshotBottomActions">
+      <p>Keep your results and tips: download them as a PDF to read again or share with your team.</p>
+      <div class="snapshotActionsWrap">
+        <div class="snapshotActions">
+          <button class="snapshotActionButton snapshotActionButton--primary" type="button" data-snapshot-pdf><span data-snapshot-pdf-label>Download PDF</span> <span aria-hidden="true">↓</span></button>
+          <button class="snapshotActionButton" type="button" data-snapshot-edit>Change my answers <span aria-hidden="true">↑</span></button>
+        </div>
+        <p class="snapshotPdfStatus" data-snapshot-pdf-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    {% if signup_mode != "off" %}
+    <section class="snapshotSignup" aria-labelledby="snapshot-signup-title">
+      <h3 id="snapshot-signup-title">Get my quarterly newsletter: <em>practical ideas on people and process.</em></h3>
+      <form class="snapshotSignupForm" method="post" novalidate data-signup-form data-signup-mode="{{ signup_mode }}"{% if signup_mode == "live" %} data-signup-url="{{ signup_url | escape }}"{% endif %}>
+        {% if signup_mode == "preview" %}<p class="snapshotSignupPreview" data-signup-preview>Preview only: newsletter signup is not connected yet (set brevo_form_url in _config.yml)</p>{% endif %}
+        <div data-signup-fields>
+          <div class="snapshotSignupFields">
+            <div class="clarityField">
+              <label for="signup-email">Email address</label>
+              <input id="signup-email" name="email" type="email" autocomplete="email" spellcheck="false" maxlength="254" required aria-describedby="signup-email-error">
+              <p class="snapshotFieldError" id="signup-email-error"></p>
+            </div>
+            <div class="clarityField">
+              <label for="signup-company">Company name <span>(optional)</span></label>
+              <input id="signup-company" name="company" autocomplete="organization" maxlength="80">
+            </div>
+          </div>
+          <div class="snapshotConsent">
+            <input id="signup-consent" name="consent" type="checkbox" value="1" required aria-describedby="signup-consent-error">
+            <p class="snapshotConsentText"><label for="signup-consent">Yes, send me the quarterly newsletter and occasional offers. Unsubscribe any time.</label> <a class="clarityPrivacy" href="{{ privacy_path | relative_url }}#newsletter">Privacy policy</a></p>
+          </div>
+          <p class="snapshotFieldError" id="signup-consent-error"></p>
+          <div class="snapshotHoneypot" aria-hidden="true">
+            <label for="signup-check">Leave this field empty</label>
+            <input id="signup-check" name="email_address_check" type="text" value="" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="snapshotSignupFoot">
+            <p class="snapshotSignupNote">Your email address, company name and Snapshot scores go to Brevo, my newsletter service. You’ll get an email to confirm.</p>
+            <button class="clarityButton snapshotSignupButton" type="submit" data-signup-submit><span data-signup-label>Sign me up</span><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <p class="snapshotSignupStatus" data-signup-status role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+    </section>
+    {% endif %}
+
     <aside class="snapshotCta" aria-labelledby="snapshot-cta-title">
       <div class="snapshotCtaCopy">
         <p class="eyebrow">Going further · Clarity Check</p>
@@ -106,16 +254,16 @@ extra_css: /team-snapshot.css
         <p>Your Snapshot shows where to look, not why it’s happening. If one area keeps coming up, the Clarity Check looks at it in real context: we talk it through, I review the documents and processes involved, and you get a written priority plan, plus a follow-up conversation to go through it together.</p>
       </div>
       <div class="snapshotCtaActions">
-        <p class="snapshotPrice">{{ site.data.offer_prices.clarity_check.en | escape }}</p>
+        <p class="snapshotPrice">{{ clarity_price | escape }}</p>
         <p class="snapshotPriceNote">One defined challenge</p>
-        <a class="clarityButton snapshotBookButton" href="mailto:{{ site.legal.email | escape }}?subject=Booking%20a%20Clarity%20Check" data-snapshot-book><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
-        <p class="snapshotCtaHint">Opens a draft in your email app with your Snapshot scores (and team name, if you added one) filled in. Nothing is sent until you press send.</p>
-        <a class="snapshotCtaSecondary" href="{{ '/contact.html' | relative_url }}">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a>
+        <a class="clarityButton snapshotBookButton" href="{{ book_href }}" data-snapshot-book data-prefill-topic="clarity-check"><span>Book your Clarity Check</span><span aria-hidden="true">→</span></a>
+        <p class="snapshotCtaHint">{% if contact_endpoint != "" %}Takes you to my contact form with your Snapshot results already in the message, ready for you to add to or change. Nothing is sent until you press send.{% else %}Takes you to my contact page. When you open your email program from there, your Snapshot results are already in the draft, ready for you to add to or change. Nothing is sent until you send it.{% endif %}</p>
+        <a class="snapshotCtaSecondary" href="{{ contact_path | relative_url }}?topic=general">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a>
       </div>
     </aside>
 
-    <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ site.data.offer_prices.clarity_check.en | escape }}) looks at one challenge in real context and ends with a written priority plan. annalenabirkner.com/team-snapshot · {{ site.legal.email | escape }}</p>
+    <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ clarity_price | escape }}) looks at one challenge in real context and ends with a written priority plan. {{ site.legal.owner_name | escape }} · {{ public_host | escape }} · {{ site.legal.email | escape }}{% if legal_phone != "" %} · {{ legal_phone | escape }}{% endif %}</p>
   </section>
 </div>
-<script type="application/json" id="snapshot-data">{"questions":{{ site.data.team_snapshot | jsonify }},"results":{{ site.data.team_snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"clarityCheck":{"price":{{ site.data.offer_prices.clarity_check.en | jsonify }}},"email":{{ site.legal.email | jsonify }}}</script>
+<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"clarityCheck":{"price":{{ clarity_price | jsonify }}},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=clarity-check" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
 <script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

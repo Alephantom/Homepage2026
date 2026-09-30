@@ -1,0 +1,55 @@
+# Free Team Snapshot, German page (/de/team-snapshot/): how answers are scored and summarised.
+# Same structure, keys and scores as _data/team_snapshot_results.yml (English page); only the wording is German.
+# Each answered area gets the score of its status. Areas marked "not sure" (no `score` below) and
+# skipped areas get no score and are left out of the average.
+# The overall score is the average of the scored areas, rounded to a whole number.
+
+# Status per answer. The answer options in _data/team_snapshot_de.yml map to these by position:
+# 1st option = clear, 2nd = attention, 3rd = stuck, 4th = unsure.
+# A status without a `score` is shown as "<label> · ohne Punktzahl" and doesn't count towards the average.
+statuses:
+  clear:
+    label: Klar
+    score: 100
+  attention:
+    label: Braucht Aufmerksamkeit
+    score: 60
+  stuck:
+    label: Festgefahren
+    score: 20
+  unsure:
+    label: Genauer hinschauen
+    note: Auch Nichtwissen ist eine wertvolle Information. Oft bedeutet es, dass ein Bereich nach Gewohnheiten läuft, über die noch niemand gesprochen hat. Frag also dein Team, wie es diesen Bereich im Alltag erlebt. Bereiche mit „nicht sicher“ bekommen keine Punktzahl und zählen deshalb nicht zu deinem Gesamtergebnis.
+
+# Overall levels, from the highest score down. A score belongs to the first level whose `min` it reaches.
+levels:
+  - id: solid
+    min: 80
+    max: 100
+    title: Solide Grundlagen
+    summary: In den meisten Bereichen läuft die Arbeit gut. Behalte im Blick, was unten markiert ist, und bewahre, was schon funktioniert, während das Team wächst.
+  - id: friction
+    min: 50
+    max: 79
+    title: Reibung an einigen Stellen
+    summary: Manches läuft gut, anderes kostet dein Team Zeit und Energie. Fang mit einem Bereich an – eine kleine, klare Veränderung dort macht den Rest oft leichter.
+  - id: stuck
+    min: 0
+    max: 49
+    title: Mühsamer als nötig
+    summary: Mehrere Bereiche bremsen die tägliche Arbeit aus. Das ist in wachsenden Teams ganz normal – und es lässt sich lösen, Bereich für Bereich.
+
+# Shown for a question that was skipped. It isn't counted in the overall score.
+not_answered:
+  label: Nicht beantwortet
+  text: Du hast diese Frage übersprungen, deshalb zählt sie nicht zu deinem Ergebnis.
+
+# Shown instead of “Where to start” when every scored area is clear and nothing is marked “not sure”.
+all_clear:
+  title: Bewahre, was funktioniert
+  text: Jeder Bereich, den du beantwortet hast, wirkt klar. Achte darauf, dass das so bleibt, während das Team wächst, und mach den Snapshot in ein paar Monaten noch einmal – oder sobald jemand Neues dazukommt.
+
+# Shown instead of the overall score when no answer has a score (every answer was “not sure” or skipped).
+no_score:
+  title: Noch kein Gesamtergebnis
+  text: Bei den Bereichen, die du beantwortet hast, warst du dir nicht sicher – und auch das ist gut zu wissen. Ein guter erster Schritt ist, dein Team zu fragen, wie es diese Bereiche im Alltag erlebt.

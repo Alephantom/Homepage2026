@@ -2,7 +2,7 @@
 layout: null
 permalink: /llms.txt
 ---
-# Anna-Lena Birkner
+{% assign newsletter_url = site.brevo_form_url | default: "" | strip %}# Anna-Lena Birkner
 
 > Anna-Lena Birkner is an independent strategist and operations consultant. She helps founders, decision-makers, and teams turn complex organisational, people, operational, positioning, and responsible-AI questions into clear decisions and practical systems.
 
@@ -17,7 +17,7 @@ Contact: info@annalenabirkner.com
 ## Core services
 
 - [Hands-on strategic support](https://annalenabirkner.com/strategic-support/): Practical support for founders and decision-makers who need to understand a problem, create a useful solution, or stay close to organisational change.
-- [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free two-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a printable one-page summary. No sign-up; it runs entirely in the browser and nothing is sent or stored.
+- [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free two-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a PDF summary to download. {% if newsletter_url != "" %}No sign-up needed: the answers aren’t stored, and nothing leaves the browser unless the visitor chooses to join the optional quarterly newsletter offered with the results.{% else %}No sign-up; it runs entirely in the browser and nothing is sent or stored.{% endif %}
 - [Clarity Check](https://annalenabirkner.com/strategic-support/#clarity-review): A fixed-price look at one defined challenge ({{ site.data.offer_prices.clarity_check.en }}): a video conversation, a review of the relevant documents and processes, a written priority plan, and a follow-up conversation.
 - [Focused Build](https://annalenabirkner.com/strategic-support/#focused-build): The next step after a Clarity Check: a two-week engagement ({{ site.data.offer_prices.focused_build.en }}) with deeper people and set-up analysis, two half-day working sessions, written processes and guidelines for up to 3 recurring issues, and a 2–4 hour team handover.
 - [Interim HR Business Partner](https://annalenabirkner.com/strategic-support/#interim-hr-business-partner): Experienced People & Culture support close to founders, leaders, decisions, and day-to-day implementation. Time commitment, duration and fee are agreed on request.
@@ -42,6 +42,7 @@ Contact: info@annalenabirkner.com
 - [German overview](https://annalenabirkner.com/de/)
 - [Book an orientation call or write in English](https://annalenabirkner.com/contact.html)
 - [Gespräch buchen oder auf Deutsch schreiben](https://annalenabirkner.com/de/kontakt/)
+- [Team-Snapshot auf Deutsch](https://annalenabirkner.com/de/team-snapshot/)
 
 ## Attribution and accuracy
 
