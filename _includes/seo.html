@@ -2,17 +2,28 @@
 {% if page.seo_title %}
   {% assign document_title = page.seo_title %}
 {% elsif page.title %}
-  {% capture document_title %}{{ page.title }} — {{ site.title }}{% endcapture %}
+  {% capture document_title %}{{ page.title }} | {{ site.title }}{% endcapture %}
 {% else %}
   {% assign document_title = site.title %}
 {% endif %}
 {% if page.og_image %}
   {% assign seo_image = page.og_image | absolute_url %}
+  {% assign seo_image_width = page.og_image_width %}
+  {% assign seo_image_height = page.og_image_height %}
 {% else %}
-  {% assign seo_image = '/assets/social-card.png' | absolute_url %}
+  {% assign seo_image = '/assets/social-card.jpg' | absolute_url %}
+  {% assign seo_image_width = 1200 %}
+  {% assign seo_image_height = 628 %}
 {% endif %}
 {% assign canonical_url = page.url | absolute_url %}
 {% assign page_language = page.lang | default: 'en' %}
+{% if page.og_image %}
+  {% assign seo_image_alt = page.og_image_alt | default: page.title %}
+{% elsif page_language == 'de' %}
+  {% assign seo_image_alt = 'Textgrafik: „Anna-Lena. Making space for clearer ideas. Strategist & Maker.“' %}
+{% else %}
+  {% assign seo_image_alt = 'Text graphic: “Anna-Lena. Making space for clearer ideas. Strategist & maker.”' %}
+{% endif %}
 
 <title>{{ document_title | strip | escape }}</title>
 <meta name="description" content="{{ seo_description | strip | escape }}">
@@ -22,7 +33,10 @@
   <meta name="google-site-verification" content="{{ site.google_site_verification | escape }}">
 {% endif %}
 
-<link rel="canonical" href="{{ canonical_url }}">
+{% comment %}No canonical on noindex pages: the 404 page is served at any missing URL.{% endcomment %}
+{% unless page.robots contains 'noindex' %}
+  <link rel="canonical" href="{{ canonical_url }}">
+{% endunless %}
 {% if page.translation_url_en and page.translation_url_de %}
   <link rel="alternate" hreflang="en" href="{{ page.translation_url_en | absolute_url }}">
   <link rel="alternate" hreflang="de" href="{{ page.translation_url_de | absolute_url }}">
@@ -36,78 +50,25 @@
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:title" content="{{ document_title | strip | escape }}">
 <meta property="og:description" content="{{ seo_description | strip | escape }}">
-<meta property="og:url" content="{{ canonical_url }}">
+{% unless page.robots contains 'noindex' %}
+  <meta property="og:url" content="{{ canonical_url }}">
+{% endunless %}
 <meta property="og:image" content="{{ seo_image }}">
-<meta property="og:image:alt" content="{{ page.og_image_alt | default: 'Anna-Lena Birkner — independent strategist and maker' | escape }}">
+{% if seo_image_width and seo_image_height %}
+  <meta property="og:image:width" content="{{ seo_image_width }}">
+  <meta property="og:image:height" content="{{ seo_image_height }}">
+{% endif %}
+<meta property="og:image:alt" content="{{ seo_image_alt | escape }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:locale" content="{% if page_language == 'de' %}de_DE{% else %}en_GB{% endif %}">
+{% if page.translation_url_en and page.translation_url_de %}
+  <meta property="og:locale:alternate" content="{% if page_language == 'de' %}en_GB{% else %}de_DE{% endif %}">
+{% endif %}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ document_title | strip | escape }}">
 <meta name="twitter:description" content="{{ seo_description | strip | escape }}">
 <meta name="twitter:image" content="{{ seo_image }}">
+<meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}">
 
-{% if page.translation_key == 'home' or page.url == '/' %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": {{ canonical_url | append: '#website' | jsonify }},
-        "url": {{ canonical_url | jsonify }},
-        "name": {{ site.title | jsonify }},
-        "alternateName": ["Anna-Lena", "annalenabirkner.com"],
-        "inLanguage": {{ page_language | jsonify }}
-      },
-      {
-        "@type": "Person",
-        "@id": {{ '/#person' | absolute_url | jsonify }},
-        "name": "Anna-Lena Birkner",
-        "url": {{ '/' | absolute_url | jsonify }},
-        "image": {{ '/assets/portrait-friendly.jpg' | absolute_url | jsonify }},
-        "jobTitle": {% if page_language == 'de' %}"Unabhängige Strategin & Operations Consultant"{% else %}"Independent Strategist & Maker"{% endif %},
-        "description": {{ seo_description | strip | jsonify }},
-        "knowsAbout": [
-          "Strategy",
-          "People operations",
-          "Organisational development",
-          "Responsible AI",
-          "Digital products"
-        ]
-      }
-    ]
-  }
-  </script>
-{% elsif page.layout == 'post' %}
-  {% assign published_date = page.publish_date | default: page.date %}
-  {% assign modified_date = page.last_modified_at | default: published_date %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": {{ page.title | jsonify }},
-    "description": {{ seo_description | strip | jsonify }},
-    "image": {{ seo_image | jsonify }},
-    "datePublished": {{ published_date | date_to_xmlschema | jsonify }},
-    "dateModified": {{ modified_date | date_to_xmlschema | jsonify }},
-    "mainEntityOfPage": {{ canonical_url | jsonify }},
-    "author": {
-      "@type": "Person",
-      "@id": {{ '/#person' | absolute_url | jsonify }},
-      "name": "Anna-Lena Birkner",
-      "url": {{ '/' | absolute_url | jsonify }}
-    },
-    "publisher": {
-      "@type": "Person",
-      "@id": {{ '/#person' | absolute_url | jsonify }},
-      "name": "Anna-Lena Birkner"
-    },
-    "isPartOf": {
-      "@type": "Blog",
-      "name": "Human in the Loop",
-      "url": {{ '/blog/' | absolute_url | jsonify }}
-    }
-  }
-  </script>
-{% endif %}
+{% include structured-data.html %}

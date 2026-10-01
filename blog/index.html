@@ -1,9 +1,12 @@
 ---
 layout: default
 title: Human in the Loop
-description: Notes on tools, taste, clarity, and human judgment.
+seo_title: "Journal: Human in the Loop | Anna-Lena Birkner"
+description: "Human in the Loop is Anna-Lena Birkner’s journal: essays on AI, work and society, plus notes on tools, taste, clarity and human judgement."
 extra_css: /blog.css
 permalink: /blog/
+breadcrumb_title: Journal
+schema_page_type: CollectionPage
 ---
 <section class="blogIndex">
   <header class="blogIndexHeader">
@@ -13,7 +16,7 @@ permalink: /blog/
     <h1>Thinking with<br><em>humans in mind.</em></h1>
     <div class="blogIndexNote">
       <span>Ideas in progress</span>
-      <p>Notes on tools, taste, clarity, and staying thoughtful while everything gets faster.</p>
+      <p>Essays by Anna-Lena Birkner on AI, work and society, plus notes on tools, taste, clarity, and staying thoughtful while everything gets faster.</p>
     </div>
   </header>
 
@@ -29,7 +32,7 @@ permalink: /blog/
           <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
         </div>
         <div class="articleSummary">
-          <p>{{ post.excerpt_text }}</p>
+          <p>{{ post.excerpt_text | default: post.meta_description | default: post.description }}</p>
           <a class="articleLink" href="{{ post.url | relative_url }}">
             Read the note <span aria-hidden="true">↗</span>
           </a>

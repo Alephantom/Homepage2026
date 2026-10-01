@@ -107,6 +107,8 @@
 .clarityField label span { font-weight: 400; }
 .clarityField input { background: var(--cream); border: 1px solid rgba(29, 27, 47, 0.5); border-radius: 12px; color: var(--ink); display: block; font-size: 16px; line-height: 1.5; margin-top: 10px; min-height: 48px; padding: 12px 14px; width: 100%; }
 .clarityField input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.clarityField input[aria-invalid="true"] { border: 2px solid var(--coral-text); }
+.clarityFieldHint { font-size: 13px; line-height: 1.55; margin: 8px 0 0; }
 .snapshotError { color: var(--coral-text); font-size: var(--text-small); font-weight: 700; margin: 14px 0 0; }
 .snapshotError:empty { margin: 0; }
 .clarityHelper { font-size: 13px; line-height: 1.65; margin: 14px 0 0; }
@@ -124,6 +126,7 @@
 .snapshotMeta { font-size: var(--text-small); margin: 0; overflow-wrap: anywhere; }
 .snapshotMeta [data-snapshot-team] { font-weight: 700; }
 .snapshotMeta [data-snapshot-team]:not([hidden])::after { content: ' · '; font-weight: 400; }
+.snapshotActionsWrap { min-width: 0; }
 .snapshotActions { display: flex; flex-wrap: wrap; gap: 12px; }
 .snapshotActionButton {
   align-items: center;
@@ -141,10 +144,15 @@
   padding: 14px 20px;
   text-transform: uppercase;
 }
-.snapshotActionButton > span { font-size: 16px; }
+.snapshotActionButton > span[aria-hidden] { font-size: 16px; }
 .snapshotActionButton:hover { background: var(--acid); }
 .snapshotActionButton--primary { background: var(--ink); color: var(--paper); }
 .snapshotActionButton--primary:hover { color: var(--ink); }
+.snapshotActionButton[aria-disabled="true"] { cursor: progress; opacity: 0.72; }
+.snapshotActionButton--primary[aria-disabled="true"]:hover { background: var(--ink); color: var(--paper); }
+.snapshotPdfStatus { font-size: 13px; font-weight: 700; line-height: 1.5; margin: 10px 0 0; max-width: 420px; }
+.snapshotPdfStatus:empty { display: none; }
+.snapshotPdfStatus--error { color: var(--coral-text); }
 
 .snapshotSummary { display: grid; gap: 22px; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
 .snapshotOverall,
@@ -156,7 +164,8 @@
 .clarityPage .snapshotCardTitle { font-family: var(--font-sans); font-weight: 700; margin: 0; }
 .snapshotOverall .snapshotLevelTitle,
 .snapshotStart .snapshotLevelTitle { font-family: var(--font-display); font-size: clamp(30px, 2.8vw, 42px); letter-spacing: -0.045em; line-height: 1.05; margin: 0 0 12px; }
-.snapshotStart .snapshotLevelTitle { margin-top: 22px; }
+.snapshotStart .snapshotLevelTitle,
+.snapshotOverall .snapshotLevelTitle--noScore { margin-top: 22px; }
 .snapshotOverall p:not(.snapshotScore),
 .snapshotStart p { max-width: 560px; }
 .snapshotSmall { border-top: 1px solid var(--line); font-size: 13px; margin: 20px 0 0; padding-top: 14px; }
@@ -185,10 +194,48 @@
 .snapshotArea--attention .snapshotBarFill,
 .snapshotArea--unsure .snapshotBarFill { background: var(--lavender); }
 .snapshotArea--stuck .snapshotBarFill { background: var(--coral); }
-.snapshotArea--none .snapshotBar { border-style: dashed; }
-.snapshotArea--none .snapshotBarFill { display: none; }
+.snapshotArea--none .snapshotBar,
+.snapshotArea--noScore .snapshotBar { border-style: dashed; }
+.snapshotArea--none .snapshotBarFill,
+.snapshotArea--noScore .snapshotBarFill { display: none; }
 .snapshotAreaText { margin: 14px 0 0; max-width: 680px; }
 .snapshotArea--none .snapshotAreaText { font-size: var(--text-small); }
+
+/* Download PDF again after the areas */
+.snapshotBottomActions { align-items: center; border-bottom: 1px solid var(--ink); display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: space-between; padding: 34px 0; }
+.snapshotBottomActions > p { font-size: var(--text-small); margin: 0; max-width: 520px; }
+
+/* Newsletter signup (only in the page when brevo_form_url is set, or in the local preview) */
+.snapshotSignup { background: var(--paper); border: 1px solid var(--ink); border-radius: 16px; margin-top: 56px; padding: 28px 32px 30px; }
+.snapshotSignup h3 { font-size: clamp(24px, 2.2vw, 30px); margin: 0 0 6px; }
+.snapshotSignup h3 em { color: var(--coral-text); }
+.snapshotSignupForm { min-width: 0; }
+.snapshotSignupFields { display: grid; gap: 0 20px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.snapshotSignupFields .clarityField { margin: 16px 0 0; }
+.snapshotSignupFoot { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: space-between; margin-top: 16px; }
+.snapshotSignupPreview { background: var(--cream); border: 1px dashed var(--coral-text); border-radius: 12px; color: var(--coral-text); font-size: 13px; font-weight: 700; line-height: 1.5; margin: 14px 0 0; padding: 10px 14px; }
+.snapshotFieldError { color: var(--coral-text); font-size: 13px; font-weight: 700; line-height: 1.5; margin: 8px 0 0; }
+.snapshotFieldError:empty { margin: 0; }
+.snapshotConsent { align-items: flex-start; display: flex; gap: 12px; margin: 18px 0 0; }
+.snapshotConsent input { accent-color: var(--ink); cursor: pointer; flex-shrink: 0; height: 20px; margin: 2px 0 0; width: 20px; }
+.snapshotConsent input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.snapshotConsent input[aria-invalid="true"] { outline: 2px solid var(--coral-text); outline-offset: 2px; }
+.snapshotConsentText { font-size: var(--text-small); line-height: 1.55; margin: 0; }
+.snapshotConsentText label { cursor: pointer; }
+.snapshotSignupNote { flex: 1 1 320px; font-size: 12px; line-height: 1.5; margin: 0; max-width: 560px; }
+.snapshotSignupButton { margin-top: 0; }
+.snapshotSignupButton > span:first-child { min-width: 7em; }
+.snapshotSignupButton[aria-disabled="true"] { cursor: progress; opacity: 0.72; }
+.snapshotSignupButton[aria-disabled="true"]:hover { background: var(--ink); color: var(--paper); }
+.snapshotSignupStatus { font-size: var(--text-small); font-weight: 700; line-height: 1.55; margin: 16px 0 0; }
+.snapshotSignupStatus:empty { margin: 0; }
+.snapshotSignupStatus:focus { outline: none; }
+.snapshotSignupStatus--error { color: var(--coral-text); }
+.snapshotSignupStatus--preview { border: 1px dashed var(--coral-text); border-radius: 12px; color: var(--coral-text); padding: 12px 14px; }
+.snapshotSignupStatus--success { background: var(--acid); border: 1px solid var(--ink); border-radius: 12px; margin-top: 0; padding: 18px 20px; }
+.snapshotHoneypot { height: 1px; left: -10000px; overflow: hidden; position: absolute; width: 1px; }
+.snapshotSignup + .snapshotCta { margin-top: 24px; }
+.snapshotBottomActions + .snapshotCta { margin-top: 56px; }
 
 .snapshotCta { align-items: end; background: var(--lavender); border: 1px solid var(--ink); border-radius: 16px; display: grid; gap: 40px 56px; grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr); margin-top: 80px; padding: 44px 40px; }
 .snapshotCta h3 { font-size: clamp(40px, 4.2vw, 62px); margin: 22px 0 20px; }
@@ -213,6 +260,9 @@
   .snapshotArea { grid-template-columns: 0.45fr 1.55fr; gap: 16px 32px; }
   .clarityQuestionMeta { display: grid; gap: 4px; }
   .snapshotAreaHead { display: grid; gap: 4px; }
+  /* Keep number and label together at the top instead of spreading over the row height. */
+  .clarityQuestionMeta,
+  .snapshotAreaHead { align-content: start; }
   .snapshotSummary,
   .snapshotCta { grid-template-columns: 1fr; }
   .snapshotCta { gap: 28px; }
@@ -244,6 +294,7 @@
   .snapshotResults { padding: 56px 20px 72px; }
   .snapshotResultsHeader { padding-bottom: 32px; }
   .snapshotResultsHeader h2 { font-size: 44px; }
+  .snapshotActionsWrap,
   .snapshotActions { width: 100%; }
   .snapshotActionButton { flex: 1 1 auto; justify-content: space-between; }
   .snapshotOverall,
@@ -253,12 +304,18 @@
   .snapshotArea { gap: 14px; padding: 28px 0; }
   .snapshotAreaHead h4 { font-size: 26px; }
   .snapshotAreaNumber { font-size: 24px; }
+  .snapshotBottomActions { padding: 28px 0; }
+  .snapshotSignup { margin-top: 40px; padding: 24px 20px; }
+  .snapshotSignup h3 { font-size: 24px; }
+  .snapshotSignupFields { grid-template-columns: 1fr; }
+  .snapshotSignupButton { width: 100%; }
+  .snapshotConsent input { height: 24px; margin-top: 0; width: 24px; }
   .snapshotCta { margin-top: 56px; padding: 30px 22px; }
   .snapshotCta h3 { font-size: 42px; }
   .snapshotPrice { font-size: 48px; }
 }
 
-/* Print / Save as PDF: only the results, on white, black text. */
+/* Print: a fallback for the Download PDF button (and Ctrl+P). Only the results, on white, black text. */
 @media print {
   @page { size: A4; margin: 14mm 15mm 16mm; }
 
@@ -268,7 +325,9 @@
   body > :not(main) { display: none !important; }
   main { display: block; }
   .snapshotHasResults .snapshotPage > :not(#results) { display: none !important; }
-  .snapshotActions,
+  .snapshotActionsWrap,
+  .snapshotBottomActions,
+  .snapshotSignup,
   .snapshotCta,
   .snapshotSrOnly { display: none !important; }
 

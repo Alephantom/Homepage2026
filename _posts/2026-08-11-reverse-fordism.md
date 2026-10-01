@@ -3,7 +3,7 @@ publish_date: 2026-08-14
 author: Anna-Lena
 title: "Reverse Fordism: How AI Is Reintegrating Work"
 category: Future of Work
-read_time: 5
+read_time: 11
 keywords:
   - Reverse Fordism
   - AI and the future of work

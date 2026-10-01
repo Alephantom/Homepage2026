@@ -1,9 +1,5 @@
-# Net display prices for the English and German pages. VAT is added on the invoice.
-# If you use the small-business exemption (§ 19 UStG), change vat_note instead,
-# e.g. "No VAT charged under § 19 UStG" / "Kein Ausweis der USt. gem. § 19 UStG".
-vat_note:
-  en: plus VAT
-  de: zzgl. MwSt.
+# Display prices for the English and German pages, shown as they are (no VAT note).
+# The structured data (JSON-LD) reads the number from the "en" value, so keep it in the form €1,234.
 clarity_check:
   en: €590
   de: 590 €

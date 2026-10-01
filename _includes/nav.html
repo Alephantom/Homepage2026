@@ -5,7 +5,7 @@
 {% assign work_path = '/#work' %}
 {% assign projects_path = '/#projects' %}
 {% assign faq_path = '/#faq' %}
-{% assign contact_path = '/contact.html' %}
+{% assign contact_path = '/contact' %}
 {% if is_de %}
   {% assign home_path = '/de/' %}
   {% assign about_path = '/de/#about' %}
@@ -20,11 +20,11 @@
   {% assign is_journal = true %}
 {% endif %}
 {% assign is_contact = false %}
-{% if page.url == '/contact.html' or page.url == '/de/kontakt/' %}
+{% if page.url == '/contact' or page.url == '/de/kontakt/' %}
   {% assign is_contact = true %}
 {% endif %}
 {% assign is_services = false %}
-{% if page.url == '/strategic-support/' or page.url == '/team-workshops/' or page.url == '/workshops.html' %}
+{% if page.url == '/strategic-support/' or page.url == '/team-workshops/' or page.url == '/workshops' %}
   {% assign is_services = true %}
 {% endif %}
 
@@ -42,7 +42,7 @@
       <a class="navServicesTrigger" href="{{ work_path | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
         {% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">↘</span>
       </a>
-      <div class="servicesDropdown" aria-label="{% if is_de %}Leistungsbereich wählen{% else %}Choose a service path{% endif %}">
+      <div class="servicesDropdown" role="group" aria-label="{% if is_de %}Leistungsbereich wählen{% else %}Choose a service path{% endif %}">
         <span class="servicesDropdownLabel">{% if is_de %}Wähle die passende Unterstützung{% else %}Choose the support you need{% endif %}</span>
         <a class="servicesDropdownOption" href="{{ '/strategic-support/' | relative_url }}" hreflang="en"{% if page.url == '/strategic-support/' %} aria-current="page"{% endif %}>
           <span class="servicesDropdownNumber">01</span>
@@ -52,7 +52,7 @@
           </span>
           <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
         </a>
-        <a class="servicesDropdownOption" href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+        <a class="servicesDropdownOption" href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops' %} aria-current="page"{% endif %}>
           <span class="servicesDropdownNumber">02</span>
           <span class="servicesDropdownCopy">
             <strong>{% if is_de %}Teamlernen &amp; Workshops{% else %}Team learning &amp; workshops{% endif %}</strong>
@@ -114,7 +114,7 @@
           <strong>{% if is_de %}Praktische strategische Begleitung{% else %}Hands-on strategic support{% endif %}</strong>
           <span>{% if is_de %}Gründer:innen &amp; Entscheider:innen{% else %}Founders &amp; decision-makers{% endif %}</span>
         </a>
-        <a href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops.html' %} aria-current="page"{% endif %}>
+        <a href="{{ '/team-workshops/' | relative_url }}" hreflang="en"{% if page.url == '/team-workshops/' or page.url == '/workshops' %} aria-current="page"{% endif %}>
           <strong>{% if is_de %}Workshops{% else %}Team learning &amp; workshops{% endif %}</strong>
           <span>{% if is_de %}Teams &amp; Organisationen{% else %}Teams &amp; organisations{% endif %}</span>
         </a>

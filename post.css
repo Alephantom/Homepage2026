@@ -255,6 +255,11 @@
   margin: 0;
 }
 
+/* WebP wrapper around a post image: behaves like the block-level img inside it. */
+.postContent picture {
+  display: block;
+}
+
 .postContent figcaption {
   font-family: var(--font-sans);
   font-size: var(--text-label);

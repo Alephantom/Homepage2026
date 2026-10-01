@@ -2,18 +2,19 @@
 layout: default
 lang: en
 translation_key: contact
-translation_url_en: /contact.html
+translation_url_en: /contact
 translation_url_de: /de/kontakt/
 title: Book a Conversation
-description: Book a free 20-minute orientation call with Anna-Lena Birkner or send an enquiry about strategic support, people operations, workshops, or digital systems.
+description: Book a free 30-minute orientation call with Anna-Lena Birkner or send an enquiry about strategic support, people operations, workshops, or digital systems.
 extra_css: /contact.css
-permalink: /contact.html
+permalink: /contact
+schema_page_type: ContactPage
 ---
 <section class="contactHero">
   <div class="contactIntro">
     <p class="eyebrow">Book an appointment</p>
     <h1>Bring the messy<br><em>first thought.</em></h1>
-    <p>Book a free 20-minute orientation call to share what&apos;s happening and see where we could work together. Or send a note if you would rather begin in writing.</p>
+    <p>Book a free 30-minute orientation call to share what&apos;s happening and see where we could work together. Or send a note if you would rather begin in writing.</p>
   </div>
   <div class="calendarCard">
     <div class="calendarCardHeader">
@@ -21,69 +22,174 @@ permalink: /contact.html
       <div>
         <p class="eyebrow">Choose a time</p>
         <h2>See where we can work together.</h2>
-        <p>20 minutes · Video call · Free · No preparation needed</p>
+        <p>30 minutes · Video call · Free · No preparation needed</p>
       </div>
     </div>
 
     <div class="calendarEmbedFrame">
-      {% if site.calendly_url contains "REPLACE_WITH" %}
-        <div class="calendarEmbedPlaceholder">
-          <span aria-hidden="true">↗</span>
-          <strong>Your Calendly calendar will appear here.</strong>
-          <p>Add the public event link to <code>calendly_url</code> in <code>_config.yml</code> to activate the inline scheduler.</p>
-        </div>
-      {% else %}
-        <div
-          class="calendarConsentGate"
-          data-calendly-gate
-          data-i18n-retry="Try again"
-          data-i18n-error="The calendar could not be loaded. You can still open Calendly in a new tab."
-          data-i18n-loading="Loading…"
-          data-i18n-connecting="Connecting to Calendly…"
-        >
-          <span class="calendarGateMark" aria-hidden="true">↗</span>
-          <strong>Load the scheduling calendar</strong>
-          <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
-          <button class="calendarButton" type="button" data-calendly-load>Load Calendly</button>
-          <p class="calendarGateLinks">
-            <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab ↗</a>
-            <a href="{{ '/privacy/' | relative_url }}">Privacy details</a>
-          </p>
-          <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
-        </div>
-        <div
-          class="calendarLoaded"
-          data-calendly-container
-          data-calendly-url="{{ site.calendly_url }}"
-          aria-label="Book a free 20-minute orientation call with Anna-Lena"
-          hidden
-        ></div>
-        <noscript>
-          <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly <span aria-hidden="true">↗</span></a>
-        </noscript>
-      {% endif %}
+      <div
+        class="calendarConsentGate"
+        data-calendly-gate
+        data-i18n-retry="Try again"
+        data-i18n-error="The calendar could not be loaded. You can still open Calendly in a new tab."
+        data-i18n-loading="Loading…"
+        data-i18n-connecting="Connecting to Calendly…"
+      >
+        <span class="calendarGateMark" aria-hidden="true">↗</span>
+        <strong>Load the scheduling calendar</strong>
+        <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
+        <button class="calendarButton" type="button" data-calendly-load>Load Calendly</button>
+        <p class="calendarGateLinks">
+          <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab ↗</a>
+          <a href="{{ '/privacy/' | relative_url }}">Privacy details</a>
+        </p>
+        <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
+      </div>
+      <div
+        class="calendarLoaded"
+        data-calendly-container
+        data-calendly-url="{{ site.calendly_url }}"
+        aria-label="Book a free 30-minute orientation call with Anna-Lena"
+        hidden
+      ></div>
+      <noscript>
+        <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly <span aria-hidden="true">↗</span></a>
+      </noscript>
     </div>
   </div>
 </section>
 
-<section class="contactFormSection">
+{% assign contact_email = site.legal.email | default: "info@annalenabirkner.com" %}
+{% assign contact_endpoint = site.contact_form_endpoint | strip %}
+<section class="contactFormSection" id="write">
   <div class="contactFormIntro">
     <p class="eyebrow">Prefer to write?</p>
-    <h2>Start with what&apos;s on your mind.</h2>
-    <p>Your email program will open with a subject and a few useful prompts already prepared. Keep them, change them, or simply write in your own way.</p>
+    <h2>Start with what’s on your mind.</h2>
+    {% if contact_endpoint != "" %}
+      <p>Send me a few lines using the form. Nothing needs to be polished — a rough outline is plenty to start with.</p>
+    {% else %}
+      <p>Write to me directly. Copy the address into whichever email account you use, or open your email program with the subject already filled in.</p>
+    {% endif %}
   </div>
-  <div class="emailCard">
+  <div class="emailCard{% if contact_endpoint != "" %} emailCard--form{% endif %}">
     <span class="emailCardNumber">02</span>
     <p class="eyebrow">A note to Anna-Lena</p>
     <h3>Tell me what feels stuck—or what you want to make possible.</h3>
-    <div class="emailPromptList" aria-label="Prompts included in the email">
+    <div class="emailPromptList" id="contact-prompts">
       <span>What is happening?</span>
       <span>What needs to move?</span>
       <span>What would be useful?</span>
     </div>
-    <a class="emailButton" href="mailto:info@annalenabirkner.com?subject=Let%27s%20see%20how%20we%20can%20work%20together" data-i18n-email-subject="Let&apos;s see how we can work together">
-      Write me and let&apos;s see how we can work together
-    </a>
-    <p class="emailCardNote">Opens your default email program. If nothing opens, write directly to <a href="mailto:info@annalenabirkner.com">info@annalenabirkner.com</a>.</p>
+
+    {% if contact_endpoint != "" %}
+      <form
+        class="contactForm"
+        action="{{ contact_endpoint | escape }}"
+        method="POST"
+        novalidate
+        data-contact-form
+        data-i18n-sending="Sending…"
+        data-i18n-subject="New enquiry: {topic}"
+        data-i18n-name-missing="Please enter your name."
+        data-i18n-email-missing="Please enter your email address."
+        data-i18n-email-invalid="Please check your email address. It should look like name@company.com."
+        data-i18n-message-missing="Please write a few lines about what’s on your mind."
+      >
+        <div class="contactFormGrid">
+          <div class="contactField contactField--wide">
+            <label for="contact-topic">What’s it about?</label>
+            <div class="contactSelect">
+              <select id="contact-topic" name="topic" data-contact-topic>
+                {%- for group in site.data.contact_topics %}
+                {%- if group.label %}
+                <optgroup label="{{ group.label.en | escape }}">
+                {%- endif %}
+                {%- for topic in group.topics %}
+                  <option value="{{ topic.slug | escape }}"{% if topic.slug == "general" %} selected{% endif %}>{{ topic.en.label | escape }}</option>
+                {%- endfor %}
+                {%- if group.label %}
+                </optgroup>
+                {%- endif %}
+                {%- endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="contactField">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" aria-describedby="contact-name-error" required>
+            <p class="contactFieldError" id="contact-name-error"></p>
+          </div>
+          <div class="contactField">
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="An email address such as name@company.com" aria-describedby="contact-email-error" required>
+            <p class="contactFieldError" id="contact-email-error"></p>
+          </div>
+          <div class="contactField contactField--wide">
+            <label for="contact-company">Company <span class="contactFieldOptional">(optional)</span></label>
+            <input id="contact-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="contactField contactField--wide">
+            <label for="contact-message">Your message</label>
+            <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts contact-message-error" required data-contact-message></textarea>
+            <p class="contactFieldError" id="contact-message-error"></p>
+          </div>
+        </div>
+
+        <div class="contactFormTrap" aria-hidden="true">
+          <label for="contact-gotcha">Leave this field empty</label>
+          <input id="contact-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="_subject" value="New enquiry from annalenabirkner.com" data-contact-subject>
+
+        <button class="emailButton contactSubmit" type="submit" data-contact-submit>Send message</button>
+        <div class="contactFormStatus" data-contact-status aria-live="polite"></div>
+        <p class="emailCardNote">Your message reaches me via Formspree, a form service based in the USA. More in the <a href="{{ '/privacy/' | relative_url }}#contact-form">privacy policy</a>.</p>
+
+        <template data-contact-success>
+          <p class="contactFormMessage contactFormMessage--success">Thanks — your message is on its way. I’ll get back to you within two working days.</p>
+        </template>
+        <template data-contact-error>
+          <p class="contactFormMessage contactFormMessage--error">Sorry, your message couldn’t be sent. Please try again, or email me directly at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
+        </template>
+      </form>
+    {% else %}
+      <div
+        class="emailAddressBlock"
+        data-copy-email
+        data-i18n-copied="Copied"
+        data-i18n-copied-status="Email address copied."
+        data-i18n-select-status="The address is selected — press Ctrl+C (or ⌘C on a Mac) to copy it."
+        data-i18n-select-status-touch="The address is selected — tap and hold it to copy."
+      >
+        <p class="emailAddressLabel">Email</p>
+        <p class="emailAddress" data-copy-source>{{ contact_email }}</p>
+        <button class="emailButton" type="button" data-copy-button hidden>Copy address</button>
+        <p class="emailCopyStatus" data-copy-status aria-live="polite"></p>
+        <p
+          class="emailTopicNote"
+          data-contact-topic-note
+          data-i18n-topic-note="Topic: {topic}. When you open your email program, the subject line is filled in for you."
+          data-i18n-topic-note-prefill="Topic: {topic}. When you open your email program, the subject line and a starting message are filled in for you."
+          hidden
+        ></p>
+        <a class="emailSecondaryLink" href="mailto:{{ contact_email }}?subject=Let%E2%80%99s%20see%20how%20we%20can%20work%20together" data-contact-mailto>
+          Or open your email program <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    {% endif %}
   </div>
 </section>
+
+{% comment %} Topic labels and email subjects for contact-form.js; edit them in _data/contact_topics.yml. {% endcomment %}
+<script type="application/json" data-contact-topics>
+{
+{%- for group in site.data.contact_topics -%}
+{%- assign last_group = forloop.last -%}
+{%- for topic in group.topics %}
+  {{ topic.slug | jsonify }}: { "label": {{ topic.en.label | jsonify }}, "emailSubject": {{ topic.en.email_subject | jsonify }}, "emailBody": {{ topic.en.email_body | default: "" | jsonify }} }{% unless forloop.last and last_group %},{% endunless %}
+{%- endfor -%}
+{%- endfor %}
+}
+</script>
+
+<script src="{{ '/contact-form.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

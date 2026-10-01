@@ -1,0 +1,120 @@
+# Free Team Snapshot, German page (/de/team-snapshot/): the six questions, their answers, and what each answer means.
+# Same structure and ids as _data/team_snapshot.yml (English page). Keep the ids unchanged.
+# Keep the option order the same for every question: clear, partly, stuck, not sure.
+# The page maps them to the statuses in _data/team_snapshot_results_de.yml
+# (clear / attention / stuck / unsure) by position. "Not sure" answers get no score.
+# `results`: one plain sentence per status, interpreting that answer for this area.
+# `tips`: exactly three small, concrete things a founder can try this week.
+- id: priorities
+  topic: Prioritäten
+  question: Weiß dein Team, was gerade am wichtigsten ist?
+  help: "Wenn mehreres gleichzeitig dringend wirkt: Wissen alle, worauf sie sich konzentrieren sollen – und was warten kann?"
+  options:
+    - Ja, unsere Prioritäten sind klar.
+    - Meistens, aber neue Anfragen bringen uns immer wieder vom Kurs ab.
+    - Eher nicht, bei uns wirkt meistens alles dringend.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Dein Team weiß, was am wichtigsten ist. Dadurch fällt es viel leichter, zu allem anderen Nein zu sagen.
+    attention: Die Prioritäten sind da, aber neue Anfragen ziehen die Leute immer wieder davon weg.
+    stuck: Wenn alles dringend wirkt, entscheidet am Ende jede:r selbst – und meistens gewinnt die lauteste Anfrage.
+    unsure: Vielleicht sind die Prioritäten in deinem Kopf klar, aber du hast sie im Team nie ausdrücklich ausgesprochen.
+  tips:
+    - Schreib die drei wichtigsten Dinge für dieses Quartal auf und teile sie im nächsten Team-Meeting.
+    - Wenn eine neue Anfrage reinkommt, frag „Was lassen wir dafür liegen?“, bevor jemand Ja sagt.
+    - Bitte alle, ihre wichtigste Priorität für diese Woche zu nennen, und vergleich die Antworten dann gemeinsam im Team.
+
+- id: decisions
+  topic: Entscheidungen
+  question: Ist klar, wer was entscheiden darf?
+  help: Können die Leute ihre Arbeit voranbringen, ohne Freigaben hinterherzulaufen oder zu rätseln, wer das letzte Wort hat?
+  options:
+    - Meistens wissen alle, was sie selbst entscheiden können.
+    - Manches ist klar geregelt, anderes wird hin- und hergeschoben.
+    - Entscheidungen bleiben oft liegen oder werden wieder aufgerollt.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Alle wissen, was sie selbst entscheiden können. So bleibt die Arbeit in Bewegung, ohne auf eine Freigabe zu warten.
+    attention: Manche Entscheidungen haben eine klare Zuständigkeit, andere wandern zwischen Leuten hin und her und bremsen alles aus.
+    stuck: Entscheidungen bleiben liegen oder werden wieder aufgerollt. Das kostet Zeit und untergräbt nach und nach das Vertrauen.
+    unsure: Wenn du selbst schwer sagen kannst, wer was entscheidet, raten die Leute in deinem Team vermutlich auch.
+  tips:
+    - Schreib fünf Entscheidungen auf, die jeden Monat anstehen, und setz neben jede einen Namen – den der Person, die das letzte Wort hat.
+    - Wenn die nächste offene Entscheidung ansteht, klärt vor der Diskussion, wer am Ende entscheidet und bis wann.
+    - Wird in einem Meeting etwas entschieden, haltet es in einer Zeile fest, mit dem Namen der Person, die entschieden hat – und zwar dort, wo das ganze Team es sieht.
+
+- id: processes
+  topic: Alltägliche Abläufe
+  question: Wie reibungslos läuft wiederkehrende Arbeit?
+  help: Denk an Dinge wie die Übergabe eines Projekts, die Freigabe von Urlaub oder ein Update an Kund:innen.
+  options:
+    - Wir haben einen praktikablen Ablauf, den alle nutzen.
+    - Es funktioniert, braucht aber Erinnerungen oder zusätzliche Abstimmung.
+    - Wir fangen oft bei null an oder vergessen Schritte.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Für wiederkehrende Arbeit gibt es feste Abläufe, die alle kennen und nutzen. Das macht den Kopf frei für alles andere.
+    attention: Wiederkehrende Arbeit wird erledigt, aber nur, weil jemand ständig erinnert und nachhakt.
+    stuck: Wiederkehrende Arbeit wird jedes Mal neu erfunden. So gehen Schritte verloren, und dieselben Fragen tauchen immer wieder auf.
+    unsure: Wenn du nicht weißt, wie wiederkehrende Arbeit abläuft, hängt sie oft an einzelnen Personen statt an einem gemeinsamen Vorgehen.
+  tips:
+    - Such dir die wiederkehrende Aufgabe aus, die im letzten Monat am meisten gehakt hat, und lass dir von der Person, die sie am besten erledigt, in einer Viertelstunde zeigen, wie sie vorgeht.
+    - "Mach aus dem, was sie erzählt, eine einfache Checkliste und leg sie dort ab, wo die Arbeit passiert: im gemeinsamen Laufwerk, im Projekttool oder im Team-Chat."
+    - Wenn die Aufgabe das nächste Mal ansteht, lass jemand anderen nach der Checkliste arbeiten und bessere dort nach, wo es hakt.
+
+- id: founder
+  topic: Abhängigkeit von Gründer:innen
+  question: Was passiert, wenn die Gründer:innen nicht erreichbar sind?
+  help: Läuft die tägliche Arbeit ohne ihren Input, ihr Wissen oder ihre Freigabe weiter? Gibt es bei euch keine Gründer:innen im klassischen Sinn, denk an die Person, die das Team leitet – oder überspring diese Frage.
+  options:
+    - Das meiste läuft problemlos weiter.
+    - Ein paar Dinge warten auf sie.
+    - Vieles wird langsamer oder bleibt ganz liegen.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Das meiste läuft auch ohne die Gründer:innen weiter. So bleibt ihnen Raum für die Arbeit, die nur sie machen können.
+    attention: Ein paar Dinge warten noch auf die Gründer:innen. Es hilft zu wissen, welche das sind, bevor daraus ein Engpass wird.
+    stuck: Vieles wartet auf die Gründer:innen. Das bremst das ganze Team und macht es schwer, sich auch nur für ein paar Tage rauszunehmen.
+    unsure: "Wenn das schwer zu sagen ist, lohnt es sich, es herauszufinden: Achte darauf, was sich anstaut, wenn die Gründer:innen das nächste Mal weg sind, und sei es nur für einen Tag."
+  tips:
+    - Notier dir eine Woche lang jede Frage und jede Freigabe, die bei dir landet, und markier die, die sich wiederholen.
+    - Nimm eine dieser wiederkehrenden Fragen und schreib die Antwort einmal auf, an einem Ort, an dem das Team sie findet.
+    - Such dir einen Bereich aus, in dem jemand anderes ohne dich entscheiden kann. Leg mit dieser Person die Grenzen fest und sag dem Team, wer jetzt dafür zuständig ist.
+
+- id: support
+  topic: Erwartungen & Unterstützung
+  question: Weiß jede:r im Team, was erwartet wird – und wo es Unterstützung gibt?
+  help: Denk an Verantwortlichkeiten, Feedback und daran, um Hilfe zu bitten, wenn etwas schwierig wird.
+  options:
+    - Erwartungen und Unterstützung sind meistens klar.
+    - Das ist je nach Person oder Situation unterschiedlich.
+    - Die Leute müssen oft raten oder sich allein durchschlagen.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Alle wissen, was von ihnen erwartet wird und an wen sie sich wenden können, wenn es schwierig wird.
+    attention: Erwartungen und Unterstützung sind von Person zu Person verschieden, sodass manche deutlich mehr Klarheit bekommen als andere.
+    stuck: Die Leute müssen oft raten. Das führt zu doppelter Arbeit, liegen gebliebenen Aufgaben und stillem Frust.
+    unsure: Aus deiner Perspektive wirken Erwartungen oft klarer als aus Sicht des Teams. Es lohnt sich also nachzufragen.
+  tips:
+    - Bitte alle, in drei Zeilen aufzuschreiben, wofür sie sich zuständig fühlen, und vergleich das mit dem, was du erwartest.
+    - Plan regelmäßige Einzelgespräche ein – schon zwanzig Minuten alle zwei Wochen reichen – und stell jedes Mal die Frage „Was steht dir gerade im Weg?“.
+    - Schreib auf, an wen man sich mit welcher Art von Frage wendet (Tools, Kund:innen, Urlaub, eine knifflige Situation), und teile es mit dem Team.
+
+- id: information
+  topic: Informationen & Onboarding
+  question: Findet dein Team die Informationen, die es für die Arbeit braucht?
+  help: Denk an jemanden, der neu ins Team kommt, sich in ungewohnte Aufgaben einarbeitet oder bei einer Veränderung auf dem Laufenden bleiben muss.
+  options:
+    - Wichtige Informationen sind leicht zu finden und aktuell.
+    - Es gibt sie, aber oft braucht man Hilfe, um sie zu finden.
+    - Wichtiges Wissen ist verstreut oder steckt in einzelnen Köpfen.
+    - Ich bin mir nicht sicher.
+  results:
+    clear: Wichtige Informationen sind leicht zu finden. So kommen alle mit ihrer Arbeit voran, und Neue finden sich schneller ein.
+    attention: Die Informationen gibt es, aber um sie zu finden, muss man oft Kolleg:innen fragen. Das unterbricht zwei Menschen statt einem.
+    stuck: Wichtiges Wissen ist verstreut oder steckt in einzelnen Köpfen. Die Arbeit stockt, sobald jemand viel zu tun hat, fehlt oder geht.
+    unsure: Wenn du nicht einschätzen kannst, wie leicht man Dinge findet, frag die Person, die zuletzt ins Team gekommen ist. Sie weiß es.
+  tips:
+    - Such dir ein Dokument aus, auf das sich alle verlassen (eine Onboarding-Checkliste, eine Preisliste, eine Anleitung), und schreib oben den Namen der zuständigen Person und ein „Zuletzt geprüft“-Datum hinein.
+    - Einigt euch auf einen festen Ort für wichtige Informationen, etwa einen Ordner oder eine Wiki-Seite, und pinnt den Link in euren Team-Chat.
+    - Frag die Person, die zuletzt dazugekommen ist, wonach sie in den ersten Wochen suchen musste, und kümmere dich um das Erste, was sie nennt.

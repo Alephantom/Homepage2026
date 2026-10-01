@@ -1,0 +1,119 @@
+# Topics for the "What’s it about?" / "Worum geht es?" select on /contact and /de/kontakt/.
+#
+# Links open the contact form with a topic already selected:
+#   {{ '/contact' | relative_url }}?topic=clarity-check#write
+#   {{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben
+# Unknown or missing topics fall back to "general". See README, "Contact topics".
+#
+# - slug:          sent to Formspree as the "topic" field. Keep slugs stable: links across the site use them.
+# - label:         the option text in the select. The form’s email subject becomes "New enquiry: <label>"
+#                  ("Neue Anfrage: <label>"); "general" keeps the page’s plain subject line.
+# - email_subject: the subject line of the email draft when the page shows the email address instead of the form.
+# - email_body:    optional starting note for that email draft, used when no other page handed over a message.
+#
+# Groups with a label become <optgroup>s; a group without a label is listed on its own, at the end.
+
+- label:
+    en: Offers
+    de: Angebote
+  topics:
+    - slug: clarity-check
+      en:
+        label: Clarity Check
+        email_subject: Booking a Clarity Check
+        email_body: |-
+          Hi Anna-Lena,
+
+          I’d like to book a Clarity Check.
+
+          The challenge I’d like to look at:
+
+          Our team (what we do, roughly how many people):
+      de:
+        label: Clarity Check
+        email_subject: Clarity Check buchen
+        email_body: |-
+          Hallo Anna-Lena,
+
+          ich möchte einen Clarity Check buchen.
+
+          Die Herausforderung, um die es gehen soll:
+
+          Unser Team (was wir machen, ungefähr wie viele Personen):
+    - slug: focused-build
+      en:
+        label: Focused Build
+        email_subject: Planning a Focused Build
+      de:
+        label: Focused Build
+        email_subject: Focused Build planen
+    - slug: interim-hr
+      en:
+        label: Interim HR Business Partner
+        email_subject: Interim HR support
+      de:
+        label: Interim HR Business Partner
+        email_subject: Interim-HR-Begleitung anfragen
+    - slug: team-snapshot
+      en:
+        label: Team Snapshot
+        email_subject: A question about the Team Snapshot
+      de:
+        label: Team-Snapshot
+        email_subject: Eine Frage zum Team-Snapshot
+
+- label:
+    en: Team workshops
+    de: Team-Workshops
+  topics:
+    - slug: workshop
+      en:
+        label: Team workshop (topic still open)
+        email_subject: Booking a team workshop
+      de:
+        label: Team-Workshop (Thema noch offen)
+        email_subject: Team-Workshop anfragen
+    - slug: workshop-algorithmic-hiring
+      en:
+        label: Algorithmic hiring workshop
+        email_subject: "Workshop enquiry: Algorithmic hiring"
+      de:
+        label: Workshop „Algorithmisches Recruiting“
+        email_subject: "Workshop-Anfrage: Algorithmisches Recruiting"
+    - slug: workshop-implementing-ai
+      en:
+        label: Implementing AI systems workshop
+        email_subject: "Workshop enquiry: Implementing AI systems"
+      de:
+        label: Workshop „KI-Systeme einführen“
+        email_subject: "Workshop-Anfrage: KI-Systeme einführen"
+    - slug: workshop-hr-operations
+      en:
+        label: Optimising HR operations workshop
+        email_subject: "Workshop enquiry: Optimising HR operations"
+      de:
+        label: Workshop „HR Operations optimieren“
+        email_subject: "Workshop-Anfrage: HR Operations optimieren"
+    - slug: workshop-internal-communications
+      en:
+        label: Internal communications workshop
+        email_subject: "Workshop enquiry: Improving internal communications"
+      de:
+        label: Workshop „Interne Kommunikation“
+        email_subject: "Workshop-Anfrage: Interne Kommunikation"
+    - slug: workshop-remote-environments
+      en:
+        label: Remote environments workshop
+        email_subject: "Workshop enquiry: Remote environments that work"
+      de:
+        label: Workshop „Remote-Arbeit, die funktioniert“
+        email_subject: "Workshop-Anfrage: Remote-Arbeit, die funktioniert"
+
+- topics:
+    - slug: general
+      en:
+        label: Something else
+        email_subject: Let’s see how we can work together
+      de:
+        label: Etwas anderes
+        email_subject: Lass uns schauen, wie wir zusammenarbeiten können

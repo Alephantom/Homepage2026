@@ -82,9 +82,9 @@
   position: relative;
 }
 
+/* No min-width: Calendly's inline widget is responsive, and the frame clips overflow. */
 .calendarLoaded {
   height: 730px;
-  min-width: 320px;
   width: 100%;
 }
 
@@ -153,50 +153,6 @@
   margin: 16px 0 0;
 }
 
-.calendarEmbedPlaceholder {
-  align-items: center;
-  background: var(--cream);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 620px;
-  padding: 48px;
-  text-align: center;
-}
-
-.calendarEmbedPlaceholder > span {
-  align-items: center;
-  background: var(--acid);
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  display: inline-flex;
-  font-size: 24px;
-  height: 76px;
-  justify-content: center;
-  margin-bottom: 28px;
-  width: 76px;
-}
-
-.calendarEmbedPlaceholder strong {
-  font-family: var(--font-display);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.05;
-  max-width: 440px;
-}
-
-.calendarEmbedPlaceholder p {
-  font-size: var(--text-small);
-  line-height: var(--leading-copy);
-  margin: 20px 0 0;
-  max-width: 430px;
-}
-
-.calendarEmbedPlaceholder code {
-  background: var(--lavender);
-  padding: 2px 5px;
-}
-
 .calendarButton {
   align-items: center;
   background: var(--ink);
@@ -212,12 +168,20 @@
   text-transform: uppercase;
 }
 
+/* "Load Calendly" while loading: aria-disabled keeps keyboard focus on the button. */
+.calendarButton[aria-disabled="true"] {
+  cursor: progress;
+  opacity: 0.72;
+}
+
 .contactFormSection {
   background: var(--paper);
   display: grid;
   gap: 10vw;
   grid-template-columns: minmax(300px, 0.65fr) minmax(480px, 1fr);
   padding: 130px 8vw;
+  /* Topic links jump to #write / #schreiben: keep the heading clear of the sticky nav. */
+  scroll-margin-top: 40px;
 }
 
 .contactFormIntro > p:last-child {
@@ -308,12 +272,238 @@
   font-size: 11px;
   line-height: 1.5;
   margin: 18px 0 0;
-  opacity: 0.68;
+  opacity: 0.75;
 }
 
 .emailCardNote a {
   border-bottom: 1px solid currentColor;
   overflow-wrap: anywhere;
+}
+
+/* Contact form (shown when contact_form_endpoint is set) */
+
+.emailCard--form h3 {
+  font-size: clamp(38px, 3.6vw, 54px);
+  margin: 28px 0;
+}
+
+.contactForm {
+  margin: 0;
+}
+
+.contactFormGrid {
+  display: grid;
+  gap: 20px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 28px;
+}
+
+.contactField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.contactField--wide {
+  grid-column: 1 / -1;
+}
+
+.contactField label {
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.contactFieldOptional {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.contactField input,
+.contactField textarea {
+  appearance: none;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  font-size: var(--text-body);
+  line-height: 1.45;
+  margin: 0;
+  padding: 13px 14px;
+  width: 100%;
+}
+
+.contactField textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Topic select: styled like the text fields, with a drawn chevron instead of the native arrow. */
+.contactSelect {
+  position: relative;
+}
+
+.contactSelect::after {
+  border-bottom: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+  content: "";
+  height: 8px;
+  pointer-events: none;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-70%) rotate(45deg);
+  width: 8px;
+}
+
+.contactSelect select {
+  appearance: none;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--text-body);
+  line-height: 1.45;
+  margin: 0;
+  padding: 13px 46px 13px 14px;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.contactField input:user-invalid,
+.contactField textarea:user-invalid,
+.contactField [aria-invalid="true"] {
+  border-color: var(--coral-on-lavender);
+  box-shadow: inset 0 0 0 1px var(--coral-on-lavender);
+}
+
+/* Field error text. On the paper chip #a9362d reaches 6.08:1; on lavender it would be only 3.72:1. */
+.contactFieldError {
+  background: var(--paper);
+  border-left: 4px solid var(--coral-on-lavender);
+  color: var(--coral-on-lavender);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  padding: 6px 10px;
+}
+
+.contactFieldError:empty {
+  display: none;
+}
+
+.contactFormTrap {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.contactSubmit {
+  cursor: pointer;
+}
+
+.contactSubmit[aria-disabled="true"] {
+  cursor: progress;
+  opacity: 0.72;
+  transform: none;
+}
+
+.contactSubmit[aria-disabled="true"]:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.contactFormMessage {
+  border: 1.5px solid var(--ink);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  margin: 18px 0 0;
+  padding: 14px 16px;
+}
+
+.contactFormMessage--success {
+  background: var(--acid);
+}
+
+.contactFormMessage--error {
+  background: var(--paper);
+  border-color: var(--coral-on-lavender);
+  box-shadow: inset 5px 0 0 var(--coral-on-lavender);
+  padding-left: 20px;
+}
+
+.contactFormMessage a {
+  border-bottom: 1px solid currentColor;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Email fallback (shown when contact_form_endpoint is empty) */
+
+.emailAddressLabel {
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.emailAddress {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.6vw, 38px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 26px;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.emailAddressBlock .emailButton {
+  cursor: pointer;
+}
+
+.emailCopyStatus {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+}
+
+.emailCopyStatus:empty {
+  margin: 0;
+}
+
+.emailTopicNote {
+  border-left: 3px solid var(--ink);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  margin: 22px 0 0;
+  padding: 2px 0 2px 14px;
+}
+
+.emailSecondaryLink {
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+  display: inline-flex;
+  font-size: var(--text-label);
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.emailSecondaryLink:hover {
+  color: var(--coral-on-lavender);
 }
 
 @media (min-width: 761px) and (max-width: 1050px) {
@@ -389,11 +579,6 @@
     padding: 38px 20px;
   }
 
-  .calendarEmbedPlaceholder {
-    min-height: 520px;
-    padding: 34px 20px;
-  }
-
   .contactFormSection {
     gap: 65px;
   }
@@ -414,5 +599,28 @@
 
   .emailButton {
     gap: 22px;
+  }
+
+  .emailCard--form h3 {
+    font-size: 36px;
+  }
+
+  .contactFormGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .emailAddress {
+    font-size: 24px;
+  }
+}
+
+/* Narrow phones: give the Calendly widget as much width as possible. */
+@media (max-width: 400px) {
+  .calendarCard {
+    padding: 24px 10px 10px;
+  }
+
+  .calendarCardHeader {
+    padding-inline: 8px;
   }
 }

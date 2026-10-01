@@ -1,9 +1,12 @@
 # Free Team Snapshot: how answers are scored and summarised.
-# Each answered area gets the score of its status; skipped areas are left out.
-# The overall score is the average of the answered areas, rounded to a whole number.
+# Each answered area gets the score of its status. Areas marked "not sure" (no `score` below) and
+# skipped areas get no score and are left out of the average.
+# The overall score is the average of the scored areas, rounded to a whole number.
+# The German page uses _data/team_snapshot_results_de.yml with the same structure and ids.
 
 # Status per answer. The answer options in _data/team_snapshot.yml map to these by position:
 # 1st option = clear, 2nd = attention, 3rd = stuck, 4th = unsure.
+# A status without a `score` is shown as "<label> · no score" and doesn't count towards the average.
 statuses:
   clear:
     label: Clear
@@ -16,8 +19,7 @@ statuses:
     score: 20
   unsure:
     label: Worth a closer look
-    score: 40
-    note: Not knowing is useful information. It often means an area runs on habits nobody has talked about yet, so it’s worth asking your team how it looks from where they sit.
+    note: Not knowing is useful information. It often means an area runs on habits nobody has talked about yet, so it’s worth asking your team how it looks from where they sit. Areas marked ‘not sure’ get no score, so they aren’t part of your overall score.
 
 # Overall levels, from the highest score down. A score belongs to the first level whose `min` it reaches.
 levels:
@@ -35,14 +37,19 @@ levels:
     min: 0
     max: 49
     title: Harder than it needs to be
-    summary: Several areas are either slowing everyday work down or hard to see clearly from where you sit. That’s common in growing teams, and it’s fixable, one area at a time.
+    summary: Several areas are slowing everyday work down. That’s common in growing teams, and it’s fixable, one area at a time.
 
 # Shown for a question that was skipped. It isn't counted in the overall score.
 not_answered:
   label: Not answered
   text: You skipped this question, so it isn’t part of your score.
 
-# Shown instead of “Where to start” when every answered area is clear.
+# Shown instead of “Where to start” when every scored area is clear and nothing is marked “not sure”.
 all_clear:
   title: Keep doing what works
   text: Every area you answered looks clear. Protect it as the team grows, and come back to this Snapshot in a few months or whenever someone new joins.
+
+# Shown instead of the overall score when no answer has a score (every answer was “not sure” or skipped).
+no_score:
+  title: No overall score yet
+  text: You weren’t sure about the areas you answered, and that’s useful to know. A good first step is to ask your team how these areas look from where they sit.

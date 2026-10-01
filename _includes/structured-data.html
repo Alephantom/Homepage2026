@@ -1,0 +1,257 @@
+{%- comment -%}
+  Schema.org structured data (JSON-LD): one @graph per page. Included from seo.html, which sets
+  canonical_url, document_title, seo_description, seo_image(_width/_height) and page_language.
+
+  Only facts that are visible on the site belong here: no address, phone number, social profiles,
+  credentials, ratings or reviews. Noindex pages (404, newsletter confirmation) get no structured data.
+
+  Every indexable page: a WebPage (ContactPage / CollectionPage via schema_page_type in the front
+  matter) and, except on the homepages, a BreadcrumbList (Home → [breadcrumb_parent] → page;
+  posts: Home → Journal → post). Names come from breadcrumb_title or title.
+  Homepages (translation_key: home): WebSite and the full Person (@id /#person). Posts, /blog/ and
+  pages with services repeat a short Person (name, url), so the author or provider can be read on its
+  own; other pages only refer to /#person.
+  Services: the keys in the page's schema_services, from _data/schema_services.yml, with prices read
+  from _data/offer_prices.yml. A service's url and @id come from its path, so they are the same on
+  every page that lists it. FAQPage (schema_faq: true): the same data file as the visible FAQ.
+  Posts: BlogPosting, part of the Blog "Human in the Loop" (@id /blog/#blog). The cover image is the
+  post's image, not primaryImageOfPage, because the page doesn't show it; posts without a cover have
+  no image. isBasedOn: the original publication (original_url), which the post links to.
+{%- endcomment -%}
+{%- unless page.robots contains 'noindex' -%}
+{%- assign sd_lang = page_language | default: 'en' -%}
+{%- assign sd_root = '/' | absolute_url -%}
+{%- assign sd_person_id = sd_root | append: '#person' -%}
+{%- assign sd_website_id = sd_root | append: '#website' -%}
+{%- assign sd_person_name = site.legal.owner_name | default: site.title -%}
+{%- assign sd_blog_page = site.pages | where: 'url', '/blog/' | first -%}
+{%- assign sd_blog_url = '/blog/' | absolute_url -%}
+{%- assign sd_blog_id = sd_blog_url | append: '#blog' -%}
+{%- assign sd_page_id = canonical_url | append: '#webpage' -%}
+{%- assign sd_breadcrumb_id = canonical_url | append: '#breadcrumb' -%}
+{%- assign sd_image_id = canonical_url | append: '#coverimage' -%}
+{%- assign sd_is_home = false -%}
+{%- if page.translation_key == 'home' -%}{%- assign sd_is_home = true -%}{%- endif -%}
+{%- assign sd_is_post = false -%}
+{%- if page.layout == 'post' -%}{%- assign sd_is_post = true -%}{%- endif -%}
+{%- if sd_lang == 'de' -%}
+  {%- assign sd_home_url = '/de/' | absolute_url -%}
+  {%- assign sd_home_name = 'Startseite' -%}
+  {%- assign sd_job_title = 'Unabhängige Strategin & Operations Consultant' -%}
+{%- else -%}
+  {%- assign sd_home_url = '/' | absolute_url -%}
+  {%- assign sd_home_name = 'Home' -%}
+  {%- assign sd_job_title = 'Independent Strategist & Maker' -%}
+{%- endif -%}
+{%- assign sd_page_type = page.schema_page_type | default: 'WebPage' -%}
+{%- comment -%} Breadcrumb parent: the Journal for posts, otherwise breadcrumb_parent from the front matter. {%- endcomment -%}
+{%- assign sd_parent = nil -%}
+{%- if sd_is_post -%}
+  {%- assign sd_parent = sd_blog_page -%}
+{%- elsif page.breadcrumb_parent -%}
+  {%- assign sd_parent = site.pages | where: 'url', page.breadcrumb_parent | first -%}
+{%- endif -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": {{ sd_page_type | jsonify }},
+      "@id": {{ sd_page_id | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "name": {{ document_title | strip | jsonify }},
+      "description": {{ seo_description | strip | jsonify }},
+      "inLanguage": {{ sd_lang | jsonify }},
+      "isPartOf": { "@id": {{ sd_website_id | jsonify }} }
+      {%- if sd_is_home -%},
+      "about": { "@id": {{ sd_person_id | jsonify }} }
+      {%- endif -%}
+      {%- if sd_page_type == 'CollectionPage' and page.url == '/blog/' -%},
+      "mainEntity": { "@id": {{ sd_blog_id | jsonify }} }
+      {%- endif -%}
+      {%- unless sd_is_home -%},
+      "breadcrumb": { "@id": {{ sd_breadcrumb_id | jsonify }} }
+      {%- endunless %}
+    }
+    {%- unless sd_is_home -%},
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ sd_breadcrumb_id | jsonify }},
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {{ sd_home_name | jsonify }}, "item": {{ sd_home_url | jsonify }} },
+        {%- assign sd_position = 2 -%}
+        {%- if sd_parent %}
+        { "@type": "ListItem", "position": {{ sd_position }}, "name": {{ sd_parent.breadcrumb_title | default: sd_parent.title | jsonify }}, "item": {{ sd_parent.url | absolute_url | jsonify }} },
+        {%- assign sd_position = sd_position | plus: 1 -%}
+        {%- endif %}
+        { "@type": "ListItem", "position": {{ sd_position }}, "name": {{ page.breadcrumb_title | default: page.title | strip | jsonify }}, "item": {{ canonical_url | jsonify }} }
+      ]
+    }
+    {%- endunless -%}
+
+    {%- if sd_is_home -%},
+    {
+      "@type": "WebSite",
+      "@id": {{ sd_website_id | jsonify }},
+      "url": {{ sd_root | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": ["Anna-Lena", "annalenabirkner.com"],
+      "inLanguage": ["en", "de"]
+    },
+    {
+      "@type": "Person",
+      "@id": {{ sd_person_id | jsonify }},
+      "name": {{ sd_person_name | jsonify }},
+      "url": {{ sd_root | jsonify }},
+      "image": {{ '/assets/portrait-friendly.jpg' | absolute_url | jsonify }},
+      "jobTitle": {{ sd_job_title | jsonify }},
+      "description": {{ seo_description | strip | jsonify }},
+      "email": {{ site.legal.email | jsonify }},
+      "knowsLanguage": ["de", "en", "es"],
+      "knowsAbout": {{ site.data.service_areas[sd_lang] | jsonify }}
+    }
+    {%- elsif sd_is_post or page.url == '/blog/' or page.schema_services -%},
+    {
+      "@type": "Person",
+      "@id": {{ sd_person_id | jsonify }},
+      "name": {{ sd_person_name | jsonify }},
+      "url": {{ sd_root | jsonify }}
+    }
+    {%- endif -%}
+
+    {%- comment -%} The Journal (Blog): in full on /blog/, as a short reference node on posts. {%- endcomment -%}
+    {%- if page.url == '/blog/' -%},
+    {
+      "@type": "Blog",
+      "@id": {{ sd_blog_id | jsonify }},
+      "url": {{ sd_blog_url | jsonify }},
+      "name": {{ page.title | jsonify }},
+      "description": {{ seo_description | strip | jsonify }},
+      "inLanguage": "en",
+      "author": { "@id": {{ sd_person_id | jsonify }} },
+      "publisher": { "@id": {{ sd_person_id | jsonify }} },
+      "blogPost": [
+        {%- for sd_post in site.posts %}
+        { "@id": {{ sd_post.url | absolute_url | append: '#blogposting' | jsonify }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }
+    {%- elsif sd_is_post -%},
+    {
+      "@type": "Blog",
+      "@id": {{ sd_blog_id | jsonify }},
+      "url": {{ sd_blog_url | jsonify }},
+      "name": {{ sd_blog_page.title | jsonify }}
+    }
+    {%- endif -%}
+
+    {%- if sd_is_post -%}
+    {%- assign sd_published = page.date | date_to_xmlschema -%}
+    {%- assign sd_modified = page.last_modified_at | default: page.date | date_to_xmlschema -%}
+    {%- if page.og_image -%},
+    {
+      "@type": "ImageObject",
+      "@id": {{ sd_image_id | jsonify }},
+      "url": {{ seo_image | jsonify }},
+      "contentUrl": {{ seo_image | jsonify }}
+      {%- if seo_image_width and seo_image_height -%},
+      "width": {{ seo_image_width }},
+      "height": {{ seo_image_height }}
+      {%- endif %}
+    }
+    {%- endif -%},
+    {
+      "@type": "BlogPosting",
+      "@id": {{ canonical_url | append: '#blogposting' | jsonify }},
+      "url": {{ canonical_url | jsonify }},
+      "headline": {{ page.title | jsonify }},
+      "description": {{ seo_description | strip | jsonify }},
+      "inLanguage": {{ sd_lang | jsonify }},
+      {%- if page.og_image %}
+      "image": { "@id": {{ sd_image_id | jsonify }} },
+      {%- endif %}
+      "datePublished": {{ sd_published | jsonify }},
+      "dateModified": {{ sd_modified | jsonify }},
+      {%- if page.category %}
+      "articleSection": {{ page.category | jsonify }},
+      {%- endif %}
+      "wordCount": {{ page.content | strip_html | number_of_words }},
+      "author": { "@id": {{ sd_person_id | jsonify }} },
+      "publisher": { "@id": {{ sd_person_id | jsonify }} },
+      "isPartOf": { "@id": {{ sd_blog_id | jsonify }} },
+      {%- if page.original_url %}
+      "isBasedOn": {{ page.original_url | jsonify }},
+      {%- endif %}
+      "mainEntityOfPage": { "@id": {{ sd_page_id | jsonify }} }
+    }
+    {%- endif -%}
+
+    {%- comment -%} Services, e.g. schema_services: [clarity_check, focused_build] in the front matter. {%- endcomment -%}
+    {%- for sd_service_key in page.schema_services -%}
+    {%- assign sd_service = site.data.schema_services[sd_service_key] -%}
+    {%- if sd_service -%}
+    {%- assign sd_service_text = sd_service[sd_lang] | default: sd_service.en -%}
+    {%- assign sd_service_path = sd_service.path[sd_lang] | default: sd_service.path.en -%}
+    {%- assign sd_service_url = sd_service_path | absolute_url -%}
+    {%- assign sd_service_slug = sd_service_key | replace: '_', '-' -%}
+    {%- assign sd_service_id = sd_service_url | split: '#' | first | append: '#service-' | append: sd_service_slug -%}
+    {%- comment -%} Price: the number in the English display price (€2,999 → 2999). If it can't be read, no price is given. {%- endcomment -%}
+    {%- assign sd_price = nil -%}
+    {%- if sd_service.price == 'free' -%}
+      {%- assign sd_price = 0 -%}
+    {%- elsif sd_service.price_key -%}
+      {%- assign sd_price_text = site.data.offer_prices[sd_service.price_key].en | default: '' | remove: '€' | remove: ',' | strip -%}
+      {%- assign sd_price_number = sd_price_text | plus: 0 -%}
+      {%- assign sd_price_check = sd_price_number | append: '' -%}
+      {%- if sd_price_text != '' and sd_price_check == sd_price_text and sd_price_number > 0 -%}
+        {%- assign sd_price = sd_price_number -%}
+      {%- endif -%}
+    {%- endif -%},
+    {
+      "@type": "Service",
+      "@id": {{ sd_service_id | jsonify }},
+      "name": {{ sd_service_text.name | jsonify }},
+      "description": {{ sd_service_text.description | strip | jsonify }},
+      "url": {{ sd_service_url | jsonify }},
+      "provider": { "@id": {{ sd_person_id | jsonify }} }
+      {%- if sd_price != nil and sd_service.price != 'on_request' -%},
+      "offers": {
+        "@type": "Offer",
+        "url": {{ sd_service_url | jsonify }},
+        {%- if sd_service.price == 'from' %}
+        "priceCurrency": "EUR",
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": {{ sd_price }}, "priceCurrency": "EUR" }
+        {%- else %}
+        "price": {{ sd_price }},
+        "priceCurrency": "EUR"
+        {%- endif %}
+      }
+      {%- endif %}
+    }
+    {%- endif -%}
+    {%- endfor -%}
+
+    {%- if page.schema_faq -%}
+    {%- assign sd_faq_key = 'faq_' | append: sd_lang -%},
+    {
+      "@type": "FAQPage",
+      "@id": {{ canonical_url | append: '#faq' | jsonify }},
+      "url": {{ canonical_url | append: '#faq' | jsonify }},
+      "inLanguage": {{ sd_lang | jsonify }},
+      "isPartOf": { "@id": {{ sd_page_id | jsonify }} },
+      "mainEntity": [
+        {%- for sd_faq in site.data[sd_faq_key] -%}
+        {%- capture sd_answer -%}{% include faq-answer.html answer=sd_faq.answer lang=sd_lang %}{%- endcapture %}
+        {
+          "@type": "Question",
+          "name": {{ sd_faq.question | strip | jsonify }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ sd_answer | strip_html | normalize_whitespace | strip | jsonify }} }
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }
+    {%- endif %}
+  ]
+}
+</script>
+{%- endunless -%}

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Cookie Information
-description: Cookie and browser-storage information for annalenabirkner.com.
+description: Which cookies and browser storage annalenabirkner.com uses, what each item does, how long it is kept, and which optional services need your consent.
 extra_css: /legal.css
 permalink: /cookies/
 ---
@@ -24,7 +24,7 @@ permalink: /cookies/
 
   <section>
     <h2>Storage used by this website</h2>
-    <div class="legalTableWrap">
+    <div class="legalTableWrap" tabindex="0" role="region" aria-label="Storage used by this website">
       <table>
         <thead>
           <tr>
@@ -40,6 +40,12 @@ permalink: /cookies/
             <td>This website</td>
             <td>Remembers whether you chose essential-only or accepted analytics.</td>
             <td>Local storage / {{ site.consent_storage_days | default: 180 }} days</td>
+          </tr>
+          <tr>
+            <td><code>contactPrefill</code></td>
+            <td>This website</td>
+            <td>Carries your Team Snapshot summary to the contact form when you choose “Book your Clarity Check”. Read once and deleted straight away.</td>
+            <td>Session storage / deleted when the contact page opens, at the latest when you close the tab</td>
           </tr>
           <tr>
             <td><code>_ga</code></td>

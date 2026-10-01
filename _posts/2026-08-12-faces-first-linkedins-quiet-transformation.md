@@ -7,7 +7,11 @@ read_time: 6
 slug: faces-first-linkedins-quiet-transformation
 excerpt_text: "How LinkedIn’s feed became a training ground for Microsoft’s AI."
 description: "Why selfies dominate LinkedIn’s feed—and how professional visibility may be feeding a uniquely valuable AI training dataset."
+seo_title: "Faces First: LinkedIn’s Quiet Transformation"
 og_image: /assets/blog/faces-first-linkedins-quiet-transformation/cover.jpg
+og_image_width: 1200
+og_image_height: 600
+og_image_alt: "Title graphic: “Faces First: LinkedIn’s Quiet Transformation. How LinkedIn’s feed became a training ground for Microsoft’s AI”"
 original_publication_date: 2025-09-07
 original_url: https://paragraph.com/@alephantom1/faces-first-linkedins-quiet-transformation
 ---
@@ -19,7 +23,10 @@ LinkedIn once presented itself as the world’s professional network. Today it b
 The problem is not simply that selfies win more likes. It is that LinkedIn’s design choices convert professional self-presentation into a vast supply of identity-labeled training data. What looks like harmless visibility is also invisible labor for Microsoft’s AI pipeline. This raises a structural tension: users seeking reach and credibility are nudged into feeding a system that can serve both career tools and enhancing surveillance technologies.
 
 <figure>
-  <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/faces-stock.jpg' | relative_url }}" alt="A professional standing beside graphics representing facial analysis and personal data">
+  <picture>
+    <source srcset="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/faces-stock.webp' | relative_url }}" type="image/webp">
+    <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/faces-stock.jpg' | relative_url }}" alt="Stock photo of a woman holding a coffee cup, with a face-scan frame over her eye and floating ‘Personal data’ charts and a world map" width="1440" height="960" loading="lazy" decoding="async">
+  </picture>
   <figcaption>Stock image by Freepik.</figcaption>
 </figure>
 
@@ -32,7 +39,7 @@ The value of these images does not stop at LinkedIn. **Microsoft operates one of
 By default, the “**Data for Generative AI Improvement**” feature is turned on for all members except those in the EU, EEA, UK, Switzerland, Canada, Hong Kong, and Mainland China. Users can opt out under Settings → Data Privacy → [*Generative AI*](https://www.linkedin.com/mypreferences/d/settings/data-for-ai-improvement).
 
 <figure>
-  <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/linkedin-ai-setting.png' | relative_url }}" alt="LinkedIn setting for using personal data to improve generative AI">
+  <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/linkedin-ai-setting.png' | relative_url }}" alt="Screenshot of LinkedIn’s ‘Data for Generative AI Improvement’ setting, with ‘Use my data for training content creation AI models’ switched on" width="735" height="274" loading="lazy" decoding="async">
   <figcaption>Screenshot: LinkedIn.</figcaption>
 </figure>
 
@@ -45,7 +52,7 @@ Other platforms demonstrate how far this can go. In 2024, Facebook admitted to s
 Microsoft’s partnership with Palantir shows how its AI stack is embedded in national-security systems. On August 8, 2024, the two firms announced that Azure OpenAI models (including GPT-4) would run in classified U.S. defense environments, powering Palantir platforms across logistics and intelligence ([Microsoft News](https://news.microsoft.com/source/2024/08/08/palantir-and-microsoft-partner-to-deliver-enhanced-analytics-and-ai-services-to-classified-networks-for-critical-national-security-operations/), [Reuters](https://www.reuters.com/technology/palantir-deploy-ai-products-microsoft-azure-us-government-agencies-2024-08-08/)). While no evidence shows LinkedIn data entering defense systems, the shared infrastructure raises the possibility that datasets fueling professional tools could also enable military applications. This illustrates AI’s dual-use logic: tools built for professional utility can also serve security and defense.
 
 <figure>
-  <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/microsoft-news.png' | relative_url }}" alt="Microsoft announcement about its partnership with Palantir for U.S. government AI systems">
+  <img src="{{ '/assets/blog/faces-first-linkedins-quiet-transformation/microsoft-news.png' | relative_url }}" alt="Screenshot of a Microsoft press release with a highlighted quote: Palantir will use Microsoft’s government and classified clouds and Azure OpenAI models for national security missions" width="1448" height="526" loading="lazy" decoding="async">
   <figcaption>Screenshot: <a href="https://news.microsoft.com/source/2024/08/08/palantir-and-microsoft-partner-to-deliver-enhanced-analytics-and-ai-services-to-classified-networks-for-critical-national-security-operations/">Microsoft News</a>.</figcaption>
 </figure>
 

@@ -2,8 +2,10 @@
 layout: default
 title: Team Learning & Workshops
 seo_title: Team Learning & Workshops | Anna-Lena Birkner
-description: Practical, participatory workshops that help teams build shared understanding and make better decisions about people, operations, communication, remote work, and responsible AI.
+description: Practical, participatory team workshops on algorithmic hiring, implementing AI, HR operations, internal communication and remote work, adapted to your context.
 permalink: /team-workshops/
+# Structured data: the workshops service from _data/schema_services.yml.
+schema_services: [workshops]
 extra_css: /services-pages.css
 ---
 <section class="serviceLandingHero serviceLandingHero--workshops">
@@ -11,7 +13,7 @@ extra_css: /services-pages.css
     <p class="eyebrow">Services · For teams &amp; organisations</p>
     <h1>Team learning<br><em>&amp; workshops.</em></h1>
     <p class="serviceLandingLead">Practical, participatory sessions that give your team a shared language, better questions, and a clear next step—not just a few interesting hours on the calendar.</p>
-    <a class="serviceLandingPrimaryCta" href="{{ '/contact.html' | relative_url }}">Discuss a workshop <span aria-hidden="true">↗</span></a>
+    <a class="serviceLandingPrimaryCta" href="{{ '/contact' | relative_url }}?topic=workshop#write">Discuss a workshop <span aria-hidden="true">↗</span></a>
   </div>
 
   <aside class="serviceLandingSummary serviceLandingSummary--workshops" aria-label="Workshop format at a glance">
@@ -22,7 +24,7 @@ extra_css: /services-pages.css
       <div><dt>Setting</dt><dd>Remote; in person by agreement</dd></div>
       <div><dt>Duration</dt><dd>2–4 hours, including breaks</dd></div>
       <div><dt>Includes</dt><dd>A workbook on the topic and a written recap</dd></div>
-      <div><dt>Investment</dt><dd>From {{ site.data.offer_prices.workshops.en | escape }}, {{ site.data.offer_prices.vat_note.en | escape }}</dd></div>
+      <div><dt>Investment</dt><dd>From {{ site.data.offer_prices.workshops.en | escape }}</dd></div>
       <div><dt>Starting point</dt><dd>Your team’s real situation</dd></div>
     </dl>
   </aside>
@@ -50,7 +52,7 @@ extra_css: /services-pages.css
         <p class="eyebrow">Responsible AI · Hiring</p>
         <h3>Algorithmic hiring</h3>
         <p>Understand where AI enters recruitment, how bias and responsibility show up, and which questions to ask before your organisation trusts a tool or recommendation.</p>
-        <a href="{{ '/workshops.html#algorithmic-hiring' | relative_url }}">Explore the full workshop <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/workshops#algorithmic-hiring' | relative_url }}">Explore the full workshop <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article id="implementing-ai-systems">
@@ -59,7 +61,7 @@ extra_css: /services-pages.css
         <p class="eyebrow">Responsible AI · Adoption</p>
         <h3>Fundamentals of implementing AI systems</h3>
         <p>Give decision-makers and teams a practical foundation for evaluating use cases, risks, responsibilities, and the conditions needed for thoughtful implementation.</p>
-        <a href="{{ '/contact.html' | relative_url }}">Discuss this topic <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/contact' | relative_url }}?topic=workshop-implementing-ai#write">Discuss this topic <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article id="optimizing-hr-operations">
@@ -68,7 +70,7 @@ extra_css: /services-pages.css
         <p class="eyebrow">People · Operations</p>
         <h3>Optimising HR operations</h3>
         <p>Map the employee experience and the processes behind it, identify avoidable friction, and agree where clearer ownership or a simpler workflow would help most.</p>
-        <a href="{{ '/contact.html' | relative_url }}">Discuss this topic <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/contact' | relative_url }}?topic=workshop-hr-operations#write">Discuss this topic <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article id="internal-communications">
@@ -77,7 +79,7 @@ extra_css: /services-pages.css
         <p class="eyebrow">Teams · Communication</p>
         <h3>Improving internal communications</h3>
         <p>Examine how information moves through the organisation, clarify what different groups need, and design communication habits people can actually sustain.</p>
-        <a href="{{ '/contact.html' | relative_url }}">Discuss this topic <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/contact' | relative_url }}?topic=workshop-internal-communications#write">Discuss this topic <span aria-hidden="true">↗</span></a>
       </div>
     </article>
     <article id="remote-environments">
@@ -86,7 +88,7 @@ extra_css: /services-pages.css
         <p class="eyebrow">Teams · Remote work</p>
         <h3>Creating remote environments that work</h3>
         <p>Move beyond tools and meeting rules to the structures, agreements, and management practices that help distributed teams work with clarity and trust.</p>
-        <a href="{{ '/contact.html' | relative_url }}">Discuss this topic <span aria-hidden="true">↗</span></a>
+        <a href="{{ '/contact' | relative_url }}?topic=workshop-remote-environments#write">Discuss this topic <span aria-hidden="true">↗</span></a>
       </div>
     </article>
   </div>
@@ -108,7 +110,7 @@ extra_css: /services-pages.css
   <div>
     <p class="eyebrow">Start with the situation</p>
     <h2>Need a related topic or a tailored session?</h2>
-    <p>Tell me what your team is navigating. We can use a free 20-minute orientation call to find the right focus and decide whether a workshop is the useful format.</p>
+    <p>Tell me what your team is navigating. We can use a free 30-minute orientation call to find the right focus and decide whether a workshop is the useful format.</p>
   </div>
-  <a href="{{ '/contact.html' | relative_url }}">Discuss your workshop <span aria-hidden="true">↗</span></a>
+  <a href="{{ '/contact' | relative_url }}?topic=workshop#write">Discuss your workshop <span aria-hidden="true">↗</span></a>
 </section>

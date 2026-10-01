@@ -1,0 +1,75 @@
+# Services in the structured data (JSON-LD) of the homepages, /strategic-support/, /team-workshops/
+# and the Team Snapshot pages. A page lists the ones it shows in its front matter, e.g.
+# schema_services: [clarity_check, focused_build].
+# Nothing here is displayed on the page, but it has to describe what every page that lists it shows:
+# - name: the offer's heading on the page.
+# - description: a short summary of the visible offer. Update it when the offer's content changes.
+# - path: the offer's main page per language, with the offer card's id where it shares a page. The service's url and @id
+#   (that page + #service-<key>) come from it, so each offer is one entity on every page.
+# - price: fixed = the price from offer_prices.yml, from = a starting price ("From €1,200"),
+#   free = 0 €, on_request = no price in the structured data.
+#   The number is read from the English price in offer_prices.yml (€2,999 → 2999), so prices are
+#   never written here. Keep the English price in the form €1,234 so it can be read.
+
+clarity_check:
+  path:
+    en: /strategic-support/#clarity-review
+    de: /de/#clarity-review
+  price: fixed
+  price_key: clarity_check
+  en:
+    name: Clarity Check
+    description: "One defined challenge: a focused video conversation, a review of the documents, processes and responsibilities involved, a written priority plan and a follow-up conversation to talk it through."
+  de:
+    name: Clarity Check
+    description: "Eine konkrete Herausforderung: ein fokussiertes Videogespräch, eine Durchsicht der beteiligten Dokumente, Prozesse und Verantwortlichkeiten, ein schriftlicher Prioritätenplan und ein Folgegespräch, in dem wir den Plan gemeinsam durchgehen."
+
+focused_build:
+  path:
+    en: /strategic-support/#focused-build
+    de: /de/#focused-build
+  price: fixed
+  price_key: focused_build
+  en:
+    name: Focused Build
+    description: "The next step after a Clarity Check: two weeks with two half-day working sessions to fix up to three recurring people and process problems, with written processes and guidelines and a 2–4 hour handover with the team."
+  de:
+    name: Focused Build
+    description: "Der nächste Schritt nach dem Clarity Check: zwei Wochen mit zwei halbtägigen Arbeitssessions für bis zu drei wiederkehrende Probleme, mit schriftlichen Prozessen und Leitfäden und einer zwei- bis vierstündigen Übergabe an die beteiligten Teams."
+
+interim_hr:
+  path:
+    en: /strategic-support/#interim-hr-business-partner
+    de: /de/#interim-hr-business-partner
+  price: on_request
+  en:
+    name: Interim HR Business Partner
+    description: "Hands-on People & Culture support for an open role or a period of change. Time commitment, duration and fee are agreed around your situation."
+  de:
+    name: Interim HR Business Partner
+    description: "Operative HR-Unterstützung bei Elternzeit, krankheitsbedingtem Ausfall, einer unbesetzten Stelle oder in einer Phase der Veränderung, mit einer sorgfältigen Übergabe am Ende. Einsatzzeit, Dauer und Honorar werden auf deine Situation abgestimmt."
+
+workshops:
+  path:
+    en: /team-workshops/
+    de: /de/#workshops
+  price: from
+  price_key: workshops
+  en:
+    name: Team workshops
+    description: "Practical, participatory team workshops on one topic, adapted to your team’s situation: 2–4 hours, with a workbook on the topic and a written recap. Remote; in person by agreement."
+  de:
+    name: Team-Workshops
+    description: "Praxisnahe, interaktive Team-Workshops zu jeweils einem Thema, zugeschnitten auf die Situation deines Teams: 2–4 Stunden, mit Workbook zum Thema und schriftlicher Zusammenfassung. Remote; vor Ort nach Absprache."
+
+team_snapshot:
+  price: free
+  path:
+    en: /team-snapshot/
+    de: /de/team-snapshot/
+  en:
+    name: Team Snapshot
+    description: "A free two-minute self-assessment: six questions about how work runs today, an instant score for each area, practical tips and a PDF to keep. No sign-up needed."
+  de:
+    name: Team-Snapshot
+    description: "Eine kostenlose Selbsteinschätzung in zwei Minuten: sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung."

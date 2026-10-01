@@ -701,7 +701,7 @@
   }
 
   .workshopLandingList h3 {
-    font-size: 38px;
+    font-size: clamp(32px, 10.5vw, 38px);
     overflow-wrap: anywhere;
   }
 

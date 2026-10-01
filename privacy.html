@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Privacy Policy
-description: How personal data is handled on annalenabirkner.com.
+description: "Privacy policy for annalenabirkner.com: what data is processed for hosting, the contact form, Team Snapshot, newsletter and Calendly bookings, and your rights."
 extra_css: /legal.css
 permalink: /privacy/
 ---
+{% assign contact_endpoint = site.contact_form_endpoint | default: "" | strip %}{% assign newsletter_url = site.brevo_form_url | default: "" | strip %}
 <header class="legalHero">
   <p class="eyebrow">Legal</p>
   <h1>Privacy <em>policy</em></h1>
@@ -15,7 +16,7 @@ permalink: /privacy/
   {% unless site.legal_details_complete %}
     <aside class="legalDraftNotice" role="note">
       <strong>Draft — not ready to publish</strong>
-      <p>The controller&apos;s business address is still missing. Complete the <code>legal</code> fields in <code>_config.yml</code> and set <code>legal_details_complete: true</code> before publishing.</p>
+      <p>The controller’s business address is still missing. Complete the <code>legal</code> fields in <code>_config.yml</code> and set <code>legal_details_complete: true</code> before publishing.</p>
     </aside>
   {% endunless %}
 
@@ -41,10 +42,10 @@ permalink: /privacy/
 
     {% if site.hosting_provider == "cloudflare" %}
       <h3>Cloudflare Pages</h3>
-      <p>This website is intended to be hosted using Cloudflare Pages. Provider: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA, with Cloudflare&apos;s EEA entity acting where applicable. Cloudflare processes connection and security data on my behalf. Data may also be processed outside the European Economic Area. Cloudflare describes its safeguards and processing in its <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-hidden="true">↗</span></a>.</p>
+      <p>This website is intended to be hosted using Cloudflare Pages. Provider: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA, with Cloudflare’s EEA entity acting where applicable. Cloudflare processes connection and security data on my behalf. Data may also be processed outside the European Economic Area. Cloudflare describes its safeguards and processing in its <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-hidden="true">↗</span></a>.</p>
     {% elsif site.hosting_provider == "github" %}
       <h3>GitHub Pages</h3>
-      <p>This website is hosted using GitHub Pages. Provider: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. GitHub may process technical log data, including visitors&apos; IP addresses, to operate the service. Data may also be processed outside the European Economic Area. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement <span aria-hidden="true">↗</span></a>.</p>
+      <p>This website is hosted using GitHub Pages. Provider: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. GitHub may process technical log data, including visitors’ IP addresses, to operate the service. Data may also be processed outside the European Economic Area. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement <span aria-hidden="true">↗</span></a>.</p>
     {% else %}
       <p><strong>Before publishing:</strong> Add the production hosting provider and its privacy information here, then update <code>hosting_provider</code> in <code>_config.yml</code>.</p>
     {% endif %}
@@ -56,29 +57,63 @@ permalink: /privacy/
     <p>I retain correspondence only for as long as it is needed for the enquiry and any resulting relationship, unless statutory retention duties require a longer period.</p>
   </section>
 
-  <section>
-    <h2>4. Free Team Snapshot</h2>
-    <p>The <a href="{{ '/team-snapshot/' | relative_url }}">Team Snapshot</a> works entirely in your browser. Your answers, your scores and the optional team or company name are not sent to me or anyone else, and they are not saved: no cookies and no local storage. When you close or reload the page, they are gone. If you save your results as a PDF, that file stays on your device.</p>
-    <p>If you choose “Book your Clarity Check”, your own email app opens with a draft that includes a short summary of your scores and, if you entered one, your team or company name. Nothing is sent unless you send that email yourself. If you do, section 3 applies.</p>
+  <section id="contact-form">
+    <!-- REVIEW: Check this section against the actual Formspree account settings (target email, submission storage, spam filtering — reCAPTCHA must be off, otherwise Google has to be named here) and Formspree's DPA (transfer mechanism: Data Privacy Framework certification and/or Standard Contractual Clauses, sub-processors, retention) before publishing. Once checked, keep only the transfer mechanism that applies (DPF adequacy decision or SCCs) and delete the other half of the sentence. If it is SCCs, add: ‘You can ask me for a copy of these safeguards.’ Remove this comment afterwards: HTML comments are visible in the page source. -->
+    <h2>4. Contact form</h2>
+    {% if contact_endpoint != "" %}
+      <p>The contact page offers a form for enquiries. When you send it, the details you enter—the topic you choose, your name, email address, company (optional) and message—are transmitted to Formspree, which forwards them to me by email and keeps a copy of the submission in my Formspree account. Formspree also receives technical connection data, such as your IP address, when the form is sent.</p>
+      <p>I use this data only to answer your enquiry and, if it leads to one, to prepare or carry out our work together. If your enquiry concerns a possible or existing contract, the legal basis is Article 6(1)(b) GDPR. Otherwise, the legal basis is Article 6(1)(f) GDPR; my legitimate interest is communicating with people who contact me.</p>
+      <p>Formspree, Inc. is based in the United States and processes the data on my behalf as a processor, so your data is transferred to the USA. Where Formspree is certified under the EU–US Data Privacy Framework, the transfer is based on the European Commission’s adequacy decision (Article 45 GDPR); otherwise, it is safeguarded by the European Commission’s Standard Contractual Clauses (Article 46(2)(c) GDPR). More information is available in Formspree’s <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-hidden="true">↗</span></a>.</p>
+      <p>I delete contact-form messages, including the copy stored with Formspree, once they are no longer needed for your enquiry, unless statutory retention duties require a longer period.</p>
+      <p>Using the form is voluntary. I need your name, email address and message to answer you. If you prefer, you can email me directly instead; section 3 then applies.</p>
+    {% else %}
+      <p><strong>The contact form is not currently active.</strong> The contact page shows my email address instead. If you write to me, section 3 applies.</p>
+    {% endif %}
+  </section>
+
+  <section id="team-snapshot">
+    <h2>5. Free Team Snapshot</h2>
+    {% if newsletter_url != "" %}
+      <p>The <a href="{{ '/team-snapshot/' | relative_url }}">Team Snapshot</a> works in your browser. Nothing from the Snapshot is sent to me or anyone else unless you choose to sign up for the newsletter shown with your results, or to send me the booking message described below. Your browser doesn’t save your answers, your scores or the optional team or company name either: no cookies, and nothing is kept in your browser’s storage (except the short hand-over described below, if you choose to book). When you close or reload the page, they are gone. If you download your results as a PDF, the file is created in your browser and stays on your device.</p>
+      <p>If you sign up for the newsletter, your email address, the team or company name (if you entered one) and your Snapshot scores—your overall score and the result for each area—are sent to Brevo. Section 6 explains how this works. Signing up is optional: your results are shown in full either way.</p>
+    {% else %}
+      <p>The <a href="{{ '/team-snapshot/' | relative_url }}">Team Snapshot</a> works entirely in your browser. Your answers, your scores and the optional team or company name are not sent to me or anyone else unless you choose to send me the booking message described below, and they are not saved: no cookies, and nothing is kept in your browser’s storage (except the short hand-over described below, if you choose to book). When you close or reload the page, they are gone. If you download your results as a PDF, the file is created in your browser and stays on your device.</p>
+    {% endif %}
+    <p>If you choose “Book your Clarity Check”, a short plain-text summary of your scores (and your team or company name, if you entered one) is kept for a moment in your browser’s session storage for this tab only, under <code>contactPrefill</code>, so that my contact page can place it in your message. The contact page reads it once and deletes it straight away; it is never put in the web address, and it is gone at the latest when you close the tab. {% if contact_endpoint != "" %}The summary appears in the message field of the contact form, where you can change or delete it. Nothing is sent until you send the form; section 4 then applies.{% else %}The summary becomes the text of the email draft if you open your email program from the contact page. Nothing is sent unless you send that email yourself; section 3 then applies.{% endif %}</p>
+  </section>
+
+  <section id="newsletter">
+    <!-- REVIEW: Check this section against the actual Brevo account settings and Brevo's DPA before publishing: double opt-in enabled, which fields the form collects, what happens to unconfirmed sign-ups, data location and sub-processors, whether unsubscribed addresses are kept on a block list, and whether open/click tracking is on (switch it off, or add it to the consent text on the Team Snapshot page and describe it here). Confirm how the company name and scores are actually used and adjust the purpose wording if needed. Add Brevo's full postal address from its legal notice or DPA. Also confirm that Brevo really logs the time and IP address of the sign-up and of the confirmation (the text says so), the exact legal entity name and postal address (the text says ‘Sendinblue SAS, Paris, France’), and how long the block list and the consent record are kept (the text says normally up to three years). Remove this comment afterwards: HTML comments are visible in the page source. -->
+    <h2>6. Quarterly newsletter</h2>
+    {% if newsletter_url != "" %}
+      <p>With your Team Snapshot results, you can sign up for my quarterly newsletter with practical ideas on people and process topics, plus occasional special offers. Signing up is optional and does not change your results.</p>
+      <p>When you sign up, your email address, the team or company name (if you entered one), your Snapshot scores—your overall score and the result for each area—and your consent are sent to Brevo. I use your email address to send you the newsletter and occasional special offers. Your company name and scores are stored with your subscription so that I know the context you signed up in and can keep what I send relevant.</p>
+      <p>The legal basis is your consent under Article 6(1)(a) GDPR, which you give by ticking the consent box. After you sign up, you receive an email asking you to confirm your subscription (double opt-in). You are only added to the newsletter list once you confirm. To be able to prove your consent, Brevo records the time of your sign-up and of your confirmation, together with the IP address used each time. The legal basis for this record is Article 6(1)(f) GDPR; my legitimate interest is being able to demonstrate your consent, as Article 7(1) GDPR requires.</p>
+      <p>The newsletter is managed and sent with Brevo, a service of Sendinblue SAS, Paris, France, in the European Union. Brevo stores and processes the data on my behalf as a processor. More information is available in Brevo’s <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy <span aria-hidden="true">↗</span></a>.</p>
+      <p>You can withdraw your consent and unsubscribe at any time, using the link at the end of every newsletter or by emailing <a href="mailto:{{ site.legal.email }}">{{ site.legal.email }}</a>. The withdrawal does not affect processing that occurred before it. I keep your data for the newsletter until you unsubscribe. After that, your email address stays on a block list so that you aren’t sent the newsletter again by mistake, and the record of your consent is kept for as long as I may need to prove it (normally up to three years). The legal basis for both is Article 6(1)(f) GDPR.</p>
+      <p>Your email address and consent are needed to send you the newsletter. A sign-up from the Team Snapshot page always includes your Snapshot scores; the company name is optional.</p>
+    {% else %}
+      <p><strong>The newsletter sign-up is not currently active.</strong> No newsletter data is collected on this website. If the sign-up is switched on later, this section will explain what is sent, to whom and why.</p>
+    {% endif %}
   </section>
 
   <section>
-    <h2>5. Appointment booking with Calendly</h2>
+    <h2>7. Appointment booking with Calendly</h2>
     <p>The contact page offers an optional scheduling calendar from Calendly, LLC, 115 E Main St., Suite A1B, Buford, GA 30518, USA. The calendar is not loaded automatically. Only after you select “Load the scheduling calendar” does your browser connect to Calendly. Calendly may then process technical connection data and use cookies or similar storage. If you book a meeting, Calendly also processes the details you enter, such as your name, contact details, selected time, time zone, and any answers you provide.</p>
-    <p>The calendar is loaded on the basis of your consent under Article 6(1)(a) GDPR and § 25(1) TDDDG. Booking data required to arrange the meeting is also processed under Article 6(1)(b) GDPR. Processing may take place in the United States. More information is available in Calendly&apos;s <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Privacy Notice <span aria-hidden="true">↗</span></a>. You can avoid the embedded calendar and contact me by email instead.</p>
+    <p>The calendar is loaded on the basis of your consent under Article 6(1)(a) GDPR and § 25(1) TDDDG. Booking data required to arrange the meeting is also processed under Article 6(1)(b) GDPR. Processing may take place in the United States. More information is available in Calendly’s <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Privacy Notice <span aria-hidden="true">↗</span></a>. You can avoid the embedded calendar and contact me by email instead.</p>
   </section>
 
   <section>
-    <h2>6. Consent preferences</h2>
-    <p>If optional analytics is enabled, this website stores your consent choice in your browser&apos;s local storage under <code>al_privacy_consent_v1</code>. This is necessary to remember your preference and prevent the consent request from appearing on every visit. The entry expires after {{ site.consent_storage_days | default: 180 }} days. The legal basis is Article 6(1)(f) GDPR and § 25(2)(2) TDDDG.</p>
-    <p>You can revisit your choice using “Cookie settings” in the footer whenever analytics is active. Clearing your browser&apos;s site data also removes the preference.</p>
+    <h2>8. Consent preferences</h2>
+    <p>If optional analytics is enabled, this website stores your consent choice in your browser’s local storage under <code>al_privacy_consent_v1</code>. This is necessary to remember your preference and prevent the consent request from appearing on every visit. The entry expires after {{ site.consent_storage_days | default: 180 }} days. The legal basis is Article 6(1)(f) GDPR and § 25(2)(2) TDDDG.</p>
+    <p>You can revisit your choice using “Cookie settings” in the footer whenever analytics is active. Clearing your browser’s site data also removes the preference.</p>
   </section>
 
   <section>
-    <h2>7. Google Analytics</h2>
+    <h2>9. Google Analytics</h2>
     {% if site.google_analytics_id and site.google_analytics_id != "" %}
       <p>This website uses Google Analytics 4, a web analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. It is configured in Basic Consent Mode: the Google tag is not requested and no analytics data is sent to Google unless you explicitly accept analytics.</p>
-      <p>After consent, Google Analytics may process page views, interactions, approximate location, browser and device information, and pseudonymous identifiers. It sets first-party cookies including <code>_ga</code> and a property-specific <code>_ga_*</code> cookie. Google signals and advertising-personalisation signals are disabled in this site&apos;s implementation. Event-level data retention is configured for {{ site.google_analytics_retention_months | default: 2 }} months; cookie lifetimes are described on the <a href="{{ '/cookies/' | relative_url }}">cookie information page</a>.</p>
+      <p>After consent, Google Analytics may process page views, interactions, approximate location, browser and device information, and pseudonymous identifiers. It sets first-party cookies including <code>_ga</code> and a property-specific <code>_ga_*</code> cookie. Google signals and advertising-personalisation signals are disabled in this site’s implementation. Event-level data retention is configured for {{ site.google_analytics_retention_months | default: 2 }} months; cookie lifetimes are described on the <a href="{{ '/cookies/' | relative_url }}">cookie information page</a>.</p>
       <p>The legal basis is your consent under Article 6(1)(a) GDPR and § 25(1) TDDDG. Google may process data in the United States and other countries. Google explains its safeguards and data handling in its <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener noreferrer">Business Data Responsibility information <span aria-hidden="true">↗</span></a>.</p>
       <p>You can withdraw consent at any time by opening “Cookie settings” in the footer and choosing “Essential only.” The withdrawal does not affect processing that occurred before it.</p>
     {% else %}
@@ -87,18 +122,18 @@ permalink: /privacy/
   </section>
 
   <section>
-    <h2>8. Recipients and international transfers</h2>
-    <p>I use service providers only where needed to operate the website, communicate, schedule appointments, or—after consent—understand website usage. These providers may act as processors under data-processing agreements. Where data is transferred outside the EEA, the relevant provider&apos;s adequacy framework or contractual safeguards apply.</p>
+    <h2>10. Recipients and international transfers</h2>
+    <p>I use service providers only where needed to operate the website, communicate, receive contact-form messages, send the newsletter, schedule appointments, or—after consent—understand website usage. These providers may act as processors under data-processing agreements. Where data is transferred outside the EEA, the relevant provider’s adequacy framework or contractual safeguards apply.</p>
   </section>
 
   <section>
-    <h2>9. Your rights</h2>
+    <h2>11. Your rights</h2>
     <p>Subject to the legal requirements, you have the right to request access, correction, deletion, restriction, and portability of your personal data. You may object to processing based on legitimate interests and withdraw consent at any time for future processing.</p>
     <p>To exercise these rights, email <a href="mailto:{{ site.legal.email }}">{{ site.legal.email }}</a>. You also have the right to lodge a complaint with a data protection supervisory authority, in particular in the EU member state of your habitual residence, place of work, or the place of the alleged infringement.</p>
   </section>
 
   <section>
-    <h2>10. Automated decision-making</h2>
+    <h2>12. Automated decision-making</h2>
     <p>This website does not use automated decision-making or profiling that produces legal or similarly significant effects.</p>
   </section>
 
