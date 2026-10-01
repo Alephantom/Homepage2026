@@ -78,49 +78,10 @@ if (siteNav) {
   updateActiveSection();
 }
 
-const portraitFrame = document.querySelector("#portrait-frame");
-
-if (portraitFrame) {
-  const baseUrl = document.body.dataset.baseurl || "";
-  const loadPortrait = () => {
-    const portrait = new Image();
-    portrait.alt = portraitFrame.dataset.portraitAlt || "Portrait of Anna-Lena";
-    portrait.className = "portraitPhoto";
-    portrait.decoding = "async";
-    portrait.addEventListener("load", () => {
-      portraitFrame.removeAttribute("role");
-      portraitFrame.removeAttribute("aria-label");
-      portraitFrame.replaceChildren(portrait);
-      portraitFrame.classList.add("hasPhoto");
-    }, { once: true });
-    portrait.src = `${baseUrl}/assets/portrait-friendly.jpg`;
-  };
-
-  if ("IntersectionObserver" in window) {
-    const portraitObserver = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      portraitObserver.disconnect();
-      loadPortrait();
-    }, { rootMargin: "300px" });
-
-    portraitObserver.observe(portraitFrame);
-  } else {
-    loadPortrait();
-  }
-}
-
 const typingHeadline = document.querySelector("[data-typing-headline]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const portfolioCarousel = document.querySelector("[data-portfolio-carousel]");
 const locationTypewriter = document.querySelector("[data-location-typewriter]");
-
-// Build mailto links by hand: URL.searchParams would encode spaces as "+",
-// which several mail programs show literally in the subject line.
-document.querySelectorAll("[data-i18n-email-subject]").forEach((link) => {
-  const address = (link.getAttribute("href") || "").replace(/^mailto:/i, "").split("?")[0];
-  if (!address) return;
-  link.href = `mailto:${address}?subject=${encodeURIComponent(link.dataset.i18nEmailSubject)}`;
-});
 
 if (portfolioCarousel) {
   const portfolioSlides = Array.from(portfolioCarousel.querySelectorAll("[data-portfolio-slide]"));
@@ -136,7 +97,7 @@ if (portfolioCarousel) {
     carouselStatus.hidden = true;
   }
 
-  const showPortfolioCase = (nextIndex) => {
+  const showPortfolioCase = (nextIndex, reveal = false) => {
     activeCaseIndex = (nextIndex + portfolioSlides.length) % portfolioSlides.length;
 
     portfolioSlides.forEach((slide, index) => {
@@ -149,10 +110,18 @@ if (portfolioCarousel) {
     carouselStatus.textContent = statusTemplate
       .replace("{current}", String(activeCaseIndex + 1).padStart(2, "0"))
       .replace("{total}", String(portfolioSlides.length).padStart(2, "0"));
+
+    // On phones the arrows sit below a tall case, so the new case would start
+    // above the viewport. Bring its top back into view (below the sticky nav).
+    if (reveal) {
+      const current = portfolioSlides[activeCaseIndex];
+      const navBottom = siteNav ? siteNav.getBoundingClientRect().bottom : 0;
+      if (current.getBoundingClientRect().top < navBottom) current.scrollIntoView({ block: "start" });
+    }
   };
 
-  previousCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex - 1));
-  nextCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex + 1));
+  previousCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex - 1, true));
+  nextCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex + 1, true));
 
   showPortfolioCase(activeCaseIndex);
 }
@@ -227,6 +196,15 @@ if (locationTypewriter) {
     let isErasing = false;
 
     locationTypewriter.classList.add("isTyping");
+
+    // Reserve the width of the longest word (caret included) before typing starts, so the
+    // location box keeps its size and position while words are typed and erased (no layout shift).
+    const widestWord = Math.max(...locationWords.map((word) => {
+      locationTypewriter.textContent = word;
+      return locationTypewriter.getBoundingClientRect().width;
+    }));
+    // On phones the location is hidden (width 0); keep the stylesheet's min-width there.
+    if (widestWord > 0) locationTypewriter.style.minWidth = `${Math.ceil(widestWord)}px`;
     locationTypewriter.textContent = "";
 
     const typeLocation = () => {
@@ -276,9 +254,12 @@ if (calendlyContainer) {
   const calendlyButton = calendlyGate?.querySelector("[data-calendly-load]");
   const calendlyStatus = calendlyGate?.querySelector("[data-calendly-status]");
   const calendlyUrl = calendlyContainer.dataset.calendlyUrl;
+  // aria-disabled instead of disabled, so keyboard focus stays on the button while loading.
+  let calendlyLoading = false;
 
   const showCalendlyError = () => {
-    calendlyButton.disabled = false;
+    calendlyLoading = false;
+    calendlyButton.removeAttribute("aria-disabled");
     calendlyButton.textContent = calendlyGate.dataset.i18nRetry;
     calendlyStatus.textContent = calendlyGate.dataset.i18nError;
   };
@@ -303,7 +284,9 @@ if (calendlyContainer) {
   };
 
   calendlyButton?.addEventListener("click", () => {
-    calendlyButton.disabled = true;
+    if (calendlyLoading) return;
+    calendlyLoading = true;
+    calendlyButton.setAttribute("aria-disabled", "true");
     calendlyButton.textContent = calendlyGate.dataset.i18nLoading;
     calendlyStatus.textContent = calendlyGate.dataset.i18nConnecting;
 
@@ -319,7 +302,11 @@ if (calendlyContainer) {
     calendlyScript.src = "https://assets.calendly.com/assets/external/widget.js";
     calendlyScript.async = true;
     calendlyScript.addEventListener("load", initialiseCalendly, { once: true });
-    calendlyScript.addEventListener("error", showCalendlyError, { once: true });
+    calendlyScript.addEventListener("error", () => {
+      // Remove the failed tag so "Try again" loads the script afresh.
+      calendlyScript.remove();
+      showCalendlyError();
+    }, { once: true });
     document.head.append(calendlyScript);
   });
 }

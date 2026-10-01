@@ -260,6 +260,9 @@
   .snapshotArea { grid-template-columns: 0.45fr 1.55fr; gap: 16px 32px; }
   .clarityQuestionMeta { display: grid; gap: 4px; }
   .snapshotAreaHead { display: grid; gap: 4px; }
+  /* Keep number and label together at the top instead of spreading over the row height. */
+  .clarityQuestionMeta,
+  .snapshotAreaHead { align-content: start; }
   .snapshotSummary,
   .snapshotCta { grid-template-columns: 1fr; }
   .snapshotCta { gap: 28px; }
@@ -306,6 +309,7 @@
   .snapshotSignup h3 { font-size: 24px; }
   .snapshotSignupFields { grid-template-columns: 1fr; }
   .snapshotSignupButton { width: 100%; }
+  .snapshotConsent input { height: 24px; margin-top: 0; width: 24px; }
   .snapshotCta { margin-top: 56px; padding: 30px 22px; }
   .snapshotCta h3 { font-size: 42px; }
   .snapshotPrice { font-size: 48px; }

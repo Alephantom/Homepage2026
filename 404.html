@@ -1,0 +1,41 @@
+---
+layout: default
+lang: de
+title: Seite nicht gefunden
+seo_title: "Seite nicht gefunden (404) | Anna-Lena Birkner"
+description: "Diese Seite gibt es nicht (mehr). Weiter geht’s zur Startseite, zum kostenlosen Team-Snapshot oder zum Kontakt – auf Deutsch und auf Englisch."
+robots: noindex,follow
+sitemap: false
+permalink: /404.html
+extra_css: /newsletter-confirmed.css
+---
+{% comment %}
+  Custom 404 page. Cloudflare Pages (and GitHub Pages) serve it with status 404 for every missing URL,
+  so all links are root-relative. German first, then English, like newsletter-bestaetigt.html,
+  whose card styles (newsletter-confirmed.css) it reuses.
+{% endcomment %}
+<section class="newsletterConfirmed" aria-labelledby="not-found-title">
+  <div class="newsletterConfirmedCard">
+    <p class="eyebrow">Fehler 404 · Seite nicht gefunden</p>
+    <h1 id="not-found-title">Diese Seite<br><em>gibt es nicht.</em></h1>
+    <p class="newsletterConfirmedLead">Vielleicht ist der Link veraltet oder in der Adresse steckt ein Tippfehler. Von hier aus kommst du schnell wieder weiter:</p>
+
+    <div class="newsletterConfirmedActions">
+      <a class="newsletterConfirmedButton" href="{{ '/de/' | relative_url }}"><span>Zur Startseite</span><span aria-hidden="true">↗</span></a>
+      <a class="newsletterConfirmedLink" href="{{ '/de/team-snapshot/' | relative_url }}">Zum kostenlosen Team-Snapshot</a>
+      <a class="newsletterConfirmedLink" href="{{ '/de/kontakt/' | relative_url }}">Kontakt aufnehmen</a>
+    </div>
+
+    <div class="newsletterConfirmedEnglish" lang="en">
+      <h2>Sorry, this page doesn’t exist.</h2>
+      <p>The link may be out of date, or there’s a typo in the address. These will get you back on track:</p>
+      <p class="newsletterConfirmedEnglishLinks">
+        <a href="{{ '/' | relative_url }}" hreflang="en">Go to the homepage</a>
+        <span aria-hidden="true">·</span>
+        <a href="{{ '/team-snapshot/' | relative_url }}" hreflang="en">Take the free Team Snapshot</a>
+        <span aria-hidden="true">·</span>
+        <a href="{{ '/contact' | relative_url }}" hreflang="en">Get in touch</a>
+      </p>
+    </div>
+  </div>
+</section>

@@ -27,7 +27,7 @@
           </ul>
       </div>
       <div class="offerActions">
-        <a class="offerButton" href="{{ '/contact.html' | relative_url }}?topic=clarity-check#write"><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
+        <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=clarity-check#write"><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
         <p class="offerFreeNote">Tell me a little about the challenge. A few lines are plenty.</p>
       </div>
       <div class="offerMore">
@@ -64,7 +64,7 @@
           </ul>
       </div>
       <div class="offerActions">
-        <a class="offerButton" href="{{ '/contact.html' | relative_url }}?topic=focused-build#write"><span>Plan your Focused Build</span><span aria-hidden="true">↗</span></a>
+        <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=focused-build#write"><span>Plan your Focused Build</span><span aria-hidden="true">↗</span></a>
         <p class="offerFreeNote">Builds on your Clarity Check: we start from its priority plan.</p>
       </div>
       <div class="offerMore">
@@ -99,7 +99,7 @@
             <li>A considered handover when your colleague returns or a new person joins</li>
           </ul>
       </div>
-      <div class="offerActions"><a class="offerButton" href="{{ '/contact.html' | relative_url }}?topic=interim-hr#write"><span>Let’s talk about interim support</span><span aria-hidden="true">↗</span></a></div>
+      <div class="offerActions"><a class="offerButton" href="{{ '/contact' | relative_url }}?topic=interim-hr#write"><span>Let’s talk about interim support</span><span aria-hidden="true">↗</span></a></div>
       <div class="offerMore">
         <details class="offerDetails">
           <summary>Where it stops</summary>
@@ -117,13 +117,16 @@
     <p><strong>Not sure where to begin?</strong> Take the free Team Snapshot: six quick questions about how work runs today. You’ll see a score for each area straight away, with practical tips and a PDF to keep. No sign-up needed.</p>
     <div class="offerFirstStepLinks">
       <a href="{{ '/team-snapshot/' | relative_url }}">Take the free Team Snapshot <span aria-hidden="true">↗</span></a>
-      <a class="offerFirstStepSecondary" href="{{ '/contact.html' | relative_url }}">Prefer to talk? Book a free 30-minute call</a>
+      <a class="offerFirstStepSecondary" href="{{ '/contact' | relative_url }}">Prefer to talk? Book a free 30-minute call</a>
     </div>
   </div>
 
   <div class="serviceAreas">
     <span class="serviceAreasLabel">Areas I can help with</span>
-    <p>People &amp; team systems <span aria-hidden="true">·</span> Operations &amp; process clarity <span aria-hidden="true">·</span> Responsible AI <span aria-hidden="true">·</span> Positioning &amp; digital presence <span aria-hidden="true">·</span> Websites &amp; small-business infrastructure</p>
+    {%- comment -%} The list is in _data/service_areas.yml (also used in the structured data). {%- endcomment %}
+    <ul class="serviceAreasList">
+      {% for area in site.data.service_areas.en %}{% unless forloop.first %} {% endunless %}<li>{% unless forloop.first %}<span aria-hidden="true">·</span> {% endunless %}{{ area | escape }}</li>{% endfor %}
+    </ul>
   </div>
 </section>
 
@@ -147,7 +150,7 @@
     <li><a href="{{ '/team-workshops/#remote-environments' | relative_url }}"><span class="eyebrow">Teams · Remote work</span><strong>Remote environments that work</strong><span class="homeWorkshopsText">The structures, agreements and management practices that help distributed teams trust each other.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
   </ul>
   <div class="homeWorkshopsActions">
-    <a class="offerButton" href="{{ '/contact.html' | relative_url }}?topic=workshop#write"><span>Book a workshop</span><span aria-hidden="true">↗</span></a>
+    <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=workshop#write"><span>Book a workshop</span><span aria-hidden="true">↗</span></a>
     <a class="homeWorkshopsMore" href="{{ '/team-workshops/' | relative_url }}">See all workshop details <span aria-hidden="true">↗</span></a>
   </div>
 </section>

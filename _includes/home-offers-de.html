@@ -123,7 +123,10 @@
 
   <div class="serviceAreas">
     <span class="serviceAreasLabel">Wobei ich unterstützen kann</span>
-    <p>People- &amp; Teamsysteme <span aria-hidden="true">·</span> Operations &amp; Prozessklarheit <span aria-hidden="true">·</span> Verantwortungsvolle KI <span aria-hidden="true">·</span> Positionierung &amp; digitale Präsenz <span aria-hidden="true">·</span> Websites &amp; Infrastruktur für kleine Unternehmen</p>
+    {%- comment -%} The list is in _data/service_areas.yml (also used in the structured data). {%- endcomment %}
+    <ul class="serviceAreasList">
+      {% for area in site.data.service_areas.de %}{% unless forloop.first %} {% endunless %}<li>{% unless forloop.first %}<span aria-hidden="true">·</span> {% endunless %}{{ area | escape }}</li>{% endfor %}
+    </ul>
   </div>
 </section>
 

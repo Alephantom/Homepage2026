@@ -77,6 +77,54 @@
     const requestTimeoutMs = 20000;
     let isSending = false;
 
+    // Field errors in the page's language (the form has novalidate, so the browser's own
+    // bubbles, which follow the browser language, don't appear). Each message is written
+    // into the <p id="<field id>-error"> referenced by the field's aria-describedby.
+    const fieldMessages = {
+      "contact-name": { valueMissing: contactForm.dataset.i18nNameMissing },
+      "contact-email": {
+        valueMissing: contactForm.dataset.i18nEmailMissing,
+        invalid: contactForm.dataset.i18nEmailInvalid,
+      },
+      "contact-message": { valueMissing: contactForm.dataset.i18nMessageMissing },
+    };
+    const requiredFields = Object.keys(fieldMessages)
+      .map((id) => contactForm.querySelector(`#${id}`))
+      .filter(Boolean);
+
+    const fieldError = (field) => {
+      const messages = fieldMessages[field.id] || {};
+      if (!field.value.trim()) return messages.valueMissing || field.validationMessage;
+      if (!field.validity.valid) return messages.invalid || field.validationMessage;
+      return "";
+    };
+
+    const showFieldError = (field, text) => {
+      const target = document.getElementById(`${field.id}-error`);
+      if (target) target.textContent = text;
+      if (text) field.setAttribute("aria-invalid", "true");
+      else field.removeAttribute("aria-invalid");
+    };
+
+    const validateForm = () => {
+      let firstInvalid = null;
+      requiredFields.forEach((field) => {
+        const text = fieldError(field);
+        showFieldError(field, text);
+        if (text && !firstInvalid) firstInvalid = field;
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
+    };
+
+    // Once a field shows an error, keep its text current while the visitor types, and clear
+    // it as soon as the value is fine (e.g. "enter your email" becomes "check your email").
+    requiredFields.forEach((field) => {
+      field.addEventListener("input", () => {
+        if (field.getAttribute("aria-invalid") === "true") showFieldError(field, fieldError(field));
+      });
+    });
+
     const selectTopic = (slug) => {
       if (!topicSelect) return;
       const options = Array.from(topicSelect.options);
@@ -123,9 +171,12 @@
       event.preventDefault();
       if (isSending) return;
 
+      // Clear an earlier success/error card first, so it can't linger next to new field errors.
+      statusRegion.replaceChildren();
+      if (!validateForm()) return;
+
       updateSubject();
       setSending(true);
-      statusRegion.replaceChildren();
 
       const controller = "AbortController" in window ? new AbortController() : null;
       const timeoutId = controller ? window.setTimeout(() => controller.abort(), requestTimeoutMs) : null;
@@ -138,9 +189,21 @@
           signal: controller?.signal,
         });
 
-        if (!response.ok) throw new Error(`Form service responded with ${response.status}`);
+        if (!response.ok) {
+          // Formspree answers 422 with { errors: [{ field: "email", … }] } when it rejects the address.
+          const data = await response.json().catch(() => null);
+          const emailInput = contactForm.querySelector("#contact-email");
+          const emailRejected = Array.isArray(data?.errors) && data.errors.some((item) => item?.field === "email");
+          if (emailInput && emailRejected) {
+            showFieldError(emailInput, fieldMessages["contact-email"].invalid || emailInput.validationMessage);
+            emailInput.focus();
+            return;
+          }
+          throw new Error(`Form service responded with ${response.status}`);
+        }
 
         contactForm.reset();
+        requiredFields.forEach((field) => showFieldError(field, ""));
         updateSubject();
         showStatus(successTemplate);
       } catch (error) {
@@ -160,7 +223,10 @@
     const copyStatus = copyBlock.querySelector("[data-copy-status]");
     const buttonLabel = copyButton.textContent.trim();
     const address = copySource.textContent.trim();
+    // Phones have no Ctrl+C, so they get a "tap and hold" hint instead.
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
     let resetTimer = null;
+    let announceTimer = null;
 
     const selectAddress = () => {
       const selection = window.getSelection();
@@ -192,17 +258,25 @@
     copyButton.addEventListener("click", async () => {
       const copied = await copyAddress();
       window.clearTimeout(resetTimer);
+      window.clearTimeout(announceTimer);
 
       if (copied) {
         copyButton.textContent = copyBlock.dataset.i18nCopied || buttonLabel;
-        copyStatus.textContent = copyBlock.dataset.i18nCopiedStatus || "";
+        // Empty the live region first, so a second copy is announced again.
+        copyStatus.textContent = "";
+        announceTimer = window.setTimeout(() => {
+          copyStatus.textContent = copyBlock.dataset.i18nCopiedStatus || "";
+        }, 50);
         resetTimer = window.setTimeout(() => {
           copyButton.textContent = buttonLabel;
+          copyStatus.textContent = "";
         }, 2500);
       } else {
         copyButton.textContent = buttonLabel;
         selectAddress();
-        copyStatus.textContent = copyBlock.dataset.i18nSelectStatus || "";
+        copyStatus.textContent = (isTouch && copyBlock.dataset.i18nSelectStatusTouch)
+          || copyBlock.dataset.i18nSelectStatus
+          || "";
       }
     });
   }
@@ -230,7 +304,7 @@
     }
   }
 
-  // Keep the topic when switching language: /contact.html?topic=workshop#write → /de/kontakt/?topic=workshop#schreiben.
+  // Keep the topic when switching language: /contact?topic=workshop#write → /de/kontakt/?topic=workshop#schreiben.
   // (A handed-over note isn't carried over: it was read once and removed above.)
   if (topic !== DEFAULT_TOPIC) {
     const formHash = { en: "#write", de: "#schreiben" };

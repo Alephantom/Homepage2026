@@ -18,8 +18,9 @@ Homepage2026/
 │   └── YYYY-MM-DD-title.md
 ├── assets/
 │   ├── al-logo.png
-│   ├── social-card.png
-│   └── portrait.jpg (add later)
+│   ├── social-card.jpg
+│   ├── portrait-friendly.jpg
+│   └── portrait-friendly.webp
 ├── blog/index.html
 ├── blog.css
 ├── contact.html
@@ -71,6 +72,20 @@ Continue writing here.
 
 Jekyll automatically adds the new article to the journal page. The three newest posts also appear on the homepage.
 
+The `date` is the publication date shown on the post and used in its structured data. When you update a post later, add `last_modified_at: YYYY-MM-DD`. For a cover image in search and social previews, add `og_image`, `og_image_width`, `og_image_height` and `og_image_alt` (see the existing posts).
+
+Images in a post go in `assets/blog/<post-slug>/`, at most 1440 px wide (twice the 720 px text column). For a large photo or graphic, add a WebP copy next to it and use a `<picture>`, as the existing posts do; browsers without WebP load the JPG or PNG:
+
+```html
+<figure>
+  <picture>
+    <source srcset="{{ '/assets/blog/my-post/photo.webp' | relative_url }}" type="image/webp">
+    <img src="{{ '/assets/blog/my-post/photo.jpg' | relative_url }}" alt="What the image shows" width="1440" height="960" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Source or credit.</figcaption>
+</figure>
+```
+
 ## Connect Calendly
 
 1. In Calendly, create or open the event type for the free 30-minute orientation call.
@@ -88,7 +103,7 @@ The contact page first shows a privacy notice. Calendly&apos;s script and embedd
 
 Two optional services are switched on in `_config.yml`. While a setting is empty, the site still works without that service:
 
-- `contact_form_endpoint` (Formspree). Empty: `/contact.html` and `/de/kontakt/` show the email address with a **Copy address** button, and the `mailto:` link stays as a second option. Filled in: both pages show a contact form that sends messages through Formspree.
+- `contact_form_endpoint` (Formspree). Empty: `/contact` and `/de/kontakt/` show the email address with a **Copy address** button, and the `mailto:` link stays as a second option. Filled in: both pages show a contact form that sends messages through Formspree.
 - `brevo_form_url` (Brevo). Empty: the newsletter sign-up in the Team Snapshot results is hidden on the live site. In the local preview it still appears, marked “Preview only”, and sends nothing. Filled in: visitors can sign up, and their email address, company name and Snapshot scores go to Brevo.
 
 The privacy policy follows the same settings. Section 4 (Contact form) and section 6 (Quarterly newsletter) show their full text only once the matching setting is filled in; until then they say the feature is not active.
@@ -127,7 +142,7 @@ You don’t need to set up fields in Formspree. The form sends `topic` (the “W
 brevo_form_url: "https://xxxxxxxx.sibforms.com/serve/MUIFA…"
 ```
 
-The website sends these fields to Brevo: `EMAIL`, `COMPANY`, `SNAPSHOT_SCORE` (overall score, 0–100), `SNAPSHOT_AREAS` (for example “Priorities: Clear (100); Decision ownership: Stuck (20); …”), `OPT_IN`, plus Brevo’s hidden `email_address_check`, `locale` and `html_type`. If Brevo gives a field a different name, change it in the single field-name mapping in `team-snapshot.js`.
+The website sends these fields to Brevo: `EMAIL`, `COMPANY`, `SNAPSHOT_SCORE` (overall score, 0–100), `SNAPSHOT_AREAS` (a short summary such as “priorities:100; decisions:20; processes:60; founder:100; support:60; information:unsure”, where `unsure` means “not sure” and `skipped` means not answered; it stays well under Brevo’s 200-character limit), `OPT_IN`, plus Brevo’s hidden `email_address_check`, `locale` and `html_type`. If Brevo gives a field a different name, change it in the single field-name mapping in `team-snapshot.js`.
 
 The browser cannot read Brevo’s reply (the request is sent in `no-cors` mode), so after sending the page always says “Almost done — please check your inbox and confirm your subscription.” A real test sign-up is the only way to know the connection works.
 
@@ -141,7 +156,7 @@ bundle exec jekyll serve --baseurl=""
 
 ### 4. Test once for real
 
-1. **Contact form:** send one test message from `/contact.html` and one from `/de/kontakt/`. Check that both reach your inbox and appear in the Formspree dashboard, then delete them there.
+1. **Contact form:** send one test message from `/contact` and one from `/de/kontakt/`. Check that both reach your inbox and appear in the Formspree dashboard, then delete them there.
 2. **Newsletter:** complete the Team Snapshot, sign up with your own email address and a test company name, and confirm the subscription from the Brevo email. In Brevo, check that the contact is on the newsletter list, the double opt-in is confirmed, and `COMPANY`, `SNAPSHOT_SCORE` and `SNAPSHOT_AREAS` are filled in. Then delete the test contact.
 3. **Privacy policy:** open `/privacy/` and check that sections 4 and 6 now show the full text.
 
@@ -193,7 +208,21 @@ The implementation uses Basic Consent Mode: the Google script is dynamically add
 
 ## Improve the Google Search result
 
-The site includes a descriptive search title, unique page descriptions, canonical URLs, AL favicon metadata, social-sharing metadata, `WebSite` and `Person` structured data, article structured data, `robots.txt`, and an automatically generated `/sitemap.xml`.
+The site includes a descriptive search title, unique page descriptions, canonical URLs, AL favicon metadata, social-sharing metadata, Schema.org structured data, `robots.txt`, and an automatically generated `/sitemap.xml`.
+
+### Structured data (Schema.org)
+
+`_includes/structured-data.html` (included from `_includes/seo.html`) writes one JSON-LD `@graph` per page. It describes only what the page shows, and must stay that way: no address, phone number, social profiles, credentials, ratings or reviews. Noindex pages (404, newsletter confirmation) get none.
+
+- Every indexable page has a `WebPage` (`ContactPage` on the contact pages, `CollectionPage` on `/blog/`, set with `schema_page_type` in the front matter) and, except on the homepages, a `BreadcrumbList`: Home → page, posts Home → Journal → post, German pages Startseite → page. The breadcrumb uses `breadcrumb_title` (otherwise `title`); `breadcrumb_parent` adds a level in between (`/workshops` sits under `/team-workshops/`).
+- The homepages (`/`, `/de/`) add the `WebSite` and the full `Person` (`https://annalenabirkner.com/#person`: name, portrait, job title, email, working languages, and the “Areas I can help with” list from `_data/service_areas.yml`). Other pages only point to it.
+- Services with their prices: the keys listed in `schema_services` in a page’s front matter (homepages and `/strategic-support/`), described in `_data/schema_services.yml`. The numbers are read from the English prices in `_data/offer_prices.yml`, so a price change there updates the structured data too. When you change what an offer card says, update its short description in `_data/schema_services.yml`.
+- The homepage FAQ lives in `_data/faq_en.yml` and `_data/faq_de.yml`. Both the visible FAQ and the `FAQPage` structured data are built from these files, so edit questions there, not in `index.html`.
+- Posts get a `BlogPosting` (headline, description, `og_image` with its size, the `date` shown on the post, `last_modified_at`, category, word count), written by and published by `#person`, part of the Journal (`Blog`).
+
+To check a page, paste its address into Google’s [Rich Results Test](https://search.google.com/test/rich-results) or the [Schema Markup Validator](https://validator.schema.org/) after publishing.
+
+`robots.txt` follows the policy “AI search yes, AI training no”: search engines and AI search tools (such as OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User and PerplexityBot) may crawl every public page, while known AI-training crawlers (such as GPTBot, ClaudeBot, Google-Extended, Applebot-Extended and CCBot) are asked to stay out. Well-behaved crawlers follow these rules; they are a request, not a technical block. `llms.txt` is a plain-text summary of the site for AI tools (a convention, not an official standard). Its prices and journal list update automatically; update its text by hand when offers, case studies or contact routes change.
 
 After publishing these changes:
 
@@ -217,7 +246,7 @@ Google chooses search snippets automatically and may use on-page text instead of
 
 The homepage offers are maintained in `_includes/home-offers.html` (English) and `_includes/home-offers-de.html` (German). Both are styled by `home-offers.css`. There are three offer cards: the Clarity Check comes first, the Focused Build follows it as the next step, and the Interim HR Business Partner card (`#interim-hr-business-partner`) is priced on request. Below the offers, a workshops section (`#workshops`) lists the topic workshops from `/team-workshops/`: two to four hours, bookable on their own, from the `workshops` price. The free Team Snapshot is the starting point for visitors who are not yet sure what is getting in the way; the free 30-minute call remains a secondary option.
 
-All prices live in `_data/offer_prices.yml`, with an `en` and a `de` value for `clarity_check`, `focused_build` and `workshops` (the starting price for the topic workshops). Prices are shown as they are, with no VAT note. The Interim HR Business Partner has no price key; its card says "On request" / "Auf Anfrage". Pages read these values, for example `site.data.offer_prices.clarity_check.en`, so never hard-code a price in a page.
+All prices live in `_data/offer_prices.yml`, with an `en` and a `de` value for `clarity_check`, `focused_build` and `workshops` (the starting price for the topic workshops). Prices are shown as they are, with no VAT note. The Interim HR Business Partner has no price key; its card says "On request" / "Auf Anfrage". Pages read these values, for example `site.data.offer_prices.clarity_check.en`, so never hard-code a price in a page. In the FAQ data files, write `{price.workshops}` (or `{price.clarity_check}`, `{price.focused_build}`) instead of a price. The structured data reads the number from the English value, so keep it in the form `€1,234`.
 
 The free Team Snapshot lives at `/team-snapshot/`, with links from the homepage offers, the strategic support page and the shared footer. It is an instant, scored self-analysis and the free first step before the paid Clarity Check. The page and styles are in `team-snapshot.html` and `team-snapshot.css`; `team-snapshot.js` scores the answers in the browser and shows the results straight away: a score for each area, practical tips for the weaker areas, and a PDF download. “Download PDF” (at the top and the bottom of the results) builds the PDF in the browser with the vendored jsPDF 4.2.1 at `assets/lib/jspdf.umd.min.js` (MIT licence, header comment kept), which is loaded only when one of those buttons is pressed; if it can’t load, the browser’s print window opens instead, using the `@media print` styles in `team-snapshot.css`. Edit the questions, interpretations and tips in `_data/team_snapshot.yml`, and the levels, labels and scores in `_data/team_snapshot_results.yml`.
 
@@ -225,14 +254,14 @@ Scoring: Clear = 100, Needs attention = 60, Stuck = 20. “I’m not sure” ans
 
 The German version lives at `/de/team-snapshot/` (`de/team-snapshot.html`) with `_data/team_snapshot_de.yml` and `_data/team_snapshot_results_de.yml`, which use the same ids, keys and scores as the English files. `team-snapshot.js` is shared and contains no page wording: all results, booking, newsletter and PDF texts come from the `snapshot_ui` front matter of each page, so change a text there (in both pages) rather than in the script.
 
-There is no email gate and no personal reply: the full results are shown to everyone. The answers stay in the visitor’s browser and nothing is stored. Nothing is sent unless the visitor chooses to sign up for the quarterly newsletter shown with the results; only then are their email address, company name and Snapshot scores sent to Brevo (see [Contact form and newsletter setup](#contact-form-and-newsletter-setup)). The newsletter block does not appear in the printed or PDF summary. After the results, "Book your Clarity Check" opens the contact page with the Clarity Check already selected and a short plain-text summary of the scores in the message, which the visitor can edit before sending (see [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries)). The secondary link, "Prefer to talk? Book a free 30-minute call", goes to `/contact.html?topic=general` (German page: `/de/kontakt/?topic=general`).
+There is no email gate and no personal reply: the full results are shown to everyone. The answers stay in the visitor’s browser and nothing is stored. Nothing is sent unless the visitor chooses to sign up for the quarterly newsletter shown with the results; only then are their email address, company name and Snapshot scores sent to Brevo (see [Contact form and newsletter setup](#contact-form-and-newsletter-setup)). The newsletter block does not appear in the printed or PDF summary. After the results, "Book your Clarity Check" opens the contact page with the Clarity Check already selected and a short plain-text summary of the scores in the message, which the visitor can edit before sending (see [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries)). The secondary link, "Prefer to talk? Book a free 30-minute call", goes to `/contact?topic=general` (German page: `/de/kontakt/?topic=general`).
 
 ## Contact topics and prefilled enquiries
 
 Every button that books or asks about something opens the contact form with the right topic already chosen in its “What’s it about?” (“Worum geht es?”) select. Links follow one pattern:
 
 ```liquid
-{{ '/contact.html' | relative_url }}?topic=clarity-check#write
+{{ '/contact' | relative_url }}?topic=clarity-check#write
 {{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben
 ```
 
@@ -245,14 +274,14 @@ Every button that books or asks about something opens the contact form with the 
 | `focused-build` | “Plan your Focused Build” (homepage offers, strategic support) |
 | `interim-hr` | Interim HR Business Partner buttons (homepage offers, strategic support) |
 | `workshop` | “Book a workshop” on the homepage; “Discuss a workshop” / “Discuss your workshop” on `/team-workshops/` |
-| `workshop-algorithmic-hiring` | “Discuss your workshop” and “Book the workshop” on `/workshops.html` |
+| `workshop-algorithmic-hiring` | “Discuss your workshop” and “Book the workshop” on `/workshops` |
 | `workshop-implementing-ai` | “Discuss this topic” on `/team-workshops/` |
 | `workshop-hr-operations` | “Discuss this topic” on `/team-workshops/` |
 | `workshop-internal-communications` | “Discuss this topic” on `/team-workshops/` |
 | `workshop-remote-environments` | “Discuss this topic” on `/team-workshops/` |
 | `team-snapshot` | Questions about the free Team Snapshot |
 
-The topics, their English and German labels, and the email subject lines live in `_data/contact_topics.yml`. Both contact pages build the select from it. To add a topic, add an entry there and link to it with its slug; to rename one, change only its labels, because links across the site use the slug. General links such as the navigation, “Book a call” and Calendly stay plain `/contact.html` links.
+The topics, their English and German labels, and the email subject lines live in `_data/contact_topics.yml`. Both contact pages build the select from it. To add a topic, add an entry there and link to it with its slug; to rename one, change only its labels, because links across the site use the slug. General links such as the navigation, “Book a call” and Calendly stay plain `/contact` links.
 
 When `contact_form_endpoint` is empty, the page shows the email address instead of the form. The topic still counts: “Or open your email program” starts a draft with the topic’s subject line (for example “Booking a Clarity Check”, plus the optional `email_body` starting note from the data file), and a short note under the address names the topic.
 
@@ -265,20 +294,21 @@ sessionStorage.setItem("contactPrefill", JSON.stringify({
   topic: "clarity-check",
   message: "Plain-text message, for example a Team Snapshot summary",
 }));
-window.location.href = "/contact.html?topic=clarity-check#write";
+window.location.href = "/contact?topic=clarity-check#write";
 ```
 
 `contact-form.js` reads the `contactPrefill` key once and removes it straight away, so a reload or a later visit starts empty. The message goes into the message field, where the visitor can edit it before sending; it is only used if its `topic` matches the page’s topic (or has none). On the email-address version of the page it becomes the body of the email draft instead. Personal data and summaries never go into the URL: the query string only ever carries the topic slug. The Team Snapshot’s “Book your Clarity Check” button uses this hand-over.
 
 ## Add your portrait
 
-Save a vertical 4:5 JPG as:
+The homepage portrait (`index.html` and `de/index.html`) is a plain `<picture>` in the HTML, lazy-loaded by the browser (no JavaScript):
 
 ```text
-assets/portrait.jpg
+assets/portrait-friendly.webp   (used by most browsers: smaller)
+assets/portrait-friendly.jpg    (fallback for browsers without WebP; also the image in the structured data)
 ```
 
-Refresh the site. The photo automatically replaces the AL portrait frame. Until then, the clean AL placeholder remains without instructional text.
+To change it, save a vertical JPG (900 × 1157 px) as `assets/portrait-friendly.jpg` and replace the `.webp` with a WebP copy of the same photo. Always replace both: if you replace only the JPG, most browsers keep showing the old WebP. If you use a different size, update the `width` and `height` on the `<img>` in both homepages. If you don’t want a WebP copy, delete the `<source … type="image/webp">` line in both homepages as well; deleting only the file leaves a broken image. The AL placeholder shows in the frame until the photo has loaded.
 
 ## AL logo
 
@@ -294,11 +324,11 @@ The template is `_includes/colorful-section.html`. Add it anywhere in a Jekyll p
   heading="Your heading goes here."
   body="Replace this with your own text."
   link_text="Your link"
-  link_url="/contact.html"
+  link_url="/contact"
 %}
 ```
 
-The homepage includes one example. Remove that include from `index.html` when you no longer need the placeholder example.
+No page uses it at the moment. Its styles stay in `styles.css`, so it works as soon as you add the include.
 
 ## Publish on GitHub Pages
 

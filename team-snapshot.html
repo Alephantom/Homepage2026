@@ -8,6 +8,8 @@ title: Team Snapshot
 seo_title: Free Team Snapshot | Anna-Lena Birkner
 description: "Free Team Snapshot: a two-minute self-assessment for founders and growing teams, with an instant score per area, practical tips and a PDF to keep."
 permalink: /team-snapshot/
+# Structured data: the Team Snapshot service from _data/schema_services.yml.
+schema_services: [team_snapshot]
 extra_css: /team-snapshot.css
 # Words used by team-snapshot.js: results, booking message, newsletter messages and the PDF.
 # {name} placeholders are filled in by the script. de/team-snapshot.html has the same keys in German.
@@ -33,11 +35,10 @@ snapshot_ui:
   statusNoScore: "{label} · no score"
   unsureNote: "About “{label}”: {note}"
   areasTitle: "All six areas"
-  # One line per area in the booking message and the newsletter signup
+  # One line per area in the booking message
   lineScored: "{topic}: {label} ({score}/100)"
   lineUnsure: "{topic}: {label} (not sure)"
   lineNotAnswered: "{topic}: {label}"
-  brevoLineScored: "{topic}: {label} ({score})"
   # Booking message, filled into the contact form after “Book your Clarity Check”
   bookGreeting: "Hi Anna-Lena,"
   bookIntro: "I’ve just done the free Team Snapshot and I’d like to book a Clarity Check."
@@ -84,7 +85,7 @@ snapshot_ui:
 {% assign snapshot_questions = site.data.team_snapshot %}
 {% assign snapshot_results = site.data.team_snapshot_results %}
 {% assign clarity_price = site.data.offer_prices.clarity_check.en %}
-{% assign contact_path = '/contact.html' %}
+{% assign contact_path = '/contact' %}
 {% assign contact_form_hash = '#write' %}
 {% assign privacy_path = '/privacy/' %}
 {% assign legal_phone = site.legal.phone | default: "" | strip %}
@@ -142,7 +143,7 @@ snapshot_ui:
       {% for question in snapshot_questions %}
       <div class="clarityQuestionRow">
         <div class="clarityQuestionMeta" aria-hidden="true"><span>{{ forloop.index | prepend: '0' }}</span><span>{{ question.topic }}</span></div>
-        <fieldset class="clarityQuestion" data-question-id="{{ question.id | escape }}" aria-describedby="{{ question.id }}-help">
+        <fieldset class="clarityQuestion" aria-describedby="{{ question.id }}-help">
           <legend>{{ question.question }}</legend>
           <p id="{{ question.id }}-help">{{ question.help }}</p>
           <div class="clarityOptions">
@@ -215,7 +216,7 @@ snapshot_ui:
     <section class="snapshotSignup" aria-labelledby="snapshot-signup-title">
       <h3 id="snapshot-signup-title">Get my quarterly newsletter: <em>practical ideas on people and process.</em></h3>
       <form class="snapshotSignupForm" method="post" novalidate data-signup-form data-signup-mode="{{ signup_mode }}"{% if signup_mode == "live" %} data-signup-url="{{ signup_url | escape }}"{% endif %}>
-        {% if signup_mode == "preview" %}<p class="snapshotSignupPreview" data-signup-preview>Preview only: newsletter signup is not connected yet (set brevo_form_url in _config.yml)</p>{% endif %}
+        {% if signup_mode == "preview" %}<p class="snapshotSignupPreview">Preview only: newsletter signup is not connected yet (set brevo_form_url in _config.yml)</p>{% endif %}
         <div data-signup-fields>
           <div class="snapshotSignupFields">
             <div class="clarityField">
@@ -265,5 +266,5 @@ snapshot_ui:
     <p class="snapshotPrintOnly">Want a second pair of eyes? The Clarity Check ({{ clarity_price | escape }}) looks at one challenge in real context and ends with a written priority plan. {{ site.legal.owner_name | escape }} · {{ public_host | escape }} · {{ site.legal.email | escape }}{% if legal_phone != "" %} · {{ legal_phone | escape }}{% endif %}</p>
   </section>
 </div>
-<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"statusOrder":{{ status_keys | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"clarityCheck":{"price":{{ clarity_price | jsonify }}},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=clarity-check" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
+<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"clarityCheck":{"price":{{ clarity_price | jsonify }}},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=clarity-check" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
 <script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

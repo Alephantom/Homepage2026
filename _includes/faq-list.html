@@ -1,0 +1,15 @@
+{%- comment -%}
+  The homepage FAQ list, built from _data/faq_en.yml or faq_de.yml.
+  The FAQPage structured data reads the same file, so edit the questions there.
+  Parameter: lang ("en" or "de").
+{%- endcomment -%}
+{%- assign faq_list_lang = include.lang | default: 'en' -%}
+{%- assign faq_list_key = 'faq_' | append: faq_list_lang -%}
+  <div class="faqList">
+{%- for faq_item in site.data[faq_list_key] %}
+    <details>
+      <summary><span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><strong>{{ faq_item.question | strip }}</strong><i aria-hidden="true"></i></summary>
+      <p>{% include faq-answer.html answer=faq_item.answer lang=faq_list_lang %}</p>
+    </details>
+{%- endfor %}
+  </div>

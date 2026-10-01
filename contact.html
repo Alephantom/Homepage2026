@@ -2,12 +2,13 @@
 layout: default
 lang: en
 translation_key: contact
-translation_url_en: /contact.html
+translation_url_en: /contact
 translation_url_de: /de/kontakt/
 title: Book a Conversation
 description: Book a free 30-minute orientation call with Anna-Lena Birkner or send an enquiry about strategic support, people operations, workshops, or digital systems.
 extra_css: /contact.css
-permalink: /contact.html
+permalink: /contact
+schema_page_type: ContactPage
 ---
 <section class="contactHero">
   <div class="contactIntro">
@@ -26,42 +27,34 @@ permalink: /contact.html
     </div>
 
     <div class="calendarEmbedFrame">
-      {% if site.calendly_url contains "REPLACE_WITH" %}
-        <div class="calendarEmbedPlaceholder">
-          <span aria-hidden="true">↗</span>
-          <strong>Your Calendly calendar will appear here.</strong>
-          <p>Add the public event link to <code>calendly_url</code> in <code>_config.yml</code> to activate the inline scheduler.</p>
-        </div>
-      {% else %}
-        <div
-          class="calendarConsentGate"
-          data-calendly-gate
-          data-i18n-retry="Try again"
-          data-i18n-error="The calendar could not be loaded. You can still open Calendly in a new tab."
-          data-i18n-loading="Loading…"
-          data-i18n-connecting="Connecting to Calendly…"
-        >
-          <span class="calendarGateMark" aria-hidden="true">↗</span>
-          <strong>Load the scheduling calendar</strong>
-          <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
-          <button class="calendarButton" type="button" data-calendly-load>Load Calendly</button>
-          <p class="calendarGateLinks">
-            <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab ↗</a>
-            <a href="{{ '/privacy/' | relative_url }}">Privacy details</a>
-          </p>
-          <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
-        </div>
-        <div
-          class="calendarLoaded"
-          data-calendly-container
-          data-calendly-url="{{ site.calendly_url }}"
-          aria-label="Book a free 30-minute orientation call with Anna-Lena"
-          hidden
-        ></div>
-        <noscript>
-          <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly <span aria-hidden="true">↗</span></a>
-        </noscript>
-      {% endif %}
+      <div
+        class="calendarConsentGate"
+        data-calendly-gate
+        data-i18n-retry="Try again"
+        data-i18n-error="The calendar could not be loaded. You can still open Calendly in a new tab."
+        data-i18n-loading="Loading…"
+        data-i18n-connecting="Connecting to Calendly…"
+      >
+        <span class="calendarGateMark" aria-hidden="true">↗</span>
+        <strong>Load the scheduling calendar</strong>
+        <p>The calendar is provided by Calendly. It will connect to Calendly and may set its own cookies only after you choose to load it.</p>
+        <button class="calendarButton" type="button" data-calendly-load>Load Calendly</button>
+        <p class="calendarGateLinks">
+          <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab ↗</a>
+          <a href="{{ '/privacy/' | relative_url }}">Privacy details</a>
+        </p>
+        <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
+      </div>
+      <div
+        class="calendarLoaded"
+        data-calendly-container
+        data-calendly-url="{{ site.calendly_url }}"
+        aria-label="Book a free 30-minute orientation call with Anna-Lena"
+        hidden
+      ></div>
+      <noscript>
+        <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Open Calendly <span aria-hidden="true">↗</span></a>
+      </noscript>
     </div>
   </div>
 </section>
@@ -93,9 +86,14 @@ permalink: /contact.html
         class="contactForm"
         action="{{ contact_endpoint | escape }}"
         method="POST"
+        novalidate
         data-contact-form
         data-i18n-sending="Sending…"
         data-i18n-subject="New enquiry: {topic}"
+        data-i18n-name-missing="Please enter your name."
+        data-i18n-email-missing="Please enter your email address."
+        data-i18n-email-invalid="Please check your email address. It should look like name@company.com."
+        data-i18n-message-missing="Please write a few lines about what’s on your mind."
       >
         <div class="contactFormGrid">
           <div class="contactField contactField--wide">
@@ -118,11 +116,13 @@ permalink: /contact.html
           </div>
           <div class="contactField">
             <label for="contact-name">Name</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            <input id="contact-name" name="name" type="text" autocomplete="name" aria-describedby="contact-name-error" required>
+            <p class="contactFieldError" id="contact-name-error"></p>
           </div>
           <div class="contactField">
             <label for="contact-email">Email</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="An email address such as name@company.com" required>
+            <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="An email address such as name@company.com" aria-describedby="contact-email-error" required>
+            <p class="contactFieldError" id="contact-email-error"></p>
           </div>
           <div class="contactField contactField--wide">
             <label for="contact-company">Company <span class="contactFieldOptional">(optional)</span></label>
@@ -130,7 +130,8 @@ permalink: /contact.html
           </div>
           <div class="contactField contactField--wide">
             <label for="contact-message">Your message</label>
-            <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts" required data-contact-message></textarea>
+            <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts contact-message-error" required data-contact-message></textarea>
+            <p class="contactFieldError" id="contact-message-error"></p>
           </div>
         </div>
 
@@ -158,6 +159,7 @@ permalink: /contact.html
         data-i18n-copied="Copied"
         data-i18n-copied-status="Email address copied."
         data-i18n-select-status="The address is selected — press Ctrl+C (or ⌘C on a Mac) to copy it."
+        data-i18n-select-status-touch="The address is selected — tap and hold it to copy."
       >
         <p class="emailAddressLabel">Email</p>
         <p class="emailAddress" data-copy-source>{{ contact_email }}</p>

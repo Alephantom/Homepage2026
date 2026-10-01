@@ -11,7 +11,7 @@
     email: 'EMAIL', // required
     company: 'COMPANY', // text attribute
     score: 'SNAPSHOT_SCORE', // number attribute: overall score, 0–100 (empty when there is none)
-    areas: 'SNAPSHOT_AREAS', // text attribute: "Priorities: Clear (100); …"
+    areas: 'SNAPSHOT_AREAS', // text attribute: "priorities:100; decisions:20; …; information:unsure"
     optIn: 'OPT_IN', // consent checkbox, sent as "1"
     honeypot: 'email_address_check', // Brevo's spam trap, always empty for people
     locale: 'locale', // the page language, e.g. "en" or "de"
@@ -142,15 +142,19 @@
     return t('basisSome', { scored: summary.scored.length, total, details: basisDetails(summary) });
   };
 
-  // One line per area for the booking message and the newsletter, e.g. "Priorities: Clear (100/100)".
-  const areaLine = (area, scoredKey) => {
+  // One line per area for the booking message, e.g. "Priorities: Clear (100/100)".
+  const areaLine = (area) => {
     if (!area.status) return t('lineNotAnswered', { topic: area.question.topic, label: notAnswered.label });
     if (!area.scored) return t('lineUnsure', { topic: area.question.topic, label: area.status.label });
-    return t(scoredKey, { topic: area.question.topic, label: area.status.label, score: area.status.score });
+    return t('lineScored', { topic: area.question.topic, label: area.status.label, score: area.status.score });
   };
 
-  // "Priorities: Clear (100); Decision ownership: Worth a closer look (not sure); …" for Brevo.
-  const areasText = (areas) => areas.map((area) => areaLine(area, 'brevoLineScored')).join('; ');
+  // Short, language-neutral summary for Brevo (its form field allows 200 characters), e.g.
+  // "priorities:100; decisions:20; processes:60; founder:100; support:60; information:unsure".
+  const areasText = (areas) => areas.map((area) => {
+    const value = !area.status ? 'skipped' : (!area.scored ? 'unsure' : area.status.score);
+    return `${area.question.id}:${value}`;
+  }).join('; ').slice(0, 200);
 
   const updateProgress = () => {
     const count = collect().filter((area) => area.status).length;
@@ -250,7 +254,7 @@
     const lines = [t('bookGreeting'), '', t('bookIntro'), ''];
     if (teamName()) lines.push(t('bookTeam', { team: teamName() }), '');
     lines.push(t('bookResults'));
-    areas.forEach((area) => lines.push(areaLine(area, 'lineScored')));
+    areas.forEach((area) => lines.push(areaLine(area)));
     if (summary.score === null) {
       lines.push(t('bookOverallNone'));
     } else {
@@ -427,9 +431,9 @@
     ' ': ' ', ' ': ' ', ' ': ' ', ' ': ' ', ' ': ' ', ' ': ' ', ' ': ' ',
     '​': '', '‌': '', '‍': '', '⁠': '', '﻿': '', '­': '',
     '‐': '-', '‑': '-', '‒': '–', '−': '-', '―': '—',
-    '′': '\'', '″': '"', '‛': '’', '‟': '”', '‹': '‹', '›': '›',
+    '′': '\'', '″': '"', '‛': '’', '‟': '”',
     '→': '->', '←': '<-', '↑': '', '↓': '', '↗': '', '↘': '',
-    'Ł': 'L', 'ł': 'l', 'Đ': 'D', 'đ': 'd', 'ı': 'i', 'Œ': 'Œ', 'œ': 'œ'
+    'Ł': 'L', 'ł': 'l', 'Đ': 'D', 'đ': 'd', 'ı': 'i'
   };
   const pdfSafe = (value) => Array.from(String(value === undefined || value === null ? '' : value).replace(/\r\n?/g, '\n'))
     .map((char) => {

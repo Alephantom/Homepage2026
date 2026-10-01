@@ -12,7 +12,7 @@ layout: default
           <span aria-hidden="true">←</span> Journal
         </a>
 
-        <div class="postMeta" aria-label="Article information">
+        <div class="postMeta" role="group" aria-label="Article information">
           {% if page.category %}<span>{{ page.category }}</span>{% endif %}
           <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %B %Y" }}</time>
           {% if page.read_time %}<span>{{ page.read_time }} min read</span>{% endif %}
@@ -46,7 +46,7 @@ layout: default
       <strong>Back to the Journal</strong>
       <i aria-hidden="true">←</i>
     </a>
-    <a href="{{ '/contact.html' | relative_url }}">
+    <a href="{{ '/contact' | relative_url }}">
       <span>Have a thought?</span>
       <strong>Continue the conversation</strong>
       <i aria-hidden="true">↗</i>

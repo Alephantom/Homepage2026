@@ -1,0 +1,28 @@
+# Homepage FAQ (German), shown on de/index.html in this order and numbered 01, 02, …
+# Same format as faq_en.yml: the items also become the FAQPage structured data.
+# {price.workshops}, {price.clarity_check} and {price.focused_build} are replaced with the
+# German price from _data/offer_prices.yml. Links use a site path, e.g. <a href="/de/team-snapshot/">.
+
+- question: Woran können wir gemeinsam arbeiten?
+  answer: >-
+    Ich unterstütze bei Positionierung und digitaler Präsenz, Operations und Prozessklarheit, People- und Teamsystemen, verantwortungsvoller KI und der praktischen Infrastruktur, die kleinen Unternehmen und wachsenden Teams gute Arbeit ermöglicht.
+
+- question: Was unterscheidet den kostenlosen Team-Snapshot vom Clarity Check?
+  answer: >-
+    Der kostenlose <a href="/de/team-snapshot/">Team-Snapshot</a> ist eine Selbsteinschätzung in zwei Minuten: sechs Fragen, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Der kostenpflichtige Clarity Check geht bei einer konkreten Herausforderung tiefer: Wir sprechen sie gemeinsam durch, ich schaue mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan, den wir in einem Folgegespräch gemeinsam durchgehen.
+
+- question: Können wir mit etwas Kleinem beginnen?
+  answer: >-
+    Ja. Wir können mit einer einzelnen Frage oder einem Clarity Check beginnen. Zeigt der Clarity Check Probleme, die immer wiederkommen, kann ein Focused Build im nächsten Schritt bis zu drei davon angehen. Ob weitere Unterstützung sinnvoll ist, entscheiden wir danach – ohne dass du dich von Anfang an auf ein größeres Projekt festlegen musst.
+
+- question: Arbeitest du remote oder vor Ort?
+  answer: >-
+    Strategische Begleitung und Umsetzungsprojekte laufen meist remote. Wenn es deinem Team hilft, komme ich auch gern zu euch. Workshops sind nach Absprache remote oder vor Ort möglich.
+
+- question: Was passiert nach dem ersten Gespräch?
+  answer: >-
+    Wenn die Zusammenarbeit sinnvoll passt, empfehle ich ein Format und kläre Umfang, Zeitrahmen, Verantwortlichkeiten und Honorar, bevor die Arbeit beginnt. Wenn ein anderer Weg hilfreicher wäre, sage ich das ebenfalls.
+
+- question: Wie laufen Team-Workshops ab?
+  answer: >-
+    Jeder Workshop dreht sich um genau ein Thema und verbindet praktische Übungen, Austausch und konkrete nächste Schritte. Workshops dauern zwei bis vier Stunden, kosten ab {price.workshops} und umfassen ein kurzes Vorgespräch, ein Workbook zum Thema sowie eine schriftliche Zusammenfassung im Anschluss. Für größere Gruppen und Präsenztermine mache ich dir gern ein eigenes Angebot.

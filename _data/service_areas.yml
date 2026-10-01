@@ -1,0 +1,15 @@
+# "Areas I can help with" / "Wobei ich unterstützen kann" on the homepages, in this order
+# (rendered in _includes/home-offers.html and home-offers-de.html).
+# The same list is the Person's knowsAbout in the structured data, so edit it here only.
+en:
+  - People & team systems
+  - Operations & process clarity
+  - Responsible AI
+  - Positioning & digital presence
+  - Websites & small-business infrastructure
+de:
+  - People- & Teamsysteme
+  - Operations & Prozessklarheit
+  - Verantwortungsvolle KI
+  - Positionierung & digitale Präsenz
+  - Websites & Infrastruktur für kleine Unternehmen

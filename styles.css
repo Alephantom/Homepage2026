@@ -36,6 +36,20 @@
   display: none !important;
 }
 
+/* Text for screen readers only, e.g. the spelled-out names behind “DE / EN / ES”. */
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -823,283 +837,6 @@ footer h2 {
   max-width: 470px;
 }
 
-.services {
-  background: var(--paper);
-  padding: 100px var(--page-gutter) 120px;
-}
-
-.sectionHeading {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 54px;
-}
-
-.availability {
-  border: 1px solid var(--line);
-  border-radius: 100px;
-  display: inline-flex;
-  font-size: 11px;
-  gap: 8px;
-  letter-spacing: 0.08em;
-  margin: 0;
-  padding: 10px 14px;
-  text-transform: uppercase;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-
-.availability:hover,
-.availability:focus-visible {
-  background: var(--acid);
-  border-color: var(--ink);
-  transform: translateY(-2px);
-}
-
-.servicesIntro {
-  align-items: end;
-  display: grid;
-  gap: 8vw;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  margin-bottom: 76px;
-}
-
-.servicesIntro h2 {
-  font-family: var(--font-display);
-  font-size: clamp(50px, 5.8vw, 86px);
-  font-weight: 400;
-  letter-spacing: -0.06em;
-  line-height: 0.92;
-  margin: 0;
-}
-
-.servicesIntro h2 em {
-  color: var(--coral);
-  font-weight: 400;
-}
-
-.servicesIntro p {
-  font-size: var(--text-body);
-  line-height: var(--leading-copy);
-  margin: 0;
-  max-width: 480px;
-}
-
-.serviceOfferStack {
-  box-shadow: 14px 14px 0 var(--lavender);
-  position: relative;
-}
-
-.serviceList {
-  border-left: 1px solid var(--ink);
-  border-top: 1px solid var(--ink);
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  min-width: 0;
-  width: 100%;
-}
-
-.service {
-  align-content: start;
-  border-bottom: 1px solid var(--ink);
-  border-right: 1px solid var(--ink);
-  display: grid;
-  gap: 22px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  min-width: 0;
-  min-height: 350px;
-  padding: 34px 30px;
-  transition: background 180ms ease;
-}
-
-.service:hover {
-  background: var(--lavender);
-}
-
-.serviceNumber {
-  font-size: 11px;
-  font-weight: 700;
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: start;
-  margin-top: 8px;
-}
-
-.service h3 {
-  font-family: var(--font-display);
-  font-size: clamp(34px, 3.7vw, 52px);
-  font-weight: 400;
-  grid-column: 1 / -1;
-  grid-row: 2;
-  letter-spacing: -0.05em;
-  line-height: 0.98;
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-
-.service h3 a,
-.serviceArrow {
-  transition: color 160ms ease, transform 160ms ease;
-}
-
-.service h3 a:hover,
-.service h3 a:focus-visible,
-.serviceArrow:hover,
-.serviceArrow:focus-visible {
-  color: var(--coral);
-}
-
-.serviceArrow:hover,
-.serviceArrow:focus-visible {
-  transform: translate(3px, -3px);
-}
-
-.service p {
-  font-size: var(--text-body);
-  grid-column: 1 / -1;
-  grid-row: 3;
-  line-height: 1.55;
-  margin: 0;
-  max-width: 520px;
-  overflow-wrap: anywhere;
-}
-
-.service p strong {
-  font-weight: 700;
-}
-
-.serviceBestFor {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.serviceArrow {
-  font-size: 23px;
-  grid-column: 2;
-  grid-row: 1;
-  text-align: right;
-}
-
-.workshopOfferGroup {
-  background: var(--paper);
-  border: 1px solid var(--ink);
-  border-top: 0;
-}
-
-.workshopOption {
-  align-items: start;
-  background: var(--paper);
-  border: 0;
-  display: grid;
-  column-gap: 34px;
-  grid-template-columns: 190px minmax(260px, 0.9fr) minmax(260px, 1fr);
-  overflow: hidden;
-  padding: 34px 30px;
-  position: relative;
-  row-gap: 16px;
-}
-
-.workshopOption::before {
-  background: var(--acid);
-  content: "";
-  inset: 0 auto 0 0;
-  position: absolute;
-  width: 12px;
-}
-
-.workshopMeta {
-  display: grid;
-  gap: 14px;
-  font-size: 11px;
-  font-weight: 700;
-  grid-row: 1 / 3;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.workshopCopy {
-  grid-column: 2 / -1;
-  grid-row: 1;
-}
-
-.workshopCopy h3 {
-  font-family: var(--font-display);
-  font-size: 38px;
-  font-weight: 400;
-  line-height: 1;
-  margin: 0 0 16px;
-}
-
-.workshopCopy h3 em {
-  color: var(--coral);
-  font-weight: 400;
-}
-
-.workshopCopy p {
-  font-size: var(--text-body);
-  line-height: 1.55;
-  margin: 0;
-  max-width: 470px;
-}
-
-.workshopTopics {
-  align-self: start;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  grid-column: 2 / -1;
-  grid-row: 2;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.workshopTopics li {
-  display: contents;
-}
-
-.workshopTopics a {
-  background: var(--paper);
-  border: 1px solid rgba(29, 27, 47, 0.55);
-  border-radius: 100px;
-  display: inline-flex;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.35;
-  padding: 11px 14px;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-
-.workshopTopics a:hover,
-.workshopTopics a:focus-visible {
-  background: var(--acid);
-  border-color: var(--ink);
-  outline: 0;
-  transform: translateY(-2px);
-}
-
-.workshopPathLink {
-  border-bottom: 1px solid var(--ink);
-  display: inline-flex;
-  font-size: 10px;
-  font-weight: 700;
-  grid-column: 2 / -1;
-  grid-row: 3;
-  justify-content: space-between;
-  letter-spacing: 0.1em;
-  margin-top: 10px;
-  padding-bottom: 9px;
-  text-transform: uppercase;
-  transition: border-color 160ms ease, color 160ms ease;
-  width: min(100%, 330px);
-}
-
-.workshopPathLink:hover,
-.workshopPathLink:focus-visible {
-  border-color: var(--coral-text);
-  color: var(--coral-text);
-}
-
 .serviceAreas {
   align-items: baseline;
   border-bottom: 1px solid var(--line);
@@ -1117,123 +854,23 @@ footer h2 {
   text-transform: uppercase;
 }
 
-.serviceAreas p {
+.serviceAreasList {
   font-size: var(--text-body);
   font-weight: 700;
   line-height: 1.7;
+  list-style: none;
   margin: 0;
   max-width: 760px;
+  padding: 0;
 }
 
-.serviceAreas p span {
+.serviceAreasList li {
+  display: inline;
+}
+
+.serviceAreasList li > span {
   color: var(--coral-text);
   margin: 0 7px;
-}
-
-.servicesCtaBlock {
-  align-items: center;
-  background: var(--paper);
-  border: 0;
-  border-top: 1px solid var(--ink);
-  box-shadow: none;
-  color: var(--ink);
-  display: grid;
-  gap: 48px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  margin-top: 0;
-  overflow: hidden;
-  padding: 42px 42px 42px 50px;
-  position: relative;
-}
-
-.servicesCtaBlock::before {
-  display: none;
-}
-
-.servicesCtaBlock::after {
-  background: var(--coral);
-  content: "";
-  height: 3px;
-  position: absolute;
-  right: 42px;
-  top: 42px;
-  transform: rotate(-10deg);
-  width: 74px;
-}
-
-.servicesCtaContext {
-  max-width: 680px;
-  position: relative;
-  z-index: 1;
-}
-
-.servicesCtaEyebrow {
-  color: var(--coral-text);
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
-
-.servicesCtaContext h3 {
-  font-family: var(--font-display);
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 1;
-  margin: 0 0 14px;
-}
-
-.servicesCtaContext p {
-  font-family: var(--font-sans);
-  font-size: var(--text-lead);
-  line-height: 1.55;
-  margin: 0;
-  max-width: 670px;
-}
-
-.servicesCta {
-  align-items: center;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  border-radius: 100px;
-  color: var(--paper);
-  display: inline-flex;
-  font-size: 11px;
-  font-weight: 700;
-  gap: 22px;
-  justify-content: space-between;
-  letter-spacing: 0.1em;
-  min-height: 74px;
-  min-width: 340px;
-  padding: 14px 16px 14px 26px;
-  position: relative;
-  text-transform: uppercase;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-  z-index: 1;
-}
-
-.servicesCta:hover,
-.servicesCta:focus-visible {
-  background: var(--coral);
-  color: var(--ink);
-  transform: translateY(-3px);
-}
-
-.servicesCta > span:last-child {
-  align-items: center;
-  background: var(--acid);
-  border-radius: 50%;
-  color: var(--ink);
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-size: 22px;
-  font-weight: 400;
-  height: 46px;
-  justify-content: center;
-  letter-spacing: 0;
-  width: 46px;
 }
 
 .aboutMe {
@@ -1246,46 +883,6 @@ footer h2 {
   overflow: hidden;
   padding: 130px var(--page-gutter-generous);
   position: relative;
-}
-
-.aboutBall {
-  border-radius: 50%;
-  filter: blur(1px);
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
-
-.aboutBallOne {
-  background: var(--lavender);
-  height: 230px;
-  left: -90px;
-  opacity: 0.72;
-  top: 5%;
-  transform: skew(18deg) rotate(-18deg);
-  width: 230px;
-}
-
-.aboutBallTwo {
-  background: var(--acid);
-  bottom: -190px;
-  height: 390px;
-  opacity: 0.72;
-  right: -100px;
-  width: 390px;
-}
-
-.aboutBallThree {
-  display: none;
-}
-
-.aboutBallFour {
-  display: none;
-}
-
-.aboutBallOne,
-.aboutBallTwo {
-  display: none;
 }
 
 .photoFrame,
@@ -1337,7 +934,7 @@ footer h2 {
   width: 100%;
 }
 
-.portraitSwitcher.hasPhoto:hover {
+.portraitSwitcher:hover {
   animation: portraitShake 480ms ease-in-out both;
 }
 
@@ -1381,6 +978,13 @@ footer h2 {
   text-transform: uppercase;
 }
 
+/* The portrait sits above the AL placeholder, which shows until the lazy-loaded photo arrives. */
+.photoPlaceholder picture {
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+
 .portraitPhoto {
   display: block;
   height: 100%;
@@ -1391,15 +995,11 @@ footer h2 {
   width: 100%;
 }
 
-.portraitSwitcher.hasPhoto:hover .portraitPhoto {
+.portraitSwitcher:hover .portraitPhoto {
   filter: brightness(1.025) saturate(1.035);
   transform: scale(1.035);
 }
 
-.photoPlaceholder.hasPhoto::before,
-.photoPlaceholder.hasPhoto::after {
-  display: none;
-}
 
 .aboutCopy h2 {
   font-size: clamp(40px, 4.5vw, 64px);
@@ -1527,7 +1127,7 @@ footer h2 {
   text-transform: uppercase;
 }
 
-.homeJournalCardTitle h2 {
+.homeJournalCardTitle h3 {
   font-family: var(--font-display);
   font-size: clamp(40px, 4.3vw, 64px);
   font-weight: 400;
@@ -1610,7 +1210,7 @@ footer h2 {
     margin-bottom: 16px;
   }
 
-  .homeJournalCardTitle h2 {
+  .homeJournalCardTitle h3 {
     font-size: clamp(43px, 5.8vw, 56px);
   }
 
@@ -1952,6 +1552,8 @@ footer h2 {
   box-shadow: 14px 14px 0 var(--coral);
   margin-top: 18px;
   position: relative;
+  /* script.js scrolls a newly shown case into view: keep it clear of the sticky nav. */
+  scroll-margin-top: 96px;
   transition: box-shadow 180ms ease;
   width: 100%;
 }
@@ -2123,7 +1725,7 @@ footer h2 {
   z-index: 1;
 }
 
-.portfolioContactHeading h3 {
+.portfolioContactHeading h2 {
   font-family: var(--font-display);
   font-size: clamp(40px, 4.4vw, 60px);
   font-weight: 400;
@@ -2132,7 +1734,7 @@ footer h2 {
   margin: 26px 0 0;
 }
 
-.portfolioContactHeading h3 em {
+.portfolioContactHeading h2 em {
   color: var(--coral-on-lavender);
   font-weight: 400;
 }
@@ -2232,7 +1834,7 @@ footer h2 {
     grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
   }
 
-  .portfolioContactHeading h3 {
+  .portfolioContactHeading h2 {
     font-size: 48px;
   }
 
@@ -2247,15 +1849,15 @@ footer h2 {
   }
 
   .portfolioArrow--previous {
-    left: -68px;
+    left: -62px;
   }
 
   .portfolioArrow--next {
-    right: -68px;
+    right: -62px;
   }
 
   .portfolioCarousel {
-    width: calc(100% - 72px);
+    width: calc(100% - 88px);
   }
 }
 
@@ -2610,7 +2212,7 @@ footer h2 {
   padding: 7px 11px;
 }
 
-.homeBottomGrid .homeJournalCardTitle h2 {
+.homeBottomGrid .homeJournalCardTitle h3 {
   font-size: clamp(32px, 2.4vw, 38px);
   line-height: 1;
 }
@@ -2985,7 +2587,7 @@ footer h2 {
   padding: 46px;
 }
 
-.algorithmicWorkshopNote h3 {
+.algorithmicWorkshopNote h2 {
   font-family: var(--font-display);
   font-size: 56px;
   font-weight: 400;
@@ -3121,37 +2723,9 @@ footer h2 {
   .heroKicker span:last-child {
     max-width: 420px;
   }
-
-  .servicesCtaBlock {
-    align-items: start;
-    gap: 30px;
-    grid-template-columns: 1fr;
-    padding: 38px 34px 38px 46px;
-  }
-
-  .servicesCtaBlock::after {
-    right: 34px;
-    top: 34px;
-  }
-
-  .servicesCta {
-    justify-self: start;
-    min-width: 360px;
-  }
 }
 
 @media (min-width: 761px) and (max-width: 1120px) {
-  .workshopOption {
-    gap: 26px 34px;
-    grid-template-columns: 170px minmax(0, 1fr);
-  }
-
-  .workshopCopy,
-  .workshopTopics,
-  .workshopPathLink {
-    grid-column: 2;
-  }
-
   .algorithmicWorkshopHero,
   .algorithmicSignals,
   .algorithmicExplore,
@@ -3175,6 +2749,17 @@ footer h2 {
 
   .algorithmicTopicGrid article {
     min-height: 0;
+  }
+
+  /* Two 320px columns plus gutters don't fit below ~850px: stack, like the sections above. */
+  .workshopPage {
+    gap: 56px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .workshopPageIntro h1,
+  .workshopPageIntro h2 {
+    font-size: 60px;
   }
 }
 
@@ -3225,6 +2810,8 @@ footer h2 {
 }
 
 .footerDirectory nav {
+  /* Two navs side by side share a row height: keep label and links at the top. */
+  align-content: start;
   border-bottom: 1px solid rgba(251, 248, 240, 0.18);
   display: grid;
   gap: 12px;
@@ -3422,7 +3009,6 @@ footer h2 {
   }
 
   .manifesto,
-  .services,
   .colorfulSection,
   .faqSection,
   .portfolioSection,
@@ -3560,7 +3146,7 @@ footer h2 {
     padding: 28px 22px;
   }
 
-  .algorithmicWorkshopNote h3 {
+  .algorithmicWorkshopNote h2 {
     font-size: 42px;
   }
 
@@ -3574,169 +3160,19 @@ footer h2 {
     gap: 72px;
   }
 
-  .sectionHeading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 44px;
-  }
-
-  .servicesIntro {
-    gap: 30px;
-    grid-template-columns: 1fr;
-    margin-bottom: 52px;
-  }
-
-  .servicesIntro h2 {
-    font-size: 50px;
-  }
-
-  .serviceList {
-    grid-template-columns: 1fr;
-  }
-
-  .service {
-    column-gap: 12px;
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-height: 0;
-    padding: 30px 20px 32px;
-    row-gap: 18px;
-  }
-
-  .service:hover {
-    padding: 30px 20px 32px;
-  }
-
-  .serviceNumber {
-    grid-column: 1;
-    grid-row: 1;
-    margin-top: 8px;
-  }
-
-  .service h3 {
-    font-size: 39px;
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .service p {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    margin-top: 0;
-  }
-
-  .serviceArrow {
-    align-self: start;
-    font-size: 24px;
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .workshopOption {
-    gap: 24px;
-    grid-template-columns: 1fr;
-    padding: 28px 20px 30px;
-  }
-
-  .workshopOfferGroup {
-    box-shadow: none;
-  }
-
-  .serviceOfferStack {
-    box-shadow: 8px 8px 0 var(--lavender);
-  }
-
-  .workshopMeta {
-    gap: 8px;
-  }
-
-  .workshopMeta,
-  .workshopCopy,
-  .workshopTopics,
-  .workshopPathLink {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .workshopCopy h3 {
-    font-size: 36px;
-  }
-
-  .workshopCopy p {
-    font-size: var(--text-body);
-  }
-
-  .workshopTopics {
-    gap: 8px;
-  }
-
-  .workshopTopics li {
-    font-size: 11px;
-  }
-
   .serviceAreas {
     gap: 14px;
     grid-template-columns: 1fr;
     margin-top: 26px;
   }
 
-  .serviceAreas p {
+  .serviceAreasList {
     font-size: 14px;
-  }
-
-  .servicesCtaBlock {
-    gap: 26px;
-    grid-template-columns: 1fr;
-    margin-top: 28px;
-    padding: 32px 22px 32px 32px;
-  }
-
-  .servicesCtaBlock::after {
-    right: 22px;
-    top: 28px;
-    width: 52px;
-  }
-
-  .servicesCtaContext h3 {
-    font-size: 36px;
-  }
-
-  .servicesCtaContext p {
-    font-size: var(--text-lead);
-  }
-
-  .servicesCta {
-    min-width: 0;
-    width: 100%;
   }
 
   .aboutMe {
     gap: 36px;
     padding: 90px 20px;
-  }
-
-  .aboutBallOne {
-    height: 160px;
-    left: -68px;
-    opacity: 0.72;
-    top: 7%;
-    width: 160px;
-  }
-
-  .aboutBallTwo {
-    height: 250px;
-    opacity: 0.72;
-    right: -105px;
-    bottom: -120px;
-    width: 250px;
-  }
-
-  .aboutBallThree {
-    display: none;
-  }
-
-  .aboutBallFour {
-    display: none;
   }
 
   .photoFrame {
@@ -3873,7 +3309,7 @@ footer h2 {
     padding-left: 0;
   }
 
-  .portfolioContactHeading h3 {
+  .portfolioContactHeading h2 {
     font-size: 42px;
     margin-top: 22px;
   }
@@ -3919,7 +3355,9 @@ footer h2 {
   }
 
   .partnerMark {
-    flex: 0 0 122px;
+    /* May shrink, so a long link label (DE) can't push the logo out of the card. */
+    flex: 0 1 122px;
+    min-width: 0;
     position: static;
     width: 122px;
   }
@@ -4120,7 +3558,7 @@ footer h2 {
     grid-column: auto;
   }
 
-  .homeJournalCardTitle h2 {
+  .homeJournalCardTitle h3 {
     font-size: 40px;
   }
 
@@ -4153,6 +3591,62 @@ footer h2 {
 
   .homeJournalCardCta {
     justify-self: end;
+  }
+}
+
+/* Phones: bigger tap targets for small text links. */
+@media (max-width: 760px) {
+  .footerDirectory nav > div {
+    gap: 0 18px;
+  }
+
+  .footerDirectory a,
+  .footerBottomLegal a,
+  .footerBottomLegal button,
+  .footerBottom > a {
+    display: inline-block;
+    padding: 12px 0;
+  }
+
+  .footerBottom {
+    align-items: center;
+    gap: 0 24px;
+    padding-block: 15px 7px;
+  }
+
+  /* Underlined text links: enlarge the hit area without moving the underline. */
+  .offerFirstStepLinks a,
+  .homeWorkshopsMore,
+  .faqIntro > a,
+  .partnerSectionHead > a,
+  .homeJournalPreviewHead > a,
+  .workshopLandingList a,
+  .articleLink,
+  .postBackLink,
+  .snapshotCtaSecondary,
+  .emailSecondaryLink,
+  .calendarGateLinks a,
+  .newsletterConfirmedLink,
+  .newsletterConfirmedEnglishLinks a {
+    position: relative;
+  }
+
+  .offerFirstStepLinks a::before,
+  .homeWorkshopsMore::before,
+  .faqIntro > a::before,
+  .partnerSectionHead > a::before,
+  .homeJournalPreviewHead > a::before,
+  .workshopLandingList a::before,
+  .articleLink::before,
+  .postBackLink::before,
+  .snapshotCtaSecondary::before,
+  .emailSecondaryLink::before,
+  .calendarGateLinks a::before,
+  .newsletterConfirmedLink::before,
+  .newsletterConfirmedEnglishLinks a::before {
+    content: "";
+    inset: -10px -4px;
+    position: absolute;
   }
 }
 
@@ -4206,6 +3700,25 @@ footer h2 {
 
 }
 
+/* Narrowest phones (320px): keep long journal and partner headline words on one line. */
+@media (max-width: 359px) {
+  .homeBottomGrid .homeJournalCardTitle h3 {
+    font-size: 30px;
+  }
+
+  .homeBottomGrid .partnerCopy h2 {
+    font-size: 38px;
+  }
+
+  .homeBottomGrid .homeJournalCardMeta {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  .homeBottomGrid .homeJournalCardMeta span:last-child {
+    grid-column: 2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -4219,7 +3732,7 @@ footer h2 {
     transition-duration: 0.01ms !important;
   }
 
-  .portraitSwitcher.hasPhoto:hover {
+  .portraitSwitcher:hover {
     animation: none;
   }
 }

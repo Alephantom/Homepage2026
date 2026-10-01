@@ -7,8 +7,11 @@ translation_url_de: /de/
 permalink: /de/
 title: Strategin & Operations Consultant
 extra_css: /home-offers.css
-seo_title: Anna-Lena Birkner | Unabhängige Strategin & Operations Consultant
-description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:innen und Teams dabei, komplexe Fragen zu klären, People Operations zu stärken und praxistaugliche Systeme aufzubauen.
+seo_title: Anna-Lena Birkner | Strategin & Operations Consultant
+description: Die Strategin Anna-Lena Birkner hilft Gründer:innen und Teams, komplexe Fragen zu klären, People Operations zu stärken und praxistaugliche Systeme aufzubauen.
+# Structured data (_includes/structured-data.html): services from _data/schema_services.yml, FAQ from the FAQ data file.
+schema_services: [clarity_check, focused_build, interim_hr, workshops, team_snapshot]
+schema_faq: true
 ---
 <section class="hero">
   <div class="heroKicker">
@@ -19,9 +22,9 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
   <div class="heroBottom">
     <div class="heroIntroBlock">
       <p class="intro">Wenn Wachstum, Veränderung oder neue Technologien die Arbeit unnötig kompliziert machen, verbinde ich Struktur, Menschen und Strategie. So helfe ich Gründer:innen und Teams, Prioritäten zu klären, fundierte Entscheidungen zu treffen und Strukturen, Prozesse und digitale Lösungen aufzubauen, die im Alltag nachhaltig funktionieren.</p>
-      <p class="heroLanguages" aria-label="Arbeitssprachen: Deutsch, Englisch und Spanisch">
+      <p class="heroLanguages">
         <span>Arbeitssprachen</span>
-        <span aria-hidden="true">DE / EN / ES</span>
+        <span><span aria-hidden="true">DE / EN / ES</span><span class="visuallyHidden">Deutsch, Englisch und Spanisch</span></span>
       </p>
     </div>
     <a class="circleLink" href="#work" aria-label="Entdecke, wie ich arbeite"><span>Entdecken</span><span aria-hidden="true">↓</span></a>
@@ -44,13 +47,13 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
 {% include home-offers-de.html %}
 
 <section class="aboutMe">
-  <div class="aboutBall aboutBallOne" aria-hidden="true"></div>
-  <div class="aboutBall aboutBallTwo" aria-hidden="true"></div>
-  <div class="aboutBall aboutBallThree" aria-hidden="true"></div>
-  <div class="aboutBall aboutBallFour" aria-hidden="true"></div>
   <figure class="photoFrame">
-    <div class="photoPlaceholder portraitSwitcher" id="portrait-frame" role="img" aria-label="Porträt von Anna-Lena" data-portrait-alt="Porträt von Anna-Lena">
+    <div class="photoPlaceholder portraitSwitcher" id="portrait-frame">
       <span class="photoInitials" aria-hidden="true">AL</span>
+      <picture>
+        <source srcset="{{ '/assets/portrait-friendly.webp' | relative_url }}" type="image/webp">
+        <img class="portraitPhoto" src="{{ '/assets/portrait-friendly.jpg' | relative_url }}" alt="Porträt von Anna-Lena Birkner, lächelnd, im dunkelblauen Blazer" width="900" height="1157" loading="lazy" decoding="async">
+      </picture>
     </div>
   </figure>
   <div class="aboutCopy">
@@ -77,7 +80,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
           <div class="portfolioCaseOpening">
             <div class="portfolioCaseTop">
               <p class="eyebrow">Ausgewählte Arbeiten · Fallbeispiel 01</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--mindfulife" src="{{ '/assets/case-logos/mindfulife-circle.png' | relative_url }}" alt="" width="216" height="216" loading="lazy" decoding="async">
+              <img class="portfolioCaseLogo portfolioCaseLogo--mindfulife" src="{{ '/assets/case-logos/mindfulife-circle.png' | relative_url }}" alt="Logo von Mindfulife" width="144" height="144" loading="lazy" decoding="async">
             </div>
             <h2>Dem Wachstum<br><em>mehr Struktur geben.</em></h2>
             <p>Bei <a class="portfolioInlineLink" href="https://mindfulife.de/" target="_blank" rel="noopener noreferrer">Mindfulife</a>, einem psychologisch fundierten Unternehmen für mentale Gesundheit, leite ich das People-&amp;-Culture-Team und arbeite eng mit den Gründer:innen zusammen. Dabei sorge ich dafür, dass ein wachsendes Remote-Team verlässlich arbeiten kann – mit klaren People-Prozessen, tragfähigen Strukturen und gut vorbereiteten operativen Entscheidungen.</p>
@@ -109,7 +112,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
           <div class="portfolioCaseOpening">
             <div class="portfolioCaseTop">
               <p class="eyebrow">Ausgewählte Arbeiten · Fallbeispiel 02</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--relief" src="{{ '/assets/case-logos/relief-applications.png' | relative_url }}" alt="" width="309" height="132" loading="lazy" decoding="async">
+              <img class="portfolioCaseLogo portfolioCaseLogo--relief" src="{{ '/assets/case-logos/relief-applications.png' | relative_url }}" alt="Logo von Relief Applications" width="150" height="64" loading="lazy" decoding="async">
             </div>
             <h2>Angebot, Umsetzung<br><em>und Team verbinden.</em></h2>
             <p>Bei Relief Applications, einem Technologieunternehmen im humanitären Bereich, habe ich in Business Development, Projektumsetzung und People Operations gearbeitet. So konnte komplexe, missionsgetriebene Arbeit von einer vielversprechenden Gelegenheit zu einem gut begleiteten Team und einem praktischen Ergebnis werden.</p>
@@ -140,7 +143,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
           <div class="portfolioCaseOpening">
             <div class="portfolioCaseTop">
               <p class="eyebrow">Ausgewählte Arbeiten · Fallbeispiel 03</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--statestreet" src="{{ '/assets/case-logos/state-street.png' | relative_url }}" alt="" width="592" height="160" loading="lazy" decoding="async">
+              <img class="portfolioCaseLogo portfolioCaseLogo--statestreet" src="{{ '/assets/case-logos/state-street.png' | relative_url }}" alt="Logo von State Street" width="208" height="56" loading="lazy" decoding="async">
             </div>
             <h2>Verlässliche Prozesse,<br><em>wo Präzision zählt.</em></h2>
             <p>Bei der State Street Bank, einem global tätigen Finanzdienstleister, habe ich an Prozessen rund um People &amp; Culture, die monatliche Entgeltabrechnung, Benefits und Altersversorgung gearbeitet. Dabei ging es darum, wiederkehrende Abläufe einfacher und verlässlicher zu machen und den manuellen Aufwand zu senken.</p>
@@ -182,7 +185,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
   <div class="portfolioContactStrip" id="contact-feature">
     <div class="portfolioContactHeading">
       <p class="eyebrow">Bereit, wenn du es bist</p>
-      <h3>Wähle einen Termin oder<br><em>schreib mir erst einmal.</em></h3>
+      <h2>Wähle einen Termin oder<br><em>schreib mir erst einmal.</em></h2>
     </div>
     <div class="portfolioContactAction">
       <p>Bring den ersten, noch unfertigen Gedanken mit. Wähle direkt einen Termin oder schreib mir, wenn du lieber schriftlich beginnen möchtest.</p>
@@ -201,32 +204,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
     <a href="{{ '/de/kontakt/' | relative_url }}">Eine andere Frage stellen <span aria-hidden="true">↗</span></a>
   </div>
 
-  <div class="faqList">
-    <details>
-      <summary><span>01</span><strong>Woran können wir gemeinsam arbeiten?</strong><i aria-hidden="true"></i></summary>
-      <p>Ich unterstütze bei Positionierung und digitaler Präsenz, Operations und Prozessklarheit, People- und Teamsystemen, verantwortungsvoller KI und der praktischen Infrastruktur, die kleinen Unternehmen und wachsenden Teams gute Arbeit ermöglicht.</p>
-    </details>
-    <details>
-      <summary><span>02</span><strong>Was unterscheidet den kostenlosen Team-Snapshot vom Clarity Check?</strong><i aria-hidden="true"></i></summary>
-      <p>Der kostenlose <a href="{{ '/de/team-snapshot/' | relative_url }}">Team-Snapshot</a> ist eine Selbsteinschätzung in zwei Minuten: sechs Fragen, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Der kostenpflichtige Clarity Check geht bei einer konkreten Herausforderung tiefer: Wir sprechen sie gemeinsam durch, ich schaue mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan, den wir in einem Folgegespräch gemeinsam durchgehen.</p>
-    </details>
-    <details>
-      <summary><span>03</span><strong>Können wir mit etwas Kleinem beginnen?</strong><i aria-hidden="true"></i></summary>
-      <p>Ja. Wir können mit einer einzelnen Frage oder einem Clarity Check beginnen. Zeigt der Clarity Check Probleme, die immer wiederkommen, kann ein Focused Build im nächsten Schritt bis zu drei davon angehen. Ob weitere Unterstützung sinnvoll ist, entscheiden wir danach – ohne dass du dich von Anfang an auf ein größeres Projekt festlegen musst.</p>
-    </details>
-    <details>
-      <summary><span>04</span><strong>Arbeitest du remote oder vor Ort?</strong><i aria-hidden="true"></i></summary>
-      <p>Strategische Begleitung und Umsetzungsprojekte laufen meist remote. Wenn es deinem Team hilft, komme ich auch gern zu euch. Workshops sind nach Absprache remote oder vor Ort möglich.</p>
-    </details>
-    <details>
-      <summary><span>05</span><strong>Was passiert nach dem ersten Gespräch?</strong><i aria-hidden="true"></i></summary>
-      <p>Wenn die Zusammenarbeit sinnvoll passt, empfehle ich ein Format und kläre Umfang, Zeitrahmen, Verantwortlichkeiten und Honorar, bevor die Arbeit beginnt. Wenn ein anderer Weg hilfreicher wäre, sage ich das ebenfalls.</p>
-    </details>
-    <details>
-      <summary><span>06</span><strong>Wie laufen Team-Workshops ab?</strong><i aria-hidden="true"></i></summary>
-      <p>Jeder Workshop dreht sich um genau ein Thema und verbindet praktische Übungen, Austausch und konkrete nächste Schritte. Workshops dauern zwei bis vier Stunden, kosten ab {{ site.data.offer_prices.workshops.de }} und umfassen ein kurzes Vorgespräch, ein Workbook zum Thema sowie eine schriftliche Zusammenfassung im Anschluss. Für größere Gruppen und Präsenztermine mache ich dir gern ein eigenes Angebot.</p>
-    </details>
-  </div>
+{% include faq-list.html lang="de" %}
 </section>
 
 <div class="homeBottomGrid">
@@ -244,15 +222,15 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
           <span>DevOpWeb<br class="partnerLinkBreak"> kennenlernen</span><span aria-hidden="true">↗</span>
         </a>
         <a class="partnerMark" href="https://devopweb.com" target="_blank" rel="noopener noreferrer" aria-label="DevOpWeb besuchen">
-          <img src="{{ '/assets/devopweb-logo.png' | relative_url }}" alt="DevOpWeb" width="517" height="140">
+          <img src="{{ '/assets/devopweb-logo.png' | relative_url }}" alt="DevOpWeb" width="517" height="140" loading="lazy" decoding="async">
         </a>
       </div>
     </div>
   </section>
 
-  <section class="homeJournalPreview" id="journal">
+  <section class="homeJournalPreview" id="journal" aria-labelledby="journal-title">
     <div class="homeJournalPreviewHead">
-      <p class="eyebrow">Journal · Human in the Loop</p>
+      <h2 class="eyebrow" id="journal-title">Journal · Human in the Loop</h2>
       <a href="{{ '/blog/' | relative_url }}" hreflang="en">Alle Beiträge ansehen <span aria-hidden="true">↗</span></a>
     </div>
 
@@ -281,7 +259,7 @@ description: Unabhängige Strategin Anna-Lena Birkner unterstützt Gründer:inne
 
             <div class="homeJournalCardTitle">
               {% if forloop.first %}<span class="homeJournalCardLabel">Neuester Beitrag</span>{% endif %}
-              <h2>{{ localized_title }}</h2>
+              <h3>{{ localized_title }}</h3>
             </div>
 
             <div class="homeJournalCardCopy">

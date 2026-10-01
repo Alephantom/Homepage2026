@@ -28,6 +28,9 @@
       {% include cookie-consent.html %}
     {% endif %}
     <script src="{{ '/script.js' | relative_url }}?v={{ asset_version }}"></script>
-    <script src="{{ '/consent.js' | relative_url }}?v={{ asset_version }}"></script>
+    {% comment %} consent.js only does something when the GA id (and so the consent banner) is set. {% endcomment %}
+    {% if site.google_analytics_id and site.google_analytics_id != "" %}
+      <script src="{{ '/consent.js' | relative_url }}?v={{ asset_version }}"></script>
+    {% endif %}
   </body>
 </html>

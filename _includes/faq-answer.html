@@ -1,0 +1,14 @@
+{%- comment -%}
+  One FAQ answer from _data/faq_en.yml or faq_de.yml, ready for the page: fills in the
+  {price.…} placeholders from _data/offer_prices.yml and adds the baseurl to site links.
+  Used by faq-list.html (visible FAQ) and structured-data.html (FAQPage), so both get the same text.
+  Parameters: answer, lang ("en" or "de").
+{%- endcomment -%}
+{%- assign faq_answer_lang = include.lang | default: 'en' -%}
+{%- assign faq_answer_text = include.answer | default: '' -%}
+{%- for faq_price in site.data.offer_prices -%}
+  {%- assign faq_price_token = '{price.' | append: faq_price[0] | append: '}' -%}
+  {%- assign faq_answer_text = faq_answer_text | replace: faq_price_token, faq_price[1][faq_answer_lang] -%}
+{%- endfor -%}
+{%- assign faq_link_prefix = 'href="' | append: site.baseurl | append: '/' -%}
+{{- faq_answer_text | replace: 'href="/', faq_link_prefix | strip -}}

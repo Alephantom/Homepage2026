@@ -119,6 +119,12 @@
   overflow-x: auto;
 }
 
+.legalTableWrap:focus-visible {
+  box-shadow: 0 0 0 5px var(--ink);
+  outline: 2px solid var(--paper);
+  outline-offset: 0;
+}
+
 .legalDocument table {
   border-collapse: collapse;
   min-width: 760px;

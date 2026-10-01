@@ -1,7 +1,7 @@
-# Topics for the "What’s it about?" / "Worum geht es?" select on /contact.html and /de/kontakt/.
+# Topics for the "What’s it about?" / "Worum geht es?" select on /contact and /de/kontakt/.
 #
 # Links open the contact form with a topic already selected:
-#   {{ '/contact.html' | relative_url }}?topic=clarity-check#write
+#   {{ '/contact' | relative_url }}?topic=clarity-check#write
 #   {{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben
 # Unknown or missing topics fall back to "general". See README, "Contact topics".
 #

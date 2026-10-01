@@ -8,14 +8,14 @@ permalink: /journal/:title/
 
 calendly_url: "https://calendly.com/annalenabirkner-info/30min"
 
-# Contact form on /contact.html and /de/kontakt/. Paste your Formspree form endpoint,
+# Contact form on /contact and /de/kontakt/. Paste your Formspree form endpoint,
 # e.g. "https://formspree.io/f/abcdwxyz". Empty = the page shows the email address with a Copy button instead.
 contact_form_endpoint: ""
 
 # Newsletter signup in the Team Snapshot results. Paste the form action URL from your Brevo form
 # (Brevo > Contacts > Forms > your form > Share > HTML code: the <form action="https://....sibforms.com/serve/..."> value).
 # Empty = the signup is hidden on the live site (it still shows in the local preview, marked as not connected).
-brevo_form_url: ""
+brevo_form_url: "https://1e4bd713.sibforms.com/serve/MUIFAGJEwo7brY41o0HJL29iZiEgx5tiup9AJO9rBMJyJEeHCv7mCbPuPtnaZLsGSCJKs3WTC6QBhv3fHnRGaGWIbwoLP9FRCyeSLhIduFWGQtnPle-7z0gJROgEfllPIN3IGHo1ARDCA9tdMZtIjhmq9CeCw0faJdZ-0oaPXBC5bK1go52w3elRfvG7x92IjjJ5TMOKxG4se-LNaw=="
 
 # Legal and privacy settings. Complete the address before publishing the legal pages.
 legal_details_complete: false
@@ -44,6 +44,9 @@ consent_storage_days: 180
 # Paste only the verification token from Google Search Console when available.
 google_site_verification: ""
 
+# The github-pages gem would otherwise add its default theme and write an unused /assets/css/style.css.
+theme: null
+
 plugins:
   - jekyll-sitemap
 
@@ -53,6 +56,11 @@ defaults:
       type: posts
     values:
       layout: post
+  # Keep images and downloads (such as PDFs) in assets/ out of sitemap.xml; only pages are listed.
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false
 
 exclude:
   - Gemfile

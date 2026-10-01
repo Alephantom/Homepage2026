@@ -2,13 +2,14 @@
 layout: default
 lang: de
 translation_key: contact
-translation_url_en: /contact.html
+translation_url_en: /contact
 translation_url_de: /de/kontakt/
 title: Gespräch buchen
 seo_title: Gespräch mit Anna-Lena Birkner buchen
-description: Buche ein kostenloses Orientierungsgespräch mit Anna-Lena Birkner oder sende eine Anfrage zu strategischer Begleitung, People Operations, Workshops oder praktischen Systemen.
+description: Buche ein kostenloses 30-minütiges Orientierungsgespräch mit Anna-Lena Birkner oder sende eine Anfrage zu Strategie, People Operations oder Workshops.
 extra_css: /contact.css
 permalink: /de/kontakt/
+schema_page_type: ContactPage
 ---
 <section class="contactHero">
   <div class="contactIntro">
@@ -27,42 +28,34 @@ permalink: /de/kontakt/
     </div>
 
     <div class="calendarEmbedFrame">
-      {% if site.calendly_url contains "REPLACE_WITH" %}
-        <div class="calendarEmbedPlaceholder">
-          <span aria-hidden="true">↗</span>
-          <strong>Dein Calendly-Kalender erscheint hier.</strong>
-          <p>Ergänze den öffentlichen Terminlink als <code>calendly_url</code> in <code>_config.yml</code>, um den Kalender zu aktivieren.</p>
-        </div>
-      {% else %}
-        <div
-          class="calendarConsentGate"
-          data-calendly-gate
-          data-i18n-retry="Erneut versuchen"
-          data-i18n-error="Der Kalender konnte nicht geladen werden. Du kannst Calendly weiterhin in einem neuen Tab öffnen."
-          data-i18n-loading="Wird geladen…"
-          data-i18n-connecting="Verbindung zu Calendly wird hergestellt…"
-        >
-          <span class="calendarGateMark" aria-hidden="true">↗</span>
-          <strong>Terminkalender laden</strong>
-          <p>Der Kalender wird von Calendly bereitgestellt. Erst wenn du ihn lädst, wird eine Verbindung zu Calendly hergestellt und Calendly kann eigene Cookies setzen.</p>
-          <button class="calendarButton" type="button" data-calendly-load>Calendly laden</button>
-          <p class="calendarGateLinks">
-            <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly in einem neuen Tab öffnen ↗</a>
-            <a href="{{ '/privacy/' | relative_url }}" hreflang="en">Datenschutzdetails</a>
-          </p>
-          <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
-        </div>
-        <div
-          class="calendarLoaded"
-          data-calendly-container
-          data-calendly-url="{{ site.calendly_url }}"
-          aria-label="Kostenloses 30-minütiges Orientierungsgespräch mit Anna-Lena buchen"
-          hidden
-        ></div>
-        <noscript>
-          <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly öffnen <span aria-hidden="true">↗</span></a>
-        </noscript>
-      {% endif %}
+      <div
+        class="calendarConsentGate"
+        data-calendly-gate
+        data-i18n-retry="Erneut versuchen"
+        data-i18n-error="Der Kalender konnte nicht geladen werden. Du kannst Calendly weiterhin in einem neuen Tab öffnen."
+        data-i18n-loading="Wird geladen…"
+        data-i18n-connecting="Verbindung zu Calendly wird hergestellt…"
+      >
+        <span class="calendarGateMark" aria-hidden="true">↗</span>
+        <strong>Terminkalender laden</strong>
+        <p>Der Kalender wird von Calendly bereitgestellt. Erst wenn du ihn lädst, wird eine Verbindung zu Calendly hergestellt und Calendly kann eigene Cookies setzen.</p>
+        <button class="calendarButton" type="button" data-calendly-load>Calendly laden</button>
+        <p class="calendarGateLinks">
+          <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly in einem neuen Tab öffnen ↗</a>
+          <a href="{{ '/privacy/' | relative_url }}" hreflang="en">Datenschutzdetails</a>
+        </p>
+        <p class="calendarLoadStatus" data-calendly-status aria-live="polite"></p>
+      </div>
+      <div
+        class="calendarLoaded"
+        data-calendly-container
+        data-calendly-url="{{ site.calendly_url }}"
+        aria-label="Kostenloses 30-minütiges Orientierungsgespräch mit Anna-Lena buchen"
+        hidden
+      ></div>
+      <noscript>
+        <a class="calendarButton" href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly öffnen <span aria-hidden="true">↗</span></a>
+      </noscript>
     </div>
   </div>
 </section>
@@ -94,9 +87,14 @@ permalink: /de/kontakt/
         class="contactForm"
         action="{{ contact_endpoint | escape }}"
         method="POST"
+        novalidate
         data-contact-form
         data-i18n-sending="Wird gesendet…"
         data-i18n-subject="Neue Anfrage: {topic}"
+        data-i18n-name-missing="Bitte gib deinen Namen ein."
+        data-i18n-email-missing="Bitte gib deine E-Mail-Adresse ein."
+        data-i18n-email-invalid="Bitte prüf deine E-Mail-Adresse. Sie sollte so aussehen: name@firma.de."
+        data-i18n-message-missing="Bitte schreib mir ein paar Zeilen dazu, worum es geht."
       >
         <div class="contactFormGrid">
           <div class="contactField contactField--wide">
@@ -119,11 +117,13 @@ permalink: /de/kontakt/
           </div>
           <div class="contactField">
             <label for="contact-name">Name</label>
-            <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            <input id="contact-name" name="name" type="text" autocomplete="name" aria-describedby="contact-name-error" required>
+            <p class="contactFieldError" id="contact-name-error"></p>
           </div>
           <div class="contactField">
             <label for="contact-email">E-Mail</label>
-            <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Eine E-Mail-Adresse wie name@firma.de" required>
+            <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Eine E-Mail-Adresse wie name@firma.de" aria-describedby="contact-email-error" required>
+            <p class="contactFieldError" id="contact-email-error"></p>
           </div>
           <div class="contactField contactField--wide">
             <label for="contact-company">Unternehmen <span class="contactFieldOptional">(optional)</span></label>
@@ -131,7 +131,8 @@ permalink: /de/kontakt/
           </div>
           <div class="contactField contactField--wide">
             <label for="contact-message">Deine Nachricht</label>
-            <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts" required data-contact-message></textarea>
+            <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts contact-message-error" required data-contact-message></textarea>
+            <p class="contactFieldError" id="contact-message-error"></p>
           </div>
         </div>
 
@@ -159,6 +160,7 @@ permalink: /de/kontakt/
         data-i18n-copied="Kopiert"
         data-i18n-copied-status="E-Mail-Adresse kopiert."
         data-i18n-select-status="Die Adresse ist markiert – drück Strg+C (oder ⌘C auf dem Mac), um sie zu kopieren."
+        data-i18n-select-status-touch="Die Adresse ist markiert – halte den Finger darauf, um sie zu kopieren."
       >
         <p class="emailAddressLabel">E-Mail</p>
         <p class="emailAddress" data-copy-source>{{ contact_email }}</p>

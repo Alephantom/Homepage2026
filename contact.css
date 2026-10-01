@@ -82,9 +82,9 @@
   position: relative;
 }
 
+/* No min-width: Calendly's inline widget is responsive, and the frame clips overflow. */
 .calendarLoaded {
   height: 730px;
-  min-width: 320px;
   width: 100%;
 }
 
@@ -153,50 +153,6 @@
   margin: 16px 0 0;
 }
 
-.calendarEmbedPlaceholder {
-  align-items: center;
-  background: var(--cream);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 620px;
-  padding: 48px;
-  text-align: center;
-}
-
-.calendarEmbedPlaceholder > span {
-  align-items: center;
-  background: var(--acid);
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-  display: inline-flex;
-  font-size: 24px;
-  height: 76px;
-  justify-content: center;
-  margin-bottom: 28px;
-  width: 76px;
-}
-
-.calendarEmbedPlaceholder strong {
-  font-family: var(--font-display);
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.05;
-  max-width: 440px;
-}
-
-.calendarEmbedPlaceholder p {
-  font-size: var(--text-small);
-  line-height: var(--leading-copy);
-  margin: 20px 0 0;
-  max-width: 430px;
-}
-
-.calendarEmbedPlaceholder code {
-  background: var(--lavender);
-  padding: 2px 5px;
-}
-
 .calendarButton {
   align-items: center;
   background: var(--ink);
@@ -212,12 +168,20 @@
   text-transform: uppercase;
 }
 
+/* "Load Calendly" while loading: aria-disabled keeps keyboard focus on the button. */
+.calendarButton[aria-disabled="true"] {
+  cursor: progress;
+  opacity: 0.72;
+}
+
 .contactFormSection {
   background: var(--paper);
   display: grid;
   gap: 10vw;
   grid-template-columns: minmax(300px, 0.65fr) minmax(480px, 1fr);
   padding: 130px 8vw;
+  /* Topic links jump to #write / #schreiben: keep the heading clear of the sticky nav. */
+  scroll-margin-top: 40px;
 }
 
 .contactFormIntro > p:last-child {
@@ -413,9 +377,26 @@
 }
 
 .contactField input:user-invalid,
-.contactField textarea:user-invalid {
+.contactField textarea:user-invalid,
+.contactField [aria-invalid="true"] {
   border-color: var(--coral-on-lavender);
   box-shadow: inset 0 0 0 1px var(--coral-on-lavender);
+}
+
+/* Field error text. On the paper chip #a9362d reaches 6.08:1; on lavender it would be only 3.72:1. */
+.contactFieldError {
+  background: var(--paper);
+  border-left: 4px solid var(--coral-on-lavender);
+  color: var(--coral-on-lavender);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  padding: 6px 10px;
+}
+
+.contactFieldError:empty {
+  display: none;
 }
 
 .contactFormTrap {
@@ -598,15 +579,8 @@
     padding: 38px 20px;
   }
 
-  .calendarEmbedPlaceholder {
-    min-height: 520px;
-    padding: 34px 20px;
-  }
-
   .contactFormSection {
     gap: 65px;
-    /* Topic links jump to #write / #schreiben: keep the heading clear of the sticky nav. */
-    scroll-margin-top: 40px;
   }
 
   .emailCard {
@@ -637,5 +611,16 @@
 
   .emailAddress {
     font-size: 24px;
+  }
+}
+
+/* Narrow phones: give the Calendly widget as much width as possible. */
+@media (max-width: 400px) {
+  .calendarCard {
+    padding: 24px 10px 10px;
+  }
+
+  .calendarCardHeader {
+    padding-inline: 8px;
   }
 }
