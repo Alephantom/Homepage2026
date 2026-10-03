@@ -37,12 +37,12 @@
 {%- if sd_lang == 'de' -%}
   {%- assign sd_home_url = '/de/' | absolute_url -%}
   {%- assign sd_home_name = 'Startseite' -%}
-  {%- assign sd_job_title = 'Unabhängige Strategin & Operations Consultant' -%}
 {%- else -%}
   {%- assign sd_home_url = '/' | absolute_url -%}
   {%- assign sd_home_name = 'Home' -%}
-  {%- assign sd_job_title = 'Independent Strategist & Maker' -%}
 {%- endif -%}
+{%- comment -%} The professional title stays in English on the German pages too. {%- endcomment -%}
+{%- assign sd_job_title = 'People & Operations Consultant' -%}
 {%- assign sd_page_type = page.schema_page_type | default: 'WebPage' -%}
 {%- comment -%} Breadcrumb parent: the Journal for posts, otherwise breadcrumb_parent from the front matter. {%- endcomment -%}
 {%- assign sd_parent = nil -%}

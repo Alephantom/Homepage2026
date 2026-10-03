@@ -1,21 +1,39 @@
 <section class="homeOffers" id="work" aria-labelledby="offers-title">
   <div class="homeOffersIntro">
-    <p class="eyebrow">Drei Wege der Zusammenarbeit</p>
-    <h2 id="offers-title">Die Arbeit läuft zäher als nötig?<br><em>Lass uns deinen nächsten Schritt finden.</em></h2>
-    <p>Finde heraus, wo es gerade hakt, pack an, was immer wieder auftaucht – oder hol dir operative HR-Unterstützung, solange du sie brauchst.</p>
+    <p class="eyebrow">So arbeiten wir zusammen · Kostenlos starten, dann zwei Schritte</p>
+    <h2 id="offers-title">Erst das eigentliche Problem finden.<br><em>Dann mit deinem Team anpacken.</em></h2>
+    <p>Den Anfang macht der kostenlose Team-Snapshot: ein erstes Bild in zwei Minuten. Der Clarity Check zeigt dir dann, welches Problem zuerst drankommt – und warum. Im Focused Build gehen wir danach in zwei Wochen gemeinsam mit deinem Team bis zu drei wiederkehrende Probleme an. Am Ende stehen schriftliche Abläufe und eine Übergabe an alle Beteiligten.</p>
   </div>
+
+  <article class="offerSnapshot" aria-labelledby="snapshot-offer-title">
+    <div class="offerSnapshotCopy">
+      <p class="eyebrow">Schritt 0 · Kostenlos · 2&nbsp;Minuten</p>
+      <h3 id="snapshot-offer-title">Kostenloser <span class="keepTogether">Team-Snapshot</span><br><em>Sieh, wo es gerade hakt.</em></h3>
+      <p>Noch unsicher, wo du ansetzen sollst? Beantworte sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft – etwa, wer was entscheidet und was passiert, wenn du nicht da bist.</p>
+      <ul class="offerSnapshotFacts">
+        <li>Sechs Fragen</li>
+        <li>Sofort ein Ergebnis für jeden Bereich</li>
+        <li>Praktische Tipps und ein PDF zum Behalten</li>
+        <li>Ohne Anmeldung</li>
+      </ul>
+    </div>
+    <div class="offerSnapshotActions">
+      <a class="offerButton" href="{{ '/de/team-snapshot/' | relative_url }}"><span>Kostenlosen <span class="keepTogether">Team-Snapshot</span> starten</span><span aria-hidden="true">↗</span></a>
+      <p class="offerSnapshotSecondary"><a href="{{ '/de/kontakt/' | relative_url }}">Lieber persönlich sprechen? Kostenloses Orientierungsgespräch (30&nbsp;Minuten) buchen</a></p>
+    </div>
+  </article>
 
   <div class="homeOffersGrid">
     <article class="offerCard" id="clarity-review" aria-labelledby="clarity-offer-title">
       <div class="offerCardHeading">
-        <p class="eyebrow">01 · Den Ausgangspunkt finden</p>
+        <p class="eyebrow">Schritt 1 · Den Ausgangspunkt finden</p>
         <h3 id="clarity-offer-title">Clarity Check<br><em>Finde deinen Fokus.</em></h3>
         <p class="offerPrice">{{ site.data.offer_prices.clarity_check.de | escape }}</p>
         <p class="offerPriceNote">Eine konkrete Herausforderung</p>
       </div>
       <div class="offerAudience">
         <h4>Für wen es passt</h4>
-        <p>Für Gründer:innen und wachsende Teams, die spüren, dass etwas im Weg steht, es aber noch nicht genau benennen können.</p>
+        <p>Für Gründer:innen, die merken, dass zu viel über sie läuft, aber noch nicht wissen, wo sie zuerst ansetzen sollen.</p>
       </div>
       <div class="offerIncludes">
         <h4>Was enthalten ist</h4>
@@ -27,8 +45,8 @@
           </ul>
       </div>
       <div class="offerActions">
-        <a class="offerButton" href="{{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben"><span>Deinen Clarity Check buchen</span><span aria-hidden="true">↗</span></a>
-        <p class="offerFreeNote">Erzähl mir kurz, worum es geht. Ein paar Zeilen reichen völlig.</p>
+        <a class="offerButton" href="{{ '/de/team-snapshot/' | relative_url }}"><span>Zuerst den kostenlosen Snapshot machen</span><span aria-hidden="true">↗</span></a>
+        <p class="offerFreeNote offerDirectLink"><a href="{{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben">Du weißt schon, was du brauchst? Clarity Check direkt anfragen</a></p>
       </div>
       <div class="offerMore">
         <details class="offerDetails">
@@ -42,9 +60,11 @@
       </div>
     </article>
 
+    <div class="offerPathArrow" aria-hidden="true">→</div>
+
     <article class="offerCard offerCard--build" id="focused-build" aria-labelledby="build-offer-title">
       <div class="offerCardHeading">
-        <p class="eyebrow">02 · Nach deinem Clarity Check</p>
+        <p class="eyebrow">Schritt 2 · Nach deinem Clarity Check</p>
         <h3 id="build-offer-title">Focused Build<br><em>Schluss mit Dauer&shy;baustellen.</em></h3>
         <p class="offerPrice">{{ site.data.offer_prices.focused_build.de | escape }}</p>
         <p class="offerPriceNote">2 Wochen · 2 halbtägige Sessions</p>
@@ -78,79 +98,35 @@
         </details>
       </div>
     </article>
+  </div>
 
-    <article class="offerCard offerCard--interim" id="interim-hr-business-partner" aria-labelledby="interim-offer-title">
-      <div class="offerCardHeading">
-        <p class="eyebrow">03 · Begleitung auf Zeit</p>
-        <h3 id="interim-offer-title">Interim HR Business Partner<br><em>Für die Zeit, die du brauchst.</em></h3>
-        <p class="offerPrice">Auf Anfrage</p>
-        <p class="offerPriceNote">Einsatzzeit, Dauer und Honorar – abgestimmt auf deine Situation</p>
-      </div>
-      <div class="offerAudience">
-        <h4>Für wen es passt</h4>
-        <p>Für Gründer:innen und Teams, die eine Elternzeit, einen längeren krankheitsbedingten Ausfall oder eine unbesetzte Stelle überbrücken müssen oder mitten in einer Veränderung stecken – und jemanden brauchen, der nah am Tagesgeschäft arbeitet.</p>
-      </div>
-      <div class="offerIncludes">
-        <h4>Was enthalten ist</h4>
+  <article class="offerInterim" id="interim-hr-business-partner" aria-labelledby="interim-offer-title">
+    <div class="offerInterimCopy">
+      <p class="eyebrow">Begleitung auf Zeit</p>
+      <h3 id="interim-offer-title">Interim HR Business Partner<br><em>Für die Zeit, die du brauchst.</em></h3>
+      <p>Du brauchst kein Projekt, sondern für eine Weile operative HR-Unterstützung? Elternzeit, ein längerer krankheitsbedingter Ausfall, eine unbesetzte Stelle oder eine Phase der Veränderung: Wenn dadurch eine Lücke entsteht, springe ich ein – nah am Tagesgeschäft, damit nicht alles bei dir landet. Aufgaben, Einsatzzeit, Dauer und Honorar legen wir vorab gemeinsam fest, abgestimmt auf deine Situation. Am Ende steht eine sorgfältige Übergabe.</p>
+      <details class="offerDetails">
+        <summary>Was enthalten ist</summary>
         <ul>
-            <li>Vertretung während Elternzeit oder krankheitsbedingtem Ausfall sowie Überbrückung, bis die Stelle wieder fest besetzt ist</li>
-            <li>Organisationsstruktur, Verantwortlichkeiten und Entscheidungen rund um People &amp; Culture</li>
-            <li>Employee Lifecycle, Teamentwicklung und alltägliche People Operations</li>
-            <li>Eine sorgfältige Übergabe, wenn die vertretene Person zurückkommt oder jemand Neues anfängt</li>
-          </ul>
-      </div>
-      <div class="offerActions"><a class="offerButton" href="{{ '/de/kontakt/' | relative_url }}?topic=interim-hr#schreiben"><span>Interim-Begleitung anfragen</span><span aria-hidden="true">↗</span></a></div>
-      <div class="offerMore">
-        <details class="offerDetails">
-          <summary>Umfang</summary>
-          <p>Aufgaben, Stundenumfang und Laufzeit legen wir vorab gemeinsam fest. Am Ende steht eine sorgfältige Übergabe, wenn die vertretene Person zurückkommt oder jemand Neues anfängt.</p>
-        </details>
-        <details class="offerDetails">
-          <summary>Was sich für dich ändert</summary>
-          <p>People-Prozesse laufen weiter, alltägliche Entscheidungen bleiben nicht liegen – und die Zusatzarbeit landet nicht bei den Gründer:innen. Ich arbeite an deiner Seite und bringe Struktur in das, was als Nächstes kommt.</p>
-        </details>
-      </div>
-    </article>
-  </div>
-
-  <div class="offerFirstStep">
-    <p><strong>Du weißt nicht, wo du anfangen sollst?</strong> Mach den kostenlosen Team-Snapshot: sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft. Du siehst sofort für jeden Bereich ein Ergebnis, dazu praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung.</p>
-    <div class="offerFirstStepLinks">
-      <a href="{{ '/de/team-snapshot/' | relative_url }}">Kostenlosen Team-Snapshot starten <span aria-hidden="true">↗</span></a>
-      <a class="offerFirstStepSecondary" href="{{ '/de/kontakt/' | relative_url }}">Lieber persönlich sprechen? Kostenloses 30-minütiges Orientierungsgespräch buchen</a>
+          <li>Vertretung während Elternzeit oder krankheitsbedingtem Ausfall sowie Überbrückung, bis die Stelle wieder fest besetzt ist</li>
+          <li>Organisationsstruktur, Verantwortlichkeiten und Entscheidungen rund um People &amp; Culture</li>
+          <li>Employee Lifecycle, Teamentwicklung und alltägliche People Operations</li>
+          <li>Eine sorgfältige Übergabe, wenn die vertretene Person zurückkommt oder jemand Neues anfängt</li>
+        </ul>
+      </details>
     </div>
-  </div>
+    <div class="offerInterimActions">
+      <p class="offerPrice">Auf Anfrage</p>
+      <a class="offerButton" href="{{ '/de/kontakt/' | relative_url }}?topic=interim-hr#schreiben"><span>Interim-Begleitung anfragen</span><span aria-hidden="true">↗</span></a>
+      <p class="offerInterimMore"><a href="{{ '/strategic-support/#interim-hr-business-partner' | relative_url }}" hreflang="en">Was die Interim-Begleitung umfasst (auf Englisch)&nbsp;<span aria-hidden="true">↗</span></a></p>
+    </div>
+  </article>
 
   <div class="serviceAreas">
-    <span class="serviceAreasLabel">Wobei ich unterstützen kann</span>
-    {%- comment -%} The list is in _data/service_areas.yml (also used in the structured data). {%- endcomment %}
+    <span class="serviceAreasLabel">Weitere Angebote</span>
     <ul class="serviceAreasList">
-      {% for area in site.data.service_areas.de %}{% unless forloop.first %} {% endunless %}<li>{% unless forloop.first %}<span aria-hidden="true">·</span> {% endunless %}{{ area | escape }}</li>{% endfor %}
+      <li><a href="#workshops">Team-Workshops ab {{ site.data.offer_prices.workshops.de | escape }}, unter anderem zu verantwortungsvoller KI im Recruiting&nbsp;<span aria-hidden="true">↓</span></a></li>
+      <li><span aria-hidden="true">·</span> <a href="#partner">Positionierung, Websites und digitale Produkte mit meinem Technologiepartner DevOpWeb&nbsp;<span aria-hidden="true">↓</span></a></li>
     </ul>
-  </div>
-</section>
-
-<section class="homeWorkshops" id="workshops" aria-labelledby="workshops-title">
-  <div class="homeWorkshopsIntro">
-    <div>
-      <p class="eyebrow">Team-Workshops · Einzeln buchbar</p>
-      <h2 id="workshops-title">Workshops für<br><em>dein Team.</em></h2>
-      <p>Praxisnahe, interaktive Sessions zu jeweils einem Thema, zugeschnitten auf die Situation deines Teams. Zu jedem Workshop gibt es ein Workbook zum Thema. Am Ende stehen konkrete nächste Schritte, die dein Team direkt in den Arbeitsalltag mitnimmt, und eine schriftliche Zusammenfassung.</p>
-    </div>
-    <div class="homeWorkshopsPrice">
-      <p class="offerPrice"><span class="offerPricePrefix">ab</span> {{ site.data.offer_prices.workshops.de | escape }}</p>
-      <p class="offerPriceNote">2–4 Stunden · inkl. Workbook · Remote; vor Ort nach Absprache</p>
-    </div>
-  </div>
-  <ul class="homeWorkshopsList">
-    <li><a href="{{ '/team-workshops/#algorithmic-hiring' | relative_url }}" hreflang="en"><span class="eyebrow">KI · Recruiting</span><strong>Algorith&shy;misches Recruiting</strong><span class="homeWorkshopsText">Wo KI im Recruiting mitentscheidet, wo sich Bias versteckt und was du fragen solltest, bevor du einem Tool vertraust.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#implementing-ai-systems' | relative_url }}" hreflang="en"><span class="eyebrow">KI · Einführung</span><strong>KI-Systeme einführen</strong><span class="homeWorkshopsText">Eine praktische Grundlage, um Anwendungsfälle und Risiken einzuschätzen und Verantwortlichkeiten zu klären.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#optimizing-hr-operations' | relative_url }}" hreflang="en"><span class="eyebrow">People · Operations</span><strong>HR Operations optimieren</strong><span class="homeWorkshopsText">Die Employee Experience abbilden, vermeidbare Reibung finden und einfachere Abläufe vereinbaren.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#internal-communications' | relative_url }}" hreflang="en"><span class="eyebrow">Teams · Kommunikation</span><strong>Interne Kommuni&shy;kation</strong><span class="homeWorkshopsText">Wie Informationen wirklich fließen, was jede Gruppe braucht und welche Gewohnheiten im Alltag tragen.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#remote-environments' | relative_url }}" hreflang="en"><span class="eyebrow">Teams · Remote-Arbeit</span><strong>Remote-Arbeit, die funktioniert</strong><span class="homeWorkshopsText">Strukturen, Absprachen und Führungspraktiken, die in verteilten Teams Vertrauen schaffen.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-  </ul>
-  <div class="homeWorkshopsActions">
-    <a class="offerButton" href="{{ '/de/kontakt/' | relative_url }}?topic=workshop#schreiben"><span>Einen Workshop buchen</span><span aria-hidden="true">↗</span></a>
-    <a class="homeWorkshopsMore" href="{{ '/team-workshops/' | relative_url }}" hreflang="en">Alle Workshop-Details ansehen (auf Englisch) <span aria-hidden="true">↗</span></a>
   </div>
 </section>

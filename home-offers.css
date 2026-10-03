@@ -15,7 +15,12 @@
 }
 .homeOffersIntro h2 em { color: var(--coral-text); display: inline-block; font-weight: 400; text-wrap: balance; }
 .homeOffersIntro > p:last-child { max-width: 620px; margin: 0 auto; font-size: var(--text-lead); }
-.homeOffersGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+/* The main path: the free Team Snapshot (Step 0) → Clarity Check → Focused Build. The Snapshot is a wide acid card on top;
+   the two paid offers follow as two cards with a small arrow between them.
+   The Snapshot card, the two cards, the Interim HR band and the “Also available” line share one centred column. */
+.homeOffersGrid { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 22px; margin: 0 auto; max-width: 1120px; }
+.offerPathArrow { align-self: center; font-family: var(--font-display); font-size: 34px; grid-column: 2; grid-row: 1 / span 5; line-height: 1; }
+.homeOffers .serviceAreas { margin-left: auto; margin-right: auto; max-width: 1120px; }
 .offerCard {
   --offer-rule: var(--line);
   background: var(--cream);
@@ -31,7 +36,6 @@
   scroll-margin-top: 110px;
 }
 .offerCard--build { background: var(--lavender); }
-.offerCard--interim { --offer-rule: rgba(251, 248, 240, 0.25); background: var(--ink); color: var(--paper); }
 .offerCard .eyebrow { margin: 0 0 24px; }
 .offerCard h3 {
   font-family: var(--font-display);
@@ -43,7 +47,6 @@
 }
 .offerCard h3 em { font-weight: 400; }
 .offerCard--build h3 em { color: var(--coral-on-lavender); }
-.offerCard--interim h3 em { color: var(--acid); }
 .offerCardHeading { container-type: inline-size; display: flex; flex-direction: column; }
 .offerCardHeading .offerPrice { margin-top: auto; font-size: min(58px, 20cqi); white-space: nowrap; }
 .offerPrice { font-family: var(--font-display); font-size: 58px; letter-spacing: -0.05em; line-height: 1.1; margin: 0 0 10px; }
@@ -78,7 +81,6 @@
 .offerCard li { padding-left: 25px; position: relative; font-size: var(--text-small); line-height: 1.65; }
 .offerCard li + li { margin-top: 15px; }
 .offerCard li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
-.offerCard--interim li::before { color: var(--acid); }
 .offerButton {
   align-items: center;
   align-self: end;
@@ -99,15 +101,83 @@
 }
 .offerButton > span:last-child { flex-shrink: 0; font-size: 22px; }
 .offerButton:hover { background: var(--acid); color: var(--ink); }
-.offerCard--interim .offerButton { background: var(--acid); color: var(--ink); border-color: var(--acid); }
-.offerCard--interim .offerButton:hover { background: var(--paper); border-color: var(--paper); }
-.offerFirstStep { align-items: center; display: flex; gap: 36px; justify-content: space-between; border-bottom: 1px solid var(--line); padding: 30px 0; margin-top: 18px; }
-.offerFirstStep p { font-size: var(--text-small); max-width: 690px; margin: 0; }
-.offerFirstStep strong { display: block; margin-bottom: 5px; }
-.offerFirstStepLinks { display: flex; flex-direction: column; flex-shrink: 0; gap: 14px; align-items: flex-start; }
-.offerFirstStep a { font-size: var(--text-small); border-bottom: 1px solid currentColor; padding-bottom: 5px; }
-.offerFirstStep a.offerFirstStepSecondary { border-bottom-color: var(--line); font-size: 13px; padding-bottom: 3px; }
-.offerFirstStep a:hover { color: var(--coral-text); }
+/* Clarity Check: under the Snapshot button, a quieter text link for visitors who want to book straight away.
+   Inline, so the underline follows the text when it wraps; the top padding only enlarges the tap area. */
+.offerCard .offerActions .offerDirectLink { font-size: 13px; }
+.offerDirectLink a { border-bottom: 1px solid var(--line); padding: 8px 0 3px; }
+.offerDirectLink a:hover { border-bottom-color: currentColor; color: var(--coral-text); }
+
+/* Step 0: the free Team Snapshot, at the start of the main path. Acid, so it stands out from the paid cards below. */
+.offerSnapshot {
+  align-items: center;
+  background: var(--acid);
+  border: 1px solid var(--ink);
+  border-radius: 16px;
+  color: var(--ink);
+  display: grid;
+  gap: 28px 6%;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  margin: 0 auto 22px;
+  max-width: 1120px;
+  padding: 38px 44px 36px;
+}
+.offerSnapshot .eyebrow { margin: 0 0 20px; }
+.offerSnapshot h3 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 2.9vw, 43px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+  margin: 0 0 18px;
+}
+.offerSnapshot h3 em { color: var(--coral-on-lavender); font-weight: 400; }
+.offerSnapshotCopy > p:not(.eyebrow) { font-size: var(--text-body); line-height: var(--leading-copy); margin: 0; max-width: 640px; }
+.offerSnapshotFacts { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
+.offerSnapshotFacts li { border: 1px solid var(--ink); border-radius: 100px; font-size: 12px; font-weight: 700; line-height: 1.3; padding: 6px 12px; }
+.offerSnapshotActions { display: flex; flex-direction: column; gap: 16px; }
+.offerSnapshot .offerButton { align-self: stretch; }
+.offerSnapshot .offerButton:hover { background: var(--paper); color: var(--ink); }
+.offerSnapshotSecondary { font-size: 13px; line-height: 1.6; margin: 0; }
+.offerSnapshotSecondary a { border-bottom: 1px solid rgba(29, 27, 47, 0.45); padding: 8px 0 3px; }
+.offerSnapshotSecondary a:hover { border-bottom-color: var(--ink); color: var(--coral-on-lavender); }
+
+/* Interim HR Business Partner: its own route below the main path, in the dark colours of the old third card */
+.offerInterim {
+  --offer-rule: rgba(251, 248, 240, 0.25);
+  align-items: end;
+  background: var(--ink);
+  border-radius: 16px;
+  color: var(--paper);
+  display: grid;
+  gap: 32px 6%;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  margin: 40px auto 0;
+  max-width: 1120px;
+  padding: 44px 48px 40px;
+}
+.offerInterim .eyebrow { margin: 0 0 22px; }
+.offerInterim h3 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  margin: 0 0 22px;
+}
+.offerInterim h3 em { color: var(--acid); font-weight: 400; }
+.offerInterimCopy > p:not(.eyebrow) { font-size: var(--text-body); line-height: var(--leading-copy); margin: 0; max-width: 640px; }
+.offerInterim .offerDetails { border-bottom: 1px solid var(--offer-rule); margin-top: 28px; max-width: 640px; }
+.offerInterim ul { list-style: none; margin: 0; padding: 0 0 20px; }
+.offerInterim li { font-size: var(--text-small); line-height: 1.65; padding-left: 25px; position: relative; }
+.offerInterim li + li { margin-top: 12px; }
+.offerInterim li::before { color: var(--acid); content: '✓'; font-weight: 700; left: 0; position: absolute; }
+.offerInterimActions { display: flex; flex-direction: column; gap: 16px; }
+.offerInterimActions .offerPrice { font-size: clamp(40px, 4vw, 54px); margin: 0 0 4px; white-space: nowrap; }
+.offerInterim .offerButton { align-self: stretch; background: var(--acid); border-color: var(--acid); color: var(--ink); }
+.offerInterim .offerButton:hover { background: var(--paper); border-color: var(--paper); }
+.offerInterimMore { font-size: 13px; line-height: 1.7; margin: 0; }
+.offerInterimMore a { border-bottom: 1px solid rgba(251, 248, 240, 0.5); padding: 8px 0 3px; }
+.offerInterimMore a:hover { border-bottom-color: var(--acid); color: var(--acid); }
 
 @supports not (grid-template-rows: subgrid) {
   .offerCard { display: flex; flex-direction: column; }
@@ -118,6 +188,9 @@
 
 @media (max-width: 1050px) {
   .homeOffersGrid { gap: 14px; }
+  .offerSnapshot { gap: 24px 5%; grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.9fr); margin-bottom: 14px; padding: 32px 30px; }
+  .offerPathArrow { font-size: 26px; }
+  .offerInterim { gap: 28px 5%; grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.9fr); padding: 36px 32px 34px; }
   .offerCard { padding: 26px 20px; }
   .offerCard h3 { font-size: 31px; }
   .offerPrice { font-size: 48px; }
@@ -136,12 +209,35 @@
   .homeOffersIntro > p:last-child { margin: 0; }
   .homeOffersIntro h2 { font-size: clamp(40px, 7vw, 60px); }
   .homeOffersGrid { grid-template-columns: 1fr; gap: 24px; }
+  .offerPathArrow { display: none; }
   .offerCard { display: flex; flex-direction: column; grid-row: auto; padding: 30px 24px; }
   .offerActions,
   .offerMore { align-self: stretch; }
   .offerCard h3 { font-size: 38px; }
   .offerButton { width: 100%; font-size: 11px; min-height: 64px; }
-  .offerFirstStep { align-items: start; flex-direction: column; gap: 20px; }
+  .offerSnapshot { gap: 26px; grid-template-columns: 1fr; margin-bottom: 24px; padding: 30px 24px; }
+  .offerSnapshot h3 { font-size: 34px; }
+  .offerSnapshotCopy > p:not(.eyebrow) { font-size: var(--text-small); line-height: 1.65; }
+  .offerInterim { gap: 28px; grid-template-columns: 1fr; margin-top: 28px; padding: 30px 24px; }
+  .offerInterim h3 { font-size: 34px; }
+  .offerInterimActions .offerPrice { font-size: 44px; }
+}
+
+/* Phones: the Snapshot facts become a short checklist, like the offer cards, instead of chips that wrap onto two lines */
+@media (max-width: 520px) {
+  .offerSnapshotFacts { display: grid; gap: 10px; }
+  .offerSnapshotFacts li { border: 0; border-radius: 0; font-size: var(--text-small); line-height: 1.5; padding: 0 0 0 25px; position: relative; }
+  .offerSnapshotFacts li::before { content: '✓'; font-weight: 700; left: 0; position: absolute; }
+}
+
+/* Small tablets: keep Step 1 → Step 2 side by side; stack only on phones */
+@media (min-width: 721px) and (max-width: 800px) {
+  .homeOffersGrid { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 12px; }
+  .offerSnapshot { gap: 24px 5%; grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.9fr); margin-bottom: 12px; padding: 28px 24px; }
+  .offerPathArrow { display: block; font-size: 22px; }
+  .offerCard { display: grid; grid-row: span 5; padding: 24px 18px; }
+  .offerCard h3 { font-size: 28px; }
+  .offerCardHeading .offerPriceNote { min-height: calc(2 * 1.6em); }
 }
 
 
@@ -153,7 +249,7 @@
 .homeWorkshopsIntro > div > p:last-child { font-size: var(--text-body); margin: 0; max-width: 580px; }
 .homeWorkshopsPrice { border-top: 1px solid var(--ink); padding-top: 22px; }
 .homeWorkshopsPrice .offerPriceNote { margin: 0; }
-.homeWorkshopsList { display: grid; gap: 14px; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.homeWorkshopsList { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
 .homeWorkshopsList a { background: var(--paper); border: 1px solid var(--ink); border-radius: 16px; display: flex; flex-direction: column; gap: 12px; height: 100%; padding: 24px 20px; transition: background 0.15s ease; }
 .homeWorkshopsList a:hover,
 .homeWorkshopsList a:focus-visible { background: var(--acid); }
@@ -166,13 +262,16 @@
 .homeWorkshopsMore { border-bottom: 1px solid currentColor; font-size: var(--text-small); padding-bottom: 4px; }
 .homeWorkshopsMore:hover { color: var(--coral-text); }
 
-@media (max-width: 1250px) {
-  .homeWorkshopsList { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
 @media (max-width: 800px) {
   .homeWorkshops { padding: 60px 20px; }
   .homeWorkshopsIntro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 28px; }
   .homeWorkshopsList { grid-template-columns: 1fr; }
   .homeWorkshopsActions .offerButton { min-width: 0; width: 100%; }
+}
+
+/* Small tablets: three narrower cards side by side instead of wide strips */
+@media (min-width: 721px) and (max-width: 800px) {
+  .homeWorkshopsList { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .homeWorkshopsList a { padding: 20px 16px; }
+  .homeWorkshopsList strong { font-size: 21px; }
 }

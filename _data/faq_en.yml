@@ -9,9 +9,13 @@
 # Type characters directly (’ – €) rather than HTML entities, so the structured-data text stays clean.
 # The German FAQ is in faq_de.yml.
 
+- question: When is the right time to bring you in?
+  answer: >-
+    When your team has grown but too much still runs through you: decisions wait for you, delegated work comes back to you, and you answer the same questions again and again. If you’re not sure yet where to start, the free <a href="/team-snapshot/">Team Snapshot</a> gives you a first picture in two minutes. When you know which challenge you want to work on, a Clarity Check is the next step. If you need cover for parental leave, sick leave or an open role, <a href="/#interim-hr-business-partner">interim HR support</a> is the better fit.
+
 - question: What can we work on together?
   answer: >-
-    I help with positioning and digital presence, operations and process clarity, people and team systems, responsible AI, and the practical infrastructure that helps a small business or growing team work well.
+    Mainly on helping a growing team rely less on its founders: who owns what, which decisions people can make, and the everyday processes behind onboarding, handovers and recurring work. I also step in as an Interim HR Business Partner, run team workshops (including one on responsible AI in hiring), and help with positioning and websites, together with my technical partner DevOpWeb when a project needs technical depth.
 
 - question: How is the free Team Snapshot different from the Clarity Check?
   answer: >-

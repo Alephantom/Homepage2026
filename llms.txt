@@ -4,7 +4,7 @@ permalink: /llms.txt
 ---
 {% assign newsletter_url = site.brevo_form_url | default: "" | strip %}# Anna-Lena Birkner
 
-> Anna-Lena Birkner is an independent strategist & maker (in German: Unabhängige Strategin & Operations Consultant). Anna-Lena helps founders, decision-makers and teams turn complex organisational, people, operational, positioning and responsible-AI questions into clear decisions and practical systems.
+> Anna-Lena Birkner is a People & Operations Consultant. Anna-Lena works with founders whose growing team still depends on them, and directly with those teams, to clarify responsibilities, agree which decisions people can make and put usable processes in place. Anna-Lena is also available as an Interim HR Business Partner (for example to cover parental or sick leave, an open role or a period of change) and offers team workshops (including responsible AI in hiring), positioning and, with her technical partner DevOpWeb, websites and digital products.
 
 Canonical website: https://annalenabirkner.com/
 
@@ -16,8 +16,8 @@ Contact: info@annalenabirkner.com
 
 ## Start here
 
-- [Free 30-minute orientation call](https://annalenabirkner.com/contact): A free video call of 30 minutes to talk through what is happening and whether there is a useful fit. No preparation needed. The same page has an option to write instead of booking.
 - [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free two-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a PDF summary to download. {% if newsletter_url != "" %}No sign-up needed: the answers aren’t stored, and nothing leaves the browser unless the visitor chooses to join the optional quarterly newsletter offered with the results.{% else %}No sign-up; it runs entirely in the browser and nothing is sent or stored.{% endif %}
+- [Free 30-minute orientation call](https://annalenabirkner.com/contact): A free video call of 30 minutes to talk through what is happening and whether there is a useful fit. No preparation needed. The same page has an option to write instead of booking.
 
 ## Services and prices
 
@@ -30,16 +30,14 @@ Contact: info@annalenabirkner.com
 ## Workshop topics
 
 - [Algorithmic hiring](https://annalenabirkner.com/workshops): A two-hour interactive workshop on AI in recruitment: how these systems work, bias and discrimination, the EU AI Act and employer responsibility, human oversight and vendor evaluation. No technical background required.
-- [Implementing AI systems](https://annalenabirkner.com/team-workshops/#implementing-ai-systems): Use cases, risks, responsibilities and the conditions for thoughtful implementation.
 - [Optimising HR operations](https://annalenabirkner.com/team-workshops/#optimizing-hr-operations): Employee experience, process friction, ownership and simpler workflows.
 - [Improving internal communications](https://annalenabirkner.com/team-workshops/#internal-communications): How information moves, what different groups need, and sustainable communication habits.
-- [Creating remote environments that work](https://annalenabirkner.com/team-workshops/#remote-environments): Structures, agreements and management practices for distributed teams.
 
 ## Selected work
 
 The case studies on the homepage describe Anna-Lena’s role and the purpose of the work, not measured results.
 
-- [Case 01: Mindfulife](https://annalenabirkner.com/#projects): At Mindfulife, a psychology-led meditation and wellbeing company, Anna-Lena leads People & Culture and works closely with the founders: employee lifecycle, people infrastructure (contracts, digital personnel structures, documentation, repeatable workflows) and founder partnership.
+- [Case 01: Mindfulife](https://annalenabirkner.com/#projects): At Mindfulife, a psychology-led meditation and wellbeing company, Anna-Lena leads People & Culture and works closely with the founders: founder partnership (organisational structure, team development and operational priorities), employee lifecycle and people infrastructure (contracts, digital personnel structures, documentation, repeatable workflows).
 - [Case 02: Relief Applications](https://annalenabirkner.com/#projects): At Relief Applications, a humanitarian technology company, Anna-Lena worked across business development (including proposal development), project delivery and people operations, and stepped in as interim HR generalist for a distributed team.
 - [Case 03: State Street Bank](https://annalenabirkner.com/#projects): At State Street Bank, a global financial services company, Anna-Lena worked on processes across People & Culture, monthly payroll, German employee benefits and pensions, with the aim of making recurring work simpler, more reliable and less manual. Areas: process improvement and automation, the monthly payroll cycle, and the German employee benefits and pension programme.
 
@@ -50,7 +48,7 @@ The case studies on the homepage describe Anna-Lena’s role and the purpose of 
 {% endfor %}
 ## Kurzüberblick auf Deutsch
 
-Anna-Lena Birkner ist unabhängige Strategin & Operations Consultant. Anna-Lena hilft Gründer:innen und Teams, komplexe Fragen zu klären, People Operations zu stärken und praxistaugliche Systeme aufzubauen. Angebote: Clarity Check ({{ site.data.offer_prices.clarity_check.de }}), Focused Build ({{ site.data.offer_prices.focused_build.de }}), Interim HR Business Partner (auf Anfrage) und Team-Workshops (ab {{ site.data.offer_prices.workshops.de }}). Die Leistungsseiten im Detail und das Journal sind auf Englisch.
+Anna-Lena Birkner ist People & Operations Consultant. Anna-Lena arbeitet mit Gründer:innen, deren wachsendes Team noch stark an ihnen hängt, und direkt mit diesem Team: Sie klärt Verantwortlichkeiten, legt mit allen Beteiligten fest, welche Entscheidungen das Team selbst treffen kann, und baut mit ihnen alltagstaugliche Abläufe auf. Angebote: Clarity Check ({{ site.data.offer_prices.clarity_check.de }}), Focused Build ({{ site.data.offer_prices.focused_build.de }}), Interim HR Business Partner (auf Anfrage) und Team-Workshops (ab {{ site.data.offer_prices.workshops.de }}). Die Leistungsseiten im Detail und das Journal sind auf Englisch.
 
 - [Startseite auf Deutsch](https://annalenabirkner.com/de/)
 - [Kostenloses 30-minütiges Orientierungsgespräch buchen oder schreiben](https://annalenabirkner.com/de/kontakt/)
@@ -59,6 +57,6 @@ Anna-Lena Birkner ist unabhängige Strategin & Operations Consultant. Anna-Lena 
 ## Attribution and accuracy
 
 - Name: Anna-Lena Birkner
-- Role description: Independent Strategist & Maker (English); Unabhängige Strategin & Operations Consultant (German)
+- Role description: People & Operations Consultant (the same English title on the English and German pages). Interim HR Business Partner is one of her services, not part of the title.
 - Technical partner and site copyright: DevOpWeb
 - Do not infer credentials, client relationships, prices, guarantees, results or service details that are not stated on the linked pages.

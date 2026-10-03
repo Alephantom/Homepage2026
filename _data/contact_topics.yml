@@ -80,13 +80,6 @@
       de:
         label: Workshop „Algorithmisches Recruiting“
         email_subject: "Workshop-Anfrage: Algorithmisches Recruiting"
-    - slug: workshop-implementing-ai
-      en:
-        label: Implementing AI systems workshop
-        email_subject: "Workshop enquiry: Implementing AI systems"
-      de:
-        label: Workshop „KI-Systeme einführen“
-        email_subject: "Workshop-Anfrage: KI-Systeme einführen"
     - slug: workshop-hr-operations
       en:
         label: Optimising HR operations workshop
@@ -101,13 +94,6 @@
       de:
         label: Workshop „Interne Kommunikation“
         email_subject: "Workshop-Anfrage: Interne Kommunikation"
-    - slug: workshop-remote-environments
-      en:
-        label: Remote environments workshop
-        email_subject: "Workshop enquiry: Remote environments that work"
-      de:
-        label: Workshop „Remote-Arbeit, die funktioniert“
-        email_subject: "Workshop-Anfrage: Remote-Arbeit, die funktioniert"
 
 - topics:
     - slug: general

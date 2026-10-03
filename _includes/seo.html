@@ -11,7 +11,8 @@
   {% assign seo_image_width = page.og_image_width %}
   {% assign seo_image_height = page.og_image_height %}
 {% else %}
-  {% assign seo_image = '/assets/social-card.jpg' | absolute_url %}
+  {% comment %}?v=3 busts cached share previews of the earlier card; bump it when the image changes.{% endcomment %}
+  {% assign seo_image = '/assets/social-card.jpg?v=3' | absolute_url %}
   {% assign seo_image_width = 1200 %}
   {% assign seo_image_height = 628 %}
 {% endif %}
@@ -20,9 +21,9 @@
 {% if page.og_image %}
   {% assign seo_image_alt = page.og_image_alt | default: page.title %}
 {% elsif page_language == 'de' %}
-  {% assign seo_image_alt = 'Textgrafik: „Anna-Lena. Making space for clearer ideas. Strategist & Maker.“' %}
+  {% assign seo_image_alt = 'Textgrafik: „Anna-Lena. Making space for clearer ideas. People & Operations Consultant.“' %}
 {% else %}
-  {% assign seo_image_alt = 'Text graphic: “Anna-Lena. Making space for clearer ideas. Strategist & maker.”' %}
+  {% assign seo_image_alt = 'Text graphic: “Anna-Lena. Making space for clearer ideas. People & Operations Consultant.”' %}
 {% endif %}
 
 <title>{{ document_title | strip | escape }}</title>

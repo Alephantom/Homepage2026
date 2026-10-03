@@ -23,8 +23,14 @@
 {% if page.url == '/contact' or page.url == '/de/kontakt/' %}
   {% assign is_contact = true %}
 {% endif %}
+{% assign snapshot_path = '/team-snapshot/' %}
+{% if is_de %}{% assign snapshot_path = '/de/team-snapshot/' %}{% endif %}
+{% assign is_snapshot = false %}
+{% if page.url == '/team-snapshot/' or page.url == '/de/team-snapshot/' %}
+  {% assign is_snapshot = true %}
+{% endif %}
 {% assign is_services = false %}
-{% if page.url == '/strategic-support/' or page.url == '/team-workshops/' or page.url == '/workshops' %}
+{% if page.url == '/strategic-support/' or page.url == '/team-workshops/' or page.url == '/workshops' or is_snapshot %}
   {% assign is_services = true %}
 {% endif %}
 
@@ -37,7 +43,7 @@
   </a>
 
   <div class="navLinks">
-    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %}</a>
+    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
     <div class="navServices">
       <a class="navServicesTrigger" href="{{ work_path | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
         {% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">↘</span>
@@ -60,9 +66,17 @@
           </span>
           <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
         </a>
+        <a class="servicesDropdownOption" href="{{ snapshot_path | relative_url }}"{% if is_snapshot %} aria-current="page"{% endif %}>
+          <span class="servicesDropdownNumber">03</span>
+          <span class="servicesDropdownCopy">
+            <strong>{% if is_de %}Kostenloser Team-Snapshot{% else %}Free Team Snapshot{% endif %}</strong>
+            <small>{% if is_de %}Selbsteinschätzung in 2 Minuten{% else %}A 2-minute self-assessment{% endif %}</small>
+          </span>
+          <span class="servicesDropdownArrow" aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
-    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
+    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %}</a>
     <a href="{{ '/blog/' | relative_url }}" hreflang="en"{% if is_journal %} aria-current="page"{% endif %}>Journal</a>
     {% if page.translation_url_en and page.translation_url_de %}
       <div class="navLanguage" role="group" aria-label="{% if is_de %}Sprache wählen{% else %}Choose language{% endif %}">
@@ -106,7 +120,7 @@
 
   <div class="navMobileMenu" id="mobile-navigation" data-nav-mobile-menu hidden>
     <span class="navMobileLabel">{% if is_de %}Entdecke{% else %}Explore{% endif %}</span>
-    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">01</span></a>
+    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %} <span aria-hidden="true">01</span></a>
     <div class="navMobileServices">
       <a class="navMobileServicesOverview" href="{{ work_path | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>{% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">02</span></a>
       <div class="navMobileServicePaths">
@@ -118,9 +132,13 @@
           <strong>{% if is_de %}Workshops{% else %}Team learning &amp; workshops{% endif %}</strong>
           <span>{% if is_de %}Teams &amp; Organisationen{% else %}Teams &amp; organisations{% endif %}</span>
         </a>
+        <a href="{{ snapshot_path | relative_url }}"{% if is_snapshot %} aria-current="page"{% endif %}>
+          <strong>{% if is_de %}Kostenloser Team-Snapshot{% else %}Free Team Snapshot{% endif %}</strong>
+          <span>{% if is_de %}Selbsteinschätzung in 2 Minuten{% else %}2-minute self-assessment{% endif %}</span>
+        </a>
       </div>
     </div>
-    <a href="{{ projects_path | relative_url }}" data-nav-section="projects">{% if is_de %}Referenzen{% else %}Selected work{% endif %} <span aria-hidden="true">03</span></a>
+    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">03</span></a>
     <a href="{{ faq_path | relative_url }}" data-nav-section="faq">FAQ <span aria-hidden="true">04</span></a>
     <a href="{{ '/blog/' | relative_url }}" hreflang="en"{% if is_journal %} aria-current="page"{% endif %}>Journal <span aria-hidden="true">05</span></a>
     {% if page.translation_url_en and page.translation_url_de %}

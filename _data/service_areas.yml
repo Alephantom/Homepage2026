@@ -1,6 +1,6 @@
-# "Areas I can help with" / "Wobei ich unterstützen kann" on the homepages, in this order
-# (rendered in _includes/home-offers.html and home-offers-de.html).
-# The same list is the Person's knowsAbout in the structured data, so edit it here only.
+# The Person's knowsAbout in the structured data (_includes/structured-data.html), in this order.
+# The homepages no longer show this list (it was "Areas I can help with" / "Wobei ich unterstützen kann");
+# each area is still covered by visible content: the offers, the workshops and the partner section.
 en:
   - People & team systems
   - Operations & process clarity

@@ -291,6 +291,26 @@
   margin: 12px 0 0;
 }
 
+/* Clarity Check: a quieter text link under the Snapshot button, for visitors who want to book straight away.
+   Inline, so the underline follows the text when it wraps; the top padding only enlarges the tap area. */
+.serviceLandingOfferActions .serviceLandingDirectLink {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
+.serviceLandingDirectLink a {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0 3px;
+  transition: color 160ms ease;
+}
+
+.serviceLandingDirectLink a:hover,
+.serviceLandingDirectLink a:focus-visible {
+  border-bottom-color: currentColor;
+  color: var(--coral-text);
+}
+
 .serviceLandingOfferDetails {
   align-self: end;
   display: grid;

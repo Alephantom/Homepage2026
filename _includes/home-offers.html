@@ -1,21 +1,39 @@
 <section class="homeOffers" id="work" aria-labelledby="offers-title">
   <div class="homeOffersIntro">
-    <p class="eyebrow">Three ways to work together</p>
-    <h2 id="offers-title">Work feels harder than it should?<br><em>Let’s find your next step.</em></h2>
-    <p>Understand what’s getting stuck, fix what keeps coming back, or get hands-on HR support for as long as you need it.</p>
+    <p class="eyebrow">How we work together · A free start, then two steps</p>
+    <h2 id="offers-title">First, find the real problem.<br><em>Then fix it with your team.</em></h2>
+    <p>Start with the free Team Snapshot for a first picture in two minutes. The Clarity Check then shows which problem to tackle first, and why. In the two-week Focused Build, we work on up to three recurring problems with your team, ending with written processes and a team handover.</p>
   </div>
+
+  <article class="offerSnapshot" aria-labelledby="snapshot-offer-title">
+    <div class="offerSnapshotCopy">
+      <p class="eyebrow">Step 0 · Free · 2&nbsp;minutes</p>
+      <h3 id="snapshot-offer-title">Free Team Snapshot<br><em>See where work gets stuck.</em></h3>
+      <p>Not sure yet where to start? Answer six quick questions about how work runs today, including who decides what and what happens when you’re away.</p>
+      <ul class="offerSnapshotFacts">
+        <li>Six questions</li>
+        <li>A score for each area, straight away</li>
+        <li>Practical tips and a PDF to keep</li>
+        <li>No sign-up needed</li>
+      </ul>
+    </div>
+    <div class="offerSnapshotActions">
+      <a class="offerButton" href="{{ '/team-snapshot/' | relative_url }}"><span>Take the free Team Snapshot</span><span aria-hidden="true">↗</span></a>
+      <p class="offerSnapshotSecondary"><a href="{{ '/contact' | relative_url }}">Prefer to talk? Book a free 30-minute call</a></p>
+    </div>
+  </article>
 
   <div class="homeOffersGrid">
     <article class="offerCard" id="clarity-review" aria-labelledby="clarity-offer-title">
       <div class="offerCardHeading">
-        <p class="eyebrow">01 · Find your starting point</p>
+        <p class="eyebrow">Step 1 · Find your starting point</p>
         <h3 id="clarity-offer-title">Clarity Check<br><em>Find your focus.</em></h3>
         <p class="offerPrice">{{ site.data.offer_prices.clarity_check.en | escape }}</p>
         <p class="offerPriceNote">One defined challenge</p>
       </div>
       <div class="offerAudience">
         <h4>Who it’s for</h4>
-        <p>Founders and growing teams who feel something is getting in the way, but can’t quite name it yet.</p>
+        <p>Founders who can tell too much still runs through them, but aren’t sure which part to untangle first.</p>
       </div>
       <div class="offerIncludes">
         <h4>What’s included</h4>
@@ -27,8 +45,8 @@
           </ul>
       </div>
       <div class="offerActions">
-        <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=clarity-check#write"><span>Book your Clarity Check</span><span aria-hidden="true">↗</span></a>
-        <p class="offerFreeNote">Tell me a little about the challenge. A few lines are plenty.</p>
+        <a class="offerButton" href="{{ '/team-snapshot/' | relative_url }}"><span>Try your free Snapshot first</span><span aria-hidden="true">↗</span></a>
+        <p class="offerFreeNote offerDirectLink"><a href="{{ '/contact' | relative_url }}?topic=clarity-check#write">Already know what you need? Book the Clarity Check directly</a></p>
       </div>
       <div class="offerMore">
         <details class="offerDetails">
@@ -42,9 +60,11 @@
       </div>
     </article>
 
+    <div class="offerPathArrow" aria-hidden="true">→</div>
+
     <article class="offerCard offerCard--build" id="focused-build" aria-labelledby="build-offer-title">
       <div class="offerCardHeading">
-        <p class="eyebrow">02 · After your Clarity Check</p>
+        <p class="eyebrow">Step 2 · After your Clarity Check</p>
         <h3 id="build-offer-title">Focused Build<br><em>Fix what keeps coming back.</em></h3>
         <p class="offerPrice">{{ site.data.offer_prices.focused_build.en | escape }}</p>
         <p class="offerPriceNote">2 weeks · 2 half-day sessions</p>
@@ -78,79 +98,35 @@
         </details>
       </div>
     </article>
+  </div>
 
-    <article class="offerCard offerCard--interim" id="interim-hr-business-partner" aria-labelledby="interim-offer-title">
-      <div class="offerCardHeading">
-        <p class="eyebrow">03 · Support over time</p>
-        <h3 id="interim-offer-title">Interim HR Business Partner<br><em>For the time you need.</em></h3>
-        <p class="offerPrice">On request</p>
-        <p class="offerPriceNote">Time commitment, duration and fee agreed around your situation</p>
-      </div>
-      <div class="offerAudience">
-        <h4>Who it’s for</h4>
-        <p>Founders and teams covering parental leave or sick leave, an open role or a period of change, who need someone to stay close to the work.</p>
-      </div>
-      <div class="offerIncludes">
-        <h4>What’s included</h4>
+  <article class="offerInterim" id="interim-hr-business-partner" aria-labelledby="interim-offer-title">
+    <div class="offerInterimCopy">
+      <p class="eyebrow">Support over time</p>
+      <h3 id="interim-offer-title">Interim HR Business Partner<br><em>For the time you need.</em></h3>
+      <p>Need hands-on HR support for a while, rather than a project? When parental leave, sick leave, an open role or a period of change leaves a gap, I step in close to the day-to-day work, so it doesn’t all land on you. We agree responsibilities, time commitment, duration and fee up front, to fit your situation, and it ends with a considered handover.</p>
+      <details class="offerDetails">
+        <summary>What’s included</summary>
         <ul>
-            <li>Parental leave or sick leave cover and support between permanent hires</li>
-            <li>Organisational structure, responsibilities and People &amp; Culture decisions</li>
-            <li>Employee lifecycle, team development and everyday people operations</li>
-            <li>A considered handover when your colleague returns or a new person joins</li>
-          </ul>
-      </div>
-      <div class="offerActions"><a class="offerButton" href="{{ '/contact' | relative_url }}?topic=interim-hr#write"><span>Let’s talk about interim support</span><span aria-hidden="true">↗</span></a></div>
-      <div class="offerMore">
-        <details class="offerDetails">
-          <summary>Where it stops</summary>
-          <p>We agree responsibilities, time commitment and duration up front. It ends with a considered handover when your colleague returns or a new person joins.</p>
-        </details>
-        <details class="offerDetails">
-          <summary>What changes for you</summary>
-          <p>People processes keep moving and everyday decisions get made, so the gap doesn’t land on the founder. I work alongside you and bring structure to what comes next.</p>
-        </details>
-      </div>
-    </article>
-  </div>
-
-  <div class="offerFirstStep">
-    <p><strong>Not sure where to begin?</strong> Take the free Team Snapshot: six quick questions about how work runs today. You’ll see a score for each area straight away, with practical tips and a PDF to keep. No sign-up needed.</p>
-    <div class="offerFirstStepLinks">
-      <a href="{{ '/team-snapshot/' | relative_url }}">Take the free Team Snapshot <span aria-hidden="true">↗</span></a>
-      <a class="offerFirstStepSecondary" href="{{ '/contact' | relative_url }}">Prefer to talk? Book a free 30-minute call</a>
+          <li>Parental leave or sick leave cover and support between permanent hires</li>
+          <li>Organisational structure, responsibilities and People &amp; Culture decisions</li>
+          <li>Employee lifecycle, team development and everyday people operations</li>
+          <li>A considered handover when your colleague returns or a new person joins</li>
+        </ul>
+      </details>
     </div>
-  </div>
+    <div class="offerInterimActions">
+      <p class="offerPrice">On request</p>
+      <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=interim-hr#write"><span>Let’s talk about interim support</span><span aria-hidden="true">↗</span></a>
+      <p class="offerInterimMore"><a href="{{ '/strategic-support/#interim-hr-business-partner' | relative_url }}">What interim support includes&nbsp;<span aria-hidden="true">↗</span></a></p>
+    </div>
+  </article>
 
   <div class="serviceAreas">
-    <span class="serviceAreasLabel">Areas I can help with</span>
-    {%- comment -%} The list is in _data/service_areas.yml (also used in the structured data). {%- endcomment %}
+    <span class="serviceAreasLabel">Also available</span>
     <ul class="serviceAreasList">
-      {% for area in site.data.service_areas.en %}{% unless forloop.first %} {% endunless %}<li>{% unless forloop.first %}<span aria-hidden="true">·</span> {% endunless %}{{ area | escape }}</li>{% endfor %}
+      <li><a href="#workshops">Team workshops from {{ site.data.offer_prices.workshops.en | escape }}, including one on responsible AI in hiring&nbsp;<span aria-hidden="true">↓</span></a></li>
+      <li><span aria-hidden="true">·</span> <a href="#partner">Positioning, websites and digital products, with my technical partner DevOpWeb&nbsp;<span aria-hidden="true">↓</span></a></li>
     </ul>
-  </div>
-</section>
-
-<section class="homeWorkshops" id="workshops" aria-labelledby="workshops-title">
-  <div class="homeWorkshopsIntro">
-    <div>
-      <p class="eyebrow">Team workshops · Bookable on their own</p>
-      <h2 id="workshops-title">Workshops for<br><em>your team.</em></h2>
-      <p>Practical, participatory sessions on one topic, adapted to your team’s situation. Each one comes with a workbook on the topic and ends with next steps the team can carry into the work, plus a written recap.</p>
-    </div>
-    <div class="homeWorkshopsPrice">
-      <p class="offerPrice"><span class="offerPricePrefix">From</span> {{ site.data.offer_prices.workshops.en | escape }}</p>
-      <p class="offerPriceNote">2–4 hours · Workbook included · Remote; in person by agreement</p>
-    </div>
-  </div>
-  <ul class="homeWorkshopsList">
-    <li><a href="{{ '/team-workshops/#algorithmic-hiring' | relative_url }}"><span class="eyebrow">Responsible AI · Hiring</span><strong>Algorithmic hiring</strong><span class="homeWorkshopsText">Where AI enters recruitment, where bias hides, and what to ask before you trust a tool.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#implementing-ai-systems' | relative_url }}"><span class="eyebrow">Responsible AI · Adoption</span><strong>Implementing AI systems</strong><span class="homeWorkshopsText">A practical foundation for judging use cases, risks and responsibilities.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#optimizing-hr-operations' | relative_url }}"><span class="eyebrow">People · Operations</span><strong>Optimising HR operations</strong><span class="homeWorkshopsText">Map the employee experience, find avoidable friction and agree on simpler workflows.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#internal-communications' | relative_url }}"><span class="eyebrow">Teams · Communication</span><strong>Improving internal communications</strong><span class="homeWorkshopsText">How information really moves, what each group needs, and habits people can sustain.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-    <li><a href="{{ '/team-workshops/#remote-environments' | relative_url }}"><span class="eyebrow">Teams · Remote work</span><strong>Remote environments that work</strong><span class="homeWorkshopsText">The structures, agreements and management practices that help distributed teams trust each other.</span><span class="homeWorkshopsArrow" aria-hidden="true">↗</span></a></li>
-  </ul>
-  <div class="homeWorkshopsActions">
-    <a class="offerButton" href="{{ '/contact' | relative_url }}?topic=workshop#write"><span>Book a workshop</span><span aria-hidden="true">↗</span></a>
-    <a class="homeWorkshopsMore" href="{{ '/team-workshops/' | relative_url }}">See all workshop details <span aria-hidden="true">↗</span></a>
   </div>
 </section>

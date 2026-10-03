@@ -3,9 +3,13 @@
 # {price.workshops}, {price.clarity_check} and {price.focused_build} are replaced with the
 # German price from _data/offer_prices.yml. Links use a site path, e.g. <a href="/de/team-snapshot/">.
 
+- question: Wann ist der richtige Zeitpunkt, dich dazuzuholen?
+  answer: >-
+    Wenn dein Team gewachsen ist, aber noch zu viel über dich läuft: Entscheidungen warten auf dich, abgegebene Aufgaben kommen zu dir zurück, und du beantwortest immer wieder dieselben Fragen. Wenn du noch unsicher bist, wo du ansetzen sollst, gibt dir der kostenlose <a href="/de/team-snapshot/">Team-Snapshot</a> in zwei Minuten eine erste Einschätzung. Weißt du schon, an welcher Herausforderung du arbeiten willst, ist der Clarity Check der nächste Schritt. Brauchst du eine Vertretung bei Elternzeit, längerer Krankheit oder einer unbesetzten Stelle, passt die <a href="/de/#interim-hr-business-partner">Interim-Begleitung</a> besser.
+
 - question: Woran können wir gemeinsam arbeiten?
   answer: >-
-    Ich unterstütze bei Positionierung und digitaler Präsenz, Operations und Prozessklarheit, People- und Teamsystemen, verantwortungsvoller KI und der praktischen Infrastruktur, die kleinen Unternehmen und wachsenden Teams gute Arbeit ermöglicht.
+    Vor allem daran, dass ein wachsendes Team weniger an den Gründer:innen hängt: wer wofür verantwortlich ist, welche Entscheidungen das Team selbst treffen kann und wie die alltäglichen Abläufe rund um Onboarding, Übergaben und wiederkehrende Arbeit funktionieren. Außerdem springe ich als Interim HR Business Partner ein, gebe Team-Workshops (unter anderem zu verantwortungsvoller KI im Recruiting) und unterstütze bei Positionierung und Websites – gemeinsam mit meinem Technologiepartner DevOpWeb, wenn ein Projekt technische Tiefe braucht.
 
 - question: Was unterscheidet den kostenlosen Team-Snapshot vom Clarity Check?
   answer: >-
