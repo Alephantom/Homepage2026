@@ -39,15 +39,15 @@ snapshot_ui:
   lineScored: "{topic}: {label} ({score}/100)"
   lineUnsure: "{topic}: {label} (nicht sicher)"
   lineNotAnswered: "{topic}: {label}"
-  # Booking message, filled into the contact form after „Deinen Clarity Check buchen“
+  # Booking message, filled into the contact form after „Gespräch buchen“
   bookGreeting: "Hallo Anna-Lena,"
-  bookIntro: "ich habe gerade den kostenlosen Team-Snapshot gemacht und möchte einen Clarity Check buchen."
+  bookIntro: "ich habe gerade den kostenlosen Team-Snapshot gemacht und würde mein Ergebnis gern in einem kostenlosen 30-minütigen Orientierungsgespräch mit dir besprechen."
   bookTeam: "Team oder Unternehmen: {team}"
   bookResults: "Meine Ergebnisse aus dem Team-Snapshot:"
   bookOverall: "Gesamt: {score}/100 ({level})"
   bookOverallSome: "Gesamt: {score}/100 ({level}), berechnet aus {scored} von {total} Bereichen"
   bookOverallNone: "Gesamt: keine Punktzahl (bei den beantworteten Bereichen war ich mir nicht sicher)"
-  bookChallenge: "Die Herausforderung, um die es gehen soll:"
+  bookChallenge: "Worüber ich sprechen möchte:"
   bookTeamPrompt: "Unser Team (was wir machen, ungefähr wie viele Personen):"
   # Newsletter signup
   signupLocale: "de"
@@ -68,11 +68,10 @@ snapshot_ui:
   pdfDocTitle: "Dein Team-Snapshot"
   pdfEyebrow: "Kostenloser Team-Snapshot"
   pdfTitle: "Dein Team-Snapshot"
-  pdfCtaEyebrow: "Der nächste Schritt · Clarity Check"
-  pdfCtaTitle: "Wünschst du dir einen Blick von außen?"
-  pdfCtaText: "Dein Snapshot zeigt, wo du hinschauen solltest, aber nicht, warum es dort hakt. Der Clarity Check nimmt eine konkrete Herausforderung in eurem echten Arbeitsalltag unter die Lupe: Wir sprechen darüber, ich sehe mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan – plus ein Folgegespräch, in dem wir ihn gemeinsam durchgehen."
-  pdfCtaPrice: "Clarity Check: {price} · eine konkrete Herausforderung"
-  pdfCtaReach: "Du möchtest ihn buchen oder erst einmal in einem kostenlosen 30-minütigen Orientierungsgespräch darüber sprechen? Melde dich gern:"
+  pdfCtaEyebrow: "Der nächste Schritt · Kostenloses Gespräch"
+  pdfCtaTitle: "Brauchst du Unterstützung beim Aufsetzen oder beim nächsten Schritt?"
+  pdfCtaText: "Ruf mich an: In einem kostenlosen 30-minütigen Orientierungsgespräch schauen wir uns dein Ergebnis gemeinsam an und finden deinen nächsten Schritt."
+  pdfCtaReach: "Buch dir dein Gespräch online oder melde dich einfach:"
   pdfContactEmail: "E-Mail: {email}"
   pdfContactWeb: "Online: {url}"
   pdfContactPhone: "Telefon: {phone}"
@@ -80,11 +79,10 @@ snapshot_ui:
   pdfPage: "Seite {page} von {pages}"
 ---
 {% comment %}
-  Page settings. team-snapshot.html (English) has the same block with the English data files, price and contact page.
+  Page settings. team-snapshot.html (English) has the same block with the English data files and contact page.
 {% endcomment %}
 {% assign snapshot_questions = site.data.team_snapshot_de %}
 {% assign snapshot_results = site.data.team_snapshot_results_de %}
-{% assign clarity_price = site.data.offer_prices.clarity_check.de %}
 {% assign contact_path = '/de/kontakt/' %}
 {% assign contact_form_hash = '#schreiben' %}
 {% assign privacy_path = '/privacy/' %}
@@ -93,7 +91,7 @@ snapshot_ui:
 
 {% assign status_keys = "clear,attention,stuck,unsure" | split: "," %}
 {% assign question_count = snapshot_questions | size %}
-{% capture book_href %}{{ contact_path | relative_url }}?topic=clarity-check{{ contact_form_hash }}{% endcapture %}
+{% capture book_href %}{{ contact_path | relative_url }}?topic=team-snapshot{{ contact_form_hash }}{% endcapture %}
 {% comment %}
   The PDF links to the live site. `jekyll serve` swaps site.url for localhost, so the PDF uses the public address there.
 {% endcomment %}
@@ -250,21 +248,20 @@ snapshot_ui:
 
     <aside class="snapshotCta" aria-labelledby="snapshot-cta-title">
       <div class="snapshotCtaCopy">
-        <p class="eyebrow">Der nächste Schritt · Clarity Check</p>
-        <h3 id="snapshot-cta-title">Wünschst du dir einen <em>Blick von außen?</em></h3>
-        <p>Dein Snapshot zeigt, wo du hinschauen solltest, aber nicht, warum es dort hakt. Wenn ein Bereich immer wieder auftaucht, schaut sich der Clarity Check ihn in eurem echten Arbeitsalltag an: Wir sprechen darüber, ich sehe mir die beteiligten Dokumente und Prozesse an, und du bekommst einen schriftlichen Prioritätenplan – plus ein Folgegespräch, in dem wir ihn gemeinsam durchgehen.</p>
+        <p class="eyebrow">Der nächste Schritt · Kostenloses Gespräch</p>
+        <h3 id="snapshot-cta-title">Brauchst du Unterstützung beim Aufsetzen <em>oder beim nächsten Schritt?</em></h3>
+        <p>Ruf mich an: In einem kostenlosen 30-minütigen Orientierungsgespräch schauen wir uns dein Ergebnis gemeinsam an und finden deinen nächsten Schritt.</p>
       </div>
       <div class="snapshotCtaActions">
-        <p class="snapshotPrice">{{ clarity_price | escape }}</p>
-        <p class="snapshotPriceNote">Eine konkrete Herausforderung</p>
-        <a class="clarityButton snapshotBookButton" href="{{ book_href }}" data-snapshot-book data-prefill-topic="clarity-check"><span>Deinen Clarity Check buchen</span><span aria-hidden="true">→</span></a>
-        <p class="snapshotCtaHint">{% if contact_endpoint != "" %}Führt dich zu meinem Kontaktformular. Dein Snapshot-Ergebnis steht dort schon in der Nachricht, und du kannst es ergänzen oder ändern. Gesendet wird erst, wenn du selbst auf Senden klickst.{% else %}Führt dich zu meiner Kontaktseite. Wenn du dort dein E-Mail-Programm öffnest, steht dein Snapshot-Ergebnis schon im Entwurf, und du kannst es ergänzen oder ändern. Gesendet wird erst, wenn du die E-Mail selbst abschickst.{% endif %}</p>
-        <a class="snapshotCtaSecondary" href="{{ contact_path | relative_url }}?topic=general">Lieber persönlich sprechen? Kostenloses 30-minütiges Orientierungsgespräch buchen <span aria-hidden="true">↗</span></a>
+        <p class="snapshotPrice">30 Min.</p>
+        <p class="snapshotPriceNote">Kostenloses Orientierungsgespräch</p>
+        <a class="clarityButton snapshotBookButton" href="{{ book_href }}" data-snapshot-book data-prefill-topic="team-snapshot"><span>Gespräch buchen</span><span aria-hidden="true">→</span></a>
+        <p class="snapshotCtaHint">{% if contact_endpoint != "" %}Führt dich zu meiner Kontaktseite, wo du dir einen Termin aussuchen kannst. Dein Snapshot-Ergebnis steht dort schon in der Nachricht des Kontaktformulars, und du kannst es ergänzen oder ändern. Gesendet wird erst, wenn du selbst auf Senden klickst.{% else %}Führt dich zu meiner Kontaktseite, wo du dir einen Termin aussuchen kannst. Wenn du lieber schreibst, steht dein Snapshot-Ergebnis schon im Entwurf, sobald du dort dein E-Mail-Programm öffnest. Gesendet wird erst, wenn du die E-Mail selbst abschickst.{% endif %}</p>
       </div>
     </aside>
 
-    <p class="snapshotPrintOnly">Wünschst du dir einen Blick von außen? Der Clarity Check ({{ clarity_price | escape }}) nimmt eine Herausforderung in eurem echten Arbeitsalltag unter die Lupe und endet mit einem schriftlichen Prioritätenplan. {{ site.legal.owner_name | escape }} · {{ public_host | escape }} · {{ site.legal.email | escape }}{% if legal_phone != "" %} · {{ legal_phone | escape }}{% endif %}</p>
+    <p class="snapshotPrintOnly">Brauchst du Unterstützung beim Aufsetzen oder beim nächsten Schritt? Ruf mich an: In einem kostenlosen 30-minütigen Orientierungsgespräch schauen wir uns dein Ergebnis gemeinsam an und finden deinen nächsten Schritt. {{ site.legal.owner_name | escape }} · {{ public_host | escape }} · {{ site.legal.email | escape }}{% if legal_phone != "" %} · {{ legal_phone | escape }}{% endif %}</p>
   </section>
 </div>
-<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"clarityCheck":{"price":{{ clarity_price | jsonify }}},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=clarity-check" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
+<script type="application/json" id="snapshot-data">{"questions":{{ snapshot_questions | jsonify }},"results":{{ snapshot_results | jsonify }},"i18n":{{ page.snapshot_ui | jsonify }},"contact":{"name":{{ site.legal.owner_name | jsonify }},"email":{{ site.legal.email | jsonify }},"phone":{{ legal_phone | jsonify }},"website":{{ public_host | jsonify }},"websiteUrl":{{ public_url | jsonify }},"bookUrl":{{ public_url | append: site.baseurl | append: contact_path | append: "?topic=team-snapshot" | jsonify }},"bookLabel":{{ public_host | append: site.baseurl | append: contact_path | jsonify }}},"urls":{"jspdf":{{ '/assets/lib/jspdf.umd.min.js' | relative_url | jsonify }},"logo":{{ '/assets/anna-lena-birkner-logo-invoice.jpg' | relative_url | jsonify }}}}</script>
 <script src="{{ '/team-snapshot.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

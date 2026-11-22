@@ -3,7 +3,7 @@
    Used by index.html and de/index.html (markup in _includes/home-refresh-en.html
    and _includes/home-refresh-de.html). Colours and fonts come from the tokens in
    styles.css (:root). All classes are prefixed with "hr" so they cannot collide
-   with the older .hero / .spark / .offerCard rules in styles.css and home-offers.css.
+   with the older .hero / .spark rules in styles.css.
    ========================================================================== */
 
 .hrHero,

@@ -4,22 +4,24 @@
 #
 # question: plain text.
 # answer:   one paragraph. HTML is allowed for links; use a site path, e.g. <a href="/team-snapshot/">.
-#           {price.workshops}, {price.clarity_check} and {price.focused_build} are replaced with the
-#           English price from _data/offer_prices.yml.
-# Type characters directly (’ – €) rather than HTML entities, so the structured-data text stays clean.
+# Type characters directly (’ –) rather than HTML entities, so the structured-data text stays clean.
 # The German FAQ is in faq_de.yml.
 
 - question: What can we work on together?
   answer: >-
     I help with positioning and digital presence, operations and process clarity, people and team systems, responsible AI, and the practical infrastructure that helps a small business or growing team work well.
 
-- question: How is the free Team Snapshot different from the Clarity Check?
+- question: How is the free Team Snapshot different from the free orientation call?
   answer: >-
-    The free <a href="/team-snapshot/">Team Snapshot</a> is a five-minute self-assessment: six questions, an instant score for each area, practical tips and a PDF to keep. The paid Clarity Check goes deeper into one defined challenge: we talk it through, I review the documents and processes involved, and you get a written priority plan and a follow-up conversation.
+    The free <a href="/team-snapshot/">Team Snapshot</a> is a five-minute self-assessment you do on your own: six questions, an instant score for each area, practical tips and a PDF to keep. No sign-up needed. In the free 30-minute orientation call we talk it through together: we look at your results or your situation and work out whether interim HR, a workshop or something else is the right next step.
 
 - question: Can we begin with something small?
   answer: >-
-    Yes. We can start with one question or a Clarity Check. If the Clarity Check shows problems that keep coming back, a Focused Build can tackle up to three of them next. Any larger piece of work is decided after the first step, rather than committed to up front.
+    Yes. Start with the free Team Snapshot or a free 30-minute orientation call. A single workshop of one to two hours is a small, clear first step for your team. Interim HR support is shaped around your situation, and nothing larger is committed to up front.
+
+- question: What does interim HR or parental-leave cover look like?
+  answer: >-
+    I join your team as an experienced HR Business Partner for a gap, a parental leave or a growth phase: recruiting and onboarding, HR processes and structure, HR operations and benefits, data and reporting, and support for team leads. Time commitment, duration and fee are agreed around your situation.
 
 - question: Do you work remotely or in person?
   answer: >-
@@ -29,6 +31,6 @@
   answer: >-
     If there is a useful fit, I will recommend a format and make the scope, timing, responsibilities, and fee clear before any work begins. If another direction would serve you better, I will say that too.
 
-- question: How do team workshops work?
+- question: How do workshops work?
   answer: >-
-    Workshops are shaped around one topic and combine practical exercises, discussion and next steps. They run two to four hours, start from {price.workshops} and include a short briefing beforehand, a workbook on the topic and a written recap afterwards. Larger groups and in-person sessions are quoted separately.
+    Each workshop focuses on one topic: fair AI in recruiting, bias awareness in teams, keeping working parents on board, making remote teams work, or constructive communication with hands-on practice. Sessions run one to two hours or are tailored to your team, remote or on-site, in German, English or Spanish. Scope and fee are agreed before we start.

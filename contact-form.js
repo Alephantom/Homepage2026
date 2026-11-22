@@ -24,8 +24,8 @@
   const toSlug = (value) => (typeof value === "string" ? value.trim().toLowerCase() : "");
   const isKnownTopic = (slug) => Boolean(slug) && Object.prototype.hasOwnProperty.call(topics, slug);
 
-  // One-time hand-over from another page, e.g. the Team Snapshot's "Book your Clarity Check":
-  // sessionStorage.contactPrefill = '{"topic":"clarity-check","message":"…"}'.
+  // One-time hand-over from another page, e.g. the Team Snapshot's "Book a call":
+  // sessionStorage.contactPrefill = '{"topic":"team-snapshot","message":"…"}'.
   // It is read once and removed straight away, so a reload or a later visit starts empty.
   const takePrefill = () => {
     let raw = null;
@@ -137,7 +137,7 @@
       topicSelect.value = slug;
     };
 
-    // Formspree uses _subject as the email subject, e.g. "New enquiry: Clarity Check".
+    // Formspree uses _subject as the email subject, e.g. "New enquiry: Workshop".
     const updateSubject = () => {
       if (!subjectInput) return;
       const option = topicSelect?.selectedOptions?.[0];

@@ -1,7 +1,7 @@
 // Free Team Snapshot: scores the answers in the browser and shows the results on the page.
 // The answers are not stored. Nothing is sent unless the visitor chooses to: signing up for the
-// newsletter sends email, company name and scores to Brevo (see BREVO_FIELDS); "Book your Clarity
-// Check" hands a plain-text summary to the contact form in this tab, where the visitor can edit it.
+// newsletter sends email, company name and scores to Brevo (see BREVO_FIELDS); "Book a call" hands
+// a plain-text summary to the contact form in this tab, where the visitor can edit it.
 // All content and wording come from the JSON block in the page (team-snapshot.html, or the German
 // de/team-snapshot.html): questions and results from _data/, UI words from the page's `snapshot_ui`.
 (() => {
@@ -335,8 +335,8 @@
     });
   });
 
-  // "Book your Clarity Check": hand the summary to the contact form in this tab (sessionStorage),
-  // then follow the link as usual (contact page with ?topic=clarity-check). The link works without
+  // "Book a call": hand the summary to the contact form in this tab (sessionStorage),
+  // then follow the link as usual (contact page with ?topic=team-snapshot). The link works without
   // this too; the visitor then simply writes the message themselves.
   if (bookLink) {
     bookLink.addEventListener('click', (event) => {
@@ -347,7 +347,7 @@
       if (!summary) return;
       try {
         window.sessionStorage.setItem(PREFILL_KEY, JSON.stringify({
-          topic: bookLink.dataset.prefillTopic || 'clarity-check',
+          topic: bookLink.dataset.prefillTopic || 'team-snapshot',
           message: bookingMessage(areas, summary)
         }));
       } catch (error) {
@@ -754,15 +754,12 @@
       y += 7;
     }
 
-    /* Closing box: Clarity Check and how to reach me */
+    /* Closing box: free orientation call and how to reach me */
     {
       const pad = 6;
       const innerWidth = WIDTH - pad * 2;
       const title = block(t('pdfCtaTitle'), innerWidth, 15, 'bold', COLOURS.ink, 1.2);
       const text = block(t('pdfCtaText'), innerWidth, 10);
-      const price = data.clarityCheck && data.clarityCheck.price
-        ? block(t('pdfCtaPrice', { price: data.clarityCheck.price }), innerWidth, 11, 'bold')
-        : null;
       const reach = block(t('pdfCtaReach'), innerWidth, 10);
       const reachLines = [
         contact.email ? { text: t('pdfContactEmail', { email: contact.email }), url: `mailto:${contact.email}` } : null,
@@ -770,7 +767,7 @@
         contact.phone ? { text: t('pdfContactPhone', { phone: contact.phone }), url: telHref(contact.phone) } : null
       ].filter(Boolean).map((line) => ({ ...line, item: block(line.text, innerWidth, 10, 'bold') }));
       const reachHeight = reachLines.reduce((sum, line) => sum + line.item.height + 0.6, 0);
-      const inner = lineHeight(7.5) + 2 + title.height + 2 + text.height + (price ? 3 + price.height : 0) + 3 + reach.height + 1.5 + reachHeight;
+      const inner = lineHeight(7.5) + 2 + title.height + 2 + text.height + 3 + reach.height + 1.5 + reachHeight;
       const height = inner + pad * 2;
       ensure(height);
       doc.setFillColor(...COLOURS.lavenderTint);
@@ -784,7 +781,6 @@
       top += lineHeight(7.5) + 2;
       top = draw(title, x, top) + 2;
       top = draw(text, x, top);
-      if (price) top = draw(price, x, top + 3);
       top = draw(reach, x, top + 3) + 1.5;
       reachLines.forEach((line) => {
         draw(line.item, x, top);

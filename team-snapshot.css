@@ -238,7 +238,7 @@
 .snapshotBottomActions + .snapshotCta { margin-top: 56px; }
 
 .snapshotCta { align-items: end; background: var(--lavender); border: 1px solid var(--ink); border-radius: 16px; display: grid; gap: 40px 56px; grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr); margin-top: 80px; padding: 44px 40px; }
-.snapshotCta h3 { font-size: clamp(40px, 4.2vw, 62px); margin: 22px 0 20px; }
+.snapshotCta h3 { font-size: clamp(36px, 3.6vw, 54px); margin: 22px 0 20px; }
 .snapshotCta h3 em { color: var(--coral-on-lavender); }
 .snapshotCtaCopy p:not(.eyebrow) { margin: 0; max-width: 560px; }
 .snapshotCtaActions { min-width: 0; }
@@ -311,7 +311,7 @@
   .snapshotSignupButton { width: 100%; }
   .snapshotConsent input { height: 24px; margin-top: 0; width: 24px; }
   .snapshotCta { margin-top: 56px; padding: 30px 22px; }
-  .snapshotCta h3 { font-size: 42px; }
+  .snapshotCta h3 { font-size: 34px; }
   .snapshotPrice { font-size: 48px; }
 }
 

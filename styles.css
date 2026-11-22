@@ -591,14 +591,9 @@ main:focus {
 #work,
 #projects,
 #faq,
-#clarity-review,
-#focused-build,
 #interim-hr-business-partner,
-#algorithmic-hiring,
-#implementing-ai-systems,
-#optimizing-hr-operations,
-#internal-communications,
-#remote-environments {
+#workshops,
+#team-snapshot {
   scroll-margin-top: 102px;
 }
 

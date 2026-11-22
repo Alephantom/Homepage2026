@@ -120,7 +120,7 @@ The privacy policy follows the same settings. Section 4 (Contact form) and secti
 contact_form_endpoint: "https://formspree.io/f/abcdwxyz"
 ```
 
-You don’t need to set up fields in Formspree. The form sends `topic` (the “What’s it about?” choice, as a slug such as `clarity-check`), `name`, `email`, `company` and `message`, plus hidden helper fields: `_subject` for the email subject line and `_gotcha`, Formspree’s built-in spam trap. The subject names the topic, for example “New enquiry: Clarity Check”; for “Something else” it stays “New enquiry from annalenabirkner.com”. See [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries) for how links choose the topic.
+You don’t need to set up fields in Formspree. The form sends `topic` (the “What’s it about?” choice, as a slug such as `interim`), `name`, `email`, `company` and `message`, plus hidden helper fields: `_subject` for the email subject line and `_gotcha`, Formspree’s built-in spam trap. The subject names the topic, for example “New enquiry: Workshop”; for “Something else” it stays “New enquiry from annalenabirkner.com”. See [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries) for how links choose the topic.
 
 ### 2. Connect the newsletter (Brevo)
 
@@ -214,9 +214,9 @@ The site includes a descriptive search title, unique page descriptions, canonica
 
 `_includes/structured-data.html` (included from `_includes/seo.html`) writes one JSON-LD `@graph` per page. It describes only what the page shows, and must stay that way: no address, phone number, social profiles, credentials, ratings or reviews. Noindex pages (404, newsletter confirmation) get none.
 
-- Every indexable page has a `WebPage` (`ContactPage` on the contact pages, `CollectionPage` on `/blog/`, set with `schema_page_type` in the front matter) and, except on the homepages, a `BreadcrumbList`: Home → page, posts Home → Journal → post, German pages Startseite → page. The breadcrumb uses `breadcrumb_title` (otherwise `title`); `breadcrumb_parent` adds a level in between (`/workshops` sits under `/team-workshops/`).
+- Every indexable page has a `WebPage` (`ContactPage` on the contact pages, `CollectionPage` on `/blog/`, set with `schema_page_type` in the front matter) and, except on the homepages, a `BreadcrumbList`: Home → page, posts Home → Journal → post, German pages Startseite → page. The breadcrumb uses `breadcrumb_title` (otherwise `title`); `breadcrumb_parent` adds a level in between.
 - The homepages (`/`, `/de/`) add the `WebSite` and the full `Person` (`https://annalenabirkner.com/#person`: name, portrait, job title, email, working languages, and the “Areas I can help with” list from `_data/service_areas.yml`). Other pages only point to it.
-- Services with their prices: the keys listed in `schema_services` in a page’s front matter (homepages and `/strategic-support/`), described in `_data/schema_services.yml`. The numbers are read from the English prices in `_data/offer_prices.yml`, so a price change there updates the structured data too. When you change what an offer card says, update its short description in `_data/schema_services.yml`.
+- Services: the keys listed in `schema_services` in a page’s front matter (homepages and Team Snapshot pages), described in `_data/schema_services.yml`. No prices are published; only the free Team Snapshot gets an `Offer` with price 0. When you change what an offer card says, update its short description in `_data/schema_services.yml`.
 - The homepage FAQ lives in `_data/faq_en.yml` and `_data/faq_de.yml`. Both the visible FAQ and the `FAQPage` structured data are built from these files, so edit questions there, not in `index.html`.
 - Posts get a `BlogPosting` (headline, description, `og_image` with its size, the `date` shown on the post, `last_modified_at`, category, word count), written by and published by `#person`, part of the Journal (`Blog`).
 
@@ -246,23 +246,23 @@ Google chooses search snippets automatically and may use on-page text instead of
 
 The homepage hero, trust bar (with the testimonial card) and offers are maintained in `_includes/home-refresh-en.html` (English) and `_includes/home-refresh-de.html` (German), styled by `home-refresh.css` (all classes prefixed `hr`). There are three equal-height cards: Interim HR & parental-leave cover (`#interim-hr-business-partner`), the workshop (`#workshops`, button downloads `assets/downloads/workshop-overview-anna-lena-birkner.pdf`) and the free five-minute Team Snapshot, followed by a full-width bar for the free 30-minute orientation call. The English page quotes Zerife (Relief Applications), the German page Philipp (Mindfulife). The previous offers include (`_includes/home-offers.html`, `_includes/home-offers-de.html`, `home-offers.css`) is no longer used by the homepage and is kept only for reference.
 
-All prices live in `_data/offer_prices.yml`, with an `en` and a `de` value for `clarity_check`, `focused_build` and `workshops` (the starting price for the topic workshops). Prices are shown as they are, with no VAT note. The Interim HR Business Partner has no price key; its card says "On request" / "Auf Anfrage". Pages read these values, for example `site.data.offer_prices.clarity_check.en`, so never hard-code a price in a page. In the FAQ data files, write `{price.workshops}` (or `{price.clarity_check}`, `{price.focused_build}`) instead of a price. The structured data reads the number from the English value, so keep it in the form `€1,234`.
+The site shows no prices. The offers are Interim HR & parental-leave cover, Workshops (overview PDFs in `assets/downloads/`: `workshop-overview-anna-lena-birkner.pdf` in English, `workshop-uebersicht-anna-lena-birkner.pdf` in German) and the free Team Snapshot, plus the free 30-minute orientation call. The former service pages `/strategic-support/`, `/team-workshops/` and `/workshops` are redirect stubs in `redirects/` (layout `_layouts/redirect.html`: meta refresh + canonical + noindex) to the homepage offer cards.
 
-The free Team Snapshot lives at `/team-snapshot/`, with links from the homepage offers, the strategic support page and the shared footer. It is an instant, scored self-analysis and the free first step before the paid Clarity Check. The page and styles are in `team-snapshot.html` and `team-snapshot.css`; `team-snapshot.js` scores the answers in the browser and shows the results straight away: a score for each area, practical tips for the weaker areas, and a PDF download. “Download PDF” (at the top and the bottom of the results) builds the PDF in the browser with the vendored jsPDF 4.2.1 at `assets/lib/jspdf.umd.min.js` (MIT licence, header comment kept), which is loaded only when one of those buttons is pressed; if it can’t load, the browser’s print window opens instead, using the `@media print` styles in `team-snapshot.css`. Edit the questions, interpretations and tips in `_data/team_snapshot.yml`, and the levels, labels and scores in `_data/team_snapshot_results.yml`.
+The free Team Snapshot lives at `/team-snapshot/`, with links from the homepage offers, the Services menu and the shared footer. It is an instant, scored self-analysis and a free first step. The page and styles are in `team-snapshot.html` and `team-snapshot.css`; `team-snapshot.js` scores the answers in the browser and shows the results straight away: a score for each area, practical tips for the weaker areas, and a PDF download. “Download PDF” (at the top and the bottom of the results) builds the PDF in the browser with the vendored jsPDF 4.2.1 at `assets/lib/jspdf.umd.min.js` (MIT licence, header comment kept), which is loaded only when one of those buttons is pressed; if it can’t load, the browser’s print window opens instead, using the `@media print` styles in `team-snapshot.css`. Edit the questions, interpretations and tips in `_data/team_snapshot.yml`, and the levels, labels and scores in `_data/team_snapshot_results.yml`.
 
 Scoring: Clear = 100, Needs attention = 60, Stuck = 20. “I’m not sure” answers get no score and, like skipped questions, don’t count towards the average; the area is still shown (“Worth a closer look · no score”) with its interpretation and tips. When no answer has a score, no overall number is shown.
 
 The German version lives at `/de/team-snapshot/` (`de/team-snapshot.html`) with `_data/team_snapshot_de.yml` and `_data/team_snapshot_results_de.yml`, which use the same ids, keys and scores as the English files. `team-snapshot.js` is shared and contains no page wording: all results, booking, newsletter and PDF texts come from the `snapshot_ui` front matter of each page, so change a text there (in both pages) rather than in the script.
 
-There is no email gate and no personal reply: the full results are shown to everyone. The answers stay in the visitor’s browser and nothing is stored. Nothing is sent unless the visitor chooses to sign up for the quarterly newsletter shown with the results; only then are their email address, company name and Snapshot scores sent to Brevo (see [Contact form and newsletter setup](#contact-form-and-newsletter-setup)). The newsletter block does not appear in the printed or PDF summary. After the results, "Book your Clarity Check" opens the contact page with the Clarity Check already selected and a short plain-text summary of the scores in the message, which the visitor can edit before sending (see [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries)). The secondary link, "Prefer to talk? Book a free 30-minute call", goes to `/contact?topic=general` (German page: `/de/kontakt/?topic=general`).
+There is no email gate and no personal reply: the full results are shown to everyone. The answers stay in the visitor’s browser and nothing is stored. Nothing is sent unless the visitor chooses to sign up for the quarterly newsletter shown with the results; only then are their email address, company name and Snapshot scores sent to Brevo (see [Contact form and newsletter setup](#contact-form-and-newsletter-setup)). The newsletter block does not appear in the printed or PDF summary. After the results, the box “Need help setting things up or moving forward?” (German: „Brauchst du Unterstützung beim Aufsetzen oder beim nächsten Schritt?“) offers the free 30-minute orientation call: “Book a call” / „Gespräch buchen“ opens the contact page with the topic `team-snapshot` selected and a short plain-text summary of the scores in the message, which the visitor can edit before sending (see [Contact topics and prefilled enquiries](#contact-topics-and-prefilled-enquiries)).
 
 ## Contact topics and prefilled enquiries
 
 Every button that books or asks about something opens the contact form with the right topic already chosen in its “What’s it about?” (“Worum geht es?”) select. Links follow one pattern:
 
 ```liquid
-{{ '/contact' | relative_url }}?topic=clarity-check#write
-{{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben
+{{ '/contact' | relative_url }}?topic=interim#write
+{{ '/de/kontakt/' | relative_url }}?topic=interim#schreiben
 ```
 
 `#write` and `#schreiben` scroll straight to the form. A missing or unknown topic falls back to `general` (“Something else” / “Etwas anderes”), so a mistyped link still works.
@@ -270,20 +270,13 @@ Every button that books or asks about something opens the contact form with the 
 | Slug | Used by |
 | --- | --- |
 | `general` | Fallback; “Something else” in the select |
-| `clarity-check` | “Book your Clarity Check” (homepage offers, strategic support, Team Snapshot results) |
-| `focused-build` | “Plan your Focused Build” (homepage offers, strategic support) |
-| `interim-hr` | Interim HR Business Partner buttons (homepage offers, strategic support) |
-| `workshop` | “Book a workshop” on the homepage; “Discuss a workshop” / “Discuss your workshop” on `/team-workshops/` |
-| `workshop-algorithmic-hiring` | “Discuss your workshop” and “Book the workshop” on `/workshops` |
-| `workshop-implementing-ai` | “Discuss this topic” on `/team-workshops/` |
-| `workshop-hr-operations` | “Discuss this topic” on `/team-workshops/` |
-| `workshop-internal-communications` | “Discuss this topic” on `/team-workshops/` |
-| `workshop-remote-environments` | “Discuss this topic” on `/team-workshops/` |
-| `team-snapshot` | Questions about the free Team Snapshot |
+| `interim` | “Ask about interim HR” / “Interim-HR anfragen” on the homepage offer card |
+| `workshop` | Workshop enquiries (the homepage workshop card links to the overview PDF) |
+| `team-snapshot` | “Book a call” / “Gespräch buchen” under the Team Snapshot results (hands over the results as the message) |
 
 The topics, their English and German labels, and the email subject lines live in `_data/contact_topics.yml`. Both contact pages build the select from it. To add a topic, add an entry there and link to it with its slug; to rename one, change only its labels, because links across the site use the slug. General links such as the navigation, “Book a call” and Calendly stay plain `/contact` links.
 
-When `contact_form_endpoint` is empty, the page shows the email address instead of the form. The topic still counts: “Or open your email program” starts a draft with the topic’s subject line (for example “Booking a Clarity Check”, plus the optional `email_body` starting note from the data file), and a short note under the address names the topic.
+When `contact_form_endpoint` is empty, the page shows the email address instead of the form. The topic still counts: “Or open your email program” starts a draft with the topic’s subject line (for example “Asking about a workshop”, plus the optional `email_body` starting note from the data file), and a short note under the address names the topic.
 
 ### Handing over a message from another page
 
@@ -291,13 +284,13 @@ A page can pass a ready-made message to the contact form without putting it in t
 
 ```js
 sessionStorage.setItem("contactPrefill", JSON.stringify({
-  topic: "clarity-check",
+  topic: "team-snapshot",
   message: "Plain-text message, for example a Team Snapshot summary",
 }));
-window.location.href = "/contact?topic=clarity-check#write";
+window.location.href = "/contact?topic=team-snapshot#write";
 ```
 
-`contact-form.js` reads the `contactPrefill` key once and removes it straight away, so a reload or a later visit starts empty. The message goes into the message field, where the visitor can edit it before sending; it is only used if its `topic` matches the page’s topic (or has none). On the email-address version of the page it becomes the body of the email draft instead. Personal data and summaries never go into the URL: the query string only ever carries the topic slug. The Team Snapshot’s “Book your Clarity Check” button uses this hand-over.
+`contact-form.js` reads the `contactPrefill` key once and removes it straight away, so a reload or a later visit starts empty. The message goes into the message field, where the visitor can edit it before sending; it is only used if its `topic` matches the page’s topic (or has none). On the email-address version of the page it becomes the body of the email draft instead. Personal data and summaries never go into the URL: the query string only ever carries the topic slug. The Team Snapshot’s “Book a call” button uses this hand-over.
 
 ## Add your portrait
 
