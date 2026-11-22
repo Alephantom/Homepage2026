@@ -1,0 +1,73 @@
+{%- comment -%}
+  Startseite: Hero, Vertrauensleiste + Zitat und Angebote (DE). Gestylt von /home-refresh.css.
+  Englische Version: _includes/home-refresh-en.html. Beide synchron halten.
+{%- endcomment -%}
+<section class="hrHero" aria-labelledby="hero-title">
+  <div class="hrHeroCopy">
+    <p class="eyebrow">People &amp; Culture · Interim-HR</p>
+    <h1 id="hero-title">HR-Unterstützung für <em>wachsende Teams.</em></h1>
+    <p class="hrHeroSub">Von Interim-HR direkt in deinem Team bis zu Workshops für deine Teamleads. Auf Deutsch, Englisch und Spanisch.</p>
+    <div class="hrHeroActions">
+      <a class="hrBtn hrBtnPrimary" href="{{ '/de/kontakt/' | relative_url }}"><span>Gespräch buchen</span><span aria-hidden="true">↗</span></a>
+      <a class="hrBtn hrBtnSecondary" href="{{ '/de/team-snapshot/' | relative_url }}"><span>Kostenlosen Team-Snapshot starten</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="hrPortraitWrap">
+    <div class="hrPortrait">
+      <img src="{{ '/assets/portrait-hero.jpg' | relative_url }}" alt="Porträt von Anna-Lena Birkner" width="1122" height="1402" fetchpriority="high" decoding="async">
+    </div>
+    <span class="hrPortraitTag"><i aria-hidden="true"></i>Anna-Lena · HR Business Partnerin</span>
+  </div>
+  <div class="hrSpark hrSparkOne" aria-hidden="true"></div>
+  <div class="hrSpark hrSparkTwo" aria-hidden="true"></div>
+</section>
+
+<section class="hrTrust" aria-label="Warum Teams mir vertrauen">
+  <ul class="hrFacts">
+    <li><span class="hrFactNum">9</span><span class="hrFactLab">Jahre im HR</span></li>
+    <li><span class="hrFactNum">State Street</span><span class="hrFactLab">früher bei</span></li>
+    <li><span class="hrFactNum">3</span><span class="hrFactLab">Sprachen · DE / EN / ES</span></li>
+  </ul>
+  <figure class="hrQuote">
+    <span class="hrQuoteMark" aria-hidden="true">“</span>
+    <blockquote>„Anna-Lena hat uns dabei unterstützt, unsere gesamten HR-Prozesse zu strukturieren und zu optimieren. … Für mich war das eine riesige Entlastung.“</blockquote>
+    <figcaption>
+      <a class="hrQuoteLogo" href="https://www.mindfulife.de/" target="_blank" rel="noopener noreferrer" aria-label="Website von Mindfulife (öffnet in neuem Tab)"><img src="{{ '/assets/case-logos/mindfulife-mark.svg' | relative_url }}" alt="" width="34" height="34" loading="lazy" decoding="async"></a>
+      <span>– Philipp, Gründer, <a class="hrCiteRef" href="https://www.mindfulife.de/" target="_blank" rel="noopener noreferrer">Mindfulife <span aria-hidden="true">↗</span></a></span>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="hrOffers" id="work" aria-labelledby="offers-title">
+  <div class="hrOffersHead">
+    <p class="eyebrow">Zwei Wege zur Zusammenarbeit</p>
+    <h2 id="offers-title">HR direkt im Team, <em>oder ein Workshop für deine Teamleads.</em></h2>
+  </div>
+  <div class="hrOfferGrid">
+    <article class="hrOffer hrOffer--interim" id="interim-hr-business-partner" aria-labelledby="offer-interim-title">
+      <p class="eyebrow">01 · Unterstützung auf Zeit</p>
+      <h3 id="offer-interim-title">Interim-HR &amp; Elternzeit­vertretung <em>So lange du sie brauchst.</em></h3>
+      <p class="hrOfferDesc">Eine erfahrene HR Business Partnerin in deinem Team: für eine Vakanz, eine Elternzeit oder eine Wachstumsphase.</p>
+      <ul class="hrTags" aria-label="Bereiche"><li>Recruiting &amp; Onboarding</li><li>HR-Prozesse &amp; Struktur</li><li>HR-Operations &amp; Benefits</li><li>Daten &amp; Reporting</li><li>Unterstützung für Teamleads</li></ul>
+      <div class="hrMeta"><span>Tools</span><b>Workday · SAP · Personio · Zeiterfassungssysteme · Notion · Google Workspace</b></div>
+      <a class="hrOfferBtn" href="{{ '/de/kontakt/' | relative_url }}?topic=interim-hr#schreiben"><span>Interim-HR anfragen</span><span aria-hidden="true">↗</span></a>
+    </article>
+    <article class="hrOffer hrOffer--workshop" id="workshops" aria-labelledby="offer-workshop-title">
+      <p class="eyebrow">02 · Buchbarer Workshop</p>
+      <h3 id="offer-workshop-title">Workshop <em>Struktur für wachsende Teams.</em></h3>
+      <p class="hrOfferDesc">Für Teamleads und Start-ups, deren Strukturen mit dem Wachstum Schritt halten sollen.</p>
+      <ul class="hrTags" aria-label="Workshop-Themen"><li>Faire KI im Recruiting</li><li>Bias-Bewusstsein im Team</li><li>Berufstätige Eltern halten</li><li>Remote-Teams, die funktionieren</li><li>Konstruktive Kommunikation mit Praxisübungen</li></ul>
+      <div class="hrMeta"><span>Format</span><b>1–2 Stunden · oder passend für dein Team</b></div>
+      <a class="hrOfferBtn" href="{{ '/assets/downloads/workshop-overview-anna-lena-birkner.pdf' | relative_url }}" download><span>Workshop-Übersicht holen</span><span aria-hidden="true">↗</span></a>
+    </article>
+    <article class="hrOffer hrOffer--snapshot" id="team-snapshot" aria-labelledby="offer-snapshot-title">
+      <p class="eyebrow">03 · Kostenlos · 5 Minuten</p>
+      <h3 id="offer-snapshot-title">Team-Snapshot <em>Sieh, wo dein Team steht.</em></h3>
+      <p class="hrOfferDesc">Ein schneller Selbstcheck für Gründer:innen und Teamleads: sechs Fragen dazu, wie die Arbeit bei euch gerade läuft. Du bekommst sofort ein Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung.</p>
+      <ul class="hrTags" aria-label="Was du bekommst"><li>Sofort-Ergebnis je Bereich</li><li>Praktische Tipps</li><li>PDF zum Behalten</li></ul>
+      <div class="hrMeta"><span>Dein Vorteil</span><b>Du kennst deinen nächsten Schritt, bevor du einen Cent ausgibst</b></div>
+      <a class="hrOfferBtn" href="{{ '/de/team-snapshot/' | relative_url }}"><span>Snapshot kostenlos starten</span><span aria-hidden="true">→</span></a>
+    </article>
+  </div>
+  <a class="hrTalkBar" href="{{ '/de/kontakt/' | relative_url }}"><span class="hrTalkIcon" aria-hidden="true">✦</span><span class="hrTalkText"><b>Nicht sicher, was du brauchst? Lass uns sprechen.</b><small>Erzähl mir, wo dein Team gerade steht, und wir finden in einem kostenlosen 30-minütigen Orientierungsgespräch gemeinsam den passenden nächsten Schritt.</small></span><span class="hrTalkCta">Gespräch buchen <span aria-hidden="true">↗</span></span></a>
+</section>

@@ -17,7 +17,7 @@ Contact: info@annalenabirkner.com
 ## Start here
 
 - [Free 30-minute orientation call](https://annalenabirkner.com/contact): A free video call of 30 minutes to talk through what is happening and whether there is a useful fit. No preparation needed. The same page has an option to write instead of booking.
-- [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free two-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a PDF summary to download. {% if newsletter_url != "" %}No sign-up needed: the answers aren’t stored, and nothing leaves the browser unless the visitor chooses to join the optional quarterly newsletter offered with the results.{% else %}No sign-up; it runs entirely in the browser and nothing is sent or stored.{% endif %}
+- [Team Snapshot](https://annalenabirkner.com/team-snapshot/): A free five-minute self-assessment for teams unsure what is getting in the way. Six questions about how work runs today, with an instant score for each area, practical tips for the weaker areas and a PDF summary to download. {% if newsletter_url != "" %}No sign-up needed: the answers aren’t stored, and nothing leaves the browser unless the visitor chooses to join the optional quarterly newsletter offered with the results.{% else %}No sign-up; it runs entirely in the browser and nothing is sent or stored.{% endif %}
 
 ## Services and prices
 

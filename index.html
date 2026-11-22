@@ -5,32 +5,14 @@ translation_key: home
 translation_url_en: /
 translation_url_de: /de/
 title: Strategist & Maker
-extra_css: /home-offers.css
+extra_css: /home-refresh.css
 seo_title: Anna-Lena Birkner | Independent Strategist & Maker
 description: Independent strategist Anna-Lena Birkner helps founders and teams clarify complex problems, strengthen people operations, and build practical systems.
 # Structured data (_includes/structured-data.html): services from _data/schema_services.yml, FAQ from the FAQ data file.
-schema_services: [clarity_check, focused_build, interim_hr, workshops, team_snapshot]
+schema_services: [interim_hr, workshops, team_snapshot]
 schema_faq: true
 ---
-<section class="hero">
-  <div class="heroKicker">
-    <span>Independent strategist &amp; maker</span>
-      <span class="heroLocation" data-location-typewriter data-location-words="Granada|Stuttgart|Valencia|Hamburg|Berlin|Wherever we meet">Wherever we meet</span>
-  </div>
-  <h1 class="heroTyping" data-typing-headline aria-label="Making space for your team to thrive.">Making space<br>for <em>your team</em> to thrive.</h1>
-  <div class="heroBottom">
-    <div class="heroIntroBlock">
-      <p class="intro">I&apos;m Anna-Lena. I help founders and thoughtful teams find the thread through complexity—then turn it into clear priorities, confident decisions, and ways of working that make good work easier.</p>
-      <p class="heroLanguages">
-        <span>Working languages</span>
-        <span><span aria-hidden="true">DE / EN / ES</span><span class="visuallyHidden">German, English and Spanish</span></span>
-      </p>
-    </div>
-    <a class="circleLink" href="#work" aria-label="See how I work"><span>Explore</span><span aria-hidden="true">↓</span></a>
-  </div>
-  <div class="spark sparkOne" aria-hidden="true"></div>
-  <div class="spark sparkTwo" aria-hidden="true"></div>
-</section>
+{% include home-refresh-en.html %}
 
 <section class="manifesto" id="about">
   <p class="eyebrow">What I do</p>
@@ -42,8 +24,6 @@ schema_faq: true
     </div>
   </div>
 </section>
-
-{% include home-offers.html %}
 
 <section class="aboutMe">
   <figure class="photoFrame">

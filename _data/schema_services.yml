@@ -69,7 +69,7 @@ team_snapshot:
     de: /de/team-snapshot/
   en:
     name: Team Snapshot
-    description: "A free two-minute self-assessment: six questions about how work runs today, an instant score for each area, practical tips and a PDF to keep. No sign-up needed."
+    description: "A free five-minute self-assessment: six questions about how work runs today, an instant score for each area, practical tips and a PDF to keep. No sign-up needed."
   de:
     name: Team-Snapshot
-    description: "Eine kostenlose Selbsteinschätzung in zwei Minuten: sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung."
+    description: "Eine kostenlose Selbsteinschätzung in fünf Minuten: sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung."

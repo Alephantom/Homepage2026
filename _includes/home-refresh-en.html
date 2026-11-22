@@ -1,0 +1,73 @@
+{%- comment -%}
+  Homepage hero, trust bar + quote card and offers (EN). Styled by /home-refresh.css.
+  German version: _includes/home-refresh-de.html. Keep both in step.
+{%- endcomment -%}
+<section class="hrHero" aria-labelledby="hero-title">
+  <div class="hrHeroCopy">
+    <p class="eyebrow">People &amp; Culture · Interim HR</p>
+    <h1 id="hero-title">People &amp; Culture support for <em>growing teams.</em></h1>
+    <p class="hrHeroSub">From hands-on interim HR to workshops for your team leads. In German, English and Spanish.</p>
+    <div class="hrHeroActions">
+      <a class="hrBtn hrBtnPrimary" href="{{ '/contact' | relative_url }}"><span>Book a call</span><span aria-hidden="true">↗</span></a>
+      <a class="hrBtn hrBtnSecondary" href="{{ '/team-snapshot/' | relative_url }}"><span>Take the free Team Snapshot</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="hrPortraitWrap">
+    <div class="hrPortrait">
+      <img src="{{ '/assets/portrait-hero.jpg' | relative_url }}" alt="Portrait of Anna-Lena Birkner" width="1122" height="1402" fetchpriority="high" decoding="async">
+    </div>
+    <span class="hrPortraitTag"><i aria-hidden="true"></i>Anna-Lena · HR Business Partner</span>
+  </div>
+  <div class="hrSpark hrSparkOne" aria-hidden="true"></div>
+  <div class="hrSpark hrSparkTwo" aria-hidden="true"></div>
+</section>
+
+<section class="hrTrust" aria-label="Why teams trust me">
+  <ul class="hrFacts">
+    <li><span class="hrFactNum">9</span><span class="hrFactLab">years in HR</span></li>
+    <li><span class="hrFactNum">State Street</span><span class="hrFactLab">formerly at</span></li>
+    <li><span class="hrFactNum">3</span><span class="hrFactLab">languages · DE / EN / ES</span></li>
+  </ul>
+  <figure class="hrQuote">
+    <span class="hrQuoteMark" aria-hidden="true">“</span>
+    <blockquote>“Autonomous, structured and highly organised … Her versatility, reliability and positive energy make her a real asset to any team.”</blockquote>
+    <figcaption>
+      <a class="hrQuoteLogo" href="https://reliefapplications.org/" target="_blank" rel="noopener noreferrer" aria-label="Relief Applications website (opens in a new tab)"><img src="{{ '/assets/case-logos/relief-applications-mark.svg' | relative_url }}" alt="" width="34" height="34" loading="lazy" decoding="async"></a>
+      <span>– Zerife, HR Manager, <a class="hrCiteRef" href="https://reliefapplications.org/" target="_blank" rel="noopener noreferrer">Relief Applications <span aria-hidden="true">↗</span></a></span>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="hrOffers" id="work" aria-labelledby="offers-title">
+  <div class="hrOffersHead">
+    <p class="eyebrow">Two ways to work together</p>
+    <h2 id="offers-title">Hands-on HR, <em>or a workshop for your leads.</em></h2>
+  </div>
+  <div class="hrOfferGrid">
+    <article class="hrOffer hrOffer--interim" id="interim-hr-business-partner" aria-labelledby="offer-interim-title">
+      <p class="eyebrow">01 · Support over time</p>
+      <h3 id="offer-interim-title">Interim HR &amp; Parental-leave cover <em>For the time you need.</em></h3>
+      <p class="hrOfferDesc">An experienced HR Business Partner in your team, for a gap, a leave or a growth phase.</p>
+      <ul class="hrTags" aria-label="Areas"><li>Recruiting &amp; onboarding</li><li>HR processes &amp; structure</li><li>HR operations &amp; benefits</li><li>Data &amp; reporting</li><li>Support for team leads</li></ul>
+      <div class="hrMeta"><span>Tools</span><b>Workday · SAP · Personio · Time-tracking systems · Notion · Google Workspace</b></div>
+      <a class="hrOfferBtn" href="{{ '/strategic-support/' | relative_url }}#interim-hr-business-partner"><span>Learn more</span><span aria-hidden="true">↗</span></a>
+    </article>
+    <article class="hrOffer hrOffer--workshop" id="workshops" aria-labelledby="offer-workshop-title">
+      <p class="eyebrow">02 · Bookable workshop</p>
+      <h3 id="offer-workshop-title">Workshop <em>Structure for growing teams.</em></h3>
+      <p class="hrOfferDesc">For team leads and start-ups whose structure needs to keep up with growth.</p>
+      <ul class="hrTags" aria-label="Workshop topics"><li>Fair AI in recruiting</li><li>Bias awareness in teams</li><li>Keeping working parents on board</li><li>Making remote teams work</li><li>Constructive communication, with hands-on practice</li></ul>
+      <div class="hrMeta"><span>Format</span><b>1–2 hours · or tailored to your team</b></div>
+      <a class="hrOfferBtn" href="{{ '/assets/downloads/workshop-overview-anna-lena-birkner.pdf' | relative_url }}" download><span>Get the workshop overview</span><span aria-hidden="true">↗</span></a>
+    </article>
+    <article class="hrOffer hrOffer--snapshot" id="team-snapshot" aria-labelledby="offer-snapshot-title">
+      <p class="eyebrow">03 · Free · 5 minutes</p>
+      <h3 id="offer-snapshot-title">Team Snapshot <em>See where your team stands.</em></h3>
+      <p class="hrOfferDesc">A quick self-check for founders and team leads: six questions about how work runs today. You get an instant score for each area, practical tips and a PDF to keep. No sign-up needed.</p>
+      <ul class="hrTags" aria-label="What you get"><li>Instant score per area</li><li>Practical tips</li><li>PDF to keep</li></ul>
+      <div class="hrMeta"><span>Your benefit</span><b>Know your next step before you spend a cent</b></div>
+      <a class="hrOfferBtn" href="{{ '/team-snapshot/' | relative_url }}"><span>Take the free snapshot</span><span aria-hidden="true">→</span></a>
+    </article>
+  </div>
+  <a class="hrTalkBar" href="{{ '/contact' | relative_url }}"><span class="hrTalkIcon" aria-hidden="true">✦</span><span class="hrTalkText"><b>Not sure what you need? Let’s talk.</b><small>Tell me where your team stands, and we’ll work out the right next step together in a free 30-minute orientation call.</small></span><span class="hrTalkCta">Book a call <span aria-hidden="true">↗</span></span></a>
+</section>
