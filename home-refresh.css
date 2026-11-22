@@ -742,3 +742,77 @@
     transition: none;
   }
 }
+
+/* ---------- Partners: two equal cards (DevOpWeb + Mindfulife) ---------- */
+.homeBottomGrid--partners .partnerSectionHead {
+  max-width: 1200px;
+}
+
+.partnerGrid {
+  align-items: stretch;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.homeBottomGrid--partners .partnerCopy {
+  margin: 0;
+  max-width: none;
+}
+
+.homeBottomGrid--partners .partnerMark {
+  right: 38px;
+  top: 38px;
+  width: 145px;
+}
+
+.partnerMark--mindfulife {
+  color: var(--ink);
+  gap: 10px;
+  text-decoration: none;
+  width: auto !important;
+}
+
+.partnerMark--mindfulife img {
+  border-radius: 8px;
+  flex: none;
+  height: 36px;
+  width: 36px;
+}
+
+.partnerMark--mindfulife span {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+  .partnerGrid {
+    gap: 40px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .homeBottomGrid--partners .partnerMark {
+    width: 122px;
+  }
+
+  .partnerMark--mindfulife {
+    flex: 0 1 auto;
+  }
+
+  .partnerMark--mindfulife img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .partnerMark--mindfulife span {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+}

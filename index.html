@@ -25,23 +25,37 @@ schema_faq: true
 {% include faq-list.html lang="en" %}
 </section>
 
-<div class="homeBottomGrid homeBottomGrid--single">
-  <section class="partnerSection" id="partner" aria-labelledby="partner-title">
+<div class="homeBottomGrid homeBottomGrid--single homeBottomGrid--partners">
+  <section class="partnerSection" id="partner" aria-label="Partners">
     <div class="partnerSectionHead">
-      <p class="eyebrow">Partner</p>
-      <a href="https://devopweb.com" target="_blank" rel="noopener noreferrer">Browse more <span aria-hidden="true">↗</span></a>
+      <p class="eyebrow">Partners</p>
     </div>
-    <div class="partnerCopy">
-      <p class="eyebrow">Technology</p>
-      <h2 id="partner-title">Good ideas deserve<br><em>good infrastructure.</em></h2>
-      <p>When a project needs technical depth, I partner with DevOpWeb. Together, we connect strategy, story, design, and development—turning thoughtful direction into websites and digital products that work in the real world.</p>
-      <div class="partnerActions">
-        <a class="partnerLink" href="https://devopweb.com" target="_blank" rel="noopener noreferrer">
-          <span>Meet<br class="partnerLinkBreak"> DevOpWeb</span><span aria-hidden="true">↗</span>
-        </a>
-        <a class="partnerMark" href="https://devopweb.com" target="_blank" rel="noopener noreferrer" aria-label="Visit DevOpWeb">
-          <img src="{{ '/assets/devopweb-logo.png' | relative_url }}" alt="DevOpWeb" width="517" height="140" loading="lazy" decoding="async">
-        </a>
+    <div class="partnerGrid">
+      <div class="partnerCopy">
+        <p class="eyebrow">Technology</p>
+        <h2 id="partner-title">Good ideas deserve<br><em>good infrastructure.</em></h2>
+        <p>When a project needs technical depth, I partner with DevOpWeb. Together, we connect strategy, story, design, and development—turning thoughtful direction into websites and digital products that work in the real world.</p>
+        <div class="partnerActions">
+          <a class="partnerLink" href="https://devopweb.com" target="_blank" rel="noopener noreferrer">
+            <span>Meet<br class="partnerLinkBreak"> DevOpWeb</span><span aria-hidden="true">↗</span>
+          </a>
+          <a class="partnerMark" href="https://devopweb.com" target="_blank" rel="noopener noreferrer" aria-label="Visit DevOpWeb">
+            <img src="{{ '/assets/devopweb-logo.png' | relative_url }}" alt="DevOpWeb" width="517" height="140" loading="lazy" decoding="async">
+          </a>
+        </div>
+      </div>
+      <div class="partnerCopy">
+        <p class="eyebrow">Employee wellbeing</p>
+        <h2 id="partner-mindfulife-title">Wellbeing that <em>reaches the workday.</em></h2>
+        <p>For your employees’ wellbeing, I recommend Mindfulife: focused workshops on stress, sleep, meditation, happiness and many other wellbeing topics, plus a wide range of short and longer meditation breaks for the workday.</p>
+        <div class="partnerActions">
+          <a class="partnerLink" href="https://www.mindfulife.de/" target="_blank" rel="noopener noreferrer">
+            <span>Meet<br class="partnerLinkBreak"> Mindfulife</span><span aria-hidden="true">↗</span>
+          </a>
+          <a class="partnerMark partnerMark--mindfulife" href="https://www.mindfulife.de/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mindfulife">
+            <img src="{{ '/assets/case-logos/mindfulife-mark.svg' | relative_url }}" alt="" width="40" height="40" loading="lazy" decoding="async"><span>MINDFULIFE</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
