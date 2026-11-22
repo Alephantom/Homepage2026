@@ -1,9 +1,9 @@
 {% assign is_de = false %}
 {% if page.lang == 'de' %}{% assign is_de = true %}{% endif %}
 {% assign home_path = '/' %}
-{% assign about_path = '/#about' %}
+{% assign about_path = '/about/' %}
 {% assign work_path = '/#work' %}
-{% assign projects_path = '/#projects' %}
+{% assign projects_path = '/about/#projects' %}
 {% assign faq_path = '/#faq' %}
 {% assign interim_path = '/#interim-hr-business-partner' %}
 {% assign workshops_path = '/#workshops' %}
@@ -11,9 +11,9 @@
 {% assign contact_path = '/contact' %}
 {% if is_de %}
   {% assign home_path = '/de/' %}
-  {% assign about_path = '/de/#about' %}
+  {% assign about_path = '/de/ueber-mich/' %}
   {% assign work_path = '/de/#work' %}
-  {% assign projects_path = '/de/#projects' %}
+  {% assign projects_path = '/de/ueber-mich/#projects' %}
   {% assign faq_path = '/de/#faq' %}
   {% assign interim_path = '/de/#interim-hr-business-partner' %}
   {% assign workshops_path = '/de/#workshops' %}
@@ -29,6 +29,10 @@
 {% if page.url == '/contact' or page.url == '/de/kontakt/' %}
   {% assign is_contact = true %}
 {% endif %}
+{% assign is_about = false %}
+{% if page.url == '/about/' or page.url == '/de/ueber-mich/' %}
+  {% assign is_about = true %}
+{% endif %}
 {% assign is_services = false %}
 {% if page.url == '/team-snapshot/' or page.url == '/de/team-snapshot/' %}
   {% assign is_services = true %}
@@ -43,7 +47,7 @@
   </a>
 
   <div class="navLinks">
-    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %}</a>
+    <a href="{{ about_path | relative_url }}"{% if is_about %} aria-current="page"{% endif %}>{% if is_de %}Über mich{% else %}About{% endif %}</a>
     <div class="navServices">
       <a class="navServicesTrigger" href="{{ work_path | relative_url }}" data-nav-section="work" aria-haspopup="true"{% if is_services %} aria-current="page"{% endif %}>
         {% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">↘</span>
@@ -120,7 +124,7 @@
 
   <div class="navMobileMenu" id="mobile-navigation" data-nav-mobile-menu hidden>
     <span class="navMobileLabel">{% if is_de %}Entdecke{% else %}Explore{% endif %}</span>
-    <a href="{{ about_path | relative_url }}" data-nav-section="about">{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">01</span></a>
+    <a href="{{ about_path | relative_url }}"{% if is_about %} aria-current="page"{% endif %}>{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">01</span></a>
     <div class="navMobileServices">
       <a class="navMobileServicesOverview" href="{{ work_path | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>{% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">02</span></a>
       <div class="navMobileServicePaths">

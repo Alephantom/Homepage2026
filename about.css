@@ -1,0 +1,107 @@
+/* About page (/about/, /de/ueber-mich/): closing call-to-action below the selected work. */
+.aboutClosing {
+  background: var(--lavender);
+  color: var(--ink);
+  padding: 96px var(--page-gutter) 104px;
+}
+
+.aboutClosingInner {
+  align-items: end;
+  display: grid;
+  gap: 6vw;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.7fr);
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.aboutClosingCopy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4.4vw, 60px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+  margin: 26px 0 24px;
+}
+
+.aboutClosingCopy h2 em {
+  color: var(--coral-on-lavender);
+  font-weight: 400;
+}
+
+.aboutClosingCopy > p:not(.eyebrow) {
+  font-size: var(--text-body);
+  line-height: var(--leading-copy);
+  margin: 0;
+  max-width: 520px;
+}
+
+.aboutClosingActions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aboutClosingActions a {
+  align-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  display: flex;
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: space-between;
+  letter-spacing: 0.1em;
+  min-height: 64px;
+  padding: 10px 12px 10px 24px;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.aboutClosingActions a > span:last-child {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 20px;
+  height: 42px;
+  justify-content: center;
+  letter-spacing: 0;
+  width: 42px;
+}
+
+.aboutClosingPrimary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.aboutClosingPrimary > span:last-child {
+  background: var(--acid);
+  color: var(--ink);
+}
+
+.aboutClosingSecondary {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.aboutClosingSecondary > span:last-child {
+  border: 1px solid var(--ink);
+}
+
+.aboutClosingActions a:hover,
+.aboutClosingActions a:focus-visible {
+  background: var(--coral);
+  border-color: var(--coral) !important;
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 760px) {
+  .aboutClosing {
+    padding: 72px 6vw 80px;
+  }
+
+  .aboutClosingInner {
+    gap: 36px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

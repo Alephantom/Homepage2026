@@ -2,9 +2,11 @@
 {% if page.lang == 'de' %}{% assign is_de = true %}{% endif %}
 {% assign home_path = '/' %}
 {% assign contact_path = '/contact' %}
+{% assign about_path = '/about/' %}
 {% if is_de %}
   {% assign home_path = '/de/' %}
   {% assign contact_path = '/de/kontakt/' %}
+  {% assign about_path = '/de/ueber-mich/' %}
 {% endif %}
 
 <footer>
@@ -26,8 +28,8 @@
       <nav aria-label="{% if is_de %}Entdecken{% else %}Explore{% endif %}">
         <span class="footerDirectoryLabel">{% if is_de %}Entdecken{% else %}Explore{% endif %}</span>
         <div>
-          <a href="{{ home_path | append: '#about' | relative_url }}">{% if is_de %}Über mich{% else %}About{% endif %}</a>
-          <a href="{{ home_path | append: '#projects' | relative_url }}">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
+          <a href="{{ about_path | relative_url }}">{% if is_de %}Über mich{% else %}About{% endif %}</a>
+          <a href="{{ about_path | append: '#projects' | relative_url }}">{% if is_de %}Referenzen{% else %}Selected work{% endif %}</a>
           <a href="{{ '/blog/' | relative_url }}" hreflang="en">Journal</a>
           <a href="{{ home_path | append: '#faq' | relative_url }}">FAQ</a>
         </div>

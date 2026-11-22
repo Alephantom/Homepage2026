@@ -805,6 +805,7 @@ footer h2 em {
   margin-top: 90px;
 }
 
+.manifesto h1,
 .manifesto h2,
 .aboutCopy h2,
 footer h2 {
@@ -816,6 +817,7 @@ footer h2 {
   margin: 0;
 }
 
+.manifesto h1 span,
 .manifesto h2 span {
   color: var(--lavender);
   font-style: italic;
@@ -995,7 +997,6 @@ footer h2 {
   transform: scale(1.035);
 }
 
-
 .aboutCopy h2 {
   font-size: clamp(40px, 4.5vw, 64px);
   margin: 42px 0 40px;
@@ -1028,202 +1029,6 @@ footer h2 {
 .aboutCta:focus-visible {
   border-color: var(--coral);
   color: var(--coral);
-}
-
-.homeJournalPreview {
-  background: var(--cream);
-  padding: 110px var(--page-gutter) 130px;
-}
-
-.homeJournalPreviewHead {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-
-.homeJournalPreviewHead > a {
-  border-bottom: 1px solid var(--ink);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  padding-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.homeJournalCard {
-  background: var(--lavender);
-  border: 1.5px solid var(--ink);
-  box-shadow: 14px 14px 0 var(--coral);
-  overflow: hidden;
-  position: relative;
-  transform: rotate(-0.28deg);
-  transition: box-shadow 200ms ease, transform 200ms ease;
-}
-
-.homeJournalCard:hover {
-  box-shadow: 20px 20px 0 var(--coral);
-  transform: translate(-5px, -5px) rotate(0);
-}
-
-.homeJournalItem {
-  align-items: start;
-  cursor: pointer;
-  display: grid;
-  gap: 5vw;
-  grid-template-columns: minmax(160px, 0.28fr) minmax(420px, 1fr) minmax(220px, 0.42fr);
-  padding: 58px 52px;
-  transition: background 180ms ease;
-}
-
-.homeJournalItem > * {
-  min-width: 0;
-}
-
-.homeJournalItem + .homeJournalItem {
-  border-top: 1.5px solid var(--ink);
-}
-
-.homeJournalItem:hover,
-.homeJournalItem:focus-visible {
-  background: rgba(251, 248, 240, 0.34);
-  outline: 0;
-}
-
-.homeJournalItem:focus-visible {
-  box-shadow: inset 0 0 0 4px var(--ink);
-}
-
-.homeJournalCardMeta {
-  display: grid;
-  font-size: 10px;
-  font-weight: 700;
-  gap: 11px;
-  grid-template-columns: 34px 1fr;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.homeJournalCardMeta span:last-child {
-  font-weight: 400;
-  grid-column: 2;
-}
-
-.homeJournalCardLabel {
-  background: var(--acid);
-  border: 1px solid var(--ink);
-  border-radius: 100px;
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 28px;
-  padding: 9px 13px;
-  text-transform: uppercase;
-}
-
-.homeJournalCardTitle h3 {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.3vw, 64px);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.98;
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-
-.homeJournalCardCopy p {
-  font-size: var(--text-body);
-  line-height: var(--leading-copy);
-  margin: 0;
-}
-
-.homeJournalCardCopy {
-  align-self: stretch;
-  display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1fr) 92px;
-  align-items: end;
-}
-
-.homeJournalCardCta {
-  align-items: center;
-  aspect-ratio: 1;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  border-radius: 100px;
-  color: var(--paper);
-  display: flex;
-  font-size: 10px;
-  font-weight: 700;
-  justify-content: space-between;
-  letter-spacing: 0.1em;
-  margin-left: auto;
-  margin-top: 0;
-  padding: 14px;
-  justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 180ms ease, color 180ms ease;
-  white-space: normal;
-  width: 92px;
-}
-
-.homeJournalCardCta i {
-  font-size: 18px;
-  font-style: normal;
-  transition: transform 180ms ease;
-}
-
-.homeJournalItem:hover .homeJournalCardCta,
-.homeJournalItem:focus-visible .homeJournalCardCta {
-  background: var(--acid);
-  color: var(--ink);
-}
-
-.homeJournalItem:hover .homeJournalCardCta i,
-.homeJournalItem:focus-visible .homeJournalCardCta i {
-  transform: translate(3px, -3px);
-}
-
-@media (min-width: 761px) and (max-width: 1100px) {
-  .homeJournalItem {
-    gap: 20px;
-    grid-template-columns: minmax(0, 1fr);
-    padding: 30px 32px 34px;
-  }
-
-  .homeJournalCardMeta {
-    grid-template-columns: 34px 1fr auto;
-  }
-
-  .homeJournalCardMeta span:last-child {
-    grid-column: auto;
-  }
-
-  .homeJournalCardLabel {
-    margin-bottom: 16px;
-  }
-
-  .homeJournalCardTitle h3 {
-    font-size: clamp(43px, 5.8vw, 56px);
-  }
-
-  .homeJournalCardCopy p {
-    margin-bottom: 0;
-    max-width: 590px;
-  }
-
-  .homeJournalCardCopy {
-    grid-template-columns: minmax(0, 1fr) 82px;
-  }
-
-  .homeJournalCardCta {
-    display: inline-flex;
-    margin-left: auto;
-    padding: 12px 16px;
-    width: 82px;
-  }
 }
 
 .colorfulSection {
@@ -2109,8 +1914,7 @@ footer h2 {
   padding: 0;
 }
 
-.homeBottomGrid .partnerSection,
-.homeBottomGrid .homeJournalPreview {
+.homeBottomGrid .partnerSection {
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -2122,8 +1926,7 @@ footer h2 {
   border-right: 1px solid rgba(29, 27, 47, 0.36);
 }
 
-.homeBottomGrid .partnerSectionHead,
-.homeBottomGrid .homeJournalPreviewHead {
+.homeBottomGrid .partnerSectionHead {
   align-items: center;
   display: flex;
   gap: 20px;
@@ -2133,8 +1936,7 @@ footer h2 {
   width: 100%;
 }
 
-.homeBottomGrid .partnerSectionHead > a,
-.homeBottomGrid .homeJournalPreviewHead > a {
+.homeBottomGrid .partnerSectionHead > a {
   border-bottom: 1px solid var(--ink);
   flex: 0 0 auto;
   font-size: 10px;
@@ -2174,57 +1976,26 @@ footer h2 {
   padding-top: 44px;
 }
 
-.homeBottomGrid .homeJournalCard {
-  box-shadow: 10px 10px 0 var(--coral);
-  flex: 1;
-  margin: 0 auto;
-  max-width: 620px;
-  transform: rotate(-0.2deg);
-  width: 100%;
-}
-
-.homeBottomGrid .homeJournalCard:hover {
-  box-shadow: 14px 14px 0 var(--coral);
-  transform: translate(-3px, -3px) rotate(0);
-}
-
-.homeBottomGrid .homeJournalItem {
-  gap: 16px;
+/* Homepage: the partner section is the only item since the journal preview moved out. */
+.homeBottomGrid--single {
   grid-template-columns: minmax(0, 1fr);
-  padding: 28px;
 }
 
-.homeBottomGrid .homeJournalCardMeta {
-  grid-template-columns: 28px minmax(0, 1fr) auto;
+.homeBottomGrid--single .partnerSection {
+  border-right: 0;
 }
 
-.homeBottomGrid .homeJournalCardMeta span:last-child {
-  grid-column: auto;
+.homeBottomGrid--single .partnerSectionHead,
+.homeBottomGrid--single .partnerCopy {
+  max-width: 1050px;
 }
 
-.homeBottomGrid .homeJournalCardLabel {
-  margin-bottom: 14px;
-  padding: 7px 11px;
-}
-
-.homeBottomGrid .homeJournalCardTitle h3 {
-  font-size: clamp(32px, 2.4vw, 38px);
-  line-height: 1;
-}
-
-.homeBottomGrid .homeJournalCardCopy {
-  gap: 16px;
-  grid-template-columns: minmax(0, 1fr) 70px;
-}
-
-.homeBottomGrid .homeJournalCardCopy p {
-  font-size: var(--text-small);
-}
-
-.homeBottomGrid .homeJournalCardCta {
-  font-size: 9px;
-  padding: 10px;
-  width: 70px;
+@media (min-width: 1051px) {
+  .homeBottomGrid--single .partnerMark {
+    right: 56px;
+    top: 52px;
+    width: 210px;
+  }
 }
 
 @media (max-width: 1050px) {
@@ -2232,8 +2003,7 @@ footer h2 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .homeBottomGrid .partnerSection,
-  .homeBottomGrid .homeJournalPreview {
+  .homeBottomGrid .partnerSection {
     padding: 90px 6vw 100px;
   }
 
@@ -3025,6 +2795,7 @@ footer h2 {
     margin-top: 58px;
   }
 
+  .manifesto h1,
   .manifesto h2 {
     font-size: 48px;
   }
@@ -3404,13 +3175,11 @@ footer h2 {
     padding: 0;
   }
 
-  .homeBottomGrid .partnerSection,
-  .homeBottomGrid .homeJournalPreview {
+  .homeBottomGrid .partnerSection {
     padding: 76px 20px 84px;
   }
 
-  .homeBottomGrid .partnerSectionHead,
-  .homeBottomGrid .homeJournalPreviewHead {
+  .homeBottomGrid .partnerSectionHead {
     align-items: flex-start;
     flex-direction: column;
     gap: 24px;
@@ -3517,76 +3286,6 @@ footer h2 {
     gap: 10px 24px;
     padding: 17px 20px 19px;
   }
-
-  .homeJournalPreview {
-    padding: 76px 20px 94px;
-  }
-
-  .homeJournalPreviewHead {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 42px;
-  }
-
-  .homeJournalCard {
-    box-shadow: 8px 8px 0 var(--coral);
-    transform: none;
-  }
-
-  .homeJournalCard:hover {
-    box-shadow: 11px 11px 0 var(--coral);
-    transform: translate(-2px, -2px);
-  }
-
-  .homeJournalItem {
-    gap: 20px;
-    grid-template-columns: 1fr;
-    padding: 26px 24px 28px;
-  }
-
-  .homeJournalCardMeta {
-    grid-template-columns: 28px 1fr auto;
-  }
-
-  .homeJournalCardMeta span:last-child {
-    grid-column: auto;
-  }
-
-  .homeJournalCardTitle h3 {
-    font-size: 40px;
-  }
-
-  .homeJournalCardLabel {
-    margin-bottom: 18px;
-  }
-
-  .homeJournalCardCopy p {
-    margin-bottom: 0;
-  }
-
-  .homeJournalCardCta {
-    display: inline-flex;
-    margin-left: auto;
-    padding: 12px 15px;
-    width: 82px;
-  }
-
-  .homeJournalCardCopy {
-    grid-template-columns: 1fr;
-  }
-
-  .homeBottomGrid .homeJournalCardCopy {
-    grid-template-columns: minmax(0, 1fr) 64px;
-  }
-
-  .homeBottomGrid .homeJournalCardCta {
-    width: 64px;
-  }
-
-  .homeJournalCardCta {
-    justify-self: end;
-  }
 }
 
 /* Phones: bigger tap targets for small text links. */
@@ -3614,7 +3313,6 @@ footer h2 {
   .homeWorkshopsMore,
   .faqIntro > a,
   .partnerSectionHead > a,
-  .homeJournalPreviewHead > a,
   .workshopLandingList a,
   .articleLink,
   .postBackLink,
@@ -3630,7 +3328,6 @@ footer h2 {
   .homeWorkshopsMore::before,
   .faqIntro > a::before,
   .partnerSectionHead > a::before,
-  .homeJournalPreviewHead > a::before,
   .workshopLandingList a::before,
   .articleLink::before,
   .postBackLink::before,
@@ -3695,22 +3392,11 @@ footer h2 {
 
 }
 
-/* Narrowest phones (320px): keep long journal and partner headline words on one line. */
+/* Narrowest phones (320px): keep long partner headline words on one line. */
 @media (max-width: 359px) {
-  .homeBottomGrid .homeJournalCardTitle h3 {
-    font-size: 30px;
-  }
 
   .homeBottomGrid .partnerCopy h2 {
     font-size: 38px;
-  }
-
-  .homeBottomGrid .homeJournalCardMeta {
-    grid-template-columns: 28px minmax(0, 1fr);
-  }
-
-  .homeBottomGrid .homeJournalCardMeta span:last-child {
-    grid-column: 2;
   }
 }
 
