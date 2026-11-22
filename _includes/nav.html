@@ -53,7 +53,7 @@
         {% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">↘</span>
       </a>
       <div class="servicesDropdown" role="group" aria-label="{% if is_de %}Leistungsbereich wählen{% else %}Choose a service path{% endif %}">
-        <span class="servicesDropdownLabel">{% if is_de %}Wähle die passende Unterstützung{% else %}Choose the support you need{% endif %}</span>
+        <span class="servicesDropdownLabel">{% if is_de %}Wählen Sie die passende Unterstützung{% else %}Choose the support you need{% endif %}</span>
         <a class="servicesDropdownOption" href="{{ interim_path | relative_url }}">
           <span class="servicesDropdownNumber">01</span>
           <span class="servicesDropdownCopy">
@@ -123,7 +123,7 @@
   </div>
 
   <div class="navMobileMenu" id="mobile-navigation" data-nav-mobile-menu hidden>
-    <span class="navMobileLabel">{% if is_de %}Entdecke{% else %}Explore{% endif %}</span>
+    <span class="navMobileLabel">{% if is_de %}Entdecken{% else %}Explore{% endif %}</span>
     <a href="{{ about_path | relative_url }}"{% if is_about %} aria-current="page"{% endif %}>{% if is_de %}Über mich{% else %}About{% endif %} <span aria-hidden="true">01</span></a>
     <div class="navMobileServices">
       <a class="navMobileServicesOverview" href="{{ work_path | relative_url }}" data-nav-section="work"{% if is_services %} aria-current="page"{% endif %}>{% if is_de %}Leistungen{% else %}Services{% endif %} <span aria-hidden="true">02</span></a>

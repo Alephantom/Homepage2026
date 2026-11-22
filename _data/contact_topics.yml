@@ -47,7 +47,7 @@
         email_body: |-
           Hallo Anna-Lena,
 
-          ich habe den kostenlosen Team-Snapshot gemacht und würde mein Ergebnis gern in einem kostenlosen 30-minütigen Orientierungsgespräch mit dir besprechen.
+          ich habe den kostenlosen Team-Snapshot gemacht und würde mein Ergebnis gern in einem kostenlosen 30-minütigen Orientierungsgespräch mit Ihnen besprechen.
 
           Worüber ich sprechen möchte:
 
@@ -58,4 +58,4 @@
         email_subject: Let’s see how we can work together
       de:
         label: Etwas anderes
-        email_subject: Lass uns schauen, wie wir zusammenarbeiten können
+        email_subject: Anfrage zur Zusammenarbeit

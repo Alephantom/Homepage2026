@@ -17,7 +17,7 @@ interim_hr:
     description: "An experienced HR Business Partner in your team, for a gap, a leave or a growth phase: recruiting & onboarding, HR processes & structure, HR operations & benefits, data & reporting and support for team leads. Time commitment, duration and fee are agreed around your situation."
   de:
     name: Interim-HR & Elternzeitvertretung
-    description: "Eine erfahrene HR Business Partnerin in deinem Team: für eine Vakanz, eine Elternzeit oder eine Wachstumsphase. Recruiting & Onboarding, HR-Prozesse & Struktur, HR-Operations & Benefits, Daten & Reporting und Unterstützung für Teamleads. Einsatzzeit, Dauer und Honorar werden auf deine Situation abgestimmt."
+    description: "Eine erfahrene HR Business Partnerin in Ihrem Team: für eine Vakanz, eine Elternzeit oder eine Wachstumsphase. Recruiting & Onboarding, HR-Prozesse & Struktur, HR-Operations & Benefits, Daten & Reporting und Unterstützung für Teamleads. Einsatzzeit, Dauer und Honorar werden auf Ihre Situation abgestimmt."
 
 workshops:
   path:
@@ -26,10 +26,10 @@ workshops:
   price: on_request
   en:
     name: Workshops
-    description: "Workshops for team leads and growing teams on fair AI in recruiting, bias awareness in teams, keeping working parents on board, making remote teams work and constructive communication with hands-on practice. 1–2 hours or tailored to your team, remote or on-site."
+    description: "Workshops for founders, decision-makers and team leads on fair AI in recruiting, bias awareness in teams, keeping working parents on board, making remote teams work and constructive communication with hands-on practice. 1–2 hours or tailored to your team, remote or on-site."
   de:
     name: Workshops
-    description: "Workshops für Teamleads und wachsende Teams zu fairer KI im Recruiting, Bias-Bewusstsein im Team, berufstätigen Eltern, Remote-Teams und konstruktiver Kommunikation mit Praxisübungen. 1–2 Stunden oder individuell für dein Team, remote oder vor Ort."
+    description: "Workshops für Gründer:innen, Entscheider:innen und Teamleads zu fairer KI im Recruiting, Bias-Bewusstsein im Team, berufstätigen Eltern, Remote-Teams und konstruktiver Kommunikation mit Praxisübungen. 1–2 Stunden oder individuell für Ihr Team, remote oder vor Ort."
 
 team_snapshot:
   price: free
@@ -41,4 +41,4 @@ team_snapshot:
     description: "A free five-minute self-assessment: six questions about how work runs today, an instant score for each area, practical tips and a PDF to keep. No sign-up needed."
   de:
     name: Team-Snapshot
-    description: "Eine kostenlose Selbsteinschätzung in fünf Minuten: sechs kurze Fragen dazu, wie die Arbeit bei euch gerade läuft, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung."
+    description: "Eine kostenlose Selbsteinschätzung in fünf Minuten: sechs kurze Fragen dazu, wie die Arbeit in Ihrem Team gerade läuft, ein sofortiges Ergebnis für jeden Bereich, praktische Tipps und ein PDF zum Behalten. Ohne Anmeldung."

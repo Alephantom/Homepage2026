@@ -57,6 +57,11 @@
   font-weight: 400;
 }
 
+/* Keeps "Remote-Teams." / "remote teams." on one line (Chrome breaks after the hyphen otherwise). */
+.hrNowrap {
+  white-space: nowrap;
+}
+
 .hrHeroSub {
   font-size: clamp(17px, 1.5vw, 22px);
   letter-spacing: -0.02em;
