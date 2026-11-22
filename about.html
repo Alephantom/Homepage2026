@@ -7,182 +7,85 @@ translation_url_de: /de/ueber-mich/
 permalink: /about/
 title: About
 seo_title: About Anna-Lena Birkner | HR Business Partner · People & Culture
-description: "About Anna-Lena Birkner, HR Business Partner for founders and growing teams: how she works and selected work at Mindfulife, Relief Applications and State Street."
+description: "Anna-Lena Birkner, HR Business Partner with 9 years in HR: from global HR operations at State Street to building people processes at a growing start-up. Selected work at Mindfulife, Relief Applications and State Street."
 extra_css: /about.css
 schema_page_type: AboutPage
 ---
-<section class="manifesto" id="about">
-  <p class="eyebrow">About · What I do</p>
-  <div class="manifestoGrid">
-    <h1>I turn complexity into<br><span>something people can work with.</span></h1>
-    <div class="manifestoCopy">
-      <p>I&apos;ve worked across people, product, and delivery, which means I see the whole system: what employees need, what users experience, and what stakeholders can actually support.</p>
-      <p>Together, we turn that view into a sharper direction, better ways of working, and practical momentum—from the first useful question to the thing your team can carry forward.</p>
-    </div>
+{%- comment -%}
+  About page (EN). Styled by /about.css (classes ab*), same design as the homepage.
+  German version: de/ueber-mich.html. Keep both in sync.
+{%- endcomment -%}
+<section class="abHero" id="about" aria-labelledby="about-title">
+  <div class="abHeroCopy">
+    <p class="eyebrow">About me</p>
+    <h1 id="about-title">HR that creates structure <em><span class="abNowrap">–&nbsp;and</span> brings people along.</em></h1>
+    <p class="abHeroSub">I&apos;ve worked in HR for 9 years: from global HR operations at State Street to building complete people processes at a growing start-up. I come in when a team grows faster than its structures – and stay until it can run on its own.</p>
+  </div>
+  <div class="abSpark abSparkOne" aria-hidden="true"></div>
+  <div class="abSpark abSparkTwo" aria-hidden="true"></div>
+</section>
+
+<section class="abWork" aria-labelledby="about-work-title">
+  <div class="abPortrait">
+    <picture>
+      <source srcset="{{ '/assets/portrait-friendly.webp' | relative_url }}" type="image/webp">
+      <img src="{{ '/assets/portrait-friendly.jpg' | relative_url }}" alt="Portrait of Anna-Lena Birkner, smiling, in a navy blazer" width="900" height="1157" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="abWorkCopy">
+    <p class="eyebrow">How I work</p>
+    <h2 id="about-work-title">Pragmatic, structured <em>and close to the team.</em></h2>
+    <p>I find the real bottleneck, build simple processes people actually use, and make sure leaders can make good decisions. In German, English and Spanish.</p>
+    <ul class="abTags" aria-label="Focus areas"><li>Employee lifecycle</li><li>HR processes &amp; structure</li><li>HR operations &amp; benefits</li><li>Remote teams</li><li>Supporting team leads</li></ul>
   </div>
 </section>
 
-<section class="aboutMe">
-  <figure class="photoFrame">
-    <div class="photoPlaceholder portraitSwitcher" id="portrait-frame">
-      <span class="photoInitials" aria-hidden="true">AL</span>
-      <picture>
-        <source srcset="{{ '/assets/portrait-friendly.webp' | relative_url }}" type="image/webp">
-        <img class="portraitPhoto" src="{{ '/assets/portrait-friendly.jpg' | relative_url }}" alt="Portrait of Anna-Lena Birkner, smiling, in a navy blazer" width="900" height="1157" loading="lazy" decoding="async">
-      </picture>
-    </div>
-  </figure>
-  <div class="aboutCopy">
-    <p class="eyebrow">A little about me</p>
-    <h2>I care about the <span class="aboutAccent">conditions</span> that let good work happen.</h2>
-    <p>I&apos;m brought in when growth, change, or new technology has made the old way of working stop making sense. I help founders and teams find the real constraint, make confident decisions, and turn them into practical systems and ways of working people can actually use.</p>
+<section class="abRefs" id="projects" aria-labelledby="about-refs-title">
+  <div class="abRefsHead">
+    <p class="eyebrow">Selected work</p>
+    <h2 id="about-refs-title">Where I&apos;ve <em>made a difference.</em></h2>
+  </div>
+  <div class="abRefGrid">
+    <article class="abRef">
+      <div class="abRefCo">
+        <span class="abLogo"><img src="{{ '/assets/case-logos/mindfulife-mark.svg' | relative_url }}" alt="" width="40" height="40" loading="lazy" decoding="async"></span>
+        <span class="abRefCoText"><a class="abRefName" href="https://www.mindfulife.de/" target="_blank" rel="noopener noreferrer">Mindfulife <span aria-hidden="true">↗</span></a><span class="abRefRole">Head of People &amp; Culture</span></span>
+      </div>
+      <h3>Structure for a <em>growing remote team.</em></h3>
+      <p>At Mindfulife, a psychology-led meditation and wellbeing company, I lead People &amp; Culture and work closely with the founders: clear people processes, solid structures and well-prepared decisions.</p>
+      <ul class="abTags" aria-label="Focus at Mindfulife"><li>Employee lifecycle</li><li>People infrastructure</li><li>Founder partnership</li></ul>
+    </article>
+    <article class="abRef">
+      <div class="abRefCo">
+        <span class="abLogo"><img src="{{ '/assets/case-logos/relief-applications-mark.svg' | relative_url }}" alt="" width="40" height="40" loading="lazy" decoding="async"></span>
+        <span class="abRefCoText"><a class="abRefName" href="https://reliefapplications.org/" target="_blank" rel="noopener noreferrer">Relief Applications <span aria-hidden="true">↗</span></a><span class="abRefRole">Project lead &amp; interim HR</span></span>
+      </div>
+      <h3>Connecting the bid, <em>the work and the team.</em></h3>
+      <p>At Relief Applications, a humanitarian technology company, I worked across business development, project delivery and people operations: from managing an international initiative to interim HR for a distributed team.</p>
+      <ul class="abTags" aria-label="Focus at Relief Applications"><li>Proposal development</li><li>Project delivery</li><li>People operations</li></ul>
+    </article>
+    <article class="abRef">
+      <div class="abRefCo">
+        <span class="abLogo abLogo--statestreet"><span><img src="{{ '/assets/case-logos/state-street.png' | relative_url }}" alt="" width="208" height="56" loading="lazy" decoding="async"></span></span>
+        <span class="abRefCoText"><span class="abRefName">State Street Bank</span><span class="abRefRole">Global HR Operations &amp; Benefits</span></span>
+      </div>
+      <h3>Reliable processes <em>where precision matters.</em></h3>
+      <p>At State Street Bank, a global financial services company, I worked on People &amp; Culture processes, monthly payroll, employee benefits and pensions – making recurring work simpler, more reliable and less manual.</p>
+      <ul class="abTags" aria-label="Focus at State Street"><li>Process improvement &amp; automation</li><li>Payroll</li><li>Benefits &amp; pensions</li></ul>
+    </article>
   </div>
 </section>
 
-<section class="portfolioSection" id="projects" aria-label="Selected work">
-  <div class="portfolioCarousel" data-portfolio-carousel data-carousel-status-template="Case {current} of {total}">
-    <button class="portfolioArrow portfolioArrow--previous" type="button" aria-label="Show previous case" data-portfolio-previous>
-      <svg class="portfolioArrowMark" viewBox="0 0 48 76" aria-hidden="true" focusable="false">
-        <path class="portfolioBrushStroke" d="M43 7 C34 15 23 25 8 37 C7 38 7 40 9 41 L15 45 C27 34 37 25 46 17 Z"></path>
-        <path class="portfolioBrushStroke portfolioBrushStroke--lower" d="M9 35 C8 36 8 39 10 41 C23 53 34 64 43 70 L46 59 C36 51 27 43 17 35 Z"></path>
-        <path class="portfolioBrushDry" d="M36 13 C29 20 20 28 12 35"></path>
-      </svg>
-    </button>
-
-    <div class="portfolioSlides">
-      <article class="portfolioCase portfolioCase--static isCurrent" data-portfolio-slide>
-        <div class="portfolioCaseFace portfolioCaseFace--intro isActive">
-          <div class="portfolioCaseSpacer" aria-hidden="true"></div>
-          <div class="portfolioCaseOpening">
-            <div class="portfolioCaseTop">
-              <p class="eyebrow">Selected work · Case 01</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--mindfulife" src="{{ '/assets/case-logos/mindfulife-circle.png' | relative_url }}" alt="Mindfulife logo" width="144" height="144" loading="lazy" decoding="async">
-            </div>
-            <h2>Giving growth<br><em>a solid structure.</em></h2>
-            <p>At <a class="portfolioInlineLink" href="https://mindfulife.de/" target="_blank" rel="noopener noreferrer">Mindfulife</a>, a psychology-led meditation and wellbeing company, I lead People & Culture and work closely with the founders—bringing structure to the people, processes, and operational decisions behind a growing remote team.</p>
-
-            <div class="portfolioContributions">
-              <div>
-                <span>01</span>
-                <h3>Employee lifecycle</h3>
-                <p>Leading recruiting, onboarding, team support, development, and offboarding.</p>
-              </div>
-              <div>
-                <span>02</span>
-                <h3>People infrastructure</h3>
-                <p>Creating contracts, digital personnel structures, documentation, and repeatable workflows.</p>
-              </div>
-              <div>
-                <span>03</span>
-                <h3>Founder partnership</h3>
-                <p>Supporting organisational structure, team development, and operational priorities.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </article>
-
-      <article class="portfolioCase portfolioCase--static portfolioCase--relief" data-portfolio-slide hidden>
-        <div class="portfolioCaseFace portfolioCaseFace--intro isActive">
-          <div class="portfolioCaseSpacer" aria-hidden="true"></div>
-          <div class="portfolioCaseOpening">
-            <div class="portfolioCaseTop">
-              <p class="eyebrow">Selected work · Case 02</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--relief" src="{{ '/assets/case-logos/relief-applications.png' | relative_url }}" alt="Relief Applications logo" width="150" height="64" loading="lazy" decoding="async">
-            </div>
-            <h2>Connecting the bid,<br><em>the work and the team.</em></h2>
-            <p>At Relief Applications, a humanitarian technology company, I worked across business development, project delivery, and people operations—helping complex, mission-driven work move from a promising opportunity to a supported team and a practical result.</p>
-
-            <div class="portfolioContributions">
-              <div>
-                <span>01</span>
-                <h3>Proposal development</h3>
-                <p>Turning complex requirements and specialist input into clear proposals, while coordinating contributors, timelines, and submission details.</p>
-              </div>
-              <div>
-                <span>02</span>
-                <h3>Project delivery</h3>
-                <p>Managing an international initiative that developed practical guidance and tools for improving the quality and use of information in humanitarian response.</p>
-              </div>
-              <div>
-                <span>03</span>
-                <h3>People operations</h3>
-                <p>Stepping in as interim HR generalist to improve recruitment, onboarding, personnel administration, and everyday support for a distributed team.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="portfolioCase portfolioCase--static portfolioCase--statestreet" data-portfolio-slide hidden>
-        <div class="portfolioCaseFace portfolioCaseFace--intro isActive">
-          <div class="portfolioCaseSpacer" aria-hidden="true"></div>
-          <div class="portfolioCaseOpening">
-            <div class="portfolioCaseTop">
-              <p class="eyebrow">Selected work · Case 03</p>
-              <img class="portfolioCaseLogo portfolioCaseLogo--statestreet" src="{{ '/assets/case-logos/state-street.png' | relative_url }}" alt="State Street logo" width="208" height="56" loading="lazy" decoding="async">
-            </div>
-            <h2>Reliable processes<br><em>where precision matters.</em></h2>
-            <p>At State Street Bank, a global financial services company, I worked on processes across People &amp; Culture, monthly payroll, employee benefits, and pensions—with the aim of making recurring work simpler, more reliable, and less manual.</p>
-
-            <div class="portfolioContributions">
-              <div>
-                <span>01</span>
-                <h3>Process improvement &amp; automation</h3>
-                <p>Improving People &amp; Culture processes and contributing to automation initiatives aimed at reducing manual steps.</p>
-              </div>
-              <div>
-                <span>02</span>
-                <h3>Monthly payroll</h3>
-                <p>Working on the monthly payroll cycle, where accuracy and deadlines are non-negotiable.</p>
-              </div>
-              <div>
-                <span>03</span>
-                <h3>German benefits &amp; pensions</h3>
-                <p>Working on the German employee benefits and pension programme, where complex rules call for clear processes and clear communication.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+<section class="abClosing" aria-labelledby="about-closing-title">
+  <div class="abClosingBox">
+    <span class="abClosingIcon" aria-hidden="true">✦</span>
+    <div class="abClosingText">
+      <h2 id="about-closing-title">Let&apos;s talk.</h2>
+      <p>Book a free 30-minute orientation call.</p>
     </div>
-
-    <button class="portfolioArrow portfolioArrow--next" type="button" aria-label="Show next case" data-portfolio-next>
-      <svg class="portfolioArrowMark" viewBox="0 0 48 76" aria-hidden="true" focusable="false">
-        <g transform="translate(48 0) scale(-1 1)">
-          <path class="portfolioBrushStroke" d="M43 7 C34 15 23 25 8 37 C7 38 7 40 9 41 L15 45 C27 34 37 25 46 17 Z"></path>
-          <path class="portfolioBrushStroke portfolioBrushStroke--lower" d="M9 35 C8 36 8 39 10 41 C23 53 34 64 43 70 L46 59 C36 51 27 43 17 35 Z"></path>
-          <path class="portfolioBrushDry" d="M36 13 C29 20 20 28 12 35"></path>
-        </g>
-      </svg>
-    </button>
-    <p class="portfolioCarouselStatus" aria-live="polite" data-portfolio-carousel-status>Case 01 of 03</p>
-  </div>
-
-  <div class="portfolioContactStrip" id="contact-feature">
-    <div class="portfolioContactHeading">
-      <p class="eyebrow">Ready when you are</p>
-      <h2>Choose a time or<br><em>start with a note.</em></h2>
-    </div>
-    <div class="portfolioContactAction">
-      <p>Bring the messy first thought. Choose a time directly, or start with a note if you would rather begin in writing.</p>
-      <a href="{{ '/contact' | relative_url }}">
-        <span>Contact &amp; appointments</span><span aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="aboutClosing" aria-labelledby="about-closing-title">
-  <div class="aboutClosingInner">
-    <div class="aboutClosingCopy">
-      <p class="eyebrow">Working together</p>
-      <h2 id="about-closing-title">Let&apos;s see where<br><em>I can help.</em></h2>
-      <p>Book a free 30-minute orientation call, or have a look at how I support teams first.</p>
-    </div>
-    <div class="aboutClosingActions">
-      <a class="aboutClosingPrimary" href="{{ '/contact' | relative_url }}"><span>Book a call</span><span aria-hidden="true">↗</span></a>
-      <a class="aboutClosingSecondary" href="{{ '/#work' | relative_url }}"><span>See the offers</span><span aria-hidden="true">↘</span></a>
+    <div class="abClosingActions">
+      <a class="abBtn" href="{{ '/contact' | relative_url }}"><span>Book a call</span><span aria-hidden="true">↗</span></a>
+      <a class="abLink" href="{{ '/#work' | relative_url }}">See the offers <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
