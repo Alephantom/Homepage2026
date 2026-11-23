@@ -80,51 +80,7 @@ if (siteNav) {
 
 const typingHeadline = document.querySelector("[data-typing-headline]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const portfolioCarousel = document.querySelector("[data-portfolio-carousel]");
 const locationTypewriter = document.querySelector("[data-location-typewriter]");
-
-if (portfolioCarousel) {
-  const portfolioSlides = Array.from(portfolioCarousel.querySelectorAll("[data-portfolio-slide]"));
-  const previousCaseButton = portfolioCarousel.querySelector("[data-portfolio-previous]");
-  const nextCaseButton = portfolioCarousel.querySelector("[data-portfolio-next]");
-  const carouselStatus = portfolioCarousel.querySelector("[data-portfolio-carousel-status]");
-  const statusTemplate = portfolioCarousel.dataset.carouselStatusTemplate || "Case {current} of {total}";
-  let activeCaseIndex = 0;
-
-  if (portfolioSlides.length <= 1) {
-    previousCaseButton.hidden = true;
-    nextCaseButton.hidden = true;
-    carouselStatus.hidden = true;
-  }
-
-  const showPortfolioCase = (nextIndex, reveal = false) => {
-    activeCaseIndex = (nextIndex + portfolioSlides.length) % portfolioSlides.length;
-
-    portfolioSlides.forEach((slide, index) => {
-      const isCurrent = index === activeCaseIndex;
-      slide.hidden = !isCurrent;
-      slide.classList.toggle("isCurrent", isCurrent);
-      slide.setAttribute("aria-hidden", String(!isCurrent));
-    });
-
-    carouselStatus.textContent = statusTemplate
-      .replace("{current}", String(activeCaseIndex + 1).padStart(2, "0"))
-      .replace("{total}", String(portfolioSlides.length).padStart(2, "0"));
-
-    // On phones the arrows sit below a tall case, so the new case would start
-    // above the viewport. Bring its top back into view (below the sticky nav).
-    if (reveal) {
-      const current = portfolioSlides[activeCaseIndex];
-      const navBottom = siteNav ? siteNav.getBoundingClientRect().bottom : 0;
-      if (current.getBoundingClientRect().top < navBottom) current.scrollIntoView({ block: "start" });
-    }
-  };
-
-  previousCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex - 1, true));
-  nextCaseButton.addEventListener("click", () => showPortfolioCase(activeCaseIndex + 1, true));
-
-  showPortfolioCase(activeCaseIndex);
-}
 
 if (typingHeadline && !prefersReducedMotion.matches) {
   const textWalker = document.createTreeWalker(typingHeadline, NodeFilter.SHOW_TEXT);

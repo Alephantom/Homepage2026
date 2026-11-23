@@ -11,8 +11,7 @@
   Homepages (translation_key: home): WebSite and the full Person (@id /#person). Posts, /blog/ and
   pages with services repeat a short Person (name, url), so the author or provider can be read on its
   own; other pages only refer to /#person.
-  Services: the keys in the page's schema_services, from _data/schema_services.yml, with prices read
-  from _data/offer_prices.yml. A service's url and @id come from its path, so they are the same on
+  Services: the keys in the page's schema_services, from _data/schema_services.yml. A service's url and @id come from its path, so they are the same on
   every page that lists it. FAQPage (schema_faq: true): the same data file as the visible FAQ.
   Posts: BlogPosting, part of the Blog "Human in the Loop" (@id /blog/#blog). The cover image is the
   post's image, not primaryImageOfPage, because the page doesn't show it; posts without a cover have
@@ -37,11 +36,11 @@
 {%- if sd_lang == 'de' -%}
   {%- assign sd_home_url = '/de/' | absolute_url -%}
   {%- assign sd_home_name = 'Startseite' -%}
-  {%- assign sd_job_title = 'Unabhängige Strategin & Operations Consultant' -%}
+  {%- assign sd_job_title = 'HR Business Partnerin · People & Culture' -%}
 {%- else -%}
   {%- assign sd_home_url = '/' | absolute_url -%}
   {%- assign sd_home_name = 'Home' -%}
-  {%- assign sd_job_title = 'Independent Strategist & Maker' -%}
+  {%- assign sd_job_title = 'HR Business Partner · People & Culture' -%}
 {%- endif -%}
 {%- assign sd_page_type = page.schema_page_type | default: 'WebPage' -%}
 {%- comment -%} Breadcrumb parent: the Journal for posts, otherwise breadcrumb_parent from the front matter. {%- endcomment -%}
@@ -186,7 +185,7 @@
     }
     {%- endif -%}
 
-    {%- comment -%} Services, e.g. schema_services: [clarity_check, focused_build] in the front matter. {%- endcomment -%}
+    {%- comment -%} Services, e.g. schema_services: [interim_hr, workshops, team_snapshot] in the front matter. {%- endcomment -%}
     {%- for sd_service_key in page.schema_services -%}
     {%- assign sd_service = site.data.schema_services[sd_service_key] -%}
     {%- if sd_service -%}
@@ -195,17 +194,10 @@
     {%- assign sd_service_url = sd_service_path | absolute_url -%}
     {%- assign sd_service_slug = sd_service_key | replace: '_', '-' -%}
     {%- assign sd_service_id = sd_service_url | split: '#' | first | append: '#service-' | append: sd_service_slug -%}
-    {%- comment -%} Price: the number in the English display price (€2,999 → 2999). If it can't be read, no price is given. {%- endcomment -%}
+    {%- comment -%} Price: only free offers (price: free) get an Offer with price 0; everything else is on request. {%- endcomment -%}
     {%- assign sd_price = nil -%}
     {%- if sd_service.price == 'free' -%}
       {%- assign sd_price = 0 -%}
-    {%- elsif sd_service.price_key -%}
-      {%- assign sd_price_text = site.data.offer_prices[sd_service.price_key].en | default: '' | remove: '€' | remove: ',' | strip -%}
-      {%- assign sd_price_number = sd_price_text | plus: 0 -%}
-      {%- assign sd_price_check = sd_price_number | append: '' -%}
-      {%- if sd_price_text != '' and sd_price_check == sd_price_text and sd_price_number > 0 -%}
-        {%- assign sd_price = sd_price_number -%}
-      {%- endif -%}
     {%- endif -%},
     {
       "@type": "Service",
@@ -214,17 +206,12 @@
       "description": {{ sd_service_text.description | strip | jsonify }},
       "url": {{ sd_service_url | jsonify }},
       "provider": { "@id": {{ sd_person_id | jsonify }} }
-      {%- if sd_price != nil and sd_service.price != 'on_request' -%},
+      {%- if sd_price != nil -%},
       "offers": {
         "@type": "Offer",
         "url": {{ sd_service_url | jsonify }},
-        {%- if sd_service.price == 'from' %}
-        "priceCurrency": "EUR",
-        "priceSpecification": { "@type": "PriceSpecification", "minPrice": {{ sd_price }}, "priceCurrency": "EUR" }
-        {%- else %}
         "price": {{ sd_price }},
         "priceCurrency": "EUR"
-        {%- endif %}
       }
       {%- endif %}
     }

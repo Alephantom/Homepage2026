@@ -1,8 +1,8 @@
 # Topics for the "What’s it about?" / "Worum geht es?" select on /contact and /de/kontakt/.
 #
 # Links open the contact form with a topic already selected:
-#   {{ '/contact' | relative_url }}?topic=clarity-check#write
-#   {{ '/de/kontakt/' | relative_url }}?topic=clarity-check#schreiben
+#   {{ '/contact' | relative_url }}?topic=interim#write
+#   {{ '/de/kontakt/' | relative_url }}?topic=interim#schreiben
 # Unknown or missing topics fall back to "general". See README, "Contact topics".
 #
 # - slug:          sent to Formspree as the "topic" field. Keep slugs stable: links across the site use them.
@@ -17,97 +17,39 @@
     en: Offers
     de: Angebote
   topics:
-    - slug: clarity-check
+    - slug: interim
       en:
-        label: Clarity Check
-        email_subject: Booking a Clarity Check
+        label: Interim HR & parental-leave cover
+        email_subject: Interim HR & parental-leave cover
+      de:
+        label: Interim-HR & Elternzeitvertretung
+        email_subject: Interim-HR & Elternzeitvertretung anfragen
+    - slug: workshop
+      en:
+        label: Workshop
+        email_subject: Asking about a workshop
+      de:
+        label: Workshop
+        email_subject: Workshop anfragen
+    - slug: team-snapshot
+      en:
+        label: Talk about my Team Snapshot results
+        email_subject: Talking about my Team Snapshot results
         email_body: |-
           Hi Anna-Lena,
 
-          I’d like to book a Clarity Check.
+          I’ve done the free Team Snapshot and I’d like to talk through my results in a free 30-minute orientation call.
 
-          The challenge I’d like to look at:
-
-          Our team (what we do, roughly how many people):
+          What I’d like to talk about:
       de:
-        label: Clarity Check
-        email_subject: Clarity Check buchen
+        label: Über mein Team-Snapshot-Ergebnis sprechen
+        email_subject: Über mein Team-Snapshot-Ergebnis sprechen
         email_body: |-
           Hallo Anna-Lena,
 
-          ich möchte einen Clarity Check buchen.
+          ich habe den kostenlosen Team-Snapshot gemacht und würde mein Ergebnis gern in einem kostenlosen 30-minütigen Orientierungsgespräch mit Ihnen besprechen.
 
-          Die Herausforderung, um die es gehen soll:
-
-          Unser Team (was wir machen, ungefähr wie viele Personen):
-    - slug: focused-build
-      en:
-        label: Focused Build
-        email_subject: Planning a Focused Build
-      de:
-        label: Focused Build
-        email_subject: Focused Build planen
-    - slug: interim-hr
-      en:
-        label: Interim HR Business Partner
-        email_subject: Interim HR support
-      de:
-        label: Interim HR Business Partner
-        email_subject: Interim-HR-Begleitung anfragen
-    - slug: team-snapshot
-      en:
-        label: Team Snapshot
-        email_subject: A question about the Team Snapshot
-      de:
-        label: Team-Snapshot
-        email_subject: Eine Frage zum Team-Snapshot
-
-- label:
-    en: Team workshops
-    de: Team-Workshops
-  topics:
-    - slug: workshop
-      en:
-        label: Team workshop (topic still open)
-        email_subject: Booking a team workshop
-      de:
-        label: Team-Workshop (Thema noch offen)
-        email_subject: Team-Workshop anfragen
-    - slug: workshop-algorithmic-hiring
-      en:
-        label: Algorithmic hiring workshop
-        email_subject: "Workshop enquiry: Algorithmic hiring"
-      de:
-        label: Workshop „Algorithmisches Recruiting“
-        email_subject: "Workshop-Anfrage: Algorithmisches Recruiting"
-    - slug: workshop-implementing-ai
-      en:
-        label: Implementing AI systems workshop
-        email_subject: "Workshop enquiry: Implementing AI systems"
-      de:
-        label: Workshop „KI-Systeme einführen“
-        email_subject: "Workshop-Anfrage: KI-Systeme einführen"
-    - slug: workshop-hr-operations
-      en:
-        label: Optimising HR operations workshop
-        email_subject: "Workshop enquiry: Optimising HR operations"
-      de:
-        label: Workshop „HR Operations optimieren“
-        email_subject: "Workshop-Anfrage: HR Operations optimieren"
-    - slug: workshop-internal-communications
-      en:
-        label: Internal communications workshop
-        email_subject: "Workshop enquiry: Improving internal communications"
-      de:
-        label: Workshop „Interne Kommunikation“
-        email_subject: "Workshop-Anfrage: Interne Kommunikation"
-    - slug: workshop-remote-environments
-      en:
-        label: Remote environments workshop
-        email_subject: "Workshop enquiry: Remote environments that work"
-      de:
-        label: Workshop „Remote-Arbeit, die funktioniert“
-        email_subject: "Workshop-Anfrage: Remote-Arbeit, die funktioniert"
+          Worüber ich sprechen möchte:
 
 - topics:
     - slug: general
@@ -116,4 +58,4 @@
         email_subject: Let’s see how we can work together
       de:
         label: Etwas anderes
-        email_subject: Lass uns schauen, wie wir zusammenarbeiten können
+        email_subject: Anfrage zur Zusammenarbeit

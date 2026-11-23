@@ -1,0 +1,20 @@
+{%- comment -%}
+  Redirect stub for a removed page: front matter sets permalink (the old URL) and redirect_to (the new
+  site path, e.g. /#workshops). Meta refresh + JS for browsers, canonical for search engines, noindex so the
+  stub itself never shows up in results. Pages using it set sitemap: false.
+{%- endcomment -%}
+{%- assign redirect_url = page.redirect_to | relative_url -%}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.redirect_title | default: 'Redirecting…' }}</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ redirect_url }}">
+  <script>location.replace({{ redirect_url | jsonify }});</script>
+</head>
+<body>
+  <p>This page has moved: <a href="{{ redirect_url }}">{{ page.redirect_title | default: 'continue' }}</a>.</p>
+</body>
+</html>

@@ -6,7 +6,7 @@ translation_url_en: /contact
 translation_url_de: /de/kontakt/
 title: Gespräch buchen
 seo_title: Gespräch mit Anna-Lena Birkner buchen
-description: Buche ein kostenloses 30-minütiges Orientierungsgespräch mit Anna-Lena Birkner oder sende eine Anfrage zu Strategie, People Operations oder Workshops.
+description: Buchen Sie ein kostenloses 30-minütiges Orientierungsgespräch mit Anna-Lena Birkner oder senden Sie eine Anfrage zu Interim-HR, Elternzeitvertretung, Workshops oder Ihrem Team-Snapshot-Ergebnis.
 extra_css: /contact.css
 permalink: /de/kontakt/
 schema_page_type: ContactPage
@@ -14,15 +14,15 @@ schema_page_type: ContactPage
 <section class="contactHero">
   <div class="contactIntro">
     <p class="eyebrow">Termin buchen</p>
-    <h1>Bring den ersten,<br><em>noch unfertigen Gedanken mit.</em></h1>
-    <p>Buche ein kostenloses 30-minütiges Orientierungsgespräch, erzähle, worum es gerade geht, und lass uns schauen, wo wir sinnvoll zusammenarbeiten könnten. Oder schreib mir, wenn du lieber schriftlich beginnen möchtest.</p>
+    <h1>Bringen Sie den ersten,<br><em>noch unfertigen Gedanken mit.</em></h1>
+    <p>Buchen Sie ein kostenloses 30-minütiges Orientierungsgespräch, erzählen Sie mir, worum es gerade geht, und lassen Sie uns schauen, wo wir sinnvoll zusammenarbeiten könnten. Oder schreiben Sie mir, wenn Sie lieber schriftlich beginnen möchten.</p>
   </div>
   <div class="calendarCard">
     <div class="calendarCardHeader">
       <span class="calendarNumber">01</span>
       <div>
         <p class="eyebrow">Termin wählen</p>
-        <h2>Lass uns schauen, wo wir ansetzen können.</h2>
+        <h2>Lassen Sie uns schauen, wo wir ansetzen können.</h2>
         <p>30 Minuten · Videocall · Kostenlos · Keine Vorbereitung nötig</p>
       </div>
     </div>
@@ -32,13 +32,13 @@ schema_page_type: ContactPage
         class="calendarConsentGate"
         data-calendly-gate
         data-i18n-retry="Erneut versuchen"
-        data-i18n-error="Der Kalender konnte nicht geladen werden. Du kannst Calendly weiterhin in einem neuen Tab öffnen."
+        data-i18n-error="Der Kalender konnte nicht geladen werden. Sie können Calendly weiterhin in einem neuen Tab öffnen."
         data-i18n-loading="Wird geladen…"
         data-i18n-connecting="Verbindung zu Calendly wird hergestellt…"
       >
         <span class="calendarGateMark" aria-hidden="true">↗</span>
         <strong>Terminkalender laden</strong>
-        <p>Der Kalender wird von Calendly bereitgestellt. Erst wenn du ihn lädst, wird eine Verbindung zu Calendly hergestellt und Calendly kann eigene Cookies setzen.</p>
+        <p>Der Kalender wird von Calendly bereitgestellt. Erst wenn Sie ihn laden, wird eine Verbindung zu Calendly hergestellt und Calendly kann eigene Cookies setzen.</p>
         <button class="calendarButton" type="button" data-calendly-load>Calendly laden</button>
         <p class="calendarGateLinks">
           <a href="{{ site.calendly_url }}" target="_blank" rel="noopener noreferrer">Calendly in einem neuen Tab öffnen ↗</a>
@@ -65,17 +65,17 @@ schema_page_type: ContactPage
 <section class="contactFormSection" id="schreiben">
   <div class="contactFormIntro">
     <p class="eyebrow">Lieber schreiben?</p>
-    <h2>Beginne mit dem, was dir gerade durch den Kopf geht.</h2>
+    <h2>Beginnen Sie mit dem, was Sie gerade beschäftigt.</h2>
     {% if contact_endpoint != "" %}
-      <p>Schreib mir ein paar Zeilen hier im Formular. Nichts muss ausformuliert sein – ein grober Umriss reicht für den Anfang völlig.</p>
+      <p>Schreiben Sie mir ein paar Zeilen hier im Formular. Nichts muss ausformuliert sein – ein grober Umriss reicht für den Anfang völlig.</p>
     {% else %}
-      <p>Schreib mir direkt. Kopier dir einfach die Adresse oder öffne dein E-Mail-Programm mit bereits ausgefülltem Betreff.</p>
+      <p>Schreiben Sie mir direkt. Kopieren Sie einfach die Adresse oder öffnen Sie Ihr E-Mail-Programm mit bereits ausgefülltem Betreff.</p>
     {% endif %}
   </div>
   <div class="emailCard{% if contact_endpoint != "" %} emailCard--form{% endif %}">
     <span class="emailCardNumber">02</span>
     <p class="eyebrow">Eine Nachricht an Anna-Lena</p>
-    <h3>Erzähl mir, was feststeckt – oder was du möglich machen möchtest.</h3>
+    <h3>Erzählen Sie mir, was feststeckt – oder was Sie möglich machen möchten.</h3>
     <div class="emailPromptList" id="contact-prompts">
       <span>Was passiert gerade?</span>
       <span>Was soll sich bewegen?</span>
@@ -91,10 +91,10 @@ schema_page_type: ContactPage
         data-contact-form
         data-i18n-sending="Wird gesendet…"
         data-i18n-subject="Neue Anfrage: {topic}"
-        data-i18n-name-missing="Bitte gib deinen Namen ein."
-        data-i18n-email-missing="Bitte gib deine E-Mail-Adresse ein."
-        data-i18n-email-invalid="Bitte prüf deine E-Mail-Adresse. Sie sollte so aussehen: name@firma.de."
-        data-i18n-message-missing="Bitte schreib mir ein paar Zeilen dazu, worum es geht."
+        data-i18n-name-missing="Bitte geben Sie Ihren Namen ein."
+        data-i18n-email-missing="Bitte geben Sie Ihre E-Mail-Adresse ein."
+        data-i18n-email-invalid="Bitte prüfen Sie Ihre E-Mail-Adresse. Sie sollte so aussehen: name@firma.de."
+        data-i18n-message-missing="Bitte schreiben Sie mir ein paar Zeilen dazu, worum es geht."
       >
         <div class="contactFormGrid">
           <div class="contactField contactField--wide">
@@ -130,7 +130,7 @@ schema_page_type: ContactPage
             <input id="contact-company" name="company" type="text" autocomplete="organization">
           </div>
           <div class="contactField contactField--wide">
-            <label for="contact-message">Deine Nachricht</label>
+            <label for="contact-message">Ihre Nachricht</label>
             <textarea id="contact-message" name="message" rows="6" aria-describedby="contact-prompts contact-message-error" required data-contact-message></textarea>
             <p class="contactFieldError" id="contact-message-error"></p>
           </div>
@@ -144,13 +144,13 @@ schema_page_type: ContactPage
 
         <button class="emailButton contactSubmit" type="submit" data-contact-submit>Nachricht senden</button>
         <div class="contactFormStatus" data-contact-status aria-live="polite"></div>
-        <p class="emailCardNote">Deine Nachricht erreicht mich über Formspree, einen Formulardienst mit Sitz in den USA. Mehr dazu in der <a href="{{ '/privacy/' | relative_url }}#contact-form" hreflang="en">Datenschutzerklärung (auf Englisch)</a>.</p>
+        <p class="emailCardNote">Ihre Nachricht erreicht mich über Formspree, einen Formulardienst mit Sitz in den USA. Mehr dazu in der <a href="{{ '/privacy/' | relative_url }}#contact-form" hreflang="en">Datenschutzerklärung (auf Englisch)</a>.</p>
 
         <template data-contact-success>
-          <p class="contactFormMessage contactFormMessage--success">Danke – deine Nachricht ist unterwegs. Ich melde mich innerhalb von zwei Werktagen bei dir.</p>
+          <p class="contactFormMessage contactFormMessage--success">Danke – Ihre Nachricht ist unterwegs. Ich melde mich innerhalb von zwei Werktagen bei Ihnen.</p>
         </template>
         <template data-contact-error>
-          <p class="contactFormMessage contactFormMessage--error">Deine Nachricht konnte leider nicht gesendet werden. Bitte versuch es noch einmal oder schreib mir direkt an <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
+          <p class="contactFormMessage contactFormMessage--error">Ihre Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es noch einmal oder schreiben Sie mir direkt an <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
         </template>
       </form>
     {% else %}
@@ -159,8 +159,8 @@ schema_page_type: ContactPage
         data-copy-email
         data-i18n-copied="Kopiert"
         data-i18n-copied-status="E-Mail-Adresse kopiert."
-        data-i18n-select-status="Die Adresse ist markiert – drück Strg+C (oder ⌘C auf dem Mac), um sie zu kopieren."
-        data-i18n-select-status-touch="Die Adresse ist markiert – halte den Finger darauf, um sie zu kopieren."
+        data-i18n-select-status="Die Adresse ist markiert – drücken Sie Strg+C (oder ⌘C auf dem Mac), um sie zu kopieren."
+        data-i18n-select-status-touch="Die Adresse ist markiert – halten Sie den Finger darauf, um sie zu kopieren."
       >
         <p class="emailAddressLabel">E-Mail</p>
         <p class="emailAddress" data-copy-source>{{ contact_email }}</p>
@@ -169,11 +169,11 @@ schema_page_type: ContactPage
         <p
           class="emailTopicNote"
           data-contact-topic-note
-          data-i18n-topic-note="Thema: {topic}. Wenn du dein E-Mail-Programm öffnest, ist der Betreff schon ausgefüllt."
-          data-i18n-topic-note-prefill="Thema: {topic}. Wenn du dein E-Mail-Programm öffnest, sind Betreff und Nachricht schon ausgefüllt."
+          data-i18n-topic-note="Thema: {topic}. Wenn Sie Ihr E-Mail-Programm öffnen, ist der Betreff schon ausgefüllt."
+          data-i18n-topic-note-prefill="Thema: {topic}. Wenn Sie Ihr E-Mail-Programm öffnen, sind Betreff und Nachricht schon ausgefüllt."
           hidden
         ></p>
-        <a class="emailSecondaryLink" href="mailto:{{ contact_email }}?subject=Lass%20uns%20schauen%2C%20wie%20wir%20zusammenarbeiten%20k%C3%B6nnen" data-contact-mailto>
+        <a class="emailSecondaryLink" href="mailto:{{ contact_email }}?subject=Anfrage%20zur%20Zusammenarbeit" data-contact-mailto>
           Oder im E-Mail-Programm öffnen <span aria-hidden="true">↗</span>
         </a>
       </div>

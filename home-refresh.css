@@ -1,0 +1,818 @@
+/* ==========================================================================
+   Homepage refresh (2026-11): hero, trust bar + quote card, offers.
+   Used by index.html and de/index.html (markup in _includes/home-refresh-en.html
+   and _includes/home-refresh-de.html). Colours and fonts come from the tokens in
+   styles.css (:root). All classes are prefixed with "hr" so they cannot collide
+   with the older .hero / .spark rules in styles.css.
+   ========================================================================== */
+
+.hrHero,
+.hrTrust,
+.hrOffers {
+  --hr-dove: #e6e2db;
+}
+
+/* ---------- Hero ---------- */
+.hrHero {
+  align-items: center;
+  display: grid;
+  gap: 72px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  overflow: hidden;
+  padding: 64px var(--page-gutter) 72px;
+  position: relative;
+}
+
+.hrHeroCopy {
+  position: relative;
+  z-index: 2;
+}
+
+.hrHeroCopy .eyebrow {
+  align-items: center;
+  display: inline-flex;
+  gap: 12px;
+}
+
+.hrHeroCopy .eyebrow::before {
+  background: var(--coral);
+  border-radius: 50%;
+  content: "";
+  height: 10px;
+  width: 10px;
+}
+
+.hrHero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(50px, 6.4vw, 96px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  margin: 30px 0;
+  text-wrap: balance;
+}
+
+.hrHero h1 em {
+  color: var(--coral);
+  font-weight: 400;
+}
+
+/* Keeps "Remote-Teams." / "remote teams." on one line (Chrome breaks after the hyphen otherwise). */
+.hrNowrap {
+  white-space: nowrap;
+}
+
+.hrHeroSub {
+  font-size: clamp(17px, 1.5vw, 22px);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  margin: 0 0 36px;
+  max-width: 560px;
+}
+
+.hrHeroActions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hrBtn {
+  align-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 9px;
+  letter-spacing: 0.08em;
+  padding: 19px 28px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 160ms ease;
+}
+
+.hrBtn:hover,
+.hrBtn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.hrBtnPrimary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hrBtnPrimary span:last-child {
+  color: var(--acid);
+}
+
+.hrBtnSecondary {
+  background: transparent;
+}
+
+.hrPortraitWrap {
+  justify-self: end;
+  max-width: 440px;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.hrPortrait {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(170deg, var(--paper) 0%, var(--hr-dove) 100%);
+  border: 1px solid var(--ink);
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hrPortrait img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  width: 100%;
+}
+
+.hrPortraitTag {
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  bottom: 34px;
+  display: flex;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 8px;
+  left: -26px;
+  letter-spacing: 0.08em;
+  padding: 10px 16px;
+  position: absolute;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+}
+
+.hrPortraitTag i {
+  background: #5bb37a;
+  border-radius: 50%;
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+}
+
+.hrSpark {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+}
+
+.hrSparkOne {
+  background: var(--lavender);
+  filter: blur(1px);
+  height: 300px;
+  opacity: 0.72;
+  right: 2vw;
+  top: -60px;
+  transform: skew(-18deg) rotate(18deg);
+  width: 300px;
+}
+
+.hrSparkTwo {
+  background: var(--acid);
+  bottom: -200px;
+  height: 300px;
+  left: -150px;
+  width: 300px;
+}
+
+/* ---------- Trust bar + quote card ---------- */
+.hrTrust {
+  align-items: center;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding: 34px var(--page-gutter);
+}
+
+.hrFacts {
+  align-items: start;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hrFacts li {
+  align-items: flex-start;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 28px;
+}
+
+.hrFacts li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.hrFactNum {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.hrFactLab {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.hrQuote {
+  align-items: start;
+  background: var(--lavender);
+  border: 1px solid var(--ink);
+  border-radius: 16px;
+  display: grid;
+  gap: 6px 18px;
+  grid-template-columns: auto 1fr;
+  margin: 0;
+  padding: 22px 26px;
+}
+
+.hrQuoteMark {
+  color: var(--coral-on-lavender);
+  font-family: var(--font-display);
+  font-size: 64px;
+  grid-row: span 2;
+  line-height: 0.8;
+}
+
+.hrQuote blockquote {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.hrQuote figcaption {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  gap: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hrQuoteLogo {
+  display: inline-flex;
+  flex: none;
+}
+
+.hrQuoteLogo img {
+  background: #fff;
+  border-radius: 8px;
+  display: block;
+  height: 34px;
+  width: 34px;
+}
+
+.hrQuote .hrCiteRef {
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hrQuote .hrCiteRef:hover,
+.hrQuote .hrCiteRef:focus-visible {
+  color: var(--coral-on-lavender);
+}
+
+/* ---------- Offers ---------- */
+.hrOffers {
+  background: var(--paper);
+  padding: 56px var(--page-gutter) 72px;
+  scroll-margin-top: 86px;
+}
+
+.hrOffersHead {
+  margin-bottom: 28px;
+}
+
+.hrOffersHead h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.4vw, 50px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  margin: 14px 0 0;
+}
+
+.hrOffersHead h2 em {
+  color: var(--coral-text);
+  font-weight: 400;
+}
+
+/* Subgrid rows keep every row (and every button) on one line across the 3 cards. */
+.hrOfferGrid {
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(6, auto);
+  row-gap: 0;
+}
+
+.hrOffer {
+  background: var(--cream);
+  border: 1px solid var(--ink);
+  border-radius: 16px;
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 26px;
+}
+
+.hrOffer > * {
+  margin: 0;
+}
+
+.hrOffer h3 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+  margin-top: 18px;
+  overflow-wrap: normal;
+}
+
+.hrOffer h3 em {
+  display: block;
+  font-weight: 400;
+}
+
+.hrOfferDesc {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-top: 12px !important;
+}
+
+.hrTags {
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 16px 0 0 !important;
+  padding: 0;
+}
+
+.hrTags li {
+  align-items: center;
+  border: 1px solid rgba(29, 27, 47, 0.35);
+  border-radius: 100px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  max-width: 100%;
+  padding: 6px 11px;
+  white-space: normal;
+}
+
+.hrMeta {
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 4px;
+  margin-top: 18px !important;
+  padding-top: 14px;
+}
+
+.hrMeta span {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.hrMeta b {
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.hrOfferBtn {
+  align-items: center;
+  align-self: end;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  color: var(--paper);
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 9px;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  margin-top: 16px !important;
+  overflow-wrap: normal;
+  padding: 17px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 160ms ease;
+}
+
+.hrOfferBtn:hover,
+.hrOfferBtn:focus-visible {
+  transform: translateY(-2px);
+}
+
+.hrOfferBtn span:last-child {
+  color: var(--acid);
+}
+
+.hrOffer--interim {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hrOffer--interim h3 em {
+  color: var(--acid);
+}
+
+.hrOffer--interim .hrTags li {
+  border-color: rgba(251, 248, 240, 0.35);
+}
+
+.hrOffer--interim .hrMeta {
+  border-color: rgba(251, 248, 240, 0.25);
+}
+
+.hrOffer--interim .hrOfferBtn {
+  background: var(--acid);
+  border-color: var(--acid);
+  color: var(--ink);
+}
+
+.hrOffer--interim .hrOfferBtn span:last-child {
+  color: var(--ink);
+}
+
+.hrOffer--workshop {
+  background: var(--lavender);
+}
+
+.hrOffer--workshop h3 em {
+  color: var(--coral-on-lavender);
+}
+
+.hrOffer--snapshot h3 em {
+  color: var(--coral-text);
+}
+
+/* Slim full-width "Let's talk" bar below the cards */
+.hrTalkBar {
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 16px;
+  color: inherit;
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 16px 22px;
+  text-decoration: none;
+  transition: transform 160ms ease;
+}
+
+.hrTalkBar:hover,
+.hrTalkBar:focus-visible {
+  transform: translateY(-2px);
+}
+
+.hrTalkIcon {
+  background: var(--acid);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: grid;
+  flex: none;
+  font-size: 18px;
+  height: 40px;
+  place-items: center;
+  width: 40px;
+}
+
+.hrTalkText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.3;
+}
+
+.hrTalkText b {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hrTalkText small {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.hrTalkCta {
+  border-bottom: 1px solid currentColor;
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-left: auto;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hrHero {
+    gap: 40px;
+  }
+
+  .hrTrust {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hrOfferGrid {
+    column-gap: 14px;
+  }
+
+  .hrOffer {
+    padding: 20px;
+  }
+
+  .hrOffer h3 {
+    font-size: 26px;
+  }
+
+  .hrOfferBtn {
+    padding: 15px 12px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .hrHero {
+    gap: 34px;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 34px var(--page-gutter) 44px;
+  }
+
+  .hrHero h1 {
+    font-size: 46px;
+    margin: 20px 0 18px;
+  }
+
+  .hrHeroSub {
+    font-size: 17px;
+    margin-bottom: 26px;
+  }
+
+  .hrHeroActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hrBtn {
+    justify-content: center;
+    padding: 17px 20px;
+  }
+
+  .hrPortraitWrap {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .hrPortrait {
+    aspect-ratio: 5 / 4;
+  }
+
+  .hrPortraitTag {
+    bottom: -16px;
+    left: 12px;
+  }
+
+  .hrSparkOne {
+    height: 180px;
+    right: -60px;
+    top: 420px;
+    width: 180px;
+  }
+
+  .hrSparkTwo {
+    display: none;
+  }
+
+  .hrTrust {
+    gap: 22px;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 38px var(--page-gutter) 28px;
+  }
+
+  .hrFacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hrFacts li {
+    align-items: center;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 0;
+  }
+
+  .hrFacts li:first-child {
+    border-top: 0;
+  }
+
+  .hrFactLab {
+    font-size: 11px;
+    order: -1;
+  }
+
+  .hrFactNum {
+    font-size: 26px;
+  }
+
+  .hrQuote {
+    padding: 20px;
+  }
+
+  .hrQuote blockquote {
+    font-size: 19px;
+  }
+
+  .hrOffers {
+    padding: 40px var(--page-gutter) 48px;
+  }
+
+  .hrOfferGrid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 14px;
+  }
+
+  .hrOffer {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+    padding: 22px;
+  }
+
+  .hrOffer h3 {
+    font-size: 26px;
+    margin-top: 14px;
+  }
+
+  .hrOfferBtn {
+    align-self: stretch;
+  }
+
+  .hrQuote figcaption {
+    flex-wrap: nowrap;
+  }
+
+  .hrQuote figcaption > span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hrTalkBar {
+    align-items: start;
+    display: grid;
+    gap: 10px 14px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  .hrTalkIcon {
+    font-size: 16px;
+    height: 36px;
+    width: 36px;
+  }
+
+  .hrTalkCta {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hrBtn,
+  .hrOfferBtn,
+  .hrTalkBar {
+    transition: none;
+  }
+}
+
+/* ---------- Partners: two equal cards (DevOpWeb + Mindfulife) ---------- */
+.homeBottomGrid--partners .partnerSectionHead {
+  max-width: 1200px;
+}
+
+.partnerGrid {
+  align-items: stretch;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.homeBottomGrid--partners .partnerCopy {
+  margin: 0;
+  max-width: none;
+}
+
+.homeBottomGrid--partners .partnerMark {
+  right: 38px;
+  top: 38px;
+  width: 145px;
+}
+
+.partnerMark--mindfulife {
+  color: var(--ink);
+  gap: 10px;
+  text-decoration: none;
+  width: auto !important;
+}
+
+.partnerMark--mindfulife img {
+  border-radius: 8px;
+  flex: none;
+  height: 36px;
+  width: 36px;
+}
+
+.partnerMark--mindfulife span {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+@media (max-width: 1050px) {
+  .partnerGrid {
+    gap: 40px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .homeBottomGrid--partners .partnerMark {
+    width: 122px;
+  }
+
+  .partnerMark--mindfulife {
+    flex: 0 1 auto;
+  }
+
+  .partnerMark--mindfulife img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .partnerMark--mindfulife span {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+}
