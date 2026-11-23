@@ -1,11 +1,11 @@
 ---
-title: "Proximity Is Not Performance: What Return-to-Office Means for Carers in the AI Era"
+title: "Proximity Is Not Performance"
 date: 2026-11-23 09:00:00 +0100
 author: Anna-Lena
 category: Future of Work
 read_time: 5
 slug: proximity-is-not-performance
-excerpt_text: "Remote work opened doors for mothers and carers. AI and return-to-office could quietly close them again."
+excerpt_text: "What return-to-office means for mothers and carers in the AI era."
 description: "Remote work kept many mothers and carers in good jobs. AI makes visibility the new currency, and RTO ties it to the office. What HR can do about it."
 seo_title: "Proximity Is Not Performance: Return-to-Office, AI and Carers"
 keywords:
