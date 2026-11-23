@@ -196,7 +196,7 @@
   align-items: stretch;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .abRef {
@@ -227,6 +227,16 @@
   justify-content: center;
   overflow: hidden;
   width: 52px;
+}
+
+/* Text monogram badge for references without a logo (e.g. NGA). */
+.abLogo--mono {
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
 }
 
 .abLogo img {
@@ -312,9 +322,30 @@ a.abRefName:focus-visible {
   margin-top: 20px;
 }
 
-/* Tags sit at the bottom of every card so the three cards line up. */
+/* Tags sit at the bottom of every card so the cards line up. */
 .abRef > p {
   flex: 1 0 auto;
+}
+
+/* 2×2 grid: each card spans 4 subgrid rows (company, title, text, tags), so
+   titles, texts and tag rows line up across the cards. */
+@media (min-width: 761px) {
+  /* The text tracks are 1fr: both rows get the taller text height, so all
+     four cards end up the same height. */
+  .abRefGrid {
+    grid-template-rows: repeat(2, auto auto 1fr auto);
+  }
+
+  .abRef {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .abRef .abTags {
+    align-self: start;
+  }
 }
 
 /* ---------- Closing box ---------- */
