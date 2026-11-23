@@ -21,7 +21,7 @@ layout: default
 
       <div class="postHeroContent">
         <p class="postSeries">Human in the Loop</p>
-        <h1>{{ page.title }}</h1>
+        <h1>{% if page.title_html %}{{ page.title_html }}{% else %}{{ page.title }}{% endif %}</h1>
         {% if page.excerpt_text %}
           <p class="postDeck">{{ page.excerpt_text }}</p>
         {% endif %}
